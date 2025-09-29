@@ -1,210 +1,808 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "whif_promote_section_qcTyb9": {
+      "type": "whif-promote-section",
       "blocks": {
-        "heading": {
+        "heading_W8BFKB": {
           "type": "heading",
           "settings": {
-            "heading": "Image banner",
-            "heading_size": "h0"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
-            "text_style": "body"
-          }
-        },
-        "button": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "text",
-        "button"
-      ],
-      "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
-      }
-    },
-    "rich_text": {
-      "type": "rich-text",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Talk about your brand",
+            "heading": "Promote Your Products",
             "heading_size": "h1"
           }
         },
-        "text": {
+        "text_UPTpCL": {
           "type": "text",
           "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+            "text": "<p>Share information about your brand with your customers.</p>"
+          }
+        },
+        "button_Pie4GF": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false
           }
         }
       },
       "block_order": [
-        "heading",
-        "text"
+        "heading_W8BFKB",
+        "text_UPTpCL",
+        "button_Pie4GF"
       ],
+      "name": "Whif Promote Section",
       "settings": {
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 0
-      }
-    },
-    "featured_collection": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "show_view_all": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "columns_mobile": "2",
-        "padding_top": 28,
-        "padding_bottom": 36
-      }
-    },
-    "collage": {
-      "type": "collage",
-      "blocks": {
-        "collection-0": {
-          "type": "collection",
-          "settings": {
-            "collection": ""
-          }
-        },
-        "product": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "second_image": false
-          }
-        },
-        "collection-1": {
-          "type": "collection",
-          "settings": {
-            "collection": ""
-          }
-        }
-      },
-      "block_order": [
-        "collection-0",
-        "product",
-        "collection-1"
-      ],
-      "settings": {
-        "heading": "Multimedia collage",
-        "heading_size": "h2",
-        "desktop_layout": "left",
-        "mobile_layout": "collage",
-        "color_scheme": "scheme-1",
+        "color_scheme": "",
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "video": {
-      "type": "video",
+    "whif_hero_section_RYAJGk": {
+      "type": "whif-hero-section",
+      "blocks": {
+        "heading_7UEyFA": {
+          "type": "heading",
+          "settings": {
+            "heading": "Hero Section Title",
+            "heading_size": "h0"
+          }
+        },
+        "text_PK4dT4": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Welcome to our amazing products and services.</p>"
+          }
+        },
+        "button_JW3qbf": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Now",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_7UEyFA",
+        "text_PK4dT4",
+        "button_JW3qbf"
+      ],
+      "name": "Whif Hero Section",
       "settings": {
-        "heading": "",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "heading_size": "h1",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "whif_flash_sale_section_RtXcNm": {
+      "type": "whif-flash-sale-section",
+      "blocks": {
+        "cta_button_b4NYNa": {
+          "type": "cta_button",
+          "settings": {
+            "button_label": "Shop All Sale Items",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "cta_button_b4NYNa"
+      ],
+      "name": "Whif Flash Sale Section",
+      "settings": {
+        "heading": "Flash Sale",
+        "countdown_end_date": "",
+        "collection": "",
+        "products_to_show": 4,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "whif_landing_page_product_section_AQAN3U": {
+      "type": "whif-landing-page-product-section",
+      "blocks": {
+        "button_a6DenC": {
+          "type": "button",
+          "settings": {
+            "button_label": "View All Products",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "button_a6DenC"
+      ],
+      "name": "Whif Landing Product",
+      "settings": {
+        "heading": "Featured Products",
         "description": "",
-        "full_width": false,
-        "color_scheme": "scheme-1",
+        "featured_product": "",
+        "collection": "",
+        "products_to_show": 6,
+        "color_scheme": "",
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "multicolumn": {
-      "type": "multicolumn",
+    "whif_promo_oils_section_9qbrxt": {
+      "type": "whif-promo-oils-section",
       "blocks": {
-        "column1": {
-          "type": "column",
+        "feature_83GU6W": {
+          "type": "feature",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
+            "feature_title": "Feature Title",
+            "feature_description": "Feature description goes here."
           }
         },
-        "column2": {
-          "type": "column",
+        "button_agWeG8": {
+          "type": "button",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column3": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
+            "button_label": "Shop All Oils",
+            "button_link": "",
+            "button_style_secondary": false
           }
         }
       },
       "block_order": [
-        "column1",
-        "column2",
-        "column3"
+        "feature_83GU6W",
+        "button_agWeG8"
       ],
+      "name": "Whif Promo Oils Section",
       "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "third",
-        "image_ratio": "adapt",
-        "columns_desktop": 3,
-        "column_alignment": "center",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "swipe_on_mobile": false,
-        "color_scheme": "scheme-1",
-        "columns_mobile": "1",
+        "heading": "Premium Essential Oils",
+        "description": "<p>Discover our collection of high-quality essential oils for your scenting needs.</p>",
+        "oils_collection": "",
+        "products_to_show": 4,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "whif_collection_section_m9PecW": {
+      "type": "whif-collection-section",
+      "blocks": {
+        "collection_item_cmcThj": {
+          "type": "collection_item",
+          "settings": {
+            "collection_title": "Collection Title",
+            "collection_description": "",
+            "collection_link": "",
+            "button_text": "Shop Collection"
+          }
+        },
+        "collection_item_BCpRdY": {
+          "type": "collection_item",
+          "settings": {
+            "collection_title": "Collection Title",
+            "collection_description": "",
+            "collection_link": "",
+            "button_text": "Shop Collection"
+          }
+        },
+        "collection_item_rkWqzJ": {
+          "type": "collection_item",
+          "settings": {
+            "collection_title": "Collection Title",
+            "collection_description": "",
+            "collection_link": "",
+            "button_text": "Shop Collection"
+          }
+        }
+      },
+      "block_order": [
+        "collection_item_cmcThj",
+        "collection_item_BCpRdY",
+        "collection_item_rkWqzJ"
+      ],
+      "name": "Whif Collection Section",
+      "settings": {
+        "heading": "Our Collections",
+        "description": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "whif_saver_section_EyfiKJ": {
+      "type": "whif-saver-section",
+      "blocks": {
+        "whif_saver_item_qGNMmm": {
+          "type": "whif_saver_item",
+          "settings": {
+            "savings_title": "Save Up To",
+            "savings_amount": "50%",
+            "savings_description": "On selected items"
+          }
+        },
+        "whif_saver_item_iGReBF": {
+          "type": "whif_saver_item",
+          "settings": {
+            "savings_title": "Save Up To",
+            "savings_amount": "50%",
+            "savings_description": "On selected items"
+          }
+        },
+        "whif_saver_button_axcjGp": {
+          "type": "whif_saver_button",
+          "settings": {
+            "button_label": "Shop Sale Items",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "whif_saver_item_qGNMmm",
+        "whif_saver_item_iGReBF",
+        "whif_saver_button_axcjGp"
+      ],
+      "name": "Whif Saver Section",
+      "settings": {
+        "heading": "Save More with Whif",
+        "description": "<p>Discover amazing savings and special offers.</p>",
+        "promo_code": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "whif_machine_section_tNxUbL": {
+      "type": "whif-machine-section",
+      "blocks": {
+        "whif_machine_feature_rmXaMx": {
+          "type": "whif_machine_feature",
+          "settings": {
+            "feature_title": "Feature Title",
+            "feature_description": "Feature description goes here."
+          }
+        },
+        "whif_machine_spec_yEbmY4": {
+          "type": "whif_machine_spec",
+          "settings": {
+            "spec_label": "Coverage Area",
+            "spec_value": "Up to 500 sq ft"
+          }
+        },
+        "whif_machine_button_CYHdQ4": {
+          "type": "whif_machine_button",
+          "settings": {
+            "button_label": "Shop Machines",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "whif_machine_feature_rmXaMx",
+        "whif_machine_spec_yEbmY4",
+        "whif_machine_button_CYHdQ4"
+      ],
+      "name": "Whif Machine Section",
+      "settings": {
+        "heading": "Whif Scenting Machines",
+        "description": "<p>Discover our advanced scenting machines for every space.</p>",
+        "machines_collection": "",
+        "products_to_show": 4,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "whif_makers_section_mahWpq": {
+      "type": "whif-makers-section",
+      "blocks": {
+        "maker_UArLik": {
+          "type": "maker",
+          "settings": {
+            "maker_name": "Team Member Name",
+            "maker_title": "Position Title",
+            "maker_bio": "",
+            "maker_social_link": ""
+          }
+        },
+        "maker_KFXekM": {
+          "type": "maker",
+          "settings": {
+            "maker_name": "Team Member Name",
+            "maker_title": "Position Title",
+            "maker_bio": "",
+            "maker_social_link": ""
+          }
+        },
+        "story_eDTQTU": {
+          "type": "story",
+          "settings": {
+            "story_title": "Our Story",
+            "story_text": "<p>Tell your company's story here.</p>"
+          }
+        },
+        "button_KGiNX6": {
+          "type": "button",
+          "settings": {
+            "button_label": "Learn More About Us",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "maker_UArLik",
+        "maker_KFXekM",
+        "story_eDTQTU",
+        "button_KGiNX6"
+      ],
+      "name": "Whif Makers Section",
+      "settings": {
+        "heading": "Meet the Makers",
+        "description": "<p>Get to know the passionate team behind Whif products.</p>",
+        "company_story": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "whif_scenting_section_KWRQ6H": {
+      "type": "whif-scenting-section",
+      "blocks": {
+        "benefit_qwaqp9": {
+          "type": "benefit",
+          "settings": {
+            "benefit_title": "Enhanced Mood",
+            "benefit_description": "Scenting can improve mood and create positive associations."
+          }
+        },
+        "scent_category_3wmbVX": {
+          "type": "scent_category",
+          "settings": {
+            "category_name": "Fresh & Clean",
+            "category_description": "Light, airy scents perfect for modern spaces.",
+            "category_link": ""
+          }
+        },
+        "how_it_works_F8P6it": {
+          "type": "how_it_works",
+          "settings": {
+            "step_number": "1",
+            "step_title": "Choose Your Scent",
+            "step_description": "Select from our curated collection of premium fragrances."
+          }
+        },
+        "button_fEjVqh": {
+          "type": "button",
+          "settings": {
+            "button_label": "Explore Scenting Solutions",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "benefit_qwaqp9",
+        "scent_category_3wmbVX",
+        "how_it_works_F8P6it",
+        "button_fEjVqh"
+      ],
+      "name": "Whif Scenting Section",
+      "settings": {
+        "heading": "The Science of Scenting",
+        "description": "<p>Discover how professional scenting can transform your space and enhance experiences.</p>",
+        "video_url": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "whif_machine_by_spaces_Q7HeqH": {
+      "type": "whif-machine-by-spaces",
+      "blocks": {
+        "space_type_JKeg8f": {
+          "type": "space_type",
+          "settings": {
+            "space_name": "Small Office",
+            "space_size": "Up to 500 sq ft",
+            "space_description": "Perfect for small offices, boutiques, and personal spaces.",
+            "recommended_machine": ""
+          }
+        },
+        "space_type_r4qaY8": {
+          "type": "space_type",
+          "settings": {
+            "space_name": "Small Office",
+            "space_size": "Up to 500 sq ft",
+            "space_description": "Perfect for small offices, boutiques, and personal spaces.",
+            "recommended_machine": ""
+          }
+        },
+        "space_calculator_akh9yi": {
+          "type": "space_calculator",
+          "settings": {
+            "calculator_title": "Space Size Calculator",
+            "calculator_description": "Not sure which machine is right for you? Use our calculator to find the perfect match."
+          }
+        },
+        "button_GBRMCb": {
+          "type": "button",
+          "settings": {
+            "button_label": "View All Machines",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "space_type_JKeg8f",
+        "space_type_r4qaY8",
+        "space_calculator_akh9yi",
+        "button_GBRMCb"
+      ],
+      "name": "Whif Machine by Spaces",
+      "settings": {
+        "heading": "Find the Perfect Machine for Your Space",
+        "description": "<p>Different spaces require different scenting solutions. Find the perfect machine for your needs.</p>",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "whif_recommendation_section_cQB63k": {
+      "type": "whif-recommendation-section",
+      "blocks": {
+        "recommendation_category_Nj6LNf": {
+          "type": "recommendation_category",
+          "settings": {
+            "category_title": "For Your Home",
+            "category_description": "Perfect scents for creating a welcoming home environment.",
+            "category_products": ""
+          }
+        },
+        "quiz_prompt_c9JTRi": {
+          "type": "quiz_prompt",
+          "settings": {
+            "quiz_title": "Find Your Perfect Scent",
+            "quiz_description": "Answer a few quick questions to get personalized product recommendations."
+          }
+        },
+        "button_6YK8DL": {
+          "type": "button",
+          "settings": {
+            "button_label": "View All Recommendations",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "recommendation_category_Nj6LNf",
+        "quiz_prompt_c9JTRi",
+        "button_6YK8DL"
+      ],
+      "name": "Whif Recommendations",
+      "settings": {
+        "heading": "Personalized Recommendations",
+        "description": "<p>Discover products tailored to your preferences and needs.</p>",
+        "recommended_collection": "",
+        "products_to_show": 4,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "whif_bundle_section_FW6TA3": {
+      "type": "whif-bundle-section",
+      "blocks": {
+        "bundle_offer_bUKbX3": {
+          "type": "bundle_offer",
+          "settings": {
+            "bundle_badge": "Best Value",
+            "bundle_title": "Starter Bundle",
+            "bundle_description": "Everything you need to get started with scenting.",
+            "bundle_product_1": "",
+            "bundle_product_2": "",
+            "bundle_product_3": "",
+            "original_price": "",
+            "bundle_price": "",
+            "savings_amount": "",
+            "bundle_link": "",
+            "button_text": "Shop Bundle"
+          }
+        },
+        "bundle_benefits_k7Rqby": {
+          "type": "bundle_benefits",
+          "settings": {
+            "benefits_title": "Why Choose Bundles?",
+            "benefit_1": "Save up to 25% compared to individual purchases",
+            "benefit_2": "Curated combinations that work perfectly together",
+            "benefit_3": "Free shipping on all bundle orders",
+            "benefit_4": "Extended warranty coverage"
+          }
+        },
+        "button_iRxgVq": {
+          "type": "button",
+          "settings": {
+            "button_label": "View All Bundles",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "bundle_offer_bUKbX3",
+        "bundle_benefits_k7Rqby",
+        "button_iRxgVq"
+      ],
+      "name": "Whif Bundle Section",
+      "settings": {
+        "heading": "Bundle & Save",
+        "description": "<p>Get more value with our carefully curated product bundles.</p>",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "whif_testimonial_section_aX6Hh3": {
+      "type": "whif-testimonial-section",
+      "blocks": {
+        "testimonial_NjPc4Q": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_text": "This product exceeded my expectations. The quality is outstanding and the scent is perfect for my space.",
+            "customer_name": "Sarah Johnson",
+            "customer_title": "",
+            "customer_location": "",
+            "rating": 5,
+            "verified_purchase": true
+          }
+        },
+        "testimonial_jGVLWP": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_text": "This product exceeded my expectations. The quality is outstanding and the scent is perfect for my space.",
+            "customer_name": "Sarah Johnson",
+            "customer_title": "",
+            "customer_location": "",
+            "rating": 5,
+            "verified_purchase": true
+          }
+        },
+        "review_summary_WKkxXk": {
+          "type": "review_summary",
+          "settings": {
+            "summary_title": "Customer Reviews",
+            "total_reviews": "1,247",
+            "average_rating": "4.8",
+            "satisfaction_rate": "96"
+          }
+        },
+        "button_TMrW9X": {
+          "type": "button",
+          "settings": {
+            "button_label": "Read More Reviews",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_NjPc4Q",
+        "testimonial_jGVLWP",
+        "review_summary_WKkxXk",
+        "button_TMrW9X"
+      ],
+      "name": "Whif Testimonial Section",
+      "settings": {
+        "heading": "What Our Customers Say",
+        "description": "<p>Don't just take our word for it - hear from our satisfied customers.</p>",
+        "show_trust_badges": true,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "whif_contact_us_68reNi": {
+      "type": "whif-contact-us",
+      "blocks": {
+        "contact_info_FaVXM4": {
+          "type": "contact_info",
+          "settings": {
+            "info_title": "Email Us",
+            "info_details": "hello@whif.com",
+            "info_link": "",
+            "link_text": "Contact Us"
+          }
+        },
+        "business_hours_J4YrBA": {
+          "type": "business_hours",
+          "settings": {
+            "hours_title": "Business Hours",
+            "monday_hours": "9:00 AM - 6:00 PM",
+            "tuesday_hours": "9:00 AM - 6:00 PM",
+            "wednesday_hours": "9:00 AM - 6:00 PM",
+            "thursday_hours": "9:00 AM - 6:00 PM",
+            "friday_hours": "9:00 AM - 6:00 PM",
+            "saturday_hours": "10:00 AM - 4:00 PM",
+            "sunday_hours": "Closed"
+          }
+        },
+        "social_links_akiXNr": {
+          "type": "social_links",
+          "settings": {
+            "social_title": "Follow Us",
+            "facebook_url": "",
+            "instagram_url": "",
+            "twitter_url": "",
+            "linkedin_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "contact_info_FaVXM4",
+        "business_hours_J4YrBA",
+        "social_links_akiXNr"
+      ],
+      "name": "Whif Contact Us",
+      "settings": {
+        "heading": "Get in Touch",
+        "description": "<p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>",
+        "form_title": "Send us a message",
+        "submit_button_text": "Send Message",
+        "success_message": "Thank you for your message. We'll get back to you soon!",
+        "show_map": false,
+        "map_title": "Visit Our Store",
+        "map_embed_code": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "whif_favorite_section_j984wL": {
+      "type": "whif-favorite-section",
+      "blocks": {
+        "whif_favorite_feature_NbnpN4": {
+          "type": "whif_favorite_feature",
+          "settings": {
+            "feature_title": "Top Rated",
+            "feature_description": "Highly rated by our customers with 5-star reviews."
+          }
+        },
+        "popularity_stats_G8hq8H": {
+          "type": "popularity_stats",
+          "settings": {
+            "stats_title": "Why Customers Love These",
+            "stat_1_number": "98%",
+            "stat_1_label": "Customer Satisfaction",
+            "stat_2_number": "4.9",
+            "stat_2_label": "Average Rating",
+            "stat_3_number": "85%",
+            "stat_3_label": "Repeat Purchases"
+          }
+        },
+        "whif_favorite_button_GJd4dQ": {
+          "type": "whif_favorite_button",
+          "settings": {
+            "button_label": "Shop All Favorites",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "whif_favorite_feature_NbnpN4",
+        "popularity_stats_G8hq8H",
+        "whif_favorite_button_GJd4dQ"
+      ],
+      "name": "Whif Favorite Section",
+      "settings": {
+        "heading": "Customer Favorites",
+        "description": "<p>Discover the products our customers love most.</p>",
+        "favorites_collection": "",
+        "products_to_show": 6,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "whif_cbs_section_Mhwmj9": {
+      "type": "whif-cbs-section",
+      "blocks": {
+        "cbs_item_TraJjJ": {
+          "type": "cbs_item",
+          "settings": {
+            "cbs_title": "CBS Solution",
+            "cbs_subtitle": "",
+            "cbs_description": "<p>Description of the CBS solution and its benefits.</p>",
+            "cbs_features": "",
+            "cbs_link": "",
+            "link_text": "Learn More"
+          }
+        },
+        "cbs_stats_brnqGF": {
+          "type": "cbs_stats",
+          "settings": {
+            "stats_title": "Our Impact",
+            "stat_1_number": "500+",
+            "stat_1_label": "Clients Served",
+            "stat_1_description": "",
+            "stat_2_number": "99%",
+            "stat_2_label": "Success Rate",
+            "stat_2_description": "",
+            "stat_3_number": "24/7",
+            "stat_3_label": "Support",
+            "stat_3_description": ""
+          }
+        },
+        "cbs_process_9dftrU": {
+          "type": "cbs_process",
+          "settings": {
+            "process_title": "Our Process",
+            "step_1_title": "Consultation",
+            "step_1_description": "We analyze your needs and requirements.",
+            "step_2_title": "Planning",
+            "step_2_description": "We create a customized solution plan.",
+            "step_3_title": "Implementation",
+            "step_3_description": "We execute the plan with precision.",
+            "step_4_title": "Support",
+            "step_4_description": "We provide ongoing support and maintenance."
+          }
+        },
+        "button_XBBRak": {
+          "type": "button",
+          "settings": {
+            "button_label": "Explore CBS Solutions",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "cbs_item_TraJjJ",
+        "cbs_stats_brnqGF",
+        "cbs_process_9dftrU",
+        "button_XBBRak"
+      ],
+      "name": "Whif CBS Section",
+      "settings": {
+        "heading": "CBS Solutions",
+        "description": "<p>Comprehensive Business Solutions tailored to your needs.</p>",
+        "show_cta_banner": true,
+        "cta_title": "Ready to Get Started?",
+        "cta_description": "Contact us today to learn more about our CBS solutions.",
+        "cta_button_text": "Get Started",
+        "cta_button_link": "",
+        "color_scheme": "",
         "padding_top": 36,
         "padding_bottom": 36
       }
     }
   },
   "order": [
-    "image_banner",
-    "rich_text",
-    "featured_collection",
-    "collage",
-    "video",
-    "multicolumn"
+    "whif_promote_section_qcTyb9",
+    "whif_hero_section_RYAJGk",
+    "whif_flash_sale_section_RtXcNm",
+    "whif_landing_page_product_section_AQAN3U",
+    "whif_promo_oils_section_9qbrxt",
+    "whif_collection_section_m9PecW",
+    "whif_saver_section_EyfiKJ",
+    "whif_machine_section_tNxUbL",
+    "whif_makers_section_mahWpq",
+    "whif_scenting_section_KWRQ6H",
+    "whif_machine_by_spaces_Q7HeqH",
+    "whif_recommendation_section_cQB63k",
+    "whif_bundle_section_FW6TA3",
+    "whif_testimonial_section_aX6Hh3",
+    "whif_contact_us_68reNi",
+    "whif_favorite_section_j984wL",
+    "whif_cbs_section_Mhwmj9"
   ]
 }
