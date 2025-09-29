@@ -1,0 +1,329 @@
+{{ 'section-whif-recommendation.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="whif-recommendation-section color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="whif-recommendation-content">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="whif-recommendation__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      
+      {%- if section.settings.description != blank -%}
+        <div class="whif-recommendation__description rte">
+          {{ section.settings.description }}
+        </div>
+      {%- endif -%}
+
+      <div class="whif-recommendation__products">
+        {%- if section.settings.recommended_collection != blank -%}
+          <div class="recommended-products-grid">
+            {%- for product in section.settings.recommended_collection.products limit: section.settings.products_to_show -%}
+              <div class="recommended-product-card">
+                <div class="product-badge">Recommended</div>
+                <a href="{{ product.url }}">
+                  {%- if product.featured_media -%}
+                    {{ product.featured_media | image_url: width: 300 | image_tag: loading: 'lazy', alt: product.title }}
+                  {%- endif -%}
+                  <div class="product-info">
+                    <h4>{{ product.title }}</h4>
+                    <div class="price">
+                      {%- if product.compare_at_price > product.price -%}
+                        <span class="price-sale">{{ product.price | money }}</span>
+                        <span class="price-compare">{{ product.compare_at_price | money }}</span>
+                      {%- else -%}
+                        <span class="price-regular">{{ product.price | money }}</span>
+                      {%- endif -%}
+                    </div>
+                    {%- if product.description != blank -%}
+                      <p class="product-description">{{ product.description | strip_html | truncate: 80 }}</p>
+                    {%- endif -%}
+                  </div>
+                </a>
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="whif-recommendation__personalized">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'recommendation_category' -%}
+              <div class="recommendation-category" {{ block.shopify_attributes }}>
+                {%- if block.settings.category_icon != blank -%}
+                  <div class="category-icon">
+                    {{ block.settings.category_icon | image_url: width: 60 | image_tag: loading: 'lazy', alt: block.settings.category_title }}
+                  </div>
+                {%- endif -%}
+                <div class="category-content">
+                  <h3>{{ block.settings.category_title }}</h3>
+                  <p>{{ block.settings.category_description }}</p>
+                  {%- if block.settings.category_products != blank -%}
+                    <div class="category-product-list">
+                      {%- for product in block.settings.category_products.products limit: 3 -%}
+                        <div class="mini-product-card">
+                          <a href="{{ product.url }}">
+                            {%- if product.featured_media -%}
+                              {{ product.featured_media | image_url: width: 100 | image_tag: loading: 'lazy', alt: product.title }}
+                            {%- endif -%}
+                            <span>{{ product.title }}</span>
+                          </a>
+                        </div>
+                      {%- endfor -%}
+                    </div>
+                  {%- endif -%}
+                </div>
+              </div>
+            {%- when 'quiz_prompt' -%}
+              <div class="recommendation-quiz" {{ block.shopify_attributes }}>
+                <h3>{{ block.settings.quiz_title }}</h3>
+                <p>{{ block.settings.quiz_description }}</p>
+                <div class="quiz-questions">
+                  <div class="quiz-question">
+                    <label>What type of space are you scenting?</label>
+                    <select class="quiz-select" data-question="space-type">
+                      <option value="">Select an option</option>
+                      <option value="home">Home</option>
+                      <option value="office">Office</option>
+                      <option value="retail">Retail Store</option>
+                      <option value="hotel">Hotel/Hospitality</option>
+                    </select>
+                  </div>
+                  <div class="quiz-question">
+                    <label>What's your preferred scent intensity?</label>
+                    <select class="quiz-select" data-question="intensity">
+                      <option value="">Select an option</option>
+                      <option value="light">Light & Subtle</option>
+                      <option value="medium">Medium</option>
+                      <option value="strong">Strong & Bold</option>
+                    </select>
+                  </div>
+                  <button type="button" class="button button--primary" onclick="getRecommendation()">
+                    Get My Recommendation
+                  </button>
+                </div>
+                <div id="quiz-result" class="quiz-result" style="display: none;">
+                  <h4>Your Personalized Recommendation:</h4>
+                  <div id="recommendation-content"></div>
+                </div>
+              </div>
+            {%- when 'button' -%}
+              {%- if block.settings.button_label != blank -%}
+                <a
+                  {% if block.settings.button_link == blank %}
+                    role="link" aria-disabled="true"
+                  {% else %}
+                    href="{{ block.settings.button_link }}"
+                  {% endif %}
+                  class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
+                  {{ block.shopify_attributes }}
+                >
+                  {{ block.settings.button_label | escape }}
+                </a>
+              {%- endif -%}
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function getRecommendation() {
+  const spaceType = document.querySelector('[data-question="space-type"]').value;
+  const intensity = document.querySelector('[data-question="intensity"]').value;
+  const resultDiv = document.getElementById('quiz-result');
+  const contentDiv = document.getElementById('recommendation-content');
+  
+  if (spaceType && intensity) {
+    let recommendation = '';
+    
+    if (spaceType === 'home' && intensity === 'light') {
+      recommendation = 'We recommend our Home Essential Collection with light, fresh scents perfect for daily living.';
+    } else if (spaceType === 'office' && intensity === 'medium') {
+      recommendation = 'Our Professional Workspace Collection offers clean, energizing scents that enhance productivity.';
+    } else if (spaceType === 'retail' && intensity === 'strong') {
+      recommendation = 'The Retail Signature Collection features bold, memorable scents that create lasting impressions.';
+    } else {
+      recommendation = 'Based on your preferences, we recommend exploring our curated collections to find your perfect match.';
+    }
+    
+    contentDiv.innerHTML = `<p>${recommendation}</p><a href="/collections/all" class="button button--secondary">Shop Recommended Products</a>`;
+    resultDiv.style.display = 'block';
+  } else {
+    alert('Please answer all questions to get your recommendation.');
+  }
+}
+</script>
+
+{% schema %}
+{
+  "name": "Whif Recommendations",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Personalized Recommendations",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "default": "<p>Discover products tailored to your preferences and needs.</p>",
+      "label": "Description"
+    },
+    {
+      "type": "collection",
+      "id": "recommended_collection",
+      "label": "Recommended products collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "default": 4,
+      "label": "Number of products to show"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "recommendation_category",
+      "name": "Recommendation Category",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "category_icon",
+          "label": "Category icon"
+        },
+        {
+          "type": "text",
+          "id": "category_title",
+          "default": "For Your Home",
+          "label": "Category title"
+        },
+        {
+          "type": "textarea",
+          "id": "category_description",
+          "default": "Perfect scents for creating a welcoming home environment.",
+          "label": "Category description"
+        },
+        {
+          "type": "collection",
+          "id": "category_products",
+          "label": "Category products"
+        }
+      ]
+    },
+    {
+      "type": "quiz_prompt",
+      "name": "Recommendation Quiz",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "quiz_title",
+          "default": "Find Your Perfect Scent",
+          "label": "Quiz title"
+        },
+        {
+          "type": "textarea",
+          "id": "quiz_description",
+          "default": "Answer a few quick questions to get personalized product recommendations.",
+          "label": "Quiz description"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "default": "View All Recommendations",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_style_secondary",
+          "default": false,
+          "label": "Use outline button style"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Whif Recommendations",
+      "blocks": [
+        {
+          "type": "recommendation_category"
+        },
+        {
+          "type": "quiz_prompt"
+        },
+        {
+          "type": "button"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
