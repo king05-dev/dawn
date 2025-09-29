@@ -1,0 +1,258 @@
+{{ 'section-whif-makers.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="whif-makers-section color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="whif-makers-content">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="whif-makers__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      
+      {%- if section.settings.description != blank -%}
+        <div class="whif-makers__description rte">
+          {{ section.settings.description }}
+        </div>
+      {%- endif -%}
+
+      <div class="whif-makers__grid">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'maker' -%}
+              <div class="maker-card" {{ block.shopify_attributes }}>
+                {%- if block.settings.maker_image != blank -%}
+                  <div class="maker-card__image">
+                    {{ block.settings.maker_image | image_url: width: 300 | image_tag: loading: 'lazy', alt: block.settings.maker_name }}
+                  </div>
+                {%- endif -%}
+                <div class="maker-card__content">
+                  <h3>{{ block.settings.maker_name }}</h3>
+                  {%- if block.settings.maker_title != blank -%}
+                    <p class="maker-title">{{ block.settings.maker_title }}</p>
+                  {%- endif -%}
+                  {%- if block.settings.maker_bio != blank -%}
+                    <div class="maker-bio rte">{{ block.settings.maker_bio }}</div>
+                  {%- endif -%}
+                  {%- if block.settings.maker_social_link != blank -%}
+                    <a href="{{ block.settings.maker_social_link }}" class="maker-social-link" target="_blank">
+                      Follow {{ block.settings.maker_name }}
+                    </a>
+                  {%- endif -%}
+                </div>
+              </div>
+            {%- when 'story' -%}
+              <div class="makers-story" {{ block.shopify_attributes }}>
+                {%- if block.settings.story_image != blank -%}
+                  <div class="story-image">
+                    {{ block.settings.story_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: block.settings.story_title }}
+                  </div>
+                {%- endif -%}
+                <div class="story-content">
+                  <h3>{{ block.settings.story_title }}</h3>
+                  <div class="story-text rte">{{ block.settings.story_text }}</div>
+                </div>
+              </div>
+            {%- when 'button' -%}
+              {%- if block.settings.button_label != blank -%}
+                <a
+                  {% if block.settings.button_link == blank %}
+                    role="link" aria-disabled="true"
+                  {% else %}
+                    href="{{ block.settings.button_link }}"
+                  {% endif %}
+                  class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
+                  {{ block.shopify_attributes }}
+                >
+                  {{ block.settings.button_label | escape }}
+                </a>
+              {%- endif -%}
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+
+      {%- if section.settings.company_story != blank -%}
+        <div class="whif-makers__company-story">
+          <div class="company-story rte">
+            {{ section.settings.company_story }}
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Whif Makers Section",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Meet the Makers",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "default": "<p>Get to know the passionate team behind Whif products.</p>",
+      "label": "Description"
+    },
+    {
+      "type": "richtext",
+      "id": "company_story",
+      "label": "Company story",
+      "info": "Share the story of your company and mission"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "maker",
+      "name": "Team Member",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "maker_image",
+          "label": "Team member photo"
+        },
+        {
+          "type": "text",
+          "id": "maker_name",
+          "default": "Team Member Name",
+          "label": "Name"
+        },
+        {
+          "type": "text",
+          "id": "maker_title",
+          "default": "Position Title",
+          "label": "Job title"
+        },
+        {
+          "type": "richtext",
+          "id": "maker_bio",
+          "label": "Bio"
+        },
+        {
+          "type": "url",
+          "id": "maker_social_link",
+          "label": "Social media link"
+        }
+      ]
+    },
+    {
+      "type": "story",
+      "name": "Company Story",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "story_image",
+          "label": "Story image"
+        },
+        {
+          "type": "text",
+          "id": "story_title",
+          "default": "Our Story",
+          "label": "Story title"
+        },
+        {
+          "type": "richtext",
+          "id": "story_text",
+          "default": "<p>Tell your company's story here.</p>",
+          "label": "Story content"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "default": "Learn More About Us",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_style_secondary",
+          "default": false,
+          "label": "Use outline button style"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Whif Makers Section",
+      "blocks": [
+        {
+          "type": "maker"
+        },
+        {
+          "type": "maker"
+        },
+        {
+          "type": "story"
+        },
+        {
+          "type": "button"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

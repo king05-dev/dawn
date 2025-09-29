@@ -1,0 +1,382 @@
+{{ 'section-whif-favorite.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="whif-favorite-section color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="whif-favorite-content">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="whif-favorite__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      
+      {%- if section.settings.description != blank -%}
+        <div class="whif-favorite__description rte">
+          {{ section.settings.description }}
+        </div>
+      {%- endif -%}
+
+      <div class="whif-favorite__products">
+        {%- if section.settings.favorites_collection != blank -%}
+          <div class="favorite-products-grid">
+            {%- for product in section.settings.favorites_collection.products limit: section.settings.products_to_show -%}
+              <div class="favorite-product-card">
+                <div class="product-badges">
+                  <span class="favorite-badge">❤️ Customer Favorite</span>
+                  {%- if product.compare_at_price > product.price -%}
+                    <span class="sale-badge">Sale</span>
+                  {%- endif -%}
+                </div>
+                
+                <a href="{{ product.url }}" class="product-link">
+                  {%- if product.featured_media -%}
+                    <div class="product-image">
+                      {{ product.featured_media | image_url: width: 350 | image_tag: loading: 'lazy', alt: product.title }}
+                    </div>
+                  {%- endif -%}
+                  
+                  <div class="product-info">
+                    <h4 class="product-title">{{ product.title }}</h4>
+                    
+                    {%- if product.description != blank -%}
+                      <p class="product-description">{{ product.description | strip_html | truncate: 100 }}</p>
+                    {%- endif -%}
+                    
+                    <div class="product-price">
+                      {%- if product.compare_at_price > product.price -%}
+                        <span class="price-sale">{{ product.price | money }}</span>
+                        <span class="price-compare">{{ product.compare_at_price | money }}</span>
+                        <span class="price-save">
+                          Save {{ product.compare_at_price | minus: product.price | money }}
+                        </span>
+                      {%- else -%}
+                        <span class="price-regular">{{ product.price | money }}</span>
+                      {%- endif -%}
+                    </div>
+                    
+                    {%- if product.available -%}
+                      <div class="product-availability in-stock">
+                        <span class="availability-icon">✓</span>
+                        In Stock
+                      </div>
+                    {%- else -%}
+                      <div class="product-availability out-of-stock">
+                        <span class="availability-icon">✗</span>
+                        Out of Stock
+                      </div>
+                    {%- endif -%}
+                  </div>
+                </a>
+                
+                <div class="product-actions">
+                  <button class="wishlist-btn" onclick="toggleWishlist('{{ product.id }}')">
+                    <span class="wishlist-icon">🤍</span>
+                    Add to Wishlist
+                  </button>
+                  {%- if product.available -%}
+                    <button class="quick-add-btn button button--primary" onclick="quickAdd('{{ product.variants.first.id }}')">
+                      Quick Add
+                    </button>
+                  {%- endif -%}
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="whif-favorite__features">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'whif_favorite_feature' -%}
+              <div class="favorite-feature" {{ block.shopify_attributes }}>
+                {%- if block.settings.feature_icon != blank -%}
+                  <div class="feature-icon">
+                    {{ block.settings.feature_icon | image_url: width: 60 | image_tag: loading: 'lazy', alt: block.settings.feature_title }}
+                  </div>
+                {%- endif -%}
+                <div class="feature-content">
+                  <h4>{{ block.settings.feature_title }}</h4>
+                  <p>{{ block.settings.feature_description }}</p>
+                </div>
+              </div>
+            
+            {%- when 'popularity_stats' -%}
+              <div class="popularity-stats" {{ block.shopify_attributes }}>
+                <h3>{{ block.settings.stats_title }}</h3>
+                <div class="stats-grid">
+                  {%- if block.settings.stat_1_number != blank -%}
+                    <div class="stat-item">
+                      <span class="stat-number">{{ block.settings.stat_1_number }}</span>
+                      <span class="stat-label">{{ block.settings.stat_1_label }}</span>
+                    </div>
+                  {%- endif -%}
+                  {%- if block.settings.stat_2_number != blank -%}
+                    <div class="stat-item">
+                      <span class="stat-number">{{ block.settings.stat_2_number }}</span>
+                      <span class="stat-label">{{ block.settings.stat_2_label }}</span>
+                    </div>
+                  {%- endif -%}
+                  {%- if block.settings.stat_3_number != blank -%}
+                    <div class="stat-item">
+                      <span class="stat-number">{{ block.settings.stat_3_number }}</span>
+                      <span class="stat-label">{{ block.settings.stat_3_label }}</span>
+                    </div>
+                  {%- endif -%}
+                </div>
+              </div>
+            
+            {%- when 'whif_favorite_button' -%}
+              {%- if block.settings.button_label != blank -%}
+                <a
+                  {% if block.settings.button_link == blank %}
+                    role="link" aria-disabled="true"
+                  {% else %}
+                    href="{{ block.settings.button_link }}"
+                  {% endif %}
+                  class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
+                  {{ block.shopify_attributes }}
+                >
+                  {{ block.settings.button_label | escape }}
+                </a>
+              {%- endif -%}
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleWishlist(productId) {
+  // Simple wishlist toggle functionality
+  const btn = event.target.closest('.wishlist-btn');
+  const icon = btn.querySelector('.wishlist-icon');
+  
+  if (icon.textContent === '🤍') {
+    icon.textContent = '❤️';
+    btn.innerHTML = '<span class="wishlist-icon">❤️</span> Added to Wishlist';
+    btn.classList.add('added');
+  } else {
+    icon.textContent = '🤍';
+    btn.innerHTML = '<span class="wishlist-icon">🤍</span> Add to Wishlist';
+    btn.classList.remove('added');
+  }
+}
+
+function quickAdd(variantId) {
+  // Simple quick add functionality
+  const btn = event.target;
+  const originalText = btn.textContent;
+  
+  btn.textContent = 'Adding...';
+  btn.disabled = true;
+  
+  // Simulate adding to cart
+  setTimeout(() => {
+    btn.textContent = 'Added!';
+    btn.classList.add('added');
+    
+    setTimeout(() => {
+      btn.textContent = originalText;
+      btn.disabled = false;
+      btn.classList.remove('added');
+    }, 2000);
+  }, 1000);
+}
+</script>
+
+{% schema %}
+{
+  "name": "Whif Favorite Section",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Customer Favorites",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "default": "<p>Discover the products our customers love most.</p>",
+      "label": "Description"
+    },
+    {
+      "type": "collection",
+      "id": "favorites_collection",
+      "label": "Favorite products collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 6,
+      "label": "Number of products to show"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "whif_favorite_feature",
+      "name": "Favorite Feature",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "feature_icon",
+          "label": "Feature icon"
+        },
+        {
+          "type": "text",
+          "id": "feature_title",
+          "default": "Top Rated",
+          "label": "Feature title"
+        },
+        {
+          "type": "textarea",
+          "id": "feature_description",
+          "default": "Highly rated by our customers with 5-star reviews.",
+          "label": "Feature description"
+        }
+      ]
+    },
+    {
+      "type": "popularity_stats",
+      "name": "Popularity Statistics",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "stats_title",
+          "default": "Why Customers Love These",
+          "label": "Statistics title"
+        },
+        {
+          "type": "text",
+          "id": "stat_1_number",
+          "default": "98%",
+          "label": "Statistic 1 number"
+        },
+        {
+          "type": "text",
+          "id": "stat_1_label",
+          "default": "Customer Satisfaction",
+          "label": "Statistic 1 label"
+        },
+        {
+          "type": "text",
+          "id": "stat_2_number",
+          "default": "4.9",
+          "label": "Statistic 2 number"
+        },
+        {
+          "type": "text",
+          "id": "stat_2_label",
+          "default": "Average Rating",
+          "label": "Statistic 2 label"
+        },
+        {
+          "type": "text",
+          "id": "stat_3_number",
+          "default": "85%",
+          "label": "Statistic 3 number"
+        },
+        {
+          "type": "text",
+          "id": "stat_3_label",
+          "default": "Repeat Purchases",
+          "label": "Statistic 3 label"
+        }
+      ]
+    },
+    {
+      "type": "whif_favorite_button",
+      "name": "Button",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "default": "Shop All Favorites",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_style_secondary",
+          "default": false,
+          "label": "Use outline button style"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Whif Favorite Section",
+      "blocks": [
+        {
+          "type": "whif_favorite_feature"
+        },
+        {
+          "type": "popularity_stats"
+        },
+        {
+          "type": "whif_favorite_button"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

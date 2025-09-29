@@ -1,0 +1,268 @@
+{{ 'section-whif-machine.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="whif-machine-section color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="whif-machine-content">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="whif-machine__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      
+      {%- if section.settings.description != blank -%}
+        <div class="whif-machine__description rte">
+          {{ section.settings.description }}
+        </div>
+      {%- endif -%}
+
+      <div class="whif-machine__showcase">
+        {%- if section.settings.machine_image != blank -%}
+          <div class="machine-showcase__image">
+            {%- assign image_height = section.settings.machine_image.width | divided_by: section.settings.machine_image.aspect_ratio -%}
+            {{ section.settings.machine_image | image_url: width: section.settings.machine_image.width | image_tag:
+              loading: 'lazy',
+              width: section.settings.machine_image.width,
+              height: image_height,
+              alt: section.settings.machine_image.alt | escape
+            }}
+          </div>
+        {%- endif -%}
+
+        <div class="machine-showcase__features">
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when 'whif_machine_feature' -%}
+                <div class="machine-feature" {{ block.shopify_attributes }}>
+                  {%- if block.settings.feature_icon != blank -%}
+                    <div class="feature-icon">
+                      {{ block.settings.feature_icon | image_url: width: 60 | image_tag: loading: 'lazy', alt: block.settings.feature_title }}
+                    </div>
+                  {%- endif -%}
+                  <div class="feature-content">
+                    <h4>{{ block.settings.feature_title }}</h4>
+                    <p>{{ block.settings.feature_description }}</p>
+                  </div>
+                </div>
+              {%- when 'whif_machine_spec' -%}
+                <div class="machine-spec" {{ block.shopify_attributes }}>
+                  <span class="spec-label">{{ block.settings.spec_label }}:</span>
+                  <span class="spec-value">{{ block.settings.spec_value }}</span>
+                </div>
+              {%- when 'whif_machine_button' -%}
+                {%- if block.settings.button_label != blank -%}
+                  <a
+                    {% if block.settings.button_link == blank %}
+                      role="link" aria-disabled="true"
+                    {% else %}
+                      href="{{ block.settings.button_link }}"
+                    {% endif %}
+                    class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
+                    {{ block.shopify_attributes }}
+                  >
+                    {{ block.settings.button_label | escape }}
+                  </a>
+                {%- endif -%}
+            {%- endcase -%}
+          {%- endfor -%}
+        </div>
+      </div>
+
+      {%- if section.settings.machines_collection != blank -%}
+        <div class="whif-machine__products">
+          <h3>Available Machines</h3>
+          <div class="machine-products-grid">
+            {%- for product in section.settings.machines_collection.products limit: section.settings.products_to_show -%}
+              <div class="machine-product-card">
+                <a href="{{ product.url }}">
+                  {%- if product.featured_media -%}
+                    {{ product.featured_media | image_url: width: 300 | image_tag: loading: 'lazy', alt: product.title }}
+                  {%- endif -%}
+                  <h4>{{ product.title }}</h4>
+                  <div class="price">
+                    {%- if product.compare_at_price > product.price -%}
+                      <span class="price-sale">{{ product.price | money }}</span>
+                      <span class="price-compare">{{ product.compare_at_price | money }}</span>
+                    {%- else -%}
+                      <span class="price-regular">{{ product.price | money }}</span>
+                    {%- endif -%}
+                  </div>
+                </a>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Whif Machine Section",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Whif Scenting Machines",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "default": "<p>Discover our advanced scenting machines for every space.</p>",
+      "label": "Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "machine_image",
+      "label": "Featured machine image"
+    },
+    {
+      "type": "collection",
+      "id": "machines_collection",
+      "label": "Machines collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "default": 4,
+      "label": "Number of products to show"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "whif_machine_feature",
+      "name": "Feature",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "feature_icon",
+          "label": "Feature icon"
+        },
+        {
+          "type": "text",
+          "id": "feature_title",
+          "default": "Feature Title",
+          "label": "Feature title"
+        },
+        {
+          "type": "textarea",
+          "id": "feature_description",
+          "default": "Feature description goes here.",
+          "label": "Feature description"
+        }
+      ]
+    },
+    {
+      "type": "whif_machine_spec",
+      "name": "Specification",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "text",
+          "id": "spec_label",
+          "default": "Coverage Area",
+          "label": "Specification label"
+        },
+        {
+          "type": "text",
+          "id": "spec_value",
+          "default": "Up to 500 sq ft",
+          "label": "Specification value"
+        }
+      ]
+    },
+    {
+      "type": "whif_machine_button",
+      "name": "Button",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "default": "Shop Machines",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_style_secondary",
+          "default": false,
+          "label": "Use outline button style"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Whif Machine Section",
+      "blocks": [
+        {
+          "type": "whif_machine_feature"
+        },
+        {
+          "type": "whif_machine_spec"
+        },
+        {
+          "type": "whif_machine_button"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

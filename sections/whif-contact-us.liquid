@@ -1,0 +1,434 @@
+{{ 'section-whif-contact-us.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="whif-contact-us-section color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="whif-contact-us-content">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="whif-contact-us__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      
+      {%- if section.settings.description != blank -%}
+        <div class="whif-contact-us__description rte">
+          {{ section.settings.description }}
+        </div>
+      {%- endif -%}
+
+      <div class="whif-contact-us__wrapper">
+        <div class="contact-info">
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when 'contact_info' -%}
+                <div class="contact-info-item" {{ block.shopify_attributes }}>
+                  {%- if block.settings.info_icon != blank -%}
+                    <div class="info-icon">
+                      {{ block.settings.info_icon | image_url: width: 40 | image_tag: loading: 'lazy', alt: block.settings.info_title }}
+                    </div>
+                  {%- endif -%}
+                  <div class="info-content">
+                    <h4>{{ block.settings.info_title }}</h4>
+                    <p>{{ block.settings.info_details }}</p>
+                    {%- if block.settings.info_link != blank -%}
+                      <a href="{{ block.settings.info_link }}" class="info-link">
+                        {{ block.settings.link_text | default: 'Contact Us' }}
+                      </a>
+                    {%- endif -%}
+                  </div>
+                </div>
+              
+              {%- when 'business_hours' -%}
+                <div class="business-hours" {{ block.shopify_attributes }}>
+                  <h4>{{ block.settings.hours_title }}</h4>
+                  <div class="hours-list">
+                    {%- if block.settings.monday_hours != blank -%}
+                      <div class="hours-item">
+                        <span class="day">Monday:</span>
+                        <span class="time">{{ block.settings.monday_hours }}</span>
+                      </div>
+                    {%- endif -%}
+                    {%- if block.settings.tuesday_hours != blank -%}
+                      <div class="hours-item">
+                        <span class="day">Tuesday:</span>
+                        <span class="time">{{ block.settings.tuesday_hours }}</span>
+                      </div>
+                    {%- endif -%}
+                    {%- if block.settings.wednesday_hours != blank -%}
+                      <div class="hours-item">
+                        <span class="day">Wednesday:</span>
+                        <span class="time">{{ block.settings.wednesday_hours }}</span>
+                      </div>
+                    {%- endif -%}
+                    {%- if block.settings.thursday_hours != blank -%}
+                      <div class="hours-item">
+                        <span class="day">Thursday:</span>
+                        <span class="time">{{ block.settings.thursday_hours }}</span>
+                      </div>
+                    {%- endif -%}
+                    {%- if block.settings.friday_hours != blank -%}
+                      <div class="hours-item">
+                        <span class="day">Friday:</span>
+                        <span class="time">{{ block.settings.friday_hours }}</span>
+                      </div>
+                    {%- endif -%}
+                    {%- if block.settings.saturday_hours != blank -%}
+                      <div class="hours-item">
+                        <span class="day">Saturday:</span>
+                        <span class="time">{{ block.settings.saturday_hours }}</span>
+                      </div>
+                    {%- endif -%}
+                    {%- if block.settings.sunday_hours != blank -%}
+                      <div class="hours-item">
+                        <span class="day">Sunday:</span>
+                        <span class="time">{{ block.settings.sunday_hours }}</span>
+                      </div>
+                    {%- endif -%}
+                  </div>
+                </div>
+              
+              {%- when 'social_links' -%}
+                <div class="social-links" {{ block.shopify_attributes }}>
+                  <h4>{{ block.settings.social_title }}</h4>
+                  <div class="social-icons">
+                    {%- if block.settings.facebook_url != blank -%}
+                      <a href="{{ block.settings.facebook_url }}" target="_blank" class="social-link">
+                        <span class="social-icon">📘</span> Facebook
+                      </a>
+                    {%- endif -%}
+                    {%- if block.settings.instagram_url != blank -%}
+                      <a href="{{ block.settings.instagram_url }}" target="_blank" class="social-link">
+                        <span class="social-icon">📷</span> Instagram
+                      </a>
+                    {%- endif -%}
+                    {%- if block.settings.twitter_url != blank -%}
+                      <a href="{{ block.settings.twitter_url }}" target="_blank" class="social-link">
+                        <span class="social-icon">🐦</span> Twitter
+                      </a>
+                    {%- endif -%}
+                    {%- if block.settings.linkedin_url != blank -%}
+                      <a href="{{ block.settings.linkedin_url }}" target="_blank" class="social-link">
+                        <span class="social-icon">💼</span> LinkedIn
+                      </a>
+                    {%- endif -%}
+                  </div>
+                </div>
+            {%- endcase -%}
+          {%- endfor -%}
+        </div>
+
+        <div class="contact-form">
+          <h3>{{ section.settings.form_title | default: 'Send us a message' }}</h3>
+          {%- form 'contact', class: 'whif-contact-form' -%}
+            {%- if form.posted_successfully? -%}
+              <div class="form-success">
+                <p>{{ section.settings.success_message | default: "Thank you for your message. We'll get back to you soon!" }}</p>
+              </div>
+            {%- endif -%}
+
+            {%- if form.errors -%}
+              <div class="form-errors">
+                <p>Please correct the following errors:</p>
+                <ul>
+                  {%- for field in form.errors -%}
+                    <li>{{ field | capitalize }} {{ form.errors[field] }}</li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            {%- endif -%}
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="contact-name">Name *</label>
+                <input type="text" id="contact-name" name="contact[name]" value="{{ form.name }}" required>
+              </div>
+              <div class="form-field">
+                <label for="contact-email">Email *</label>
+                <input type="email" id="contact-email" name="contact[email]" value="{{ form.email }}" required>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="contact-phone">Phone</label>
+              <input type="tel" id="contact-phone" name="contact[phone]" value="{{ form.phone }}">
+            </div>
+
+            <div class="form-field">
+              <label for="contact-subject">Subject</label>
+              <select id="contact-subject" name="contact[subject]">
+                <option value="General Inquiry">General Inquiry</option>
+                <option value="Product Support">Product Support</option>
+                <option value="Order Status">Order Status</option>
+                <option value="Partnership">Partnership</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="contact-message">Message *</label>
+              <textarea id="contact-message" name="contact[body]" rows="5" required>{{ form.body }}</textarea>
+            </div>
+
+            <div class="form-field">
+              <button type="submit" class="button button--primary">
+                {{ section.settings.submit_button_text | default: 'Send Message' }}
+              </button>
+            </div>
+          {%- endform -%}
+        </div>
+      </div>
+
+      {%- if section.settings.show_map and section.settings.map_embed_code != blank -%}
+        <div class="contact-map">
+          <h3>{{ section.settings.map_title | default: 'Visit Our Store' }}</h3>
+          <div class="map-wrapper">
+            {{ section.settings.map_embed_code }}
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Whif Contact Us",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Get in Touch",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "default": "<p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "form_title",
+      "default": "Send us a message",
+      "label": "Contact form title"
+    },
+    {
+      "type": "text",
+      "id": "submit_button_text",
+      "default": "Send Message",
+      "label": "Submit button text"
+    },
+    {
+      "type": "textarea",
+      "id": "success_message",
+      "default": "Thank you for your message. We'll get back to you soon!",
+      "label": "Success message"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_map",
+      "default": false,
+      "label": "Show map"
+    },
+    {
+      "type": "text",
+      "id": "map_title",
+      "default": "Visit Our Store",
+      "label": "Map section title"
+    },
+    {
+      "type": "html",
+      "id": "map_embed_code",
+      "label": "Map embed code",
+      "info": "Paste your Google Maps or other map embed code here"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "contact_info",
+      "name": "Contact Information",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "info_icon",
+          "label": "Info icon"
+        },
+        {
+          "type": "text",
+          "id": "info_title",
+          "default": "Email Us",
+          "label": "Info title"
+        },
+        {
+          "type": "textarea",
+          "id": "info_details",
+          "default": "hello@whif.com",
+          "label": "Info details"
+        },
+        {
+          "type": "url",
+          "id": "info_link",
+          "label": "Info link"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "default": "Contact Us",
+          "label": "Link text"
+        }
+      ]
+    },
+    {
+      "type": "business_hours",
+      "name": "Business Hours",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "hours_title",
+          "default": "Business Hours",
+          "label": "Hours title"
+        },
+        {
+          "type": "text",
+          "id": "monday_hours",
+          "default": "9:00 AM - 6:00 PM",
+          "label": "Monday hours"
+        },
+        {
+          "type": "text",
+          "id": "tuesday_hours",
+          "default": "9:00 AM - 6:00 PM",
+          "label": "Tuesday hours"
+        },
+        {
+          "type": "text",
+          "id": "wednesday_hours",
+          "default": "9:00 AM - 6:00 PM",
+          "label": "Wednesday hours"
+        },
+        {
+          "type": "text",
+          "id": "thursday_hours",
+          "default": "9:00 AM - 6:00 PM",
+          "label": "Thursday hours"
+        },
+        {
+          "type": "text",
+          "id": "friday_hours",
+          "default": "9:00 AM - 6:00 PM",
+          "label": "Friday hours"
+        },
+        {
+          "type": "text",
+          "id": "saturday_hours",
+          "default": "10:00 AM - 4:00 PM",
+          "label": "Saturday hours"
+        },
+        {
+          "type": "text",
+          "id": "sunday_hours",
+          "default": "Closed",
+          "label": "Sunday hours"
+        }
+      ]
+    },
+    {
+      "type": "social_links",
+      "name": "Social Media Links",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "social_title",
+          "default": "Follow Us",
+          "label": "Social section title"
+        },
+        {
+          "type": "url",
+          "id": "facebook_url",
+          "label": "Facebook URL"
+        },
+        {
+          "type": "url",
+          "id": "instagram_url",
+          "label": "Instagram URL"
+        },
+        {
+          "type": "url",
+          "id": "twitter_url",
+          "label": "Twitter URL"
+        },
+        {
+          "type": "url",
+          "id": "linkedin_url",
+          "label": "LinkedIn URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Whif Contact Us",
+      "blocks": [
+        {
+          "type": "contact_info"
+        },
+        {
+          "type": "business_hours"
+        },
+        {
+          "type": "social_links"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
