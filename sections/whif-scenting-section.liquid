@@ -1,0 +1,287 @@
+{{ 'section-whif-scenting.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="whif-scenting-section color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="whif-scenting-content">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="whif-scenting__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      
+      {%- if section.settings.description != blank -%}
+        <div class="whif-scenting__description rte">
+          {{ section.settings.description }}
+        </div>
+      {%- endif -%}
+
+      <div class="whif-scenting__benefits">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'benefit' -%}
+              <div class="scenting-benefit" {{ block.shopify_attributes }}>
+                {%- if block.settings.benefit_icon != blank -%}
+                  <div class="benefit-icon">
+                    {{ block.settings.benefit_icon | image_url: width: 80 | image_tag: loading: 'lazy', alt: block.settings.benefit_title }}
+                  </div>
+                {%- endif -%}
+                <div class="benefit-content">
+                  <h3>{{ block.settings.benefit_title }}</h3>
+                  <p>{{ block.settings.benefit_description }}</p>
+                </div>
+              </div>
+            {%- when 'scent_category' -%}
+              <div class="scent-category" {{ block.shopify_attributes }}>
+                {%- if block.settings.category_image != blank -%}
+                  <div class="category-image">
+                    {{ block.settings.category_image | image_url: width: 300 | image_tag: loading: 'lazy', alt: block.settings.category_name }}
+                  </div>
+                {%- endif -%}
+                <div class="category-info">
+                  <h4>{{ block.settings.category_name }}</h4>
+                  <p>{{ block.settings.category_description }}</p>
+                  {%- if block.settings.category_link != blank -%}
+                    <a href="{{ block.settings.category_link }}" class="category-link">
+                      Explore {{ block.settings.category_name }}
+                    </a>
+                  {%- endif -%}
+                </div>
+              </div>
+            {%- when 'how_it_works' -%}
+              <div class="how-it-works" {{ block.shopify_attributes }}>
+                <h3>{{ block.settings.step_title }}</h3>
+                <div class="step-number">{{ block.settings.step_number }}</div>
+                <p>{{ block.settings.step_description }}</p>
+              </div>
+            {%- when 'button' -%}
+              {%- if block.settings.button_label != blank -%}
+                <a
+                  {% if block.settings.button_link == blank %}
+                    role="link" aria-disabled="true"
+                  {% else %}
+                    href="{{ block.settings.button_link }}"
+                  {% endif %}
+                  class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
+                  {{ block.shopify_attributes }}
+                >
+                  {{ block.settings.button_label | escape }}
+                </a>
+              {%- endif -%}
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+
+      {%- if section.settings.video_url != blank -%}
+        <div class="whif-scenting__video">
+          <h3>See Scenting in Action</h3>
+          <div class="video-wrapper">
+            {%- if section.settings.video_url contains 'youtube.com' or section.settings.video_url contains 'youtu.be' -%}
+              <iframe src="{{ section.settings.video_url }}" frameborder="0" allowfullscreen></iframe>
+            {%- else -%}
+              <video controls>
+                <source src="{{ section.settings.video_url }}" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Whif Scenting Section",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "The Science of Scenting",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "default": "<p>Discover how professional scenting can transform your space and enhance experiences.</p>",
+      "label": "Description"
+    },
+    {
+      "type": "url",
+      "id": "video_url",
+      "label": "Video URL",
+      "info": "YouTube or direct video file URL"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Scenting Benefit",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "benefit_icon",
+          "label": "Benefit icon"
+        },
+        {
+          "type": "text",
+          "id": "benefit_title",
+          "default": "Enhanced Mood",
+          "label": "Benefit title"
+        },
+        {
+          "type": "textarea",
+          "id": "benefit_description",
+          "default": "Scenting can improve mood and create positive associations.",
+          "label": "Benefit description"
+        }
+      ]
+    },
+    {
+      "type": "scent_category",
+      "name": "Scent Category",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "category_image",
+          "label": "Category image"
+        },
+        {
+          "type": "text",
+          "id": "category_name",
+          "default": "Fresh & Clean",
+          "label": "Category name"
+        },
+        {
+          "type": "textarea",
+          "id": "category_description",
+          "default": "Light, airy scents perfect for modern spaces.",
+          "label": "Category description"
+        },
+        {
+          "type": "url",
+          "id": "category_link",
+          "label": "Category link"
+        }
+      ]
+    },
+    {
+      "type": "how_it_works",
+      "name": "How It Works Step",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "step_number",
+          "default": "1",
+          "label": "Step number"
+        },
+        {
+          "type": "text",
+          "id": "step_title",
+          "default": "Choose Your Scent",
+          "label": "Step title"
+        },
+        {
+          "type": "textarea",
+          "id": "step_description",
+          "default": "Select from our curated collection of premium fragrances.",
+          "label": "Step description"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "default": "Explore Scenting Solutions",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_style_secondary",
+          "default": false,
+          "label": "Use outline button style"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Whif Scenting Section",
+      "blocks": [
+        {
+          "type": "benefit"
+        },
+        {
+          "type": "scent_category"
+        },
+        {
+          "type": "how_it_works"
+        },
+        {
+          "type": "button"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

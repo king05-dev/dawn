@@ -1,0 +1,348 @@
+{{ 'section-whif-bundle.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="whif-bundle-section color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="whif-bundle-content">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="whif-bundle__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      
+      {%- if section.settings.description != blank -%}
+        <div class="whif-bundle__description rte">
+          {{ section.settings.description }}
+        </div>
+      {%- endif -%}
+
+      <div class="whif-bundle__offers">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'bundle_offer' -%}
+              <div class="bundle-offer-card" {{ block.shopify_attributes }}>
+                {%- if block.settings.bundle_image != blank -%}
+                  <div class="bundle-offer__image">
+                    {{ block.settings.bundle_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: block.settings.bundle_title }}
+                  </div>
+                {%- endif -%}
+                
+                <div class="bundle-offer__content">
+                  <div class="bundle-badge">{{ block.settings.bundle_badge | default: 'Bundle Deal' }}</div>
+                  <h3>{{ block.settings.bundle_title }}</h3>
+                  
+                  {%- if block.settings.bundle_description != blank -%}
+                    <p>{{ block.settings.bundle_description }}</p>
+                  {%- endif -%}
+                  
+                  <div class="bundle-products">
+                    {%- if block.settings.bundle_product_1 != blank -%}
+                      <div class="bundle-product-item">
+                        <span>{{ block.settings.bundle_product_1.title }}</span>
+                        <span class="product-price">{{ block.settings.bundle_product_1.price | money }}</span>
+                      </div>
+                    {%- endif -%}
+                    {%- if block.settings.bundle_product_2 != blank -%}
+                      <div class="bundle-product-item">
+                        <span>{{ block.settings.bundle_product_2.title }}</span>
+                        <span class="product-price">{{ block.settings.bundle_product_2.price | money }}</span>
+                      </div>
+                    {%- endif -%}
+                    {%- if block.settings.bundle_product_3 != blank -%}
+                      <div class="bundle-product-item">
+                        <span>{{ block.settings.bundle_product_3.title }}</span>
+                        <span class="product-price">{{ block.settings.bundle_product_3.price | money }}</span>
+                      </div>
+                    {%- endif -%}
+                  </div>
+                  
+                  <div class="bundle-pricing">
+                    {%- if block.settings.original_price != blank -%}
+                      <span class="original-price">Regular: {{ block.settings.original_price }}</span>
+                    {%- endif -%}
+                    {%- if block.settings.bundle_price != blank -%}
+                      <span class="bundle-price">Bundle Price: {{ block.settings.bundle_price }}</span>
+                    {%- endif -%}
+                    {%- if block.settings.savings_amount != blank -%}
+                      <span class="savings-amount">You Save: {{ block.settings.savings_amount }}</span>
+                    {%- endif -%}
+                  </div>
+                  
+                  {%- if block.settings.bundle_link != blank -%}
+                    <a href="{{ block.settings.bundle_link }}" class="button button--primary">
+                      {{ block.settings.button_text | default: 'Shop Bundle' }}
+                    </a>
+                  {%- endif -%}
+                </div>
+              </div>
+            
+            {%- when 'bundle_benefits' -%}
+              <div class="bundle-benefits" {{ block.shopify_attributes }}>
+                <h3>{{ block.settings.benefits_title }}</h3>
+                <div class="benefits-list">
+                  {%- if block.settings.benefit_1 != blank -%}
+                    <div class="benefit-item">
+                      <span class="benefit-icon">✓</span>
+                      <span>{{ block.settings.benefit_1 }}</span>
+                    </div>
+                  {%- endif -%}
+                  {%- if block.settings.benefit_2 != blank -%}
+                    <div class="benefit-item">
+                      <span class="benefit-icon">✓</span>
+                      <span>{{ block.settings.benefit_2 }}</span>
+                    </div>
+                  {%- endif -%}
+                  {%- if block.settings.benefit_3 != blank -%}
+                    <div class="benefit-item">
+                      <span class="benefit-icon">✓</span>
+                      <span>{{ block.settings.benefit_3 }}</span>
+                    </div>
+                  {%- endif -%}
+                  {%- if block.settings.benefit_4 != blank -%}
+                    <div class="benefit-item">
+                      <span class="benefit-icon">✓</span>
+                      <span>{{ block.settings.benefit_4 }}</span>
+                    </div>
+                  {%- endif -%}
+                </div>
+              </div>
+            
+            {%- when 'button' -%}
+              {%- if block.settings.button_label != blank -%}
+                <a
+                  {% if block.settings.button_link == blank %}
+                    role="link" aria-disabled="true"
+                  {% else %}
+                    href="{{ block.settings.button_link }}"
+                  {% endif %}
+                  class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
+                  {{ block.shopify_attributes }}
+                >
+                  {{ block.settings.button_label | escape }}
+                </a>
+              {%- endif -%}
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Whif Bundle Section",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Bundle & Save",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "default": "<p>Get more value with our carefully curated product bundles.</p>",
+      "label": "Description"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "bundle_offer",
+      "name": "Bundle Offer",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "bundle_image",
+          "label": "Bundle image"
+        },
+        {
+          "type": "text",
+          "id": "bundle_badge",
+          "default": "Best Value",
+          "label": "Bundle badge"
+        },
+        {
+          "type": "text",
+          "id": "bundle_title",
+          "default": "Starter Bundle",
+          "label": "Bundle title"
+        },
+        {
+          "type": "textarea",
+          "id": "bundle_description",
+          "default": "Everything you need to get started with scenting.",
+          "label": "Bundle description"
+        },
+        {
+          "type": "product",
+          "id": "bundle_product_1",
+          "label": "Bundle product 1"
+        },
+        {
+          "type": "product",
+          "id": "bundle_product_2",
+          "label": "Bundle product 2"
+        },
+        {
+          "type": "product",
+          "id": "bundle_product_3",
+          "label": "Bundle product 3"
+        },
+        {
+          "type": "text",
+          "id": "original_price",
+          "label": "Original price",
+          "info": "e.g., $299.99"
+        },
+        {
+          "type": "text",
+          "id": "bundle_price",
+          "label": "Bundle price",
+          "info": "e.g., $249.99"
+        },
+        {
+          "type": "text",
+          "id": "savings_amount",
+          "label": "Savings amount",
+          "info": "e.g., $50.00"
+        },
+        {
+          "type": "url",
+          "id": "bundle_link",
+          "label": "Bundle link"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "default": "Shop Bundle",
+          "label": "Button text"
+        }
+      ]
+    },
+    {
+      "type": "bundle_benefits",
+      "name": "Bundle Benefits",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "benefits_title",
+          "default": "Why Choose Bundles?",
+          "label": "Benefits title"
+        },
+        {
+          "type": "text",
+          "id": "benefit_1",
+          "default": "Save up to 25% compared to individual purchases",
+          "label": "Benefit 1"
+        },
+        {
+          "type": "text",
+          "id": "benefit_2",
+          "default": "Curated combinations that work perfectly together",
+          "label": "Benefit 2"
+        },
+        {
+          "type": "text",
+          "id": "benefit_3",
+          "default": "Free shipping on all bundle orders",
+          "label": "Benefit 3"
+        },
+        {
+          "type": "text",
+          "id": "benefit_4",
+          "default": "Extended warranty coverage",
+          "label": "Benefit 4"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "default": "View All Bundles",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_style_secondary",
+          "default": false,
+          "label": "Use outline button style"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Whif Bundle Section",
+      "blocks": [
+        {
+          "type": "bundle_offer"
+        },
+        {
+          "type": "bundle_benefits"
+        },
+        {
+          "type": "button"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

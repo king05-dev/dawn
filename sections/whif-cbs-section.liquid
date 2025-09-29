@@ -1,0 +1,484 @@
+{{ 'section-whif-cbs.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="whif-cbs-section color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="whif-cbs-content">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="whif-cbs__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      
+      {%- if section.settings.description != blank -%}
+        <div class="whif-cbs__description rte">
+          {{ section.settings.description }}
+        </div>
+      {%- endif -%}
+
+      <div class="whif-cbs__grid">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'cbs_item' -%}
+              <div class="cbs-item" {{ block.shopify_attributes }}>
+                {%- if block.settings.cbs_icon != blank -%}
+                  <div class="cbs-item__icon">
+                    {{ block.settings.cbs_icon | image_url: width: 80 | image_tag: loading: 'lazy', alt: block.settings.cbs_title }}
+                  </div>
+                {%- endif -%}
+                
+                <div class="cbs-item__content">
+                  <h3>{{ block.settings.cbs_title }}</h3>
+                  
+                  {%- if block.settings.cbs_subtitle != blank -%}
+                    <p class="cbs-subtitle">{{ block.settings.cbs_subtitle }}</p>
+                  {%- endif -%}
+                  
+                  {%- if block.settings.cbs_description != blank -%}
+                    <div class="cbs-description rte">{{ block.settings.cbs_description }}</div>
+                  {%- endif -%}
+                  
+                  {%- if block.settings.cbs_features != blank -%}
+                    <ul class="cbs-features">
+                      {%- assign features = block.settings.cbs_features | split: ',' -%}
+                      {%- for feature in features -%}
+                        <li>{{ feature | strip }}</li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- endif -%}
+                  
+                  {%- if block.settings.cbs_link != blank -%}
+                    <a href="{{ block.settings.cbs_link }}" class="cbs-link button button--secondary">
+                      {{ block.settings.link_text | default: 'Learn More' }}
+                    </a>
+                  {%- endif -%}
+                </div>
+              </div>
+            
+            {%- when 'cbs_stats' -%}
+              <div class="cbs-stats" {{ block.shopify_attributes }}>
+                <h3>{{ block.settings.stats_title }}</h3>
+                <div class="stats-container">
+                  {%- if block.settings.stat_1_number != blank -%}
+                    <div class="stat-box">
+                      <span class="stat-number">{{ block.settings.stat_1_number }}</span>
+                      <span class="stat-label">{{ block.settings.stat_1_label }}</span>
+                      {%- if block.settings.stat_1_description != blank -%}
+                        <p class="stat-description">{{ block.settings.stat_1_description }}</p>
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+                  
+                  {%- if block.settings.stat_2_number != blank -%}
+                    <div class="stat-box">
+                      <span class="stat-number">{{ block.settings.stat_2_number }}</span>
+                      <span class="stat-label">{{ block.settings.stat_2_label }}</span>
+                      {%- if block.settings.stat_2_description != blank -%}
+                        <p class="stat-description">{{ block.settings.stat_2_description }}</p>
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+                  
+                  {%- if block.settings.stat_3_number != blank -%}
+                    <div class="stat-box">
+                      <span class="stat-number">{{ block.settings.stat_3_number }}</span>
+                      <span class="stat-label">{{ block.settings.stat_3_label }}</span>
+                      {%- if block.settings.stat_3_description != blank -%}
+                        <p class="stat-description">{{ block.settings.stat_3_description }}</p>
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+                </div>
+              </div>
+            
+            {%- when 'cbs_process' -%}
+              <div class="cbs-process" {{ block.shopify_attributes }}>
+                <h3>{{ block.settings.process_title }}</h3>
+                <div class="process-steps">
+                  {%- if block.settings.step_1_title != blank -%}
+                    <div class="process-step">
+                      <div class="step-number">1</div>
+                      <div class="step-content">
+                        <h4>{{ block.settings.step_1_title }}</h4>
+                        <p>{{ block.settings.step_1_description }}</p>
+                      </div>
+                    </div>
+                  {%- endif -%}
+                  
+                  {%- if block.settings.step_2_title != blank -%}
+                    <div class="process-step">
+                      <div class="step-number">2</div>
+                      <div class="step-content">
+                        <h4>{{ block.settings.step_2_title }}</h4>
+                        <p>{{ block.settings.step_2_description }}</p>
+                      </div>
+                    </div>
+                  {%- endif -%}
+                  
+                  {%- if block.settings.step_3_title != blank -%}
+                    <div class="process-step">
+                      <div class="step-number">3</div>
+                      <div class="step-content">
+                        <h4>{{ block.settings.step_3_title }}</h4>
+                        <p>{{ block.settings.step_3_description }}</p>
+                      </div>
+                    </div>
+                  {%- endif -%}
+                  
+                  {%- if block.settings.step_4_title != blank -%}
+                    <div class="process-step">
+                      <div class="step-number">4</div>
+                      <div class="step-content">
+                        <h4>{{ block.settings.step_4_title }}</h4>
+                        <p>{{ block.settings.step_4_description }}</p>
+                      </div>
+                    </div>
+                  {%- endif -%}
+                </div>
+              </div>
+            
+            {%- when 'button' -%}
+              {%- if block.settings.button_label != blank -%}
+                <a
+                  {% if block.settings.button_link == blank %}
+                    role="link" aria-disabled="true"
+                  {% else %}
+                    href="{{ block.settings.button_link }}"
+                  {% endif %}
+                  class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
+                  {{ block.shopify_attributes }}
+                >
+                  {{ block.settings.button_label | escape }}
+                </a>
+              {%- endif -%}
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+
+      {%- if section.settings.show_cta_banner -%}
+        <div class="cbs-cta-banner">
+          <div class="cta-content">
+            <h3>{{ section.settings.cta_title | default: 'Ready to Get Started?' }}</h3>
+            <p>{{ section.settings.cta_description | default: 'Contact us today to learn more about our CBS solutions.' }}</p>
+            {%- if section.settings.cta_button_link != blank -%}
+              <a href="{{ section.settings.cta_button_link }}" class="button button--primary">
+                {{ section.settings.cta_button_text | default: 'Get Started' }}
+              </a>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Whif CBS Section",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "CBS Solutions",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "default": "<p>Comprehensive Business Solutions tailored to your needs.</p>",
+      "label": "Description"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta_banner",
+      "default": true,
+      "label": "Show call-to-action banner"
+    },
+    {
+      "type": "text",
+      "id": "cta_title",
+      "default": "Ready to Get Started?",
+      "label": "CTA banner title"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_description",
+      "default": "Contact us today to learn more about our CBS solutions.",
+      "label": "CTA banner description"
+    },
+    {
+      "type": "text",
+      "id": "cta_button_text",
+      "default": "Get Started",
+      "label": "CTA button text"
+    },
+    {
+      "type": "url",
+      "id": "cta_button_link",
+      "label": "CTA button link"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "cbs_item",
+      "name": "CBS Item",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "cbs_icon",
+          "label": "CBS icon"
+        },
+        {
+          "type": "text",
+          "id": "cbs_title",
+          "default": "CBS Solution",
+          "label": "CBS title"
+        },
+        {
+          "type": "text",
+          "id": "cbs_subtitle",
+          "label": "CBS subtitle"
+        },
+        {
+          "type": "richtext",
+          "id": "cbs_description",
+          "default": "<p>Description of the CBS solution and its benefits.</p>",
+          "label": "CBS description"
+        },
+        {
+          "type": "textarea",
+          "id": "cbs_features",
+          "label": "CBS features",
+          "info": "Separate features with commas"
+        },
+        {
+          "type": "url",
+          "id": "cbs_link",
+          "label": "CBS link"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "default": "Learn More",
+          "label": "Link text"
+        }
+      ]
+    },
+    {
+      "type": "cbs_stats",
+      "name": "CBS Statistics",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "stats_title",
+          "default": "Our Impact",
+          "label": "Statistics title"
+        },
+        {
+          "type": "text",
+          "id": "stat_1_number",
+          "default": "500+",
+          "label": "Statistic 1 number"
+        },
+        {
+          "type": "text",
+          "id": "stat_1_label",
+          "default": "Clients Served",
+          "label": "Statistic 1 label"
+        },
+        {
+          "type": "text",
+          "id": "stat_1_description",
+          "label": "Statistic 1 description"
+        },
+        {
+          "type": "text",
+          "id": "stat_2_number",
+          "default": "99%",
+          "label": "Statistic 2 number"
+        },
+        {
+          "type": "text",
+          "id": "stat_2_label",
+          "default": "Success Rate",
+          "label": "Statistic 2 label"
+        },
+        {
+          "type": "text",
+          "id": "stat_2_description",
+          "label": "Statistic 2 description"
+        },
+        {
+          "type": "text",
+          "id": "stat_3_number",
+          "default": "24/7",
+          "label": "Statistic 3 number"
+        },
+        {
+          "type": "text",
+          "id": "stat_3_label",
+          "default": "Support",
+          "label": "Statistic 3 label"
+        },
+        {
+          "type": "text",
+          "id": "stat_3_description",
+          "label": "Statistic 3 description"
+        }
+      ]
+    },
+    {
+      "type": "cbs_process",
+      "name": "CBS Process",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "process_title",
+          "default": "Our Process",
+          "label": "Process title"
+        },
+        {
+          "type": "text",
+          "id": "step_1_title",
+          "default": "Consultation",
+          "label": "Step 1 title"
+        },
+        {
+          "type": "textarea",
+          "id": "step_1_description",
+          "default": "We analyze your needs and requirements.",
+          "label": "Step 1 description"
+        },
+        {
+          "type": "text",
+          "id": "step_2_title",
+          "default": "Planning",
+          "label": "Step 2 title"
+        },
+        {
+          "type": "textarea",
+          "id": "step_2_description",
+          "default": "We create a customized solution plan.",
+          "label": "Step 2 description"
+        },
+        {
+          "type": "text",
+          "id": "step_3_title",
+          "default": "Implementation",
+          "label": "Step 3 title"
+        },
+        {
+          "type": "textarea",
+          "id": "step_3_description",
+          "default": "We execute the plan with precision.",
+          "label": "Step 3 description"
+        },
+        {
+          "type": "text",
+          "id": "step_4_title",
+          "default": "Support",
+          "label": "Step 4 title"
+        },
+        {
+          "type": "textarea",
+          "id": "step_4_description",
+          "default": "We provide ongoing support and maintenance.",
+          "label": "Step 4 description"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "default": "Explore CBS Solutions",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_style_secondary",
+          "default": false,
+          "label": "Use outline button style"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Whif CBS Section",
+      "blocks": [
+        {
+          "type": "cbs_item"
+        },
+        {
+          "type": "cbs_stats"
+        },
+        {
+          "type": "cbs_process"
+        },
+        {
+          "type": "button"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

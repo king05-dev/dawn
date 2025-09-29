@@ -1,0 +1,163 @@
+{{ 'section-whif-collection.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="whif-collection-section color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="whif-collection-content">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="whif-collection__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      
+      {%- if section.settings.description != blank -%}
+        <div class="whif-collection__description rte">
+          {{ section.settings.description }}
+        </div>
+      {%- endif -%}
+
+      <div class="whif-collection__grid">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'collection_item' -%}
+              <div class="collection-item" {{ block.shopify_attributes }}>
+                {%- if block.settings.collection_image != blank -%}
+                  <div class="collection-item__image">
+                    {{ block.settings.collection_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: block.settings.collection_title }}
+                  </div>
+                {%- endif -%}
+                <div class="collection-item__content">
+                  <h3>{{ block.settings.collection_title }}</h3>
+                  {%- if block.settings.collection_description != blank -%}
+                    <p>{{ block.settings.collection_description }}</p>
+                  {%- endif -%}
+                  {%- if block.settings.collection_link != blank -%}
+                    <a href="{{ block.settings.collection_link }}" class="button button--primary">
+                      {{ block.settings.button_text | default: 'Shop Collection' }}
+                    </a>
+                  {%- endif -%}
+                </div>
+              </div>
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Whif Collection Section",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Our Collections",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_item",
+      "name": "Collection Item",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "collection_image",
+          "label": "Collection image"
+        },
+        {
+          "type": "text",
+          "id": "collection_title",
+          "default": "Collection Title",
+          "label": "Collection title"
+        },
+        {
+          "type": "textarea",
+          "id": "collection_description",
+          "label": "Collection description"
+        },
+        {
+          "type": "url",
+          "id": "collection_link",
+          "label": "Collection link"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "default": "Shop Collection",
+          "label": "Button text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Whif Collection Section",
+      "blocks": [
+        {
+          "type": "collection_item"
+        },
+        {
+          "type": "collection_item"
+        },
+        {
+          "type": "collection_item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
