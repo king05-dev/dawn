@@ -13,85 +13,1021 @@
     }
   }
 {%- endstyle -%}
+<section
+  data-test="page-section"
+  data-section-theme="white"
+  class="
+    page-section
 
-<div class="whif-makers-section color-{{ section.settings.color_scheme }} gradient">
-  <div class="page-width section-{{ section.id }}-padding">
-    <div class="whif-makers-content">
-      {%- if section.settings.heading != blank -%}
-        <h2 class="whif-makers__heading">{{ section.settings.heading }}</h2>
-      {%- endif -%}
-      
-      {%- if section.settings.description != blank -%}
-        <div class="whif-makers__description rte">
-          {{ section.settings.description }}
-        </div>
-      {%- endif -%}
+      full-bleed-section
+      layout-engine-section
 
-      <div class="whif-makers__grid">
-        {%- for block in section.blocks -%}
-          {%- case block.type -%}
-            {%- when 'maker' -%}
-              <div class="maker-card" {{ block.shopify_attributes }}>
-                {%- if block.settings.maker_image != blank -%}
-                  <div class="maker-card__image">
-                    {{ block.settings.maker_image | image_url: width: 300 | image_tag: loading: 'lazy', alt: block.settings.maker_name }}
-                  </div>
-                {%- endif -%}
-                <div class="maker-card__content">
-                  <h3>{{ block.settings.maker_name }}</h3>
-                  {%- if block.settings.maker_title != blank -%}
-                    <p class="maker-title">{{ block.settings.maker_title }}</p>
-                  {%- endif -%}
-                  {%- if block.settings.maker_bio != blank -%}
-                    <div class="maker-bio rte">{{ block.settings.maker_bio }}</div>
-                  {%- endif -%}
-                  {%- if block.settings.maker_social_link != blank -%}
-                    <a href="{{ block.settings.maker_social_link }}" class="maker-social-link" target="_blank">
-                      Follow {{ block.settings.maker_name }}
-                    </a>
-                  {%- endif -%}
-                </div>
-              </div>
-            {%- when 'story' -%}
-              <div class="makers-story" {{ block.shopify_attributes }}>
-                {%- if block.settings.story_image != blank -%}
-                  <div class="story-image">
-                    {{ block.settings.story_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: block.settings.story_title }}
-                  </div>
-                {%- endif -%}
-                <div class="story-content">
-                  <h3>{{ block.settings.story_title }}</h3>
-                  <div class="story-text rte">{{ block.settings.story_text }}</div>
-                </div>
-              </div>
-            {%- when 'button' -%}
-              {%- if block.settings.button_label != blank -%}
-                <a
-                  {% if block.settings.button_link == blank %}
-                    role="link" aria-disabled="true"
-                  {% else %}
-                    href="{{ block.settings.button_link }}"
-                  {% endif %}
-                  class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
-                  {{ block.shopify_attributes }}
+    background-width--full-bleed
+
+
+        section-height--custom
+
+
+
+      content-width--wide
+
+    horizontal-alignment--center
+    vertical-alignment--middle
+
+
+
+
+    white
+  "
+  data-section-id="681fb3c7996dce3eaad14eef"
+  data-controller="SectionWrapperController"
+  data-current-styles="
+    {
+    &quot;imageOverlayOpacity&quot;: 0.15,
+    &quot;backgroundWidth&quot;: &quot;background-width--full-bleed&quot;,
+    &quot;sectionHeight&quot;: &quot;section-height--custom&quot;,
+    &quot;customSectionHeight&quot;: 0,
+    &quot;horizontalAlignment&quot;: &quot;horizontal-alignment--center&quot;,
+    &quot;verticalAlignment&quot;: &quot;vertical-alignment--middle&quot;,
+    &quot;contentWidth&quot;: &quot;content-width--wide&quot;,
+    &quot;customContentWidth&quot;: 50,
+    &quot;sectionTheme&quot;: &quot;white&quot;,
+    &quot;sectionAnimation&quot;: &quot;none&quot;,
+    &quot;backgroundMode&quot;: &quot;image&quot;
+    }
+  "
+  data-current-context="
+    {
+    &quot;video&quot;: {
+    &quot;playbackSpeed&quot;: 0.5,
+    &quot;filter&quot;: 1,
+    &quot;filterStrength&quot;: 0,
+    &quot;zoom&quot;: 0,
+    &quot;videoSourceProvider&quot;: &quot;none&quot;
+    },
+    &quot;backgroundImageId&quot;: null,
+    &quot;backgroundMediaEffect&quot;: {
+    &quot;type&quot;: &quot;none&quot;
+    },
+    &quot;divider&quot;: {
+    &quot;enabled&quot;: false
+    },
+    &quot;typeName&quot;: &quot;page&quot;
+    }
+  "
+  data-animation="none"
+  data-fluid-engine-section=""
+  data-controllers-bound="SectionWrapperController,SectionWrapperController"
+  id="yui_3_17_2_1_1759180599887_494"
+  data-active="true"
+>
+  <div class="section-border">
+    <div class="section-background"></div>
+  </div>
+  <div
+    class="content-wrapper"
+    style="
+
+
+
+
+      padding-top: calc(0vmax / 10); padding-bottom: calc(0vmax / 10);
+    "
+    id="yui_3_17_2_1_1759180599887_493"
+  >
+    <div class="content" id="yui_3_17_2_1_1759180599887_492">
+      <div data-fluid-engine="true" id="yui_3_17_2_1_1759180599887_491">
+        <style>
+          .fe-681fb3c7996dce3eaad14eee {
+            --grid-gutter: calc(var(--sqs-mobile-site-gutter, 6vw) - 0px);
+            --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (0px * (8 - 1))) / 8);
+
+            display: grid;
+            position: relative;
+            grid-area: 1/1/-1/-1;
+            grid-template-rows: repeat(15, minmax(24px, auto));
+            grid-template-columns:
+              minmax(var(--grid-gutter), 1fr)
+              repeat(8, minmax(0, var(--cell-max-width)))
+              minmax(var(--grid-gutter), 1fr);
+            row-gap: 0px;
+            column-gap: 0px;
+            overflow-x: hidden;
+            overflow-x: clip;
+          }
+
+          @media (min-width: 768px) {
+            .background-width--inset .fe-681fb3c7996dce3eaad14eee {
+              --inset-padding: calc(var(--sqs-site-gutter) * 2);
+            }
+
+            .fe-681fb3c7996dce3eaad14eee {
+              --grid-gutter: calc(var(--sqs-site-gutter, 4vw) - 0px);
+              --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (0px * (24 - 1))) / 24);
+              --inset-padding: 0vw;
+
+              --row-height-scaling-factor: 0.0215;
+              --container-width: min(
+                var(--sqs-site-max-width, 1500px),
+                calc(100vw - var(--sqs-site-gutter, 4vw) * 2 - var(--inset-padding))
+              );
+
+              grid-template-rows: repeat(
+                24,
+                minmax(calc(var(--container-width) * var(--row-height-scaling-factor)), auto)
+              );
+              grid-template-columns:
+                minmax(var(--grid-gutter), 1fr)
+                repeat(24, minmax(0, var(--cell-max-width)))
+                minmax(var(--grid-gutter), 1fr);
+            }
+          }
+
+          .fe-block-yui_3_17_2_1_1751692212984_2623 {
+            grid-area: 1/2/2/10;
+            z-index: 9;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-yui_3_17_2_1_1751692212984_2623 .sqs-block {
+            justify-content: flex-start;
+          }
+
+          .fe-block-yui_3_17_2_1_1751692212984_2623 .sqs-block-alignment-wrapper {
+            align-items: flex-start;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-yui_3_17_2_1_1751692212984_2623 {
+              grid-area: 5/2/7/26;
+              z-index: 17;
+            }
+
+            .fe-block-yui_3_17_2_1_1751692212984_2623 .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-yui_3_17_2_1_1751692212984_2623 .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+
+          .fe-block-yui_3_17_2_1_1746910708420_1926 {
+            grid-area: 1/2/2/6;
+            z-index: 8;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-yui_3_17_2_1_1746910708420_1926 .sqs-block {
+            justify-content: center;
+          }
+
+          .fe-block-yui_3_17_2_1_1746910708420_1926 .sqs-block-alignment-wrapper {
+            align-items: center;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-yui_3_17_2_1_1746910708420_1926 {
+              grid-area: 21/12/23/16;
+              z-index: 16;
+            }
+
+            .fe-block-yui_3_17_2_1_1746910708420_1926 .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-yui_3_17_2_1_1746910708420_1926 .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+
+          .fe-block-e6a611f042c5a183ebea {
+            grid-area: 1/3/2/9;
+            z-index: 4;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-e6a611f042c5a183ebea .sqs-block {
+            justify-content: flex-start;
+          }
+
+          .fe-block-e6a611f042c5a183ebea .sqs-block-alignment-wrapper {
+            align-items: flex-start;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-e6a611f042c5a183ebea {
+              grid-area: 7/2/20/7;
+              z-index: 6;
+            }
+
+            .fe-block-e6a611f042c5a183ebea .sqs-block {
+              justify-content: flex-start;
+            }
+
+            .fe-block-e6a611f042c5a183ebea .sqs-block-alignment-wrapper {
+              align-items: flex-start;
+            }
+          }
+
+          .fe-block-c5a2d8e02983212175ab {
+            grid-area: 1/3/2/9;
+            z-index: 5;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-c5a2d8e02983212175ab .sqs-block {
+            justify-content: flex-start;
+          }
+
+          .fe-block-c5a2d8e02983212175ab .sqs-block-alignment-wrapper {
+            align-items: flex-start;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-c5a2d8e02983212175ab {
+              grid-area: 7/8/20/13;
+              z-index: 10;
+            }
+
+            .fe-block-c5a2d8e02983212175ab .sqs-block {
+              justify-content: flex-start;
+            }
+
+            .fe-block-c5a2d8e02983212175ab .sqs-block-alignment-wrapper {
+              align-items: flex-start;
+            }
+          }
+
+          .fe-block-a44482f37c78f40d9ebc {
+            grid-area: 1/3/2/9;
+            z-index: 6;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-a44482f37c78f40d9ebc .sqs-block {
+            justify-content: flex-start;
+          }
+
+          .fe-block-a44482f37c78f40d9ebc .sqs-block-alignment-wrapper {
+            align-items: flex-start;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-a44482f37c78f40d9ebc {
+              grid-area: 7/14/20/19;
+              z-index: 12;
+            }
+
+            .fe-block-a44482f37c78f40d9ebc .sqs-block {
+              justify-content: flex-start;
+            }
+
+            .fe-block-a44482f37c78f40d9ebc .sqs-block-alignment-wrapper {
+              align-items: flex-start;
+            }
+          }
+
+          .fe-block-f91c4c1167c05d443105 {
+            grid-area: 1/3/2/9;
+            z-index: 7;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-f91c4c1167c05d443105 .sqs-block {
+            justify-content: flex-start;
+          }
+
+          .fe-block-f91c4c1167c05d443105 .sqs-block-alignment-wrapper {
+            align-items: flex-start;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-f91c4c1167c05d443105 {
+              grid-area: 7/20/20/25;
+              z-index: 14;
+            }
+
+            .fe-block-f91c4c1167c05d443105 .sqs-block {
+              justify-content: flex-start;
+            }
+
+            .fe-block-f91c4c1167c05d443105 .sqs-block-alignment-wrapper {
+              align-items: flex-start;
+            }
+          }
+
+          .fe-block-7c1511f283adb25f09bf {
+            grid-area: 1/4/2/9;
+            z-index: 1;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-7c1511f283adb25f09bf .sqs-block {
+            justify-content: flex-start;
+          }
+
+          .fe-block-7c1511f283adb25f09bf .sqs-block-alignment-wrapper {
+            align-items: flex-start;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-7c1511f283adb25f09bf {
+              grid-area: 3/2/5/26;
+              z-index: 1;
+            }
+
+            .fe-block-7c1511f283adb25f09bf .sqs-block {
+              justify-content: flex-start;
+            }
+
+            .fe-block-7c1511f283adb25f09bf .sqs-block-alignment-wrapper {
+              align-items: flex-start;
+            }
+          }
+        </style>
+        <div class="fluid-engine fe-681fb3c7996dce3eaad14eee" id="yui_3_17_2_1_1759180599887_490">
+          <div class="fe-block fe-block-yui_3_17_2_1_1751692212984_2623">
+            <div
+              class="sqs-block code-block sqs-block-code"
+              data-block-type="23"
+              id="block-yui_3_17_2_1_1751692212984_2623"
+            >
+              <div class="sqs-block-content">
+                <p
+                  style="color: black; text-align: center; font-size: 20px; font-weight: 700; transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.185806s;"
+                  class="preFade fadeIn"
                 >
-                  {{ block.settings.button_label | escape }}
-                </a>
-              {%- endif -%}
-          {%- endcase -%}
-        {%- endfor -%}
-      </div>
+                  Browse our collection of heat and water-free machines[diffusers]
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-yui_3_17_2_1_1746910708420_1926">
+            <div
+              class="sqs-block button-block sqs-block-button sqs-stretched"
+              data-block-type="53"
+              data-sqsp-block="button"
+              id="block-yui_3_17_2_1_1746910708420_1926"
+            >
+              <div class="sqs-block-content" id="yui_3_17_2_1_1759180599887_613">
+                <div
+                  class="sqs-block-button-container sqs-block-button-container--center preFade fadeIn"
+                  data-animation-role="button"
+                  data-alignment="center"
+                  data-button-size="large"
+                  data-button-type="secondary"
+                  id="yui_3_17_2_1_1759180599887_612"
+                  style="transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.189677s;"
+                >
+                  <a
+                    href="https://www.whiffedaromas.com/machines-diffusers"
+                    class="sqs-block-button-element--large sqs-button-element--secondary sqs-block-button-element"
+                    data-sqsp-button=""
+                    data-initialized="true"
+                    tabindex="0"
+                  >
+                    shop all whiff makers
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-e6a611f042c5a183ebea" id="yui_3_17_2_1_1759180599887_489">
+            <div
+              class="sqs-block website-component-block sqs-block-website-component"
+              data-block-css="[&quot;https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.product/a5b131ac-f8ba-4abb-a559-14f9a36ff866_312/website.components.product.styles.css&quot;]"
+              data-block-scripts="[&quot;https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.product/a5b131ac-f8ba-4abb-a559-14f9a36ff866_312/website.components.product.visitor.js&quot;]"
+              data-block-type="1337"
+              data-definition-name="website.components.product"
+              id="block-e6a611f042c5a183ebea"
+            >
+              <div class="sqs-block-content" id="yui_3_17_2_1_1759180599887_488">
+                <div
+                  class="product-block sqs-block-product clear sqs-product-quick-view-button-hover-area is-product-quick-view-enabled"
+                  data-product="{&quot;id&quot;:&quot;681fd5752a94dc617cca08f2&quot;,&quot;title&quot;:&quot;Twosome&quot;,&quot;price&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;230.00&quot;},&quot;salePrice&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;139.99&quot;},&quot;soldOut&quot;:false,&quot;onSale&quot;:true,&quot;description&quot;:&quot;&lt;p style=\&quot;white-space:pre-wrap;\&quot; data-rte-preserve-empty=\&quot;true\&quot;&gt;Twosome — two scent nozzles, one mission, total scent domination.&lt;\/p&gt;&lt;p style=\&quot;white-space:pre-wrap;\&quot; data-rte-preserve-empty=\&quot;true\&quot;&gt;With two 50ml diffusers, it delivers pure scents from &lt;em&gt;both&lt;\/em&gt; ends — because sometimes, one just isn’t enough. No water. No drama. Just bold, beautiful scenting.&lt;\/p&gt;&lt;p style=\&quot;white-space:pre-wrap;\&quot; data-rte-preserve-empty=\&quot;true\&quot;&gt;Add the same scent or two different ones and switch it up anytime via the app or the onboard controls.&lt;\/p&gt;&lt;p style=\&quot;white-space:pre-wrap;\&quot; data-rte-preserve-empty=\&quot;true\&quot;&gt;Whether you’re dressing up a spa, a studio, or your scandalously good-smelling living room, this diffuser is here to serve double the vibes in half the effort.&lt;\/p&gt;&quot;,&quot;variants&quot;:[{&quot;id&quot;:&quot;68eca089-8e38-42ab-9271-088cc8da4fde&quot;,&quot;sku&quot;:&quot;TS1-BL&quot;,&quot;price&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;230.00&quot;},&quot;salePrice&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;139.99&quot;},&quot;unlimited&quot;:false,&quot;qtyInStock&quot;:50,&quot;soldOut&quot;:false,&quot;scarce&quot;:false,&quot;attributes&quot;:{&quot;Color&quot;:&quot;Black&quot;}},{&quot;id&quot;:&quot;f2379707-a8c0-4832-93fb-9364954a7c4a&quot;,&quot;sku&quot;:&quot;TS1-SL&quot;,&quot;price&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;230.00&quot;},&quot;salePrice&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;139.99&quot;},&quot;unlimited&quot;:false,&quot;qtyInStock&quot;:49,&quot;soldOut&quot;:false,&quot;scarce&quot;:false,&quot;attributes&quot;:{&quot;Color&quot;:&quot;Silver&quot;}}],&quot;firstInStockVariant&quot;:{&quot;id&quot;:&quot;68eca089-8e38-42ab-9271-088cc8da4fde&quot;,&quot;sku&quot;:&quot;TS1-BL&quot;,&quot;price&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;230.00&quot;},&quot;salePrice&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;139.99&quot;},&quot;unlimited&quot;:false,&quot;qtyInStock&quot;:50,&quot;soldOut&quot;:false,&quot;scarce&quot;:false,&quot;attributes&quot;:{&quot;Color&quot;:&quot;Black&quot;}},&quot;userDefinedVariantOptions&quot;:[{&quot;optionName&quot;:&quot;Color&quot;,&quot;values&quot;:[&quot;Black&quot;,&quot;Silver&quot;]}],&quot;productType&quot;:1,&quot;images&quot;:[{&quot;title&quot;:&quot;&quot;,&quot;originalSize&quot;:&quot;640x1138&quot;,&quot;assetUrl&quot;:&quot;https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/4cb97615-3dee-4610-81dc-786fa34d947d/twosome+in+action.gif&quot;,&quot;mediaFocalPoint&quot;:{&quot;x&quot;:0.1899999976158142,&quot;y&quot;:0.5299999713897705,&quot;source&quot;:3}},{&quot;title&quot;:&quot;&quot;,&quot;originalSize&quot;:&quot;1512x1512&quot;,&quot;assetUrl&quot;:&quot;https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/c93a0ea6-e556-4a49-9fe0-12ca168a2237/twosome%2Bblack.jpg&quot;,&quot;mediaFocalPoint&quot;:{&quot;x&quot;:0.5,&quot;y&quot;:0.5,&quot;source&quot;:3}},{&quot;title&quot;:&quot;&quot;,&quot;originalSize&quot;:&quot;1512x1512&quot;,&quot;assetUrl&quot;:&quot;https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/243076d5-1822-4c62-b2e8-7e4f2970c724/twosome+silver.jpeg&quot;,&quot;mediaFocalPoint&quot;:{&quot;x&quot;:0.5,&quot;y&quot;:0.5,&quot;source&quot;:3}},{&quot;title&quot;:&quot;twosome living room.jpeg&quot;,&quot;originalSize&quot;:&quot;2400x2400&quot;,&quot;assetUrl&quot;:&quot;https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/2e3a449d-41bf-4716-b266-d0041bb7d8f1/twosome+living+room.jpeg&quot;,&quot;mediaFocalPoint&quot;:{&quot;x&quot;:0.5,&quot;y&quot;:0.5,&quot;source&quot;:3}}],&quot;mainImage&quot;:{&quot;title&quot;:&quot;Twosome&quot;,&quot;originalSize&quot;:&quot;1512x1512&quot;,&quot;assetUrl&quot;:&quot;https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e8d3b88d-c518-4bac-a8ed-3186e4be99b1/twosome+black.jpeg&quot;,&quot;mediaFocalPoint&quot;:{&quot;x&quot;:0.5,&quot;y&quot;:0.5,&quot;source&quot;:3}},&quot;fullUrl&quot;:&quot;/machines-diffusers/p/twosome&quot;,&quot;urlSlug&quot;:&quot;twosome&quot;,&quot;qtyInStock&quot;:99,&quot;allowMultiplePurchase&quot;:true,&quot;scarce&quot;:false,&quot;additionalInfo&quot;:null,&quot;published&quot;:true,&quot;tags&quot;:[]}"
+                  data-merchandising-settings="{&quot;locale&quot;:&quot;en-US&quot;,&quot;restockNotificationsContext&quot;:{&quot;mailingListSignupEnabled&quot;:false,&quot;mailingListOptInByDefault&quot;:true,&quot;customMailingListDescription&quot;:&quot;Sign up to receive exclusive offers and product updates.&quot;},&quot;scarcityContext&quot;:{&quot;stockThreshold&quot;:5,&quot;labelTemplateKey&quot;:&quot;productScarcityMessage3&quot;},&quot;showSoldOutOnVariantsDropdown&quot;:true,&quot;expressCheckout&quot;:true,&quot;pinterestOverlayEnabled&quot;:false,&quot;productReviewsContext&quot;:{&quot;productReviewsEnabled&quot;:false,&quot;displayNativeProductReviewsEnabled&quot;:true,&quot;displayImportedProductReviewsEnabled&quot;:false}}"
+                  data-visitor-translations="{&quot;added&quot;:&quot;Added!&quot;,&quot;adding&quot;:&quot;Adding...&quot;,&quot;soldOut&quot;:&quot;Sold out&quot;,&quot;unavailable&quot;:&quot;Unavailable&quot;,&quot;salePriceText&quot;:&quot;Sale Price:&quot;,&quot;originalPriceText&quot;:&quot;Original Price:&quot;,&quot;addToCart&quot;:&quot;Add to cart&quot;,&quot;subscribe&quot;:&quot;Subscribe&quot;,&quot;purchase&quot;:&quot;Purchase&quot;,&quot;productPrice__singlePrice__1Weekly__indefinite&quot;:&quot;{price} every week&quot;,&quot;productPrice__singlePrice__1Weekly__limited__nWeeks&quot;:&quot;{price} every week for {duration} weeks&quot;,&quot;productPrice__singlePrice__1Weekly__limited__1Years&quot;:&quot;{price} every week for 1 year&quot;,&quot;productPrice__singlePrice__1Weekly__limited__nYears&quot;:&quot;{price} every week for {duration} years&quot;,&quot;productPrice__singlePrice__1Monthly__indefinite&quot;:&quot;{price} every month&quot;,&quot;productPrice__singlePrice__1Monthly__limited__nMonths&quot;:&quot;{price} every month for {duration} months&quot;,&quot;productPrice__singlePrice__1Monthly__limited__1Years&quot;:&quot;{price} every month for 1 year&quot;,&quot;productPrice__singlePrice__1Monthly__limited__nYears&quot;:&quot;{price} every month for {duration} years&quot;,&quot;productPrice__singlePrice__nWeekly__indefinite&quot;:&quot;{price} every {billingPeriodValue} weeks&quot;,&quot;productPrice__singlePrice__nWeekly__limited__nWeeks&quot;:&quot;{price} every {billingPeriodValue} weeks for {duration} weeks&quot;,&quot;productPrice__singlePrice__nWeekly__limited__1Years&quot;:&quot;{price} every {billingPeriodValue} weeks for 1 year&quot;,&quot;productPrice__singlePrice__nWeekly__limited__nYears&quot;:&quot;{price} every {billingPeriodValue} weeks for {duration} years&quot;,&quot;productPrice__singlePrice__nMonthly__indefinite&quot;:&quot;{price} every {billingPeriodValue} months&quot;,&quot;productPrice__singlePrice__nMonthly__limited__nMonths&quot;:&quot;{price} every {billingPeriodValue} months for {duration} months&quot;,&quot;productPrice__singlePrice__nMonthly__limited__1Years&quot;:&quot;{price} every {billingPeriodValue} months for 1 year&quot;,&quot;productPrice__singlePrice__nMonthly__limited__nYears&quot;:&quot;{price} every {billingPeriodValue} months for {duration} years&quot;}"
+                  data-r2-enabled="true"
+                  id="yui_3_17_2_1_1759180599887_487"
+                >
+                  <div class="product-block-content" id="yui_3_17_2_1_1759180599887_486">
+                    <div class="image-container" id="yui_3_17_2_1_1759180599887_485">
+                      <a
+                        href="https://www.whiffedaromas.com/machines-diffusers/p/twosome"
+                        style="overflow: hidden; position: relative;"
+                        id="yui_3_17_2_1_1759180599887_484"
+                        tabindex="0"
+                      >
+                        <img
+                          alt="Twosome"
+                          data-src="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e8d3b88d-c518-4bac-a8ed-3186e4be99b1/twosome+black.jpeg"
+                          data-image="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e8d3b88d-c518-4bac-a8ed-3186e4be99b1/twosome+black.jpeg"
+                          data-image-dimensions="1512x1512"
+                          data-image-focal-point="0.5,0.5"
+                          data-load="false"
+                          elementtiming="system-product"
+                          style="
+                            aspect-ratio: 1 / 1;
+                            object-fit: cover; width:100%; height:100%;
+                          "
+                          class="sqs-product-block-variant-image"
+                          data-image-id="68eca089-8e38-42ab-9271-088cc8da4fde"
+                          src="./Whiffed Aromas _ Luxury Home and Commercial Scenting_files/twosome+black.jpeg"
+                          width="1512"
+                          height="1512"
+                          sizes="auto"
+                          srcset="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e8d3b88d-c518-4bac-a8ed-3186e4be99b1/twosome+black.jpeg?format=100w 100w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e8d3b88d-c518-4bac-a8ed-3186e4be99b1/twosome+black.jpeg?format=300w 300w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e8d3b88d-c518-4bac-a8ed-3186e4be99b1/twosome+black.jpeg?format=500w 500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e8d3b88d-c518-4bac-a8ed-3186e4be99b1/twosome+black.jpeg?format=750w 750w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e8d3b88d-c518-4bac-a8ed-3186e4be99b1/twosome+black.jpeg?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e8d3b88d-c518-4bac-a8ed-3186e4be99b1/twosome+black.jpeg?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e8d3b88d-c518-4bac-a8ed-3186e4be99b1/twosome+black.jpeg?format=2500w 2500w"
+                          loading="lazy"
+                          decoding="async"
+                          data-loader="sqs"
+                        >
 
-      {%- if section.settings.company_story != blank -%}
-        <div class="whif-makers__company-story">
-          <div class="company-story rte">
-            {{ section.settings.company_story }}
+                        <img
+                          alt="Twosome"
+                          data-src="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e8d3b88d-c518-4bac-a8ed-3186e4be99b1/twosome+black.jpeg"
+                          data-image="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e8d3b88d-c518-4bac-a8ed-3186e4be99b1/twosome+black.jpeg"
+                          data-image-dimensions="1512x1512"
+                          data-image-focal-point="0.5,0.5"
+                          data-load="false"
+                          elementtiming="system-product"
+                          style="
+                            aspect-ratio: 1 / 1;
+                            object-fit: cover; width:100%; height:100%;
+                          "
+                          class="sqs-product-block-variant-image"
+                          data-image-id="f2379707-a8c0-4832-93fb-9364954a7c4a"
+                          src="./Whiffed Aromas _ Luxury Home and Commercial Scenting_files/twosome+black.jpeg"
+                          width="1512"
+                          height="1512"
+                          sizes="auto"
+                          srcset="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e8d3b88d-c518-4bac-a8ed-3186e4be99b1/twosome+black.jpeg?format=100w 100w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e8d3b88d-c518-4bac-a8ed-3186e4be99b1/twosome+black.jpeg?format=300w 300w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e8d3b88d-c518-4bac-a8ed-3186e4be99b1/twosome+black.jpeg?format=500w 500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e8d3b88d-c518-4bac-a8ed-3186e4be99b1/twosome+black.jpeg?format=750w 750w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e8d3b88d-c518-4bac-a8ed-3186e4be99b1/twosome+black.jpeg?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e8d3b88d-c518-4bac-a8ed-3186e4be99b1/twosome+black.jpeg?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e8d3b88d-c518-4bac-a8ed-3186e4be99b1/twosome+black.jpeg?format=2500w 2500w"
+                          loading="lazy"
+                          decoding="async"
+                          data-loader="sqs"
+                        >
+
+                        <img
+                          alt="Twosome"
+                          data-image-focal-point="0.5225008789405836,0.9017149107387007"
+                          data-src="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e8d3b88d-c518-4bac-a8ed-3186e4be99b1/twosome+black.jpeg"
+                          data-image="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e8d3b88d-c518-4bac-a8ed-3186e4be99b1/twosome+black.jpeg"
+                          data-image-dimensions="1512x1512"
+                          data-load="false"
+                          elementtiming="system-product"
+                          style="
+                            aspect-ratio: 1 / 1;
+                            object-fit: cover; width:100%; height:100%; object-position: 52.25008789405836% 90.17149107387007%;
+                          "
+                          class="sqs-product-block-main-image"
+                          src="./Whiffed Aromas _ Luxury Home and Commercial Scenting_files/twosome+black.jpeg"
+                          width="1512"
+                          height="1512"
+                          sizes="auto"
+                          srcset="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e8d3b88d-c518-4bac-a8ed-3186e4be99b1/twosome+black.jpeg?format=100w 100w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e8d3b88d-c518-4bac-a8ed-3186e4be99b1/twosome+black.jpeg?format=300w 300w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e8d3b88d-c518-4bac-a8ed-3186e4be99b1/twosome+black.jpeg?format=500w 500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e8d3b88d-c518-4bac-a8ed-3186e4be99b1/twosome+black.jpeg?format=750w 750w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e8d3b88d-c518-4bac-a8ed-3186e4be99b1/twosome+black.jpeg?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e8d3b88d-c518-4bac-a8ed-3186e4be99b1/twosome+black.jpeg?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e8d3b88d-c518-4bac-a8ed-3186e4be99b1/twosome+black.jpeg?format=2500w 2500w"
+                          loading="lazy"
+                          decoding="async"
+                          data-loader="sqs"
+                        >
+                      </a>
+                      <a
+                        href="https://www.whiffedaromas.com/machines-diffusers/p/twosome"
+                        class="product-status-link"
+                        tabindex="0"
+                      >
+                        <div class="sqs-product-mark-wrapper">
+                          <div class="product-mark sale">Sale</div>
+                        </div>
+                      </a>
+
+                      <div class="sqs-product-quick-view-button-wrapper">
+                        <span
+                          class="sqs-product-quick-view-button"
+                          role="button"
+                          tabindex="0"
+                          data-id="681fd5752a94dc617cca08f2"
+                        >
+                          Quick View
+                        </span>
+                      </div>
+                    </div>
+
+                    <div class="productDetails left">
+                      <a
+                        href="https://www.whiffedaromas.com/machines-diffusers/p/twosome"
+                        class="product-title"
+                        tabindex="0"
+                        >Twosome</a
+                      >
+
+                      <div class="product-price">
+                        <span class="visually-hidden v6-visually-hidden"> Sale Price: </span>
+                        $139.99
+                        <span class="visually-hidden v6-visually-hidden"> Original Price: </span>
+                        <span class="original-price"> $230.00 </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <script>
+                  document
+                    .querySelector('[data-definition-name="website.components.product"] .product-block')
+                    .classList.add('is-first-product-block');
+                </script>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-c5a2d8e02983212175ab" id="yui_3_17_2_1_1759180599887_503">
+            <div
+              class="sqs-block website-component-block sqs-block-website-component"
+              data-block-css="[&quot;https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.product/a5b131ac-f8ba-4abb-a559-14f9a36ff866_312/website.components.product.styles.css&quot;]"
+              data-block-scripts="[&quot;https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.product/a5b131ac-f8ba-4abb-a559-14f9a36ff866_312/website.components.product.visitor.js&quot;]"
+              data-block-type="1337"
+              data-definition-name="website.components.product"
+              id="block-c5a2d8e02983212175ab"
+            >
+              <div class="sqs-block-content" id="yui_3_17_2_1_1759180599887_502">
+                <div
+                  class="product-block sqs-block-product clear sqs-product-quick-view-button-hover-area is-product-quick-view-enabled"
+                  data-product="{&quot;id&quot;:&quot;681fd5997c756751d5f05a42&quot;,&quot;title&quot;:&quot;Mobile One&quot;,&quot;price&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;119.00&quot;},&quot;salePrice&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;79.99&quot;},&quot;soldOut&quot;:false,&quot;onSale&quot;:true,&quot;description&quot;:&quot;&lt;p style=\&quot;white-space:pre-wrap;\&quot; data-rte-preserve-empty=\&quot;true\&quot;&gt;Say hello to the rechargeable, Mobile One Portable Scent Diffuser — your on-the-go whiffer built for the road, the ride, and wherever life takes you. &lt;\/p&gt;&lt;p class=\&quot;\&quot; style=\&quot;white-space:pre-wrap;\&quot; data-rte-preserve-empty=\&quot;true\&quot;&gt;Crafted from premium aluminum with color-changing LEDs, Mobile Two delivers sleek, silent performance—perfect for your car cup holder. Whether you’re heading to work or going for a joy ride, it fills your car with scent that matches your vibe.&lt;\/p&gt;&quot;,&quot;variants&quot;:[{&quot;id&quot;:&quot;c22a7eb5-ea76-45d5-b77a-f7190c91f8a7&quot;,&quot;sku&quot;:&quot;MB1-SL&quot;,&quot;price&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;119.00&quot;},&quot;salePrice&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;79.99&quot;},&quot;unlimited&quot;:false,&quot;qtyInStock&quot;:69,&quot;soldOut&quot;:false,&quot;scarce&quot;:false,&quot;attributes&quot;:{&quot;Color&quot;:&quot;Silver&quot;}},{&quot;id&quot;:&quot;50308a73-b67f-46c4-b586-375cdde45483&quot;,&quot;sku&quot;:&quot;MB1-BLT&quot;,&quot;price&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;119.00&quot;},&quot;salePrice&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;79.99&quot;},&quot;unlimited&quot;:false,&quot;qtyInStock&quot;:48,&quot;soldOut&quot;:false,&quot;scarce&quot;:false,&quot;attributes&quot;:{&quot;Color&quot;:&quot;Black Titanium&quot;}}],&quot;firstInStockVariant&quot;:{&quot;id&quot;:&quot;c22a7eb5-ea76-45d5-b77a-f7190c91f8a7&quot;,&quot;sku&quot;:&quot;MB1-SL&quot;,&quot;price&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;119.00&quot;},&quot;salePrice&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;79.99&quot;},&quot;unlimited&quot;:false,&quot;qtyInStock&quot;:69,&quot;soldOut&quot;:false,&quot;scarce&quot;:false,&quot;attributes&quot;:{&quot;Color&quot;:&quot;Silver&quot;}},&quot;userDefinedVariantOptions&quot;:[{&quot;optionName&quot;:&quot;Color&quot;,&quot;values&quot;:[&quot;Silver&quot;,&quot;Black Titanium&quot;]}],&quot;productType&quot;:1,&quot;images&quot;:[{&quot;title&quot;:&quot;&quot;,&quot;originalSize&quot;:&quot;1512x1512&quot;,&quot;assetUrl&quot;:&quot;https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/0770b47a-8d70-4fcb-9a34-5f9fb0c7c643/Mobile+One+Main.jpg&quot;,&quot;mediaFocalPoint&quot;:{&quot;x&quot;:0.5,&quot;y&quot;:0.5,&quot;source&quot;:3}},{&quot;title&quot;:&quot;&quot;,&quot;originalSize&quot;:&quot;2400x2400&quot;,&quot;assetUrl&quot;:&quot;https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e067a00a-6c19-4dfe-9d48-f01d0af298aa/Mobile+One+white+background.jpeg&quot;,&quot;mediaFocalPoint&quot;:{&quot;x&quot;:0.5,&quot;y&quot;:0.5,&quot;source&quot;:3}}],&quot;mainImage&quot;:{&quot;title&quot;:&quot;Mobile One&quot;,&quot;originalSize&quot;:&quot;2400x2400&quot;,&quot;assetUrl&quot;:&quot;https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e067a00a-6c19-4dfe-9d48-f01d0af298aa/Mobile+One+white+background.jpeg&quot;,&quot;mediaFocalPoint&quot;:{&quot;x&quot;:0.5,&quot;y&quot;:0.5,&quot;source&quot;:3}},&quot;fullUrl&quot;:&quot;/machines-diffusers/p/mobile-one&quot;,&quot;urlSlug&quot;:&quot;mobile-one&quot;,&quot;qtyInStock&quot;:117,&quot;allowMultiplePurchase&quot;:true,&quot;scarce&quot;:false,&quot;additionalInfo&quot;:null,&quot;published&quot;:true,&quot;tags&quot;:[]}"
+                  data-merchandising-settings="{&quot;locale&quot;:&quot;en-US&quot;,&quot;restockNotificationsContext&quot;:{&quot;mailingListSignupEnabled&quot;:false,&quot;mailingListOptInByDefault&quot;:true,&quot;customMailingListDescription&quot;:&quot;Sign up to receive exclusive offers and product updates.&quot;},&quot;scarcityContext&quot;:{&quot;stockThreshold&quot;:5,&quot;labelTemplateKey&quot;:&quot;productScarcityMessage3&quot;},&quot;showSoldOutOnVariantsDropdown&quot;:true,&quot;expressCheckout&quot;:true,&quot;pinterestOverlayEnabled&quot;:false,&quot;productReviewsContext&quot;:{&quot;productReviewsEnabled&quot;:false,&quot;displayNativeProductReviewsEnabled&quot;:true,&quot;displayImportedProductReviewsEnabled&quot;:false}}"
+                  data-visitor-translations="{&quot;added&quot;:&quot;Added!&quot;,&quot;adding&quot;:&quot;Adding...&quot;,&quot;soldOut&quot;:&quot;Sold out&quot;,&quot;unavailable&quot;:&quot;Unavailable&quot;,&quot;salePriceText&quot;:&quot;Sale Price:&quot;,&quot;originalPriceText&quot;:&quot;Original Price:&quot;,&quot;addToCart&quot;:&quot;Add to cart&quot;,&quot;subscribe&quot;:&quot;Subscribe&quot;,&quot;purchase&quot;:&quot;Purchase&quot;,&quot;productPrice__singlePrice__1Weekly__indefinite&quot;:&quot;{price} every week&quot;,&quot;productPrice__singlePrice__1Weekly__limited__nWeeks&quot;:&quot;{price} every week for {duration} weeks&quot;,&quot;productPrice__singlePrice__1Weekly__limited__1Years&quot;:&quot;{price} every week for 1 year&quot;,&quot;productPrice__singlePrice__1Weekly__limited__nYears&quot;:&quot;{price} every week for {duration} years&quot;,&quot;productPrice__singlePrice__1Monthly__indefinite&quot;:&quot;{price} every month&quot;,&quot;productPrice__singlePrice__1Monthly__limited__nMonths&quot;:&quot;{price} every month for {duration} months&quot;,&quot;productPrice__singlePrice__1Monthly__limited__1Years&quot;:&quot;{price} every month for 1 year&quot;,&quot;productPrice__singlePrice__1Monthly__limited__nYears&quot;:&quot;{price} every month for {duration} years&quot;,&quot;productPrice__singlePrice__nWeekly__indefinite&quot;:&quot;{price} every {billingPeriodValue} weeks&quot;,&quot;productPrice__singlePrice__nWeekly__limited__nWeeks&quot;:&quot;{price} every {billingPeriodValue} weeks for {duration} weeks&quot;,&quot;productPrice__singlePrice__nWeekly__limited__1Years&quot;:&quot;{price} every {billingPeriodValue} weeks for 1 year&quot;,&quot;productPrice__singlePrice__nWeekly__limited__nYears&quot;:&quot;{price} every {billingPeriodValue} weeks for {duration} years&quot;,&quot;productPrice__singlePrice__nMonthly__indefinite&quot;:&quot;{price} every {billingPeriodValue} months&quot;,&quot;productPrice__singlePrice__nMonthly__limited__nMonths&quot;:&quot;{price} every {billingPeriodValue} months for {duration} months&quot;,&quot;productPrice__singlePrice__nMonthly__limited__1Years&quot;:&quot;{price} every {billingPeriodValue} months for 1 year&quot;,&quot;productPrice__singlePrice__nMonthly__limited__nYears&quot;:&quot;{price} every {billingPeriodValue} months for {duration} years&quot;}"
+                  data-r2-enabled="true"
+                  id="yui_3_17_2_1_1759180599887_501"
+                >
+                  <div class="product-block-content" id="yui_3_17_2_1_1759180599887_500">
+                    <div class="image-container" id="yui_3_17_2_1_1759180599887_499">
+                      <a
+                        href="https://www.whiffedaromas.com/machines-diffusers/p/mobile-one"
+                        style="overflow: hidden; position: relative;"
+                        id="yui_3_17_2_1_1759180599887_498"
+                        tabindex="0"
+                      >
+                        <img
+                          alt="Mobile One"
+                          data-src="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e067a00a-6c19-4dfe-9d48-f01d0af298aa/Mobile+One+white+background.jpeg"
+                          data-image="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e067a00a-6c19-4dfe-9d48-f01d0af298aa/Mobile+One+white+background.jpeg"
+                          data-image-dimensions="2400x2400"
+                          data-image-focal-point="0.5,0.5"
+                          data-load="false"
+                          elementtiming="system-product"
+                          style="
+                            aspect-ratio: 1 / 1;
+                            object-fit: cover; width:100%; height:100%;
+                          "
+                          class="sqs-product-block-variant-image"
+                          data-image-id="c22a7eb5-ea76-45d5-b77a-f7190c91f8a7"
+                          src="./Whiffed Aromas _ Luxury Home and Commercial Scenting_files/Mobile+One+white+background.jpeg"
+                          width="2400"
+                          height="2400"
+                          sizes="auto"
+                          srcset="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e067a00a-6c19-4dfe-9d48-f01d0af298aa/Mobile+One+white+background.jpeg?format=100w 100w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e067a00a-6c19-4dfe-9d48-f01d0af298aa/Mobile+One+white+background.jpeg?format=300w 300w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e067a00a-6c19-4dfe-9d48-f01d0af298aa/Mobile+One+white+background.jpeg?format=500w 500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e067a00a-6c19-4dfe-9d48-f01d0af298aa/Mobile+One+white+background.jpeg?format=750w 750w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e067a00a-6c19-4dfe-9d48-f01d0af298aa/Mobile+One+white+background.jpeg?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e067a00a-6c19-4dfe-9d48-f01d0af298aa/Mobile+One+white+background.jpeg?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e067a00a-6c19-4dfe-9d48-f01d0af298aa/Mobile+One+white+background.jpeg?format=2500w 2500w"
+                          loading="lazy"
+                          decoding="async"
+                          data-loader="sqs"
+                        >
+
+                        <img
+                          alt="Mobile One"
+                          data-src="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e067a00a-6c19-4dfe-9d48-f01d0af298aa/Mobile+One+white+background.jpeg"
+                          data-image="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e067a00a-6c19-4dfe-9d48-f01d0af298aa/Mobile+One+white+background.jpeg"
+                          data-image-dimensions="2400x2400"
+                          data-image-focal-point="0.5,0.5"
+                          data-load="false"
+                          elementtiming="system-product"
+                          style="
+                            aspect-ratio: 1 / 1;
+                            object-fit: cover; width:100%; height:100%;
+                          "
+                          class="sqs-product-block-variant-image"
+                          data-image-id="50308a73-b67f-46c4-b586-375cdde45483"
+                          src="./Whiffed Aromas _ Luxury Home and Commercial Scenting_files/Mobile+One+white+background.jpeg"
+                          width="2400"
+                          height="2400"
+                          sizes="auto"
+                          srcset="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e067a00a-6c19-4dfe-9d48-f01d0af298aa/Mobile+One+white+background.jpeg?format=100w 100w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e067a00a-6c19-4dfe-9d48-f01d0af298aa/Mobile+One+white+background.jpeg?format=300w 300w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e067a00a-6c19-4dfe-9d48-f01d0af298aa/Mobile+One+white+background.jpeg?format=500w 500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e067a00a-6c19-4dfe-9d48-f01d0af298aa/Mobile+One+white+background.jpeg?format=750w 750w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e067a00a-6c19-4dfe-9d48-f01d0af298aa/Mobile+One+white+background.jpeg?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e067a00a-6c19-4dfe-9d48-f01d0af298aa/Mobile+One+white+background.jpeg?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e067a00a-6c19-4dfe-9d48-f01d0af298aa/Mobile+One+white+background.jpeg?format=2500w 2500w"
+                          loading="lazy"
+                          decoding="async"
+                          data-loader="sqs"
+                        >
+
+                        <img
+                          alt="Mobile One"
+                          data-image-focal-point="0.5225008789405836,0.8917145200984413"
+                          data-src="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e067a00a-6c19-4dfe-9d48-f01d0af298aa/Mobile+One+white+background.jpeg"
+                          data-image="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e067a00a-6c19-4dfe-9d48-f01d0af298aa/Mobile+One+white+background.jpeg"
+                          data-image-dimensions="2400x2400"
+                          data-load="false"
+                          elementtiming="system-product"
+                          style="
+                            aspect-ratio: 1 / 1;
+                            object-fit: cover; width:100%; height:100%; object-position: 52.25008789405836% 89.17145200984413%;
+                          "
+                          class="sqs-product-block-main-image"
+                          src="./Whiffed Aromas _ Luxury Home and Commercial Scenting_files/Mobile+One+white+background.jpeg"
+                          width="2400"
+                          height="2400"
+                          sizes="auto"
+                          srcset="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e067a00a-6c19-4dfe-9d48-f01d0af298aa/Mobile+One+white+background.jpeg?format=100w 100w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e067a00a-6c19-4dfe-9d48-f01d0af298aa/Mobile+One+white+background.jpeg?format=300w 300w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e067a00a-6c19-4dfe-9d48-f01d0af298aa/Mobile+One+white+background.jpeg?format=500w 500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e067a00a-6c19-4dfe-9d48-f01d0af298aa/Mobile+One+white+background.jpeg?format=750w 750w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e067a00a-6c19-4dfe-9d48-f01d0af298aa/Mobile+One+white+background.jpeg?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e067a00a-6c19-4dfe-9d48-f01d0af298aa/Mobile+One+white+background.jpeg?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e067a00a-6c19-4dfe-9d48-f01d0af298aa/Mobile+One+white+background.jpeg?format=2500w 2500w"
+                          loading="lazy"
+                          decoding="async"
+                          data-loader="sqs"
+                        >
+                      </a>
+                      <a
+                        href="https://www.whiffedaromas.com/machines-diffusers/p/mobile-one"
+                        class="product-status-link"
+                        tabindex="0"
+                      >
+                        <div class="sqs-product-mark-wrapper">
+                          <div class="product-mark sale">Sale</div>
+                        </div>
+                      </a>
+
+                      <div class="sqs-product-quick-view-button-wrapper">
+                        <span
+                          class="sqs-product-quick-view-button"
+                          role="button"
+                          tabindex="0"
+                          data-id="681fd5997c756751d5f05a42"
+                        >
+                          Quick View
+                        </span>
+                      </div>
+                    </div>
+
+                    <div class="productDetails left">
+                      <a
+                        href="https://www.whiffedaromas.com/machines-diffusers/p/mobile-one"
+                        class="product-title"
+                        tabindex="0"
+                        >Mobile One</a
+                      >
+
+                      <div class="product-price">
+                        <span class="visually-hidden v6-visually-hidden"> Sale Price: </span>
+                        $79.99
+                        <span class="visually-hidden v6-visually-hidden"> Original Price: </span>
+                        <span class="original-price"> $119.00 </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <script>
+                  document
+                    .querySelector('[data-definition-name="website.components.product"] .product-block')
+                    .classList.add('is-first-product-block');
+                </script>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-a44482f37c78f40d9ebc" id="yui_3_17_2_1_1759180599887_512">
+            <div
+              class="sqs-block website-component-block sqs-block-website-component"
+              data-block-css="[&quot;https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.product/a5b131ac-f8ba-4abb-a559-14f9a36ff866_312/website.components.product.styles.css&quot;]"
+              data-block-scripts="[&quot;https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.product/a5b131ac-f8ba-4abb-a559-14f9a36ff866_312/website.components.product.visitor.js&quot;]"
+              data-block-type="1337"
+              data-definition-name="website.components.product"
+              id="block-a44482f37c78f40d9ebc"
+            >
+              <div class="sqs-block-content" id="yui_3_17_2_1_1759180599887_511">
+                <div
+                  class="product-block sqs-block-product clear sqs-product-quick-view-button-hover-area is-product-quick-view-enabled"
+                  data-product="{&quot;id&quot;:&quot;6898da8eb1d6b17e81925ebd&quot;,&quot;title&quot;:&quot;Big Two&quot;,&quot;price&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;1399.00&quot;},&quot;salePrice&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;799.00&quot;},&quot;soldOut&quot;:false,&quot;onSale&quot;:true,&quot;description&quot;:&quot;&lt;p style=\&quot;white-space:pre-wrap;\&quot; data-rte-preserve-empty=\&quot;true\&quot;&gt;Big room. Big scent. The Big Two is our one of powerhouse scent machine made for wide-open spaces, plus HVAC connectivity. Think offices, showrooms, clubs, or bougie hotel lobbies. It floods up to 18,000 sq.ft. with exquisite scent through HVAC connection. Provides effortless controls with app-based remote scheduling and pro-grade diffusion tech. It’s the olfactory drama your customers (and employees) have been longing for.&lt;\/p&gt;&quot;,&quot;variants&quot;:[{&quot;id&quot;:&quot;bc8f18bd-db36-452b-a7d5-82a9dd1527ef&quot;,&quot;sku&quot;:&quot;BG-TWO&quot;,&quot;price&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;1399.00&quot;},&quot;salePrice&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;799.00&quot;},&quot;unlimited&quot;:false,&quot;qtyInStock&quot;:4,&quot;soldOut&quot;:false,&quot;scarce&quot;:true,&quot;attributes&quot;:{}}],&quot;firstInStockVariant&quot;:{&quot;id&quot;:&quot;bc8f18bd-db36-452b-a7d5-82a9dd1527ef&quot;,&quot;sku&quot;:&quot;BG-TWO&quot;,&quot;price&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;1399.00&quot;},&quot;salePrice&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;799.00&quot;},&quot;unlimited&quot;:false,&quot;qtyInStock&quot;:4,&quot;soldOut&quot;:false,&quot;scarce&quot;:true,&quot;attributes&quot;:{}},&quot;userDefinedVariantOptions&quot;:[],&quot;productType&quot;:1,&quot;images&quot;:[{&quot;title&quot;:&quot;&quot;,&quot;originalSize&quot;:&quot;512x487&quot;,&quot;assetUrl&quot;:&quot;https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/fef61f17-a934-47b8-8633-768692e0f084/big+two.png&quot;,&quot;mediaFocalPoint&quot;:{&quot;x&quot;:0.5,&quot;y&quot;:0.5,&quot;source&quot;:3}}],&quot;mainImage&quot;:{&quot;title&quot;:&quot;Big Two&quot;,&quot;originalSize&quot;:&quot;512x487&quot;,&quot;assetUrl&quot;:&quot;https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/fef61f17-a934-47b8-8633-768692e0f084/big+two.png&quot;,&quot;mediaFocalPoint&quot;:{&quot;x&quot;:0.5,&quot;y&quot;:0.5,&quot;source&quot;:3}},&quot;fullUrl&quot;:&quot;/machines-diffusers/p/big-two&quot;,&quot;urlSlug&quot;:&quot;big-two&quot;,&quot;qtyInStock&quot;:4,&quot;allowMultiplePurchase&quot;:true,&quot;scarce&quot;:true,&quot;additionalInfo&quot;:null,&quot;published&quot;:true,&quot;tags&quot;:[]}"
+                  data-merchandising-settings="{&quot;locale&quot;:&quot;en-US&quot;,&quot;restockNotificationsContext&quot;:{&quot;mailingListSignupEnabled&quot;:false,&quot;mailingListOptInByDefault&quot;:true,&quot;customMailingListDescription&quot;:&quot;Sign up to receive exclusive offers and product updates.&quot;},&quot;scarcityContext&quot;:{&quot;stockThreshold&quot;:5,&quot;labelTemplateKey&quot;:&quot;productScarcityMessage3&quot;},&quot;showSoldOutOnVariantsDropdown&quot;:true,&quot;expressCheckout&quot;:true,&quot;pinterestOverlayEnabled&quot;:false,&quot;productReviewsContext&quot;:{&quot;productReviewsEnabled&quot;:false,&quot;displayNativeProductReviewsEnabled&quot;:true,&quot;displayImportedProductReviewsEnabled&quot;:false}}"
+                  data-visitor-translations="{&quot;added&quot;:&quot;Added!&quot;,&quot;adding&quot;:&quot;Adding...&quot;,&quot;soldOut&quot;:&quot;Sold out&quot;,&quot;unavailable&quot;:&quot;Unavailable&quot;,&quot;salePriceText&quot;:&quot;Sale Price:&quot;,&quot;originalPriceText&quot;:&quot;Original Price:&quot;,&quot;addToCart&quot;:&quot;Add to cart&quot;,&quot;subscribe&quot;:&quot;Subscribe&quot;,&quot;purchase&quot;:&quot;Purchase&quot;,&quot;productPrice__singlePrice__1Weekly__indefinite&quot;:&quot;{price} every week&quot;,&quot;productPrice__singlePrice__1Weekly__limited__nWeeks&quot;:&quot;{price} every week for {duration} weeks&quot;,&quot;productPrice__singlePrice__1Weekly__limited__1Years&quot;:&quot;{price} every week for 1 year&quot;,&quot;productPrice__singlePrice__1Weekly__limited__nYears&quot;:&quot;{price} every week for {duration} years&quot;,&quot;productPrice__singlePrice__1Monthly__indefinite&quot;:&quot;{price} every month&quot;,&quot;productPrice__singlePrice__1Monthly__limited__nMonths&quot;:&quot;{price} every month for {duration} months&quot;,&quot;productPrice__singlePrice__1Monthly__limited__1Years&quot;:&quot;{price} every month for 1 year&quot;,&quot;productPrice__singlePrice__1Monthly__limited__nYears&quot;:&quot;{price} every month for {duration} years&quot;,&quot;productPrice__singlePrice__nWeekly__indefinite&quot;:&quot;{price} every {billingPeriodValue} weeks&quot;,&quot;productPrice__singlePrice__nWeekly__limited__nWeeks&quot;:&quot;{price} every {billingPeriodValue} weeks for {duration} weeks&quot;,&quot;productPrice__singlePrice__nWeekly__limited__1Years&quot;:&quot;{price} every {billingPeriodValue} weeks for 1 year&quot;,&quot;productPrice__singlePrice__nWeekly__limited__nYears&quot;:&quot;{price} every {billingPeriodValue} weeks for {duration} years&quot;,&quot;productPrice__singlePrice__nMonthly__indefinite&quot;:&quot;{price} every {billingPeriodValue} months&quot;,&quot;productPrice__singlePrice__nMonthly__limited__nMonths&quot;:&quot;{price} every {billingPeriodValue} months for {duration} months&quot;,&quot;productPrice__singlePrice__nMonthly__limited__1Years&quot;:&quot;{price} every {billingPeriodValue} months for 1 year&quot;,&quot;productPrice__singlePrice__nMonthly__limited__nYears&quot;:&quot;{price} every {billingPeriodValue} months for {duration} years&quot;}"
+                  data-r2-enabled="true"
+                  id="yui_3_17_2_1_1759180599887_510"
+                >
+                  <div class="product-block-content" id="yui_3_17_2_1_1759180599887_509">
+                    <div class="image-container" id="yui_3_17_2_1_1759180599887_508">
+                      <a
+                        href="https://www.whiffedaromas.com/machines-diffusers/p/big-two"
+                        style="overflow: hidden; position: relative;"
+                        id="yui_3_17_2_1_1759180599887_507"
+                        tabindex="0"
+                      >
+                        <img
+                          alt="Big Two"
+                          data-src="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/fef61f17-a934-47b8-8633-768692e0f084/big+two.png"
+                          data-image="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/fef61f17-a934-47b8-8633-768692e0f084/big+two.png"
+                          data-image-dimensions="512x487"
+                          data-image-focal-point="0.5,0.5"
+                          data-load="false"
+                          elementtiming="system-product"
+                          style="
+                            aspect-ratio: 1 / 1;
+                            object-fit: cover; width:100%; height:100%;
+                          "
+                          class="sqs-product-block-variant-image"
+                          data-image-id="bc8f18bd-db36-452b-a7d5-82a9dd1527ef"
+                          src="./Whiffed Aromas _ Luxury Home and Commercial Scenting_files/big+two.png"
+                          width="512"
+                          height="487"
+                          sizes="auto"
+                          srcset="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/fef61f17-a934-47b8-8633-768692e0f084/big+two.png?format=100w 100w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/fef61f17-a934-47b8-8633-768692e0f084/big+two.png?format=300w 300w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/fef61f17-a934-47b8-8633-768692e0f084/big+two.png?format=500w 500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/fef61f17-a934-47b8-8633-768692e0f084/big+two.png?format=750w 750w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/fef61f17-a934-47b8-8633-768692e0f084/big+two.png?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/fef61f17-a934-47b8-8633-768692e0f084/big+two.png?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/fef61f17-a934-47b8-8633-768692e0f084/big+two.png?format=2500w 2500w"
+                          loading="lazy"
+                          decoding="async"
+                          data-loader="sqs"
+                        >
+
+                        <img
+                          alt="Big Two"
+                          data-image-focal-point="0.5150005859603891,0.8767139341380523"
+                          data-src="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/fef61f17-a934-47b8-8633-768692e0f084/big+two.png"
+                          data-image="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/fef61f17-a934-47b8-8633-768692e0f084/big+two.png"
+                          data-image-dimensions="512x487"
+                          data-load="false"
+                          elementtiming="system-product"
+                          style="
+                            aspect-ratio: 1 / 1;
+                            object-fit: cover; width:100%; height:100%; object-position: 51.50005859603891% 87.67139341380523%;
+                          "
+                          class="sqs-product-block-main-image"
+                          src="./Whiffed Aromas _ Luxury Home and Commercial Scenting_files/big+two.png"
+                          width="512"
+                          height="487"
+                          sizes="auto"
+                          srcset="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/fef61f17-a934-47b8-8633-768692e0f084/big+two.png?format=100w 100w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/fef61f17-a934-47b8-8633-768692e0f084/big+two.png?format=300w 300w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/fef61f17-a934-47b8-8633-768692e0f084/big+two.png?format=500w 500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/fef61f17-a934-47b8-8633-768692e0f084/big+two.png?format=750w 750w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/fef61f17-a934-47b8-8633-768692e0f084/big+two.png?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/fef61f17-a934-47b8-8633-768692e0f084/big+two.png?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/fef61f17-a934-47b8-8633-768692e0f084/big+two.png?format=2500w 2500w"
+                          loading="lazy"
+                          decoding="async"
+                          data-loader="sqs"
+                        >
+                      </a>
+                      <a
+                        href="https://www.whiffedaromas.com/machines-diffusers/p/big-two"
+                        class="product-status-link"
+                        tabindex="0"
+                      >
+                        <div class="sqs-product-mark-wrapper">
+                          <div class="product-mark sale">Sale</div>
+                        </div>
+                      </a>
+
+                      <div class="sqs-product-quick-view-button-wrapper">
+                        <span
+                          class="sqs-product-quick-view-button"
+                          role="button"
+                          tabindex="0"
+                          data-id="6898da8eb1d6b17e81925ebd"
+                        >
+                          Quick View
+                        </span>
+                      </div>
+                    </div>
+
+                    <div class="productDetails left">
+                      <a
+                        href="https://www.whiffedaromas.com/machines-diffusers/p/big-two"
+                        class="product-title"
+                        tabindex="0"
+                        >Big Two</a
+                      >
+
+                      <div class="product-price">
+                        <span class="visually-hidden v6-visually-hidden"> Sale Price: </span>
+                        $799.00
+                        <span class="visually-hidden v6-visually-hidden"> Original Price: </span>
+                        <span class="original-price"> $1,399.00 </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <script>
+                  document
+                    .querySelector('[data-definition-name="website.components.product"] .product-block')
+                    .classList.add('is-first-product-block');
+                </script>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-f91c4c1167c05d443105" id="yui_3_17_2_1_1759180599887_520">
+            <div
+              class="sqs-block website-component-block sqs-block-website-component"
+              data-block-css="[&quot;https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.product/a5b131ac-f8ba-4abb-a559-14f9a36ff866_312/website.components.product.styles.css&quot;]"
+              data-block-scripts="[&quot;https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.product/a5b131ac-f8ba-4abb-a559-14f9a36ff866_312/website.components.product.visitor.js&quot;]"
+              data-block-type="1337"
+              data-definition-name="website.components.product"
+              id="block-f91c4c1167c05d443105"
+            >
+              <div class="sqs-block-content" id="yui_3_17_2_1_1759180599887_519">
+                <div
+                  class="product-block sqs-block-product clear sqs-product-quick-view-button-hover-area is-product-quick-view-enabled"
+                  data-product="{&quot;id&quot;:&quot;681fd59a7c756751d5f05a47&quot;,&quot;title&quot;:&quot;Fusion 200&quot;,&quot;price&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;599.00&quot;},&quot;salePrice&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;399.00&quot;},&quot;soldOut&quot;:false,&quot;onSale&quot;:true,&quot;description&quot;:&quot;&lt;h4 style=\&quot;white-space:pre-wrap;\&quot; data-rte-preserve-empty=\&quot;true\&quot;&gt;Black Friday Warmup: Beat the rush! Get up to 33% off now + an extra 15% off automatically at checkout.&lt;\/h4&gt;&lt;ul data-rte-list=\&quot;true\&quot;&gt;&lt;li&gt;&lt;p style=\&quot;white-space:pre-wrap;\&quot; data-rte-preserve-empty=\&quot;true\&quot;&gt;Oil level indicator through app and machine&lt;\/p&gt;&lt;\/li&gt;&lt;li&gt;&lt;p class=\&quot;preFade fadeIn\&quot; style=\&quot;white-space:pre-wrap;\&quot; data-rte-preserve-empty=\&quot;true\&quot;&gt;&lt;span&gt;Scents up to 2,000 sq.ft. &lt;\/span&gt;(3,500 sq.ft. through HVAC)&lt;\/p&gt;&lt;\/li&gt;&lt;li&gt;&lt;p class=\&quot;preFade fadeIn\&quot; style=\&quot;white-space:pre-wrap;\&quot; data-rte-preserve-empty=\&quot;true\&quot;&gt;200ml oil bottle&lt;\/p&gt;&lt;\/li&gt;&lt;\/ul&gt;&lt;p style=\&quot;white-space:pre-wrap;\&quot; data-rte-preserve-empty=\&quot;true\&quot;&gt;The Fusion 200 — the sleek, silent seducer everyone in your space will ask about. The Fusion 200 is the smaller sibling of the &lt;a href=\&quot;/machines-diffusers/p/fusion-500\&quot;&gt;Fusion 500.&lt;\/a&gt;&lt;\/p&gt;&lt;p class=\&quot;preFade fadeIn\&quot; style=\&quot;white-space:pre-wrap;\&quot; data-rte-preserve-empty=\&quot;true\&quot;&gt;Connects to your HVAC or mounts on the wall to scent your space with pure, waterless fragrance. With Bluetooth app control, it lets you schedule, adjust, and aromatize the air with ease. The 200 mL oil container, ultra-quiet motor (under 38 dB), and anti-tamper lock make it perfect for homes, boutiques, or any space that needs a little extra allure. Smart, stylish, and made to make your air irresistible.&lt;\/p&gt;&quot;,&quot;variants&quot;:[{&quot;id&quot;:&quot;d48071a0-56fe-4188-a736-3d12d03d25fa&quot;,&quot;sku&quot;:&quot;FUS-200-WH&quot;,&quot;price&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;599.00&quot;},&quot;salePrice&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;399.00&quot;},&quot;unlimited&quot;:false,&quot;qtyInStock&quot;:25,&quot;soldOut&quot;:false,&quot;scarce&quot;:false,&quot;attributes&quot;:{&quot;Color&quot;:&quot;White&quot;}},{&quot;id&quot;:&quot;383340fa-8bbe-4f05-80e6-bb82c7dfd733&quot;,&quot;sku&quot;:&quot;FUS-200-BL&quot;,&quot;price&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;599.00&quot;},&quot;salePrice&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;399.00&quot;},&quot;unlimited&quot;:false,&quot;qtyInStock&quot;:25,&quot;soldOut&quot;:false,&quot;scarce&quot;:false,&quot;attributes&quot;:{&quot;Color&quot;:&quot;Black&quot;}}],&quot;firstInStockVariant&quot;:{&quot;id&quot;:&quot;d48071a0-56fe-4188-a736-3d12d03d25fa&quot;,&quot;sku&quot;:&quot;FUS-200-WH&quot;,&quot;price&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;599.00&quot;},&quot;salePrice&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;399.00&quot;},&quot;unlimited&quot;:false,&quot;qtyInStock&quot;:25,&quot;soldOut&quot;:false,&quot;scarce&quot;:false,&quot;attributes&quot;:{&quot;Color&quot;:&quot;White&quot;}},&quot;userDefinedVariantOptions&quot;:[{&quot;optionName&quot;:&quot;Color&quot;,&quot;values&quot;:[&quot;White&quot;,&quot;Black&quot;]}],&quot;productType&quot;:1,&quot;images&quot;:[{&quot;title&quot;:&quot;fusion 200 front shot&quot;,&quot;originalSize&quot;:&quot;2425x3233&quot;,&quot;assetUrl&quot;:&quot;https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/6e446d46-3629-4cb6-827e-9f484d5c8cd4/IMG_2955.png&quot;,&quot;mediaFocalPoint&quot;:{&quot;x&quot;:0.4699999988079071,&quot;y&quot;:0.4399999976158142,&quot;source&quot;:3}},{&quot;title&quot;:&quot;&quot;,&quot;originalSize&quot;:&quot;1512x1512&quot;,&quot;assetUrl&quot;:&quot;https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/700f3c3b-b6ca-4504-a7bb-e454eb6d3654/Fusion+200+black.jpeg&quot;,&quot;mediaFocalPoint&quot;:{&quot;x&quot;:0.5,&quot;y&quot;:0.5,&quot;source&quot;:3}},{&quot;title&quot;:&quot;fusion 200 angle&quot;,&quot;originalSize&quot;:&quot;2268x4032&quot;,&quot;assetUrl&quot;:&quot;https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/399f382f-577c-49b0-affa-72de6e1f1832/IMG_2956.jpg&quot;,&quot;mediaFocalPoint&quot;:{&quot;x&quot;:0.4699999988079071,&quot;y&quot;:0.550000011920929,&quot;source&quot;:3}},{&quot;title&quot;:&quot;fusion 200 table&quot;,&quot;originalSize&quot;:&quot;2268x3024&quot;,&quot;assetUrl&quot;:&quot;https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/47a7f561-9400-434f-a7fa-a2bc1dd46d56/IMG_2945.jpg&quot;,&quot;mediaFocalPoint&quot;:{&quot;x&quot;:0.47999998927116394,&quot;y&quot;:0.6899999976158142,&quot;source&quot;:3}},{&quot;title&quot;:&quot;fusion 200 packaging&quot;,&quot;originalSize&quot;:&quot;2268x4032&quot;,&quot;assetUrl&quot;:&quot;https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/ce573c6b-43c4-4fde-b2b5-51dd2f465f62/IMG_2951.jpg&quot;,&quot;mediaFocalPoint&quot;:{&quot;x&quot;:0.5400000214576721,&quot;y&quot;:0.5199999809265137,&quot;source&quot;:3}},{&quot;title&quot;:&quot;&quot;,&quot;originalSize&quot;:&quot;803x877&quot;,&quot;assetUrl&quot;:&quot;https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/bb361d89-fe86-49a5-aeb0-cd38e6c42ac9/Fusion+200.jpg&quot;,&quot;mediaFocalPoint&quot;:{&quot;x&quot;:0.5,&quot;y&quot;:0.5,&quot;source&quot;:3}},{&quot;title&quot;:&quot;Fusion 200_500 woman and dog.png&quot;,&quot;originalSize&quot;:&quot;768x1344&quot;,&quot;assetUrl&quot;:&quot;https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/ccd7701e-4063-4955-ba71-2e433bac419b/Fusion+200_500+woman+and+dog.png&quot;,&quot;mediaFocalPoint&quot;:{&quot;x&quot;:0.5,&quot;y&quot;:0.5,&quot;source&quot;:3}},{&quot;title&quot;:&quot;Fusion 200_500 living room.png&quot;,&quot;originalSize&quot;:&quot;768x1344&quot;,&quot;assetUrl&quot;:&quot;https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/b0c67028-e0b2-41a1-9ef6-b5c6b0d9118f/Fusion+200_500+living+room.png&quot;,&quot;mediaFocalPoint&quot;:{&quot;x&quot;:0.5,&quot;y&quot;:0.5,&quot;source&quot;:3}}],&quot;mainImage&quot;:{&quot;title&quot;:&quot;Fusion 200&quot;,&quot;originalSize&quot;:&quot;803x877&quot;,&quot;assetUrl&quot;:&quot;https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/bb361d89-fe86-49a5-aeb0-cd38e6c42ac9/Fusion+200.jpg&quot;,&quot;mediaFocalPoint&quot;:{&quot;x&quot;:0.5,&quot;y&quot;:0.5,&quot;source&quot;:3}},&quot;fullUrl&quot;:&quot;/machines-diffusers/p/fusion-200&quot;,&quot;urlSlug&quot;:&quot;fusion-200&quot;,&quot;qtyInStock&quot;:50,&quot;allowMultiplePurchase&quot;:true,&quot;scarce&quot;:false,&quot;additionalInfo&quot;:null,&quot;published&quot;:true,&quot;tags&quot;:[]}"
+                  data-merchandising-settings="{&quot;locale&quot;:&quot;en-US&quot;,&quot;restockNotificationsContext&quot;:{&quot;mailingListSignupEnabled&quot;:false,&quot;mailingListOptInByDefault&quot;:true,&quot;customMailingListDescription&quot;:&quot;Sign up to receive exclusive offers and product updates.&quot;},&quot;scarcityContext&quot;:{&quot;stockThreshold&quot;:5,&quot;labelTemplateKey&quot;:&quot;productScarcityMessage3&quot;},&quot;showSoldOutOnVariantsDropdown&quot;:true,&quot;expressCheckout&quot;:true,&quot;pinterestOverlayEnabled&quot;:false,&quot;productReviewsContext&quot;:{&quot;productReviewsEnabled&quot;:false,&quot;displayNativeProductReviewsEnabled&quot;:true,&quot;displayImportedProductReviewsEnabled&quot;:false}}"
+                  data-visitor-translations="{&quot;added&quot;:&quot;Added!&quot;,&quot;adding&quot;:&quot;Adding...&quot;,&quot;soldOut&quot;:&quot;Sold out&quot;,&quot;unavailable&quot;:&quot;Unavailable&quot;,&quot;salePriceText&quot;:&quot;Sale Price:&quot;,&quot;originalPriceText&quot;:&quot;Original Price:&quot;,&quot;addToCart&quot;:&quot;Add to cart&quot;,&quot;subscribe&quot;:&quot;Subscribe&quot;,&quot;purchase&quot;:&quot;Purchase&quot;,&quot;productPrice__singlePrice__1Weekly__indefinite&quot;:&quot;{price} every week&quot;,&quot;productPrice__singlePrice__1Weekly__limited__nWeeks&quot;:&quot;{price} every week for {duration} weeks&quot;,&quot;productPrice__singlePrice__1Weekly__limited__1Years&quot;:&quot;{price} every week for 1 year&quot;,&quot;productPrice__singlePrice__1Weekly__limited__nYears&quot;:&quot;{price} every week for {duration} years&quot;,&quot;productPrice__singlePrice__1Monthly__indefinite&quot;:&quot;{price} every month&quot;,&quot;productPrice__singlePrice__1Monthly__limited__nMonths&quot;:&quot;{price} every month for {duration} months&quot;,&quot;productPrice__singlePrice__1Monthly__limited__1Years&quot;:&quot;{price} every month for 1 year&quot;,&quot;productPrice__singlePrice__1Monthly__limited__nYears&quot;:&quot;{price} every month for {duration} years&quot;,&quot;productPrice__singlePrice__nWeekly__indefinite&quot;:&quot;{price} every {billingPeriodValue} weeks&quot;,&quot;productPrice__singlePrice__nWeekly__limited__nWeeks&quot;:&quot;{price} every {billingPeriodValue} weeks for {duration} weeks&quot;,&quot;productPrice__singlePrice__nWeekly__limited__1Years&quot;:&quot;{price} every {billingPeriodValue} weeks for 1 year&quot;,&quot;productPrice__singlePrice__nWeekly__limited__nYears&quot;:&quot;{price} every {billingPeriodValue} weeks for {duration} years&quot;,&quot;productPrice__singlePrice__nMonthly__indefinite&quot;:&quot;{price} every {billingPeriodValue} months&quot;,&quot;productPrice__singlePrice__nMonthly__limited__nMonths&quot;:&quot;{price} every {billingPeriodValue} months for {duration} months&quot;,&quot;productPrice__singlePrice__nMonthly__limited__1Years&quot;:&quot;{price} every {billingPeriodValue} months for 1 year&quot;,&quot;productPrice__singlePrice__nMonthly__limited__nYears&quot;:&quot;{price} every {billingPeriodValue} months for {duration} years&quot;}"
+                  data-r2-enabled="true"
+                  id="yui_3_17_2_1_1759180599887_518"
+                >
+                  <div class="product-block-content" id="yui_3_17_2_1_1759180599887_517">
+                    <div class="image-container" id="yui_3_17_2_1_1759180599887_516">
+                      <a
+                        href="https://www.whiffedaromas.com/machines-diffusers/p/fusion-200"
+                        style="overflow: hidden; position: relative;"
+                        id="yui_3_17_2_1_1759180599887_515"
+                        tabindex="0"
+                      >
+                        <img
+                          alt="Fusion 200"
+                          data-src="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/bb361d89-fe86-49a5-aeb0-cd38e6c42ac9/Fusion+200.jpg"
+                          data-image="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/bb361d89-fe86-49a5-aeb0-cd38e6c42ac9/Fusion+200.jpg"
+                          data-image-dimensions="803x877"
+                          data-image-focal-point="0.5,0.5"
+                          data-load="false"
+                          elementtiming="system-product"
+                          style="
+                            aspect-ratio: 1 / 1;
+                            object-fit: cover; width:100%; height:100%;
+                          "
+                          class="sqs-product-block-variant-image"
+                          data-image-id="d48071a0-56fe-4188-a736-3d12d03d25fa"
+                          src="./Whiffed Aromas _ Luxury Home and Commercial Scenting_files/Fusion+200.jpg"
+                          width="803"
+                          height="877"
+                          sizes="auto"
+                          srcset="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/bb361d89-fe86-49a5-aeb0-cd38e6c42ac9/Fusion+200.jpg?format=100w 100w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/bb361d89-fe86-49a5-aeb0-cd38e6c42ac9/Fusion+200.jpg?format=300w 300w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/bb361d89-fe86-49a5-aeb0-cd38e6c42ac9/Fusion+200.jpg?format=500w 500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/bb361d89-fe86-49a5-aeb0-cd38e6c42ac9/Fusion+200.jpg?format=750w 750w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/bb361d89-fe86-49a5-aeb0-cd38e6c42ac9/Fusion+200.jpg?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/bb361d89-fe86-49a5-aeb0-cd38e6c42ac9/Fusion+200.jpg?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/bb361d89-fe86-49a5-aeb0-cd38e6c42ac9/Fusion+200.jpg?format=2500w 2500w"
+                          loading="lazy"
+                          decoding="async"
+                          data-loader="sqs"
+                        >
+
+                        <img
+                          alt="Fusion 200"
+                          data-src="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/bb361d89-fe86-49a5-aeb0-cd38e6c42ac9/Fusion+200.jpg"
+                          data-image="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/bb361d89-fe86-49a5-aeb0-cd38e6c42ac9/Fusion+200.jpg"
+                          data-image-dimensions="803x877"
+                          data-image-focal-point="0.5,0.5"
+                          data-load="false"
+                          elementtiming="system-product"
+                          style="
+                            aspect-ratio: 1 / 1;
+                            object-fit: cover; width:100%; height:100%;
+                          "
+                          class="sqs-product-block-variant-image"
+                          data-image-id="383340fa-8bbe-4f05-80e6-bb82c7dfd733"
+                          src="./Whiffed Aromas _ Luxury Home and Commercial Scenting_files/Fusion+200.jpg"
+                          width="803"
+                          height="877"
+                          sizes="auto"
+                          srcset="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/bb361d89-fe86-49a5-aeb0-cd38e6c42ac9/Fusion+200.jpg?format=100w 100w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/bb361d89-fe86-49a5-aeb0-cd38e6c42ac9/Fusion+200.jpg?format=300w 300w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/bb361d89-fe86-49a5-aeb0-cd38e6c42ac9/Fusion+200.jpg?format=500w 500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/bb361d89-fe86-49a5-aeb0-cd38e6c42ac9/Fusion+200.jpg?format=750w 750w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/bb361d89-fe86-49a5-aeb0-cd38e6c42ac9/Fusion+200.jpg?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/bb361d89-fe86-49a5-aeb0-cd38e6c42ac9/Fusion+200.jpg?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/bb361d89-fe86-49a5-aeb0-cd38e6c42ac9/Fusion+200.jpg?format=2500w 2500w"
+                          loading="lazy"
+                          decoding="async"
+                          data-loader="sqs"
+                        >
+
+                        <img
+                          alt="Fusion 200"
+                          data-image-focal-point="0.5,0.5"
+                          data-src="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/bb361d89-fe86-49a5-aeb0-cd38e6c42ac9/Fusion+200.jpg"
+                          data-image="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/bb361d89-fe86-49a5-aeb0-cd38e6c42ac9/Fusion+200.jpg"
+                          data-image-dimensions="803x877"
+                          data-load="false"
+                          elementtiming="system-product"
+                          style="
+                            aspect-ratio: 1 / 1;
+                            object-fit: cover; width:100%; height:100%; object-position: 50% 50%;
+                          "
+                          class="sqs-product-block-main-image"
+                          src="./Whiffed Aromas _ Luxury Home and Commercial Scenting_files/Fusion+200.jpg"
+                          width="803"
+                          height="877"
+                          sizes="auto"
+                          srcset="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/bb361d89-fe86-49a5-aeb0-cd38e6c42ac9/Fusion+200.jpg?format=100w 100w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/bb361d89-fe86-49a5-aeb0-cd38e6c42ac9/Fusion+200.jpg?format=300w 300w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/bb361d89-fe86-49a5-aeb0-cd38e6c42ac9/Fusion+200.jpg?format=500w 500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/bb361d89-fe86-49a5-aeb0-cd38e6c42ac9/Fusion+200.jpg?format=750w 750w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/bb361d89-fe86-49a5-aeb0-cd38e6c42ac9/Fusion+200.jpg?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/bb361d89-fe86-49a5-aeb0-cd38e6c42ac9/Fusion+200.jpg?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/bb361d89-fe86-49a5-aeb0-cd38e6c42ac9/Fusion+200.jpg?format=2500w 2500w"
+                          loading="lazy"
+                          decoding="async"
+                          data-loader="sqs"
+                        >
+                      </a>
+                      <a
+                        href="https://www.whiffedaromas.com/machines-diffusers/p/fusion-200"
+                        class="product-status-link"
+                        tabindex="0"
+                      >
+                        <div class="sqs-product-mark-wrapper">
+                          <div class="product-mark sale">Sale</div>
+                        </div>
+                      </a>
+
+                      <div class="sqs-product-quick-view-button-wrapper">
+                        <span
+                          class="sqs-product-quick-view-button"
+                          role="button"
+                          tabindex="0"
+                          data-id="681fd59a7c756751d5f05a47"
+                        >
+                          Quick View
+                        </span>
+                      </div>
+                    </div>
+
+                    <div class="productDetails center">
+                      <a
+                        href="https://www.whiffedaromas.com/machines-diffusers/p/fusion-200"
+                        class="product-title"
+                        tabindex="0"
+                        >Fusion 200</a
+                      >
+
+                      <div class="product-price">
+                        <span class="visually-hidden v6-visually-hidden"> Sale Price: </span>
+                        $399.00
+                        <span class="visually-hidden v6-visually-hidden"> Original Price: </span>
+                        <span class="original-price"> $599.00 </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <script>
+                  document
+                    .querySelector('[data-definition-name="website.components.product"] .product-block')
+                    .classList.add('is-first-product-block');
+                </script>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-7c1511f283adb25f09bf" style="mix-blend-mode: normal;">
+            <div
+              class="sqs-block html-block sqs-block-html"
+              data-blend-mode="NORMAL"
+              data-block-type="2"
+              data-border-radii="{&quot;topLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;topRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0}}"
+              data-sqsp-block="text"
+              id="block-7c1511f283adb25f09bf"
+            >
+              <div class="sqs-block-content" style="position: relative; z-index: 0;">
+                <script class="TextAttributes-props" type="application/json">
+                  [
+                    {
+                      "type": "highlight",
+                      "id": "206157ee-c881-4c52-9909-ff42b5a1cebf",
+                      "shape": "scribble",
+                      "isFront": false,
+                      "isAnimationEnabled": false,
+                      "animation": "draw",
+                      "duration": 0.5,
+                      "direction": "right",
+                      "color": {
+                        "type": "THEME_COLOR"
+                      },
+                      "thickness": {
+                        "unit": "em",
+                        "value": 0.05
+                      },
+                      "linecap": "square"
+                    }
+                  ]
+                </script>
+
+                <div class="sqs-html-content" data-sqsp-text-block-content="">
+                  <h3
+                    style="text-align: center; white-space: pre-wrap; transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.193548s;"
+                    class="preFade fadeIn"
+                  >
+                    <span class="sqsrte-text-highlight" data-text-attribute-id="206157ee-c881-4c52-9909-ff42b5a1cebf"
+                      >whiff makers</span
+                    >
+                  </h3>
+                </div>
+
+                <div
+                  class="TextShape-node"
+                  data-text-attribute-id="206157ee-c881-4c52-9909-ff42b5a1cebf"
+                  data-shape="scribble"
+                  data-font-size="57"
+                  data-is-front="false"
+                  data-index="0"
+                  style="font-size: 57px; --stroke: var(--text-highlight-color); --stroke-width: 0.05em; --stroke-linecap: square; --stroke-linejoin: bevel; --blend: none; --opacity: undefined; opacity: 1; transform: scale(1); width: 256px; height: 65px; left: 572px; top: -6px;"
+                >
+                  <svg>
+                    <path d="M 0,57.2 c 19.2,-0.292500000000004 89.60000000000001,-2.144999999999996 128,-1.9500000000000028 c 38.39999999999998,0.19500000000000028 124.16,3.25 128,3.25 c 3.839999999999975,0 -67.84,-3.73749999999999 -102.4,-3.25 c -34.56,0.48749999999999716 -124.16,5.719999999999999 -128,6.5 c -3.84,0.7800000000000011 75.52000000000001,-1.2999999999999972 102.4,-1.2999999999999972 c 26.879999999999995,0 76.80000000000001,0.6174999999999997 76.80000000000001,1.2999999999999972 c 0,0.6824999999999974 -57.60000000000002,2.762500000000003 -76.80000000000001,3.25 c -19.200000000000003,0.48749999999999716 -43.52000000000001,0 -51.2,0" vector-effect="non-scaling-stroke" stroke-dasharray="795" stroke-dashoffset="1590"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      {%- endif -%}
+      </div>
     </div>
   </div>
-</div>
+</section>
 
 {% schema %}
 {

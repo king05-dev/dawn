@@ -14,52 +14,572 @@
   }
 {%- endstyle -%}
 
-<div class="whif-hero-section color-{{ section.settings.color_scheme }} gradient">
-  <div class="page-width section-{{ section.id }}-padding">
-    <div class="whif-hero-content">
-      {%- if section.settings.image != blank -%}
-        <div class="whif-hero__media">
-          {%- assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio -%}
-          {{ section.settings.image | image_url: width: section.settings.image.width | image_tag:
-            loading: 'lazy',
-            width: section.settings.image.width,
-            height: image_height,
-            alt: section.settings.image.alt | escape
-          }}
-        </div>
-      {%- endif -%}
-      
-      <div class="whif-hero__text">
-        {%- for block in section.blocks -%}
-          {%- case block.type -%}
-            {%- when 'heading' -%}
-              <h1 class="whif-hero__heading {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>
-                {{ block.settings.heading }}
-              </h1>
-            {%- when 'text' -%}
-              <div class="whif-hero__description rte" {{ block.shopify_attributes }}>
-                {{ block.settings.text }}
-              </div>
-            {%- when 'button' -%}
-              {%- if block.settings.button_label != blank -%}
-                <a
-                  {% if block.settings.button_link == blank %}
-                    role="link" aria-disabled="true"
-                  {% else %}
-                    href="{{ block.settings.button_link }}"
-                  {% endif %}
-                  class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
-                  {{ block.shopify_attributes }}
+<section
+  data-test="page-section"
+  data-section-theme="light-bold"
+  class="
+    page-section
+
+      full-bleed-section
+      layout-engine-section
+
+    background-width--full-bleed
+
+
+        section-height--custom
+
+
+
+      content-width--wide
+
+    horizontal-alignment--center
+    vertical-alignment--middle
+
+
+
+
+    light-bold
+  "
+  data-section-id="67da0c2e5d3b414ebdd381b6"
+  data-controller="SectionWrapperController"
+  data-current-styles="
+    {
+    &quot;imageOverlayOpacity&quot;: 0.45,
+    &quot;backgroundWidth&quot;: &quot;background-width--full-bleed&quot;,
+    &quot;sectionHeight&quot;: &quot;section-height--custom&quot;,
+    &quot;customSectionHeight&quot;: 0,
+    &quot;horizontalAlignment&quot;: &quot;horizontal-alignment--center&quot;,
+    &quot;verticalAlignment&quot;: &quot;vertical-alignment--middle&quot;,
+    &quot;contentWidth&quot;: &quot;content-width--wide&quot;,
+    &quot;customContentWidth&quot;: 50,
+    &quot;sectionTheme&quot;: &quot;light-bold&quot;,
+    &quot;sectionAnimation&quot;: &quot;none&quot;,
+    &quot;backgroundMode&quot;: &quot;image&quot;,
+    &quot;imageEffect&quot;: &quot;none&quot;
+    }
+  "
+  data-current-context="
+    {
+    &quot;video&quot;: {
+    &quot;playbackSpeed&quot;: 0.5,
+    &quot;filter&quot;: 3,
+    &quot;filterStrength&quot;: 38,
+    &quot;zoom&quot;: 0,
+    &quot;videoFallbackContentItemId&quot;: &quot;684ad597c2f99a1590932df6&quot;,
+    &quot;videoFallbackContentItem&quot;: {
+    &quot;id&quot;: &quot;684ad597c2f99a1590932df6&quot;,
+    &quot;recordType&quot;: 2,
+    &quot;addedOn&quot;: 1749734807902,
+    &quot;updatedOn&quot;: 1750520732437,
+    &quot;workflowState&quot;: 1,
+    &quot;publishOn&quot;: 1749734807902,
+    &quot;authorId&quot;: &quot;6648171f5a1b357b3880f9cc&quot;,
+    &quot;systemDataId&quot;: &quot;61012181-c719-4deb-a490-c3c932a6a280&quot;,
+    &quot;systemDataVariants&quot;: &quot;1667x2500,100w,300w,500w,750w,1000w,1500w&quot;,
+    &quot;systemDataSourceType&quot;: &quot;JPG&quot;,
+    &quot;filename&quot;: &quot;unsplash-image-1uVCTVSn-2o.jpg&quot;,
+    &quot;mediaFocalPoint&quot;: {
+    &quot;x&quot;: 0.5,
+    &quot;y&quot;: 0.5,
+    &quot;source&quot;: 3
+    },
+    &quot;colorData&quot;: {
+    &quot;topLeftAverage&quot;: &quot;000000&quot;,
+    &quot;topRightAverage&quot;: &quot;040404&quot;,
+    &quot;bottomLeftAverage&quot;: &quot;030303&quot;,
+    &quot;bottomRightAverage&quot;: &quot;010101&quot;,
+    &quot;centerAverage&quot;: &quot;0e0e0e&quot;,
+    &quot;suggestedBgColor&quot;: &quot;353535&quot;
+    },
+    &quot;urlId&quot;: &quot;552p6kgkq98xn51juwzfx34jj1mgdc&quot;,
+    &quot;title&quot;: &quot;&quot;,
+    &quot;body&quot;: null,
+    &quot;likeCount&quot;: 0,
+    &quot;commentCount&quot;: 0,
+    &quot;publicCommentCount&quot;: 0,
+    &quot;commentState&quot;: 2,
+    &quot;unsaved&quot;: false,
+    &quot;author&quot;: {
+    &quot;id&quot;: &quot;6648171f5a1b357b3880f9cc&quot;,
+    &quot;displayName&quot;: &quot;gerard urbano&quot;,
+    &quot;firstName&quot;: &quot;gerard&quot;,
+    &quot;lastName&quot;: &quot;urbano&quot;,
+    &quot;avatarUrl&quot;: &quot;https://images.squarespace-cdn.com/content/v2/namespaces/memberAccountAvatars/libraries/6648171f5a1b357b3880f9cc/09d8442d-84e5-4d9d-899e-06b402708b34/thirdPartyMemberAvatar-6648171f5a1b357b3880f9cc-d5a9a069-0c2c-4d00-b563-a77072e27d81?format=300w&quot;,
+    &quot;bio&quot;: &quot;&quot;,
+    &quot;avatarAssetUrl&quot;: &quot;https://images.squarespace-cdn.com/content/v2/namespaces/memberAccountAvatars/libraries/6648171f5a1b357b3880f9cc/09d8442d-84e5-4d9d-899e-06b402708b34/thirdPartyMemberAvatar-6648171f5a1b357b3880f9cc-d5a9a069-0c2c-4d00-b563-a77072e27d81?format=300w&quot;
+    },
+    &quot;assetUrl&quot;: &quot;https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/61012181-c719-4deb-a490-c3c932a6a280/unsplash-image-1uVCTVSn-2o.jpg&quot;,
+    &quot;contentType&quot;: &quot;image/jpeg&quot;,
+    &quot;items&quot;: [ ],
+    &quot;pushedServices&quot;: { },
+    &quot;pendingPushedServices&quot;: { },
+    &quot;originalSize&quot;: &quot;1667x2500&quot;,
+    &quot;recordTypeLabel&quot;: &quot;image&quot;
+    },
+    &quot;videoSourceProvider&quot;: &quot;native&quot;,
+    &quot;nativeVideoContentItem&quot;: {
+    &quot;id&quot;: &quot;684ad5481ef4b52dec072163&quot;,
+    &quot;recordType&quot;: 61,
+    &quot;addedOn&quot;: 1749734728419,
+    &quot;updatedOn&quot;: 1749734728419,
+    &quot;authorId&quot;: &quot;6648171f5a1b357b3880f9cc&quot;,
+    &quot;systemDataId&quot;: &quot;fbc7fbaf-c2c4-426e-b0ba-d81f520baec0&quot;,
+    &quot;systemDataVariants&quot;: &quot;1920:1080,640:360&quot;,
+    &quot;systemDataSourceType&quot;: &quot;mp4&quot;,
+    &quot;filename&quot;: &quot;sand background.mp4&quot;,
+    &quot;body&quot;: null,
+    &quot;likeCount&quot;: 0,
+    &quot;commentCount&quot;: 0,
+    &quot;publicCommentCount&quot;: 0,
+    &quot;commentState&quot;: 1,
+    &quot;author&quot;: {
+    &quot;id&quot;: &quot;6648171f5a1b357b3880f9cc&quot;,
+    &quot;displayName&quot;: &quot;gerard urbano&quot;,
+    &quot;firstName&quot;: &quot;gerard&quot;,
+    &quot;lastName&quot;: &quot;urbano&quot;,
+    &quot;avatarUrl&quot;: &quot;https://images.squarespace-cdn.com/content/v2/namespaces/memberAccountAvatars/libraries/6648171f5a1b357b3880f9cc/09d8442d-84e5-4d9d-899e-06b402708b34/thirdPartyMemberAvatar-6648171f5a1b357b3880f9cc-d5a9a069-0c2c-4d00-b563-a77072e27d81?format=300w&quot;,
+    &quot;bio&quot;: &quot;&quot;,
+    &quot;avatarAssetUrl&quot;: &quot;https://images.squarespace-cdn.com/content/v2/namespaces/memberAccountAvatars/libraries/6648171f5a1b357b3880f9cc/09d8442d-84e5-4d9d-899e-06b402708b34/thirdPartyMemberAvatar-6648171f5a1b357b3880f9cc-d5a9a069-0c2c-4d00-b563-a77072e27d81?format=300w&quot;
+    },
+    &quot;contentType&quot;: &quot;video/mp4&quot;,
+    &quot;structuredContent&quot;: {
+    &quot;_type&quot;: &quot;SqspHostedVideo&quot;,
+    &quot;videoCodec&quot;: &quot;h264&quot;,
+    &quot;audioCodec&quot;: &quot;aac&quot;,
+    &quot;alexandriaUrl&quot;: &quot;https://video.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/fbc7fbaf-c2c4-426e-b0ba-d81f520baec0/{variant}&quot;,
+    &quot;alexandriaLibraryId&quot;: &quot;67da0c2c5d3b414ebdd380a0&quot;,
+    &quot;aspectRatio&quot;: 1.7777777777777777,
+    &quot;durationSeconds&quot;: 8
+    },
+    &quot;videoCodec&quot;: &quot;h264&quot;,
+    &quot;audioCodec&quot;: &quot;aac&quot;,
+    &quot;alexandriaUrl&quot;: &quot;https://video.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/fbc7fbaf-c2c4-426e-b0ba-d81f520baec0/{variant}&quot;,
+    &quot;alexandriaLibraryId&quot;: &quot;67da0c2c5d3b414ebdd380a0&quot;,
+    &quot;aspectRatio&quot;: 1.7777777777777777,
+    &quot;durationSeconds&quot;: 8,
+    &quot;items&quot;: [ ],
+    &quot;pushedServices&quot;: { },
+    &quot;pendingPushedServices&quot;: { },
+    &quot;usageId&quot;: &quot;32b0de5d-5d0c-3a46-bb8b-aec29faf4f13&quot;,
+    &quot;originalSize&quot;: &quot;1920:1080&quot;,
+    &quot;recordTypeLabel&quot;: &quot;sqsp-hosted-video&quot;
+    }
+    },
+    &quot;backgroundImageId&quot;: null,
+    &quot;backgroundMediaEffect&quot;: {
+    &quot;type&quot;: &quot;none&quot;
+    },
+    &quot;divider&quot;: {
+    &quot;enabled&quot;: false,
+    &quot;type&quot;: &quot;none&quot;,
+    &quot;width&quot;: {
+    &quot;unit&quot;: &quot;vw&quot;,
+    &quot;value&quot;: 100.0
+    },
+    &quot;height&quot;: {
+    &quot;unit&quot;: &quot;vw&quot;,
+    &quot;value&quot;: 8.0
+    },
+    &quot;isFlipX&quot;: false,
+    &quot;isFlipY&quot;: false,
+    &quot;offset&quot;: {
+    &quot;unit&quot;: &quot;px&quot;,
+    &quot;value&quot;: 0.0
+    },
+    &quot;stroke&quot;: {
+    &quot;style&quot;: &quot;solid&quot;,
+    &quot;color&quot;: {
+    &quot;type&quot;: &quot;THEME_COLOR&quot;
+    },
+    &quot;thickness&quot;: {
+    &quot;unit&quot;: &quot;px&quot;,
+    &quot;value&quot;: 6.0
+    },
+    &quot;dashLength&quot;: {
+    &quot;unit&quot;: &quot;px&quot;,
+    &quot;value&quot;: 5.0
+    },
+    &quot;gapLength&quot;: {
+    &quot;unit&quot;: &quot;px&quot;,
+    &quot;value&quot;: 15.0
+    },
+    &quot;linecap&quot;: &quot;square&quot;
+    }
+    },
+    &quot;typeName&quot;: &quot;page&quot;
+    }
+  "
+  data-animation="none"
+  data-fluid-engine-section=""
+  data-controllers-bound="SectionWrapperController,SectionWrapperController"
+  id="yui_3_17_2_1_1759180599887_129"
+  data-active="true"
+>
+  <div class="section-border">
+    <div class="section-background"></div>
+  </div>
+  <div
+    class="content-wrapper"
+    style="
+
+
+
+
+      padding-top: calc(0vmax / 10); padding-bottom: calc(0vmax / 10);
+    "
+    id="yui_3_17_2_1_1759180599887_128"
+  >
+    <div class="content" id="yui_3_17_2_1_1759180599887_127">
+      <div data-fluid-engine="true" id="yui_3_17_2_1_1759180599887_126">
+        <style>
+          .fe-67da0c2e5d3b414ebdd381b5 {
+            --grid-gutter: calc(var(--sqs-mobile-site-gutter, 6vw) - 0px);
+            --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (0px * (8 - 1))) / 8);
+
+            display: grid;
+            position: relative;
+            grid-area: 1/1/-1/-1;
+            grid-template-rows: repeat(20, minmax(24px, auto));
+            grid-template-columns:
+              minmax(var(--grid-gutter), 1fr)
+              repeat(8, minmax(0, var(--cell-max-width)))
+              minmax(var(--grid-gutter), 1fr);
+            row-gap: 0px;
+            column-gap: 0px;
+            overflow-x: hidden;
+            overflow-x: clip;
+          }
+
+          @media (min-width: 768px) {
+            .background-width--inset .fe-67da0c2e5d3b414ebdd381b5 {
+              --inset-padding: calc(var(--sqs-site-gutter) * 2);
+            }
+
+            .fe-67da0c2e5d3b414ebdd381b5 {
+              --grid-gutter: calc(var(--sqs-site-gutter, 4vw) - 0px);
+              --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (0px * (24 - 1))) / 24);
+              --inset-padding: 0vw;
+
+              --row-height-scaling-factor: 0.0215;
+              --container-width: min(
+                var(--sqs-site-max-width, 1500px),
+                calc(100vw - var(--sqs-site-gutter, 4vw) * 2 - var(--inset-padding))
+              );
+
+              grid-template-rows: repeat(
+                18,
+                minmax(calc(var(--container-width) * var(--row-height-scaling-factor)), auto)
+              );
+              grid-template-columns:
+                minmax(var(--grid-gutter), 1fr)
+                repeat(24, minmax(0, var(--cell-max-width)))
+                minmax(var(--grid-gutter), 1fr);
+            }
+          }
+
+          .fe-block-yui_3_17_2_1_1756262633953_6409 {
+            grid-area: 5/1/17/11;
+            z-index: 1;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-yui_3_17_2_1_1756262633953_6409 .sqs-block {
+            justify-content: flex-start;
+          }
+
+          .fe-block-yui_3_17_2_1_1756262633953_6409 .sqs-block-alignment-wrapper {
+            align-items: flex-start;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-yui_3_17_2_1_1756262633953_6409 {
+              grid-area: 1/1/19/14;
+              z-index: 8;
+            }
+
+            .fe-block-yui_3_17_2_1_1756262633953_6409 .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-yui_3_17_2_1_1756262633953_6409 .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+
+          .fe-block-yui_3_17_2_1_1742343219414_4452 {
+            grid-area: 1/2/6/10;
+            z-index: 2;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-yui_3_17_2_1_1742343219414_4452 .sqs-block {
+            justify-content: flex-start;
+          }
+
+          .fe-block-yui_3_17_2_1_1742343219414_4452 .sqs-block-alignment-wrapper {
+            align-items: flex-start;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-yui_3_17_2_1_1742343219414_4452 {
+              grid-area: 4/15/11/26;
+              z-index: 1;
+            }
+
+            .fe-block-yui_3_17_2_1_1742343219414_4452 .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-yui_3_17_2_1_1742343219414_4452 .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+
+          .fe-block-yui_3_17_2_1_1742343219414_6736 {
+            grid-area: 18/2/20/6;
+            z-index: 3;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-yui_3_17_2_1_1742343219414_6736 .sqs-block {
+            justify-content: center;
+          }
+
+          .fe-block-yui_3_17_2_1_1742343219414_6736 .sqs-block-alignment-wrapper {
+            align-items: center;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-yui_3_17_2_1_1742343219414_6736 {
+              grid-area: 12/21/14/25;
+              z-index: 2;
+            }
+
+            .fe-block-yui_3_17_2_1_1742343219414_6736 .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-yui_3_17_2_1_1742343219414_6736 .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+
+          .fe-block-f6da4aab70485b185141 {
+            grid-area: 18/6/20/10;
+            z-index: 4;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-f6da4aab70485b185141 .sqs-block {
+            justify-content: center;
+          }
+
+          .fe-block-f6da4aab70485b185141 .sqs-block-alignment-wrapper {
+            align-items: center;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-f6da4aab70485b185141 {
+              grid-area: 12/16/14/20;
+              z-index: 3;
+            }
+
+            .fe-block-f6da4aab70485b185141 .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-f6da4aab70485b185141 .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+        </style>
+        <div class="fluid-engine fe-67da0c2e5d3b414ebdd381b5" id="yui_3_17_2_1_1759180599887_125">
+          <div class="fe-block fe-block-yui_3_17_2_1_1756262633953_6409" id="yui_3_17_2_1_1759180599887_124">
+            <div
+              class="sqs-block image-block sqs-block-image sqs-stretched sqs-text-ready"
+              data-aspect-ratio="73.3917648732342"
+              data-block-type="5"
+              data-sqsp-block="image"
+              id="block-yui_3_17_2_1_1756262633953_6409"
+            >
+              <div class="sqs-block-content" id="yui_3_17_2_1_1759180599887_123" style="height: 100%; width: 100%;">
+                <div
+                  class="image-block-outer-wrapper layout-caption-below design-layout-fluid image-position-left combination-animation-site-default individual-animation-site-default animation-loaded"
+                  data-test="image-block-fluid-outer-wrapper"
+                  id="yui_3_17_2_1_1759180599887_122"
                 >
-                  {{ block.settings.button_label | escape }}
-                </a>
-              {%- endif -%}
-          {%- endcase -%}
-        {%- endfor -%}
+                  <div
+                    class="fluid-image-animation-wrapper sqs-image sqs-block-alignment-wrapper"
+                    data-animation-role="image"
+                    id="yui_3_17_2_1_1759180599887_121"
+                  >
+                    <div
+                      class="fluid-image-container sqs-image-content"
+                      style="overflow: hidden;-webkit-mask-image: -webkit-radial-gradient(white, black);position: relative;width: 100%;height: 100%;"
+                      data-sqsp-image-block-image-container=""
+                      id="yui_3_17_2_1_1759180599887_120"
+                    >
+                      <div class="content-fill" id="yui_3_17_2_1_1759180599887_116">
+                        <img
+                          data-stretch="true"
+                          data-src="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/46eaaefd-bbff-4559-b677-8effbb52ef19/WhatsApp+Image+2025-07-09+at+15.28.13_b01f0a08.jpg"
+                          data-image="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/46eaaefd-bbff-4559-b677-8effbb52ef19/WhatsApp+Image+2025-07-09+at+15.28.13_b01f0a08.jpg"
+                          data-image-dimensions="1600x1200"
+                          data-image-focal-point="0.5,0.5"
+                          alt="A collection of Whitfed aromatherapy products and devices on a black surface with a dark background."
+                          data-load="false"
+                          elementtiming="system-image-block"
+                          data-sqsp-image-block-image=""
+                          src="./Whiffed Aromas _ Luxury Home and Commercial Scenting_files/WhatsApp+Image+2025-07-09+at+15.28.13_b01f0a08.jpg"
+                          width="1600"
+                          height="1200"
+                          sizes="100vw"
+                          style="display:block;object-fit: cover; object-position: 50% 50%"
+                          srcset="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/46eaaefd-bbff-4559-b677-8effbb52ef19/WhatsApp+Image+2025-07-09+at+15.28.13_b01f0a08.jpg?format=100w 100w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/46eaaefd-bbff-4559-b677-8effbb52ef19/WhatsApp+Image+2025-07-09+at+15.28.13_b01f0a08.jpg?format=300w 300w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/46eaaefd-bbff-4559-b677-8effbb52ef19/WhatsApp+Image+2025-07-09+at+15.28.13_b01f0a08.jpg?format=500w 500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/46eaaefd-bbff-4559-b677-8effbb52ef19/WhatsApp+Image+2025-07-09+at+15.28.13_b01f0a08.jpg?format=750w 750w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/46eaaefd-bbff-4559-b677-8effbb52ef19/WhatsApp+Image+2025-07-09+at+15.28.13_b01f0a08.jpg?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/46eaaefd-bbff-4559-b677-8effbb52ef19/WhatsApp+Image+2025-07-09+at+15.28.13_b01f0a08.jpg?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/46eaaefd-bbff-4559-b677-8effbb52ef19/WhatsApp+Image+2025-07-09+at+15.28.13_b01f0a08.jpg?format=2500w 2500w"
+                          loading="lazy"
+                          decoding="async"
+                          data-loader="sqs"
+                        >
+
+                        <div class="fluidImageOverlay"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  .sqs-block-image .sqs-block-content {
+                    height: 100%;
+                    width: 100%;
+                  }
+
+                  .fe-block-yui_3_17_2_1_1756262633953_6409 .fluidImageOverlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    mix-blend-mode: normal;
+
+                    opacity: 0;
+                  }
+                </style>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-yui_3_17_2_1_1742343219414_4452" style="mix-blend-mode: normal;">
+            <div
+              class="sqs-block html-block sqs-block-html"
+              data-blend-mode="NORMAL"
+              data-block-type="2"
+              data-border-radii="{&quot;topLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;topRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0}}"
+              data-sqsp-block="text"
+              id="block-yui_3_17_2_1_1742343219414_4452"
+            >
+              <div class="sqs-block-content">
+                <script class="TextAttributes-props" type="application/json">
+                  [
+                    {
+                      "type": "highlight",
+                      "id": "ba883ca1-3072-4f18-a90c-b4770e07bcbc",
+                      "shape": "underline",
+                      "isFront": false,
+                      "isAnimationEnabled": false,
+                      "animation": "draw",
+                      "duration": 0.5,
+                      "direction": "right",
+                      "color": {
+                        "type": "THEME_COLOR"
+                      },
+                      "thickness": {
+                        "unit": "em",
+                        "value": 0.1
+                      },
+                      "linecap": "square"
+                    }
+                  ]
+                </script>
+
+                <div class="sqs-html-content" data-sqsp-text-block-content="">
+                  <h2 style="text-align:center;white-space:pre-wrap;">
+                    The art of <span style="text-decoration:line-through">scenting</span> whiffing
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-yui_3_17_2_1_1742343219414_6736">
+            <div
+              class="sqs-block button-block sqs-block-button sqs-stretched"
+              data-block-type="53"
+              data-sqsp-block="button"
+              id="block-yui_3_17_2_1_1742343219414_6736"
+            >
+              <div class="sqs-block-content" id="yui_3_17_2_1_1759180599887_543">
+                <div
+                  class="sqs-block-button-container sqs-block-button-container--center preFade fadeIn"
+                  data-animation-role="button"
+                  data-alignment="center"
+                  data-button-size="large"
+                  data-button-type="secondary"
+                  id="yui_3_17_2_1_1759180599887_542"
+                  style="transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.0596273s;"
+                >
+                  <a
+                    href="https://www.whiffedaromas.com/machines-diffusers"
+                    class="sqs-block-button-element--large sqs-button-element--secondary sqs-block-button-element"
+                    data-sqsp-button=""
+                    data-initialized="true"
+                    tabindex="0"
+                  >
+                    Shop Machines
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-f6da4aab70485b185141">
+            <div
+              class="sqs-block button-block sqs-block-button sqs-stretched"
+              data-block-type="53"
+              data-sqsp-block="button"
+              id="block-f6da4aab70485b185141"
+            >
+              <div class="sqs-block-content" id="yui_3_17_2_1_1759180599887_550">
+                <div
+                  class="sqs-block-button-container sqs-block-button-container--center preFade fadeIn"
+                  data-animation-role="button"
+                  data-alignment="center"
+                  data-button-size="large"
+                  data-button-type="secondary"
+                  id="yui_3_17_2_1_1759180599887_549"
+                  style="transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.063354s;"
+                >
+                  <a
+                    href="https://www.whiffedaromas.com/substances-oils"
+                    class="sqs-block-button-element--large sqs-button-element--secondary sqs-block-button-element"
+                    data-sqsp-button=""
+                    data-initialized="true"
+                    tabindex="0"
+                  >
+                    Shop Scents
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
 {% schema %}
 {
