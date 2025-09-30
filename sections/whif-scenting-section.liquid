@@ -1,5 +1,3 @@
-{{ 'section-whif-scenting.css' | asset_url | stylesheet_tag }}
-
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -13,94 +11,1106 @@
     }
   }
 {%- endstyle -%}
+<section
+  data-test="page-section"
+  data-section-theme="light-bold"
+  class="
+    page-section
 
-<div class="whif-scenting-section color-{{ section.settings.color_scheme }} gradient">
-  <div class="page-width section-{{ section.id }}-padding">
-    <div class="whif-scenting-content">
-      {%- if section.settings.heading != blank -%}
-        <h2 class="whif-scenting__heading">{{ section.settings.heading }}</h2>
-      {%- endif -%}
-      
-      {%- if section.settings.description != blank -%}
-        <div class="whif-scenting__description rte">
-          {{ section.settings.description }}
-        </div>
-      {%- endif -%}
+      full-bleed-section
+      layout-engine-section
 
-      <div class="whif-scenting__benefits">
-        {%- for block in section.blocks -%}
-          {%- case block.type -%}
-            {%- when 'benefit' -%}
-              <div class="scenting-benefit" {{ block.shopify_attributes }}>
-                {%- if block.settings.benefit_icon != blank -%}
-                  <div class="benefit-icon">
-                    {{ block.settings.benefit_icon | image_url: width: 80 | image_tag: loading: 'lazy', alt: block.settings.benefit_title }}
-                  </div>
-                {%- endif -%}
-                <div class="benefit-content">
-                  <h3>{{ block.settings.benefit_title }}</h3>
-                  <p>{{ block.settings.benefit_description }}</p>
+    background-width--full-bleed
+
+
+        section-height--custom
+
+
+
+      content-width--wide
+
+    horizontal-alignment--center
+    vertical-alignment--middle
+
+
+
+
+    light-bold
+  "
+  data-section-id="6893474d5bf7ef68cc0b3718"
+  data-controller="SectionWrapperController"
+  data-current-styles="
+    {
+    &quot;imageOverlayOpacity&quot;: 0.15,
+    &quot;backgroundWidth&quot;: &quot;background-width--full-bleed&quot;,
+    &quot;sectionHeight&quot;: &quot;section-height--custom&quot;,
+    &quot;customSectionHeight&quot;: 0,
+    &quot;horizontalAlignment&quot;: &quot;horizontal-alignment--center&quot;,
+    &quot;verticalAlignment&quot;: &quot;vertical-alignment--middle&quot;,
+    &quot;contentWidth&quot;: &quot;content-width--wide&quot;,
+    &quot;customContentWidth&quot;: 50,
+    &quot;sectionTheme&quot;: &quot;light-bold&quot;,
+    &quot;sectionAnimation&quot;: &quot;none&quot;,
+    &quot;backgroundMode&quot;: &quot;image&quot;
+    }
+  "
+  data-current-context="
+    {
+    &quot;video&quot;: {
+    &quot;playbackSpeed&quot;: 0.5,
+    &quot;filter&quot;: 1,
+    &quot;filterStrength&quot;: 0,
+    &quot;zoom&quot;: 0,
+    &quot;videoSourceProvider&quot;: &quot;none&quot;
+    },
+    &quot;backgroundImageId&quot;: null,
+    &quot;backgroundMediaEffect&quot;: {
+    &quot;type&quot;: &quot;none&quot;
+    },
+    &quot;divider&quot;: {
+    &quot;enabled&quot;: false
+    },
+    &quot;typeName&quot;: &quot;page&quot;
+    }
+  "
+  data-animation="none"
+  data-fluid-engine-section=""
+  data-controllers-bound="SectionWrapperController,SectionWrapperController"
+  id="yui_3_17_2_1_1759180599887_215"
+  data-active="true"
+>
+  <div class="section-border">
+    <div class="section-background"></div>
+  </div>
+  <div
+    class="content-wrapper"
+    style="
+
+
+
+
+      padding-top: calc(0vmax / 10); padding-bottom: calc(0vmax / 10);
+    "
+    id="yui_3_17_2_1_1759180599887_214"
+  >
+    <div class="content" id="yui_3_17_2_1_1759180599887_213">
+      <div data-fluid-engine="true" id="yui_3_17_2_1_1759180599887_212">
+        <style>
+          .fe-6893474d5bf7ef68cc0b3717 {
+            --grid-gutter: calc(var(--sqs-mobile-site-gutter, 6vw) - 10px);
+            --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (10px * (8 - 1))) / 8);
+
+            display: grid;
+            position: relative;
+            grid-area: 1/1/-1/-1;
+            grid-template-rows: repeat(32, minmax(24px, auto));
+            grid-template-columns:
+              minmax(var(--grid-gutter), 1fr)
+              repeat(8, minmax(0, var(--cell-max-width)))
+              minmax(var(--grid-gutter), 1fr);
+            row-gap: 0px;
+            column-gap: 10px;
+            overflow-x: hidden;
+            overflow-x: clip;
+          }
+
+          @media (min-width: 768px) {
+            .background-width--inset .fe-6893474d5bf7ef68cc0b3717 {
+              --inset-padding: calc(var(--sqs-site-gutter) * 2);
+            }
+
+            .fe-6893474d5bf7ef68cc0b3717 {
+              --grid-gutter: calc(var(--sqs-site-gutter, 4vw) - 10px);
+              --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (10px * (24 - 1))) / 24);
+              --inset-padding: 0vw;
+
+              --row-height-scaling-factor: 0.0215;
+              --container-width: min(
+                var(--sqs-site-max-width, 1500px),
+                calc(100vw - var(--sqs-site-gutter, 4vw) * 2 - var(--inset-padding))
+              );
+
+              grid-template-rows: repeat(
+                22,
+                minmax(calc(var(--container-width) * var(--row-height-scaling-factor)), auto)
+              );
+              grid-template-columns:
+                minmax(var(--grid-gutter), 1fr)
+                repeat(24, minmax(0, var(--cell-max-width)))
+                minmax(var(--grid-gutter), 1fr);
+            }
+          }
+
+          .fe-block-030a4f5110a5f9342e94 {
+            grid-area: 2/2/5/10;
+            z-index: 3;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-030a4f5110a5f9342e94 .sqs-block {
+            justify-content: center;
+          }
+
+          .fe-block-030a4f5110a5f9342e94 .sqs-block-alignment-wrapper {
+            align-items: center;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-030a4f5110a5f9342e94 {
+              grid-area: 3/9/6/19;
+              z-index: 2;
+            }
+
+            .fe-block-030a4f5110a5f9342e94 .sqs-block {
+              justify-content: flex-start;
+            }
+
+            .fe-block-030a4f5110a5f9342e94 .sqs-block-alignment-wrapper {
+              align-items: flex-start;
+            }
+          }
+
+          .fe-block-1d9c71a2c35a71f8703f {
+            grid-area: 5/2/6/10;
+            z-index: 12;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-1d9c71a2c35a71f8703f .sqs-block {
+            justify-content: flex-start;
+          }
+
+          .fe-block-1d9c71a2c35a71f8703f .sqs-block-alignment-wrapper {
+            align-items: flex-start;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-1d9c71a2c35a71f8703f {
+              grid-area: 5/2/6/26;
+              z-index: 12;
+            }
+
+            .fe-block-1d9c71a2c35a71f8703f .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-1d9c71a2c35a71f8703f .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+
+          .fe-block-01a25899906a79fba617 {
+            grid-area: 7/2/15/10;
+            z-index: 1;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-01a25899906a79fba617 .sqs-block {
+            justify-content: center;
+          }
+
+          .fe-block-01a25899906a79fba617 .sqs-block-alignment-wrapper {
+            align-items: center;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-01a25899906a79fba617 {
+              grid-area: 8/2/21/10;
+              z-index: 0;
+            }
+
+            .fe-block-01a25899906a79fba617 .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-01a25899906a79fba617 .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+
+          .fe-block-9f6914d1780c990d86a7 {
+            grid-area: 10/4/12/8;
+            z-index: 6;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-9f6914d1780c990d86a7 .sqs-block {
+            justify-content: flex-start;
+          }
+
+          .fe-block-9f6914d1780c990d86a7 .sqs-block-alignment-wrapper {
+            align-items: flex-start;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-9f6914d1780c990d86a7 {
+              grid-area: 9/2/11/10;
+              z-index: 1;
+            }
+
+            .fe-block-9f6914d1780c990d86a7 .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-9f6914d1780c990d86a7 .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+
+          .fe-block-yui_3_17_2_1_1754535766595_7683 {
+            grid-area: 12/3/14/9;
+            z-index: 11;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-yui_3_17_2_1_1754535766595_7683 .sqs-block {
+            justify-content: flex-end;
+          }
+
+          .fe-block-yui_3_17_2_1_1754535766595_7683 .sqs-block-alignment-wrapper {
+            align-items: flex-end;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-yui_3_17_2_1_1754535766595_7683 {
+              grid-area: 18/3/20/9;
+              z-index: 7;
+            }
+
+            .fe-block-yui_3_17_2_1_1754535766595_7683 .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-yui_3_17_2_1_1754535766595_7683 .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+
+          .fe-block-13d0e23062329bb003a5 {
+            grid-area: 16/2/23/10;
+            z-index: 7;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-13d0e23062329bb003a5 .sqs-block {
+            justify-content: center;
+          }
+
+          .fe-block-13d0e23062329bb003a5 .sqs-block-alignment-wrapper {
+            align-items: center;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-13d0e23062329bb003a5 {
+              grid-area: 8/10/21/18;
+              z-index: 4;
+            }
+
+            .fe-block-13d0e23062329bb003a5 .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-13d0e23062329bb003a5 .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+
+          .fe-block-f1e013d0e78ada5d1d4b {
+            grid-area: 17/3/19/9;
+            z-index: 9;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-f1e013d0e78ada5d1d4b .sqs-block {
+            justify-content: flex-end;
+          }
+
+          .fe-block-f1e013d0e78ada5d1d4b .sqs-block-alignment-wrapper {
+            align-items: flex-end;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-f1e013d0e78ada5d1d4b {
+              grid-area: 9/10/11/18;
+              z-index: 5;
+            }
+
+            .fe-block-f1e013d0e78ada5d1d4b .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-f1e013d0e78ada5d1d4b .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+
+          .fe-block-eb7869f6966e7833bbdc {
+            grid-area: 20/3/22/9;
+            z-index: 13;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-eb7869f6966e7833bbdc .sqs-block {
+            justify-content: flex-end;
+          }
+
+          .fe-block-eb7869f6966e7833bbdc .sqs-block-alignment-wrapper {
+            align-items: flex-end;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-eb7869f6966e7833bbdc {
+              grid-area: 18/11/20/17;
+              z-index: 9;
+            }
+
+            .fe-block-eb7869f6966e7833bbdc .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-eb7869f6966e7833bbdc .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+
+          .fe-block-95441640d3ff031c4d19 {
+            grid-area: 24/2/31/10;
+            z-index: 2;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-95441640d3ff031c4d19 .sqs-block {
+            justify-content: center;
+          }
+
+          .fe-block-95441640d3ff031c4d19 .sqs-block-alignment-wrapper {
+            align-items: center;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-95441640d3ff031c4d19 {
+              grid-area: 8/18/21/26;
+              z-index: 1;
+            }
+
+            .fe-block-95441640d3ff031c4d19 .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-95441640d3ff031c4d19 .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+
+          .fe-block-77916ffacb3e8935069e {
+            grid-area: 25/3/27/9;
+            z-index: 10;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-77916ffacb3e8935069e .sqs-block {
+            justify-content: flex-end;
+          }
+
+          .fe-block-77916ffacb3e8935069e .sqs-block-alignment-wrapper {
+            align-items: flex-end;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-77916ffacb3e8935069e {
+              grid-area: 9/18/11/26;
+              z-index: 6;
+            }
+
+            .fe-block-77916ffacb3e8935069e .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-77916ffacb3e8935069e .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+
+          .fe-block-43d96ef660285b79d3f1 {
+            grid-area: 28/3/30/9;
+            z-index: 12;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-43d96ef660285b79d3f1 .sqs-block {
+            justify-content: flex-end;
+          }
+
+          .fe-block-43d96ef660285b79d3f1 .sqs-block-alignment-wrapper {
+            align-items: flex-end;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-43d96ef660285b79d3f1 {
+              grid-area: 18/19/20/25;
+              z-index: 8;
+            }
+
+            .fe-block-43d96ef660285b79d3f1 .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-43d96ef660285b79d3f1 .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+        </style>
+        <div class="fluid-engine fe-6893474d5bf7ef68cc0b3717" id="yui_3_17_2_1_1759180599887_211">
+          <div class="fe-block fe-block-030a4f5110a5f9342e94" style="mix-blend-mode: normal;">
+            <div
+              class="sqs-block html-block sqs-block-html"
+              data-blend-mode="NORMAL"
+              data-block-type="2"
+              data-border-radii="{&quot;topLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;topRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0}}"
+              data-sqsp-block="text"
+              id="block-030a4f5110a5f9342e94"
+            >
+              <div class="sqs-block-content">
+                <script class="TextAttributes-props" type="application/json">
+                  [
+                    {
+                      "type": "highlight",
+                      "id": "19630911-16a9-49f5-abfa-48a9cd4c7e78",
+                      "shape": "underline",
+                      "isFront": false,
+                      "isAnimationEnabled": false,
+                      "animation": "draw",
+                      "duration": 0.5,
+                      "direction": "right",
+                      "color": {
+                        "type": "SITE_PALETTE_COLOR",
+                        "sitePaletteColor": {
+                          "colorName": "accent",
+                          "alphaModifier": 1.0
+                        }
+                      },
+                      "thickness": {
+                        "unit": "em",
+                        "value": 0.1
+                      },
+                      "linecap": "square"
+                    },
+                    {
+                      "type": "highlight",
+                      "id": "cf9da2ea-3897-40bb-a448-78c1a1594d04",
+                      "shape": "underline",
+                      "isFront": false,
+                      "isAnimationEnabled": false,
+                      "animation": "draw",
+                      "duration": 0.5,
+                      "direction": "right",
+                      "color": {
+                        "type": "SITE_PALETTE_COLOR",
+                        "sitePaletteColor": {
+                          "colorName": "lightAccent",
+                          "alphaModifier": 1.0
+                        }
+                      },
+                      "thickness": {
+                        "unit": "em",
+                        "value": 0.1
+                      },
+                      "linecap": "square"
+                    },
+                    {
+                      "type": "highlight",
+                      "id": "9107e6c1-96ae-42ae-a06c-fc1ec17e7189",
+                      "shape": "scribble",
+                      "isFront": false,
+                      "isAnimationEnabled": false,
+                      "animation": "draw",
+                      "duration": 0.5,
+                      "direction": "right",
+                      "color": {
+                        "type": "THEME_COLOR"
+                      },
+                      "thickness": {
+                        "unit": "em",
+                        "value": 0.1
+                      },
+                      "linecap": "square"
+                    },
+                    {
+                      "type": "highlight",
+                      "id": "4b1e8902-2403-48bf-978c-0f73c1466e92",
+                      "shape": "underline",
+                      "isFront": false,
+                      "isAnimationEnabled": false,
+                      "animation": "draw",
+                      "duration": 0.5,
+                      "direction": "right",
+                      "color": {
+                        "type": "SITE_PALETTE_COLOR",
+                        "sitePaletteColor": {
+                          "colorName": "accent",
+                          "alphaModifier": 1.0
+                        }
+                      },
+                      "thickness": {
+                        "unit": "em",
+                        "value": 0.1
+                      },
+                      "linecap": "square"
+                    }
+                  ]
+                </script>
+
+                <div class="sqs-html-content" data-sqsp-text-block-content="">
+                  <h3
+                    style="text-align: center; white-space: pre-wrap; transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.197419s;"
+                    class="preFade fadeIn"
+                  >
+                    Scenting unlike any other
+                  </h3>
                 </div>
               </div>
-            {%- when 'scent_category' -%}
-              <div class="scent-category" {{ block.shopify_attributes }}>
-                {%- if block.settings.category_image != blank -%}
-                  <div class="category-image">
-                    {{ block.settings.category_image | image_url: width: 300 | image_tag: loading: 'lazy', alt: block.settings.category_name }}
-                  </div>
-                {%- endif -%}
-                <div class="category-info">
-                  <h4>{{ block.settings.category_name }}</h4>
-                  <p>{{ block.settings.category_description }}</p>
-                  {%- if block.settings.category_link != blank -%}
-                    <a href="{{ block.settings.category_link }}" class="category-link">
-                      Explore {{ block.settings.category_name }}
-                    </a>
-                  {%- endif -%}
-                </div>
-              </div>
-            {%- when 'how_it_works' -%}
-              <div class="how-it-works" {{ block.shopify_attributes }}>
-                <h3>{{ block.settings.step_title }}</h3>
-                <div class="step-number">{{ block.settings.step_number }}</div>
-                <p>{{ block.settings.step_description }}</p>
-              </div>
-            {%- when 'button' -%}
-              {%- if block.settings.button_label != blank -%}
-                <a
-                  {% if block.settings.button_link == blank %}
-                    role="link" aria-disabled="true"
-                  {% else %}
-                    href="{{ block.settings.button_link }}"
-                  {% endif %}
-                  class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
-                  {{ block.shopify_attributes }}
+            </div>
+          </div>
+          <div class="fe-block fe-block-1d9c71a2c35a71f8703f">
+            <div class="sqs-block code-block sqs-block-code" data-block-type="23" id="block-1d9c71a2c35a71f8703f">
+              <div class="sqs-block-content">
+                <p
+                  style="color: white; text-align: center; font-size: 15px; font-weight: 700; transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.20129s;"
+                  class="preFade fadeIn"
                 >
-                  {{ block.settings.button_label | escape }}
-                </a>
-              {%- endif -%}
-          {%- endcase -%}
-        {%- endfor -%}
-      </div>
+                  Oils that make you stop and linger
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-01a25899906a79fba617" id="yui_3_17_2_1_1759180599887_210">
+            <div
+              class="sqs-block image-block sqs-block-image sqs-stretched sqs-text-ready"
+              data-block-type="5"
+              data-sqsp-block="image"
+              id="block-01a25899906a79fba617"
+            >
+              <div class="sqs-block-content" id="yui_3_17_2_1_1759180599887_209" style="height: 100%; width: 100%;">
+                <div
+                  class="
+                    image-block-outer-wrapper
+                    layout-caption-below
+                    design-layout-fluid
+                    image-position-left
+                    combination-animation-none
+                    individual-animation-none
+                  "
+                  data-test="image-block-fluid-outer-wrapper"
+                  id="yui_3_17_2_1_1759180599887_208"
+                >
+                  <div
+                    class="fluid-image-animation-wrapper sqs-image sqs-block-alignment-wrapper preFade fadeIn"
+                    data-animation-role="image"
+                    id="yui_3_17_2_1_1759180599887_207"
+                    style="transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.205161s;"
+                  >
+                    <div
+                      class="fluid-image-container sqs-image-content"
+                      style="overflow: hidden;-webkit-mask-image: -webkit-radial-gradient(white, black);border-top-left-radius: 30px;border-top-right-radius: 30px;border-bottom-left-radius: 30px;border-bottom-right-radius: 30px;position: relative;width: 100%;height: 100%;"
+                      data-sqsp-image-block-image-container=""
+                      id="yui_3_17_2_1_1759180599887_206"
+                    >
+                      <a
+                        class="sqs-block-image-link content-fill"
+                        href="https://www.whiffedaromas.com/substances-oils/gilded-exotics-collection"
+                        data-sqsp-image-block-link=""
+                        id="yui_3_17_2_1_1759180599887_203"
+                        tabindex="0"
+                      >
+                        <img
+                          data-stretch="true"
+                          data-src="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/cb16f3d9-d2da-4eb7-a073-afcf27b388c9/gilded+exotics+woman.jpeg"
+                          data-image="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/cb16f3d9-d2da-4eb7-a073-afcf27b388c9/gilded+exotics+woman.jpeg"
+                          data-image-dimensions="2048x2048"
+                          data-image-focal-point="0.5,0.5"
+                          alt="Modern living room with large windows, beige sofa, plants, gold and beige furniture, a woman in a white dress, and a gold-framed mirror."
+                          data-load="false"
+                          elementtiming="system-image-block"
+                          data-sqsp-image-block-image=""
+                          src="./Whiffed Aromas _ Luxury Home and Commercial Scenting_files/gilded+exotics+woman.jpeg"
+                          width="2048"
+                          height="2048"
+                          sizes="100vw"
+                          style="display:block;object-fit: cover; object-position: 50% 50%"
+                          srcset="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/cb16f3d9-d2da-4eb7-a073-afcf27b388c9/gilded+exotics+woman.jpeg?format=100w 100w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/cb16f3d9-d2da-4eb7-a073-afcf27b388c9/gilded+exotics+woman.jpeg?format=300w 300w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/cb16f3d9-d2da-4eb7-a073-afcf27b388c9/gilded+exotics+woman.jpeg?format=500w 500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/cb16f3d9-d2da-4eb7-a073-afcf27b388c9/gilded+exotics+woman.jpeg?format=750w 750w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/cb16f3d9-d2da-4eb7-a073-afcf27b388c9/gilded+exotics+woman.jpeg?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/cb16f3d9-d2da-4eb7-a073-afcf27b388c9/gilded+exotics+woman.jpeg?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/cb16f3d9-d2da-4eb7-a073-afcf27b388c9/gilded+exotics+woman.jpeg?format=2500w 2500w"
+                          loading="lazy"
+                          decoding="async"
+                          data-loader="sqs"
+                        >
 
-      {%- if section.settings.video_url != blank -%}
-        <div class="whif-scenting__video">
-          <h3>See Scenting in Action</h3>
-          <div class="video-wrapper">
-            {%- if section.settings.video_url contains 'youtube.com' or section.settings.video_url contains 'youtu.be' -%}
-              <iframe src="{{ section.settings.video_url }}" frameborder="0" allowfullscreen></iframe>
-            {%- else -%}
-              <video controls>
-                <source src="{{ section.settings.video_url }}" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            {%- endif -%}
+                        <div class="fluidImageOverlay"></div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  .sqs-block-image .sqs-block-content {
+                    height: 100%;
+                    width: 100%;
+                  }
+
+                  .fe-block-01a25899906a79fba617 .fluidImageOverlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    mix-blend-mode: normal;
+
+                    --image-block-overlay-color: hsla(var(--black-hsl), 0.19);
+
+                    opacity: 1;
+                  }
+                </style>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-9f6914d1780c990d86a7" style="mix-blend-mode: normal;">
+            <div
+              class="sqs-block html-block sqs-block-html"
+              data-blend-mode="NORMAL"
+              data-block-type="2"
+              data-border-radii="{&quot;topLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;topRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0}}"
+              data-sqsp-block="text"
+              id="block-9f6914d1780c990d86a7"
+            >
+              <div class="sqs-block-content" style="position: relative; z-index: 0;">
+                <script class="TextAttributes-props" type="application/json">
+                  [
+                    {
+                      "type": "highlight",
+                      "id": "2671bf01-5ba8-43be-b7ae-70dece16930e",
+                      "shape": "underline",
+                      "isFront": false,
+                      "isAnimationEnabled": false,
+                      "animation": "draw",
+                      "duration": 0.5,
+                      "direction": "right",
+                      "color": {
+                        "type": "SITE_PALETTE_COLOR",
+                        "sitePaletteColor": {
+                          "colorName": "accent",
+                          "alphaModifier": 1.0
+                        }
+                      },
+                      "thickness": {
+                        "unit": "em",
+                        "value": 0.1
+                      },
+                      "linecap": "square"
+                    }
+                  ]
+                </script>
+
+                <div class="sqs-html-content" data-sqsp-text-block-content="">
+                  <h3
+                    style="text-align: center; white-space: pre-wrap; transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.209032s;"
+                    class="preFade fadeIn"
+                  >
+                    <span class="sqsrte-text-highlight" data-text-attribute-id="2671bf01-5ba8-43be-b7ae-70dece16930e"
+                      >Gilded Exotics</span
+                    >
+                  </h3>
+                </div>
+
+                <div
+                  class="TextShape-node"
+                  data-text-attribute-id="2671bf01-5ba8-43be-b7ae-70dece16930e"
+                  data-shape="underline"
+                  data-font-size="57"
+                  data-is-front="false"
+                  data-index="0"
+                  style="font-size: 57px; --stroke: hsla(var(--accent-hsl),1); --stroke-width: 0.1em; --stroke-linecap: square; --stroke-linejoin: bevel; --blend: none; --opacity: undefined; opacity: 1; transform: scale(1); width: 256px; height: 65px; left: 102px; top: -6px;"
+                >
+                  <svg>
+                    <path d="M0,58.5 L256,58.5" vector-effect="non-scaling-stroke" stroke-dasharray="256" stroke-dashoffset="512"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-yui_3_17_2_1_1754535766595_7683" style="mix-blend-mode: normal;">
+            <div
+              class="sqs-block html-block sqs-block-html"
+              data-blend-mode="NORMAL"
+              data-block-type="2"
+              data-border-radii="{&quot;topLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;topRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0}}"
+              data-sqsp-block="text"
+              id="block-yui_3_17_2_1_1754535766595_7683"
+            >
+              <div class="sqs-block-content">
+                <div class="sqs-html-content" data-sqsp-text-block-content="">
+                  <pre style="text-align:center;"><code>Swiss sourced oils exotically formulated in the Emirates</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-13d0e23062329bb003a5" id="yui_3_17_2_1_1759180599887_226">
+            <div
+              class="sqs-block image-block sqs-block-image sqs-stretched sqs-text-ready"
+              data-block-type="5"
+              data-sqsp-block="image"
+              id="block-13d0e23062329bb003a5"
+            >
+              <div class="sqs-block-content" id="yui_3_17_2_1_1759180599887_225" style="height: 100%; width: 100%;">
+                <div
+                  class="
+                    image-block-outer-wrapper
+                    layout-caption-below
+                    design-layout-fluid
+                    image-position-left
+                    combination-animation-none
+                    individual-animation-none
+                  "
+                  data-test="image-block-fluid-outer-wrapper"
+                  id="yui_3_17_2_1_1759180599887_224"
+                >
+                  <div
+                    class="fluid-image-animation-wrapper sqs-image sqs-block-alignment-wrapper preFade fadeIn"
+                    data-animation-role="image"
+                    id="yui_3_17_2_1_1759180599887_223"
+                    style="transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.212903s;"
+                  >
+                    <div
+                      class="fluid-image-container sqs-image-content"
+                      style="overflow: hidden;-webkit-mask-image: -webkit-radial-gradient(white, black);border-top-left-radius: 30px;border-top-right-radius: 30px;border-bottom-left-radius: 30px;border-bottom-right-radius: 30px;position: relative;width: 100%;height: 100%;"
+                      data-sqsp-image-block-image-container=""
+                      id="yui_3_17_2_1_1759180599887_222"
+                    >
+                      <a
+                        class="sqs-block-image-link content-fill"
+                        href="https://www.whiffedaromas.com/substances-oils/designer-inspired-collection"
+                        data-sqsp-image-block-link=""
+                        id="yui_3_17_2_1_1759180599887_219"
+                        tabindex="0"
+                      >
+                        <img
+                          data-stretch="true"
+                          data-src="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/7aec669e-c24f-4a74-9228-e81e1d2c36bb/designer+man.jpeg"
+                          data-image="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/7aec669e-c24f-4a74-9228-e81e1d2c36bb/designer+man.jpeg"
+                          data-image-dimensions="2048x2048"
+                          data-image-focal-point="0.5,0.5"
+                          alt="Young man in a black suit arranging perfume bottles on a marble table in a modern, stylish room."
+                          data-load="false"
+                          elementtiming="system-image-block"
+                          data-sqsp-image-block-image=""
+                          src="./Whiffed Aromas _ Luxury Home and Commercial Scenting_files/designer+man.jpeg"
+                          width="2048"
+                          height="2048"
+                          sizes="100vw"
+                          style="display:block;object-fit: cover; object-position: 50% 50%"
+                          srcset="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/7aec669e-c24f-4a74-9228-e81e1d2c36bb/designer+man.jpeg?format=100w 100w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/7aec669e-c24f-4a74-9228-e81e1d2c36bb/designer+man.jpeg?format=300w 300w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/7aec669e-c24f-4a74-9228-e81e1d2c36bb/designer+man.jpeg?format=500w 500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/7aec669e-c24f-4a74-9228-e81e1d2c36bb/designer+man.jpeg?format=750w 750w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/7aec669e-c24f-4a74-9228-e81e1d2c36bb/designer+man.jpeg?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/7aec669e-c24f-4a74-9228-e81e1d2c36bb/designer+man.jpeg?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/7aec669e-c24f-4a74-9228-e81e1d2c36bb/designer+man.jpeg?format=2500w 2500w"
+                          loading="lazy"
+                          decoding="async"
+                          data-loader="sqs"
+                        >
+
+                        <div class="fluidImageOverlay"></div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  .sqs-block-image .sqs-block-content {
+                    height: 100%;
+                    width: 100%;
+                  }
+
+                  .fe-block-13d0e23062329bb003a5 .fluidImageOverlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    mix-blend-mode: normal;
+
+                    --image-block-overlay-color: hsla(var(--black-hsl), 0.18);
+
+                    opacity: 1;
+                  }
+                </style>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-f1e013d0e78ada5d1d4b" style="mix-blend-mode: normal;">
+            <div
+              class="sqs-block html-block sqs-block-html"
+              data-blend-mode="NORMAL"
+              data-block-type="2"
+              data-border-radii="{&quot;topLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;topRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0}}"
+              data-sqsp-block="text"
+              id="block-f1e013d0e78ada5d1d4b"
+            >
+              <div class="sqs-block-content" style="position: relative; z-index: 0;">
+                <script class="TextAttributes-props" type="application/json">
+                  [
+                    {
+                      "type": "highlight",
+                      "id": "4836e9e4-c3f9-4910-b01a-e1834f0dab65",
+                      "shape": "underline",
+                      "isFront": false,
+                      "isAnimationEnabled": false,
+                      "animation": "draw",
+                      "duration": 0.5,
+                      "direction": "right",
+                      "color": {
+                        "type": "SITE_PALETTE_COLOR",
+                        "sitePaletteColor": {
+                          "colorName": "accent",
+                          "alphaModifier": 1.0
+                        }
+                      },
+                      "thickness": {
+                        "unit": "em",
+                        "value": 0.1
+                      },
+                      "linecap": "square"
+                    }
+                  ]
+                </script>
+
+                <div class="sqs-html-content" data-sqsp-text-block-content="">
+                  <h3
+                    style="text-align: center; white-space: pre-wrap; transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.216774s;"
+                    class="preFade fadeIn"
+                  >
+                    <span class="sqsrte-text-highlight" data-text-attribute-id="4836e9e4-c3f9-4910-b01a-e1834f0dab65"
+                      >Designer COllection</span
+                    >
+                  </h3>
+                </div>
+
+                <div
+                  class="TextShape-node"
+                  data-text-attribute-id="4836e9e4-c3f9-4910-b01a-e1834f0dab65"
+                  data-shape="underline"
+                  data-font-size="57"
+                  data-is-front="false"
+                  data-index="0"
+                  style="font-size: 57px; --stroke: hsla(var(--accent-hsl),1); --stroke-width: 0.1em; --stroke-linecap: square; --stroke-linejoin: bevel; --blend: none; --opacity: undefined; opacity: 1; transform: scale(1); width: 361px; height: 65px; left: 49px; top: -6px;"
+                >
+                  <svg>
+                    <path d="M0,58.5 L361,58.5" vector-effect="non-scaling-stroke" stroke-dasharray="361" stroke-dashoffset="722"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-eb7869f6966e7833bbdc" style="mix-blend-mode: normal;">
+            <div
+              class="sqs-block html-block sqs-block-html"
+              data-blend-mode="NORMAL"
+              data-block-type="2"
+              data-border-radii="{&quot;topLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;topRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0}}"
+              data-sqsp-block="text"
+              id="block-eb7869f6966e7833bbdc"
+            >
+              <div class="sqs-block-content">
+                <div class="sqs-html-content" data-sqsp-text-block-content="">
+                  <pre style="text-align:center;"><code>A nod to exquisite designer perfumes</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-95441640d3ff031c4d19" id="yui_3_17_2_1_1759180599887_237">
+            <div
+              class="sqs-block image-block sqs-block-image sqs-stretched sqs-text-ready"
+              data-block-type="5"
+              data-sqsp-block="image"
+              id="block-95441640d3ff031c4d19"
+            >
+              <div class="sqs-block-content" id="yui_3_17_2_1_1759180599887_236" style="height: 100%; width: 100%;">
+                <div
+                  class="
+                    image-block-outer-wrapper
+                    layout-caption-below
+                    design-layout-fluid
+                    image-position-left
+                    combination-animation-none
+                    individual-animation-none
+                  "
+                  data-test="image-block-fluid-outer-wrapper"
+                  id="yui_3_17_2_1_1759180599887_235"
+                >
+                  <div
+                    class="fluid-image-animation-wrapper sqs-image sqs-block-alignment-wrapper preFade fadeIn"
+                    data-animation-role="image"
+                    id="yui_3_17_2_1_1759180599887_234"
+                    style="transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.220645s;"
+                  >
+                    <div
+                      class="fluid-image-container sqs-image-content"
+                      style="overflow: hidden;-webkit-mask-image: -webkit-radial-gradient(white, black);border-top-left-radius: 30px;border-top-right-radius: 30px;border-bottom-left-radius: 30px;border-bottom-right-radius: 30px;position: relative;width: 100%;height: 100%;"
+                      data-sqsp-image-block-image-container=""
+                      id="yui_3_17_2_1_1759180599887_233"
+                    >
+                      <a
+                        class="sqs-block-image-link content-fill"
+                        href="https://www.whiffedaromas.com/substances-oils/hotels-and-resorts-collection"
+                        data-sqsp-image-block-link=""
+                        id="yui_3_17_2_1_1759180599887_230"
+                        tabindex="0"
+                      >
+                        <img
+                          data-stretch="true"
+                          data-src="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/edff6cb6-bfed-4689-944a-b11265b09014/designer+collection+woman.jpeg"
+                          data-image="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/edff6cb6-bfed-4689-944a-b11265b09014/designer+collection+woman.jpeg"
+                          data-image-dimensions="2048x2048"
+                          data-image-focal-point="0.5,0.5"
+                          alt="A woman in a flowing gold dress standing in a spacious, sunlit lobby with large arched windows revealing lush tropical palm trees and colorful flowers outside. The interior has modern furniture, large potted plants, and warm lighting."
+                          data-load="false"
+                          elementtiming="system-image-block"
+                          data-sqsp-image-block-image=""
+                          src="./Whiffed Aromas _ Luxury Home and Commercial Scenting_files/designer+collection+woman.jpeg"
+                          width="2048"
+                          height="2048"
+                          sizes="100vw"
+                          style="display:block;object-fit: cover; object-position: 50% 50%"
+                          srcset="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/edff6cb6-bfed-4689-944a-b11265b09014/designer+collection+woman.jpeg?format=100w 100w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/edff6cb6-bfed-4689-944a-b11265b09014/designer+collection+woman.jpeg?format=300w 300w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/edff6cb6-bfed-4689-944a-b11265b09014/designer+collection+woman.jpeg?format=500w 500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/edff6cb6-bfed-4689-944a-b11265b09014/designer+collection+woman.jpeg?format=750w 750w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/edff6cb6-bfed-4689-944a-b11265b09014/designer+collection+woman.jpeg?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/edff6cb6-bfed-4689-944a-b11265b09014/designer+collection+woman.jpeg?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/edff6cb6-bfed-4689-944a-b11265b09014/designer+collection+woman.jpeg?format=2500w 2500w"
+                          loading="lazy"
+                          decoding="async"
+                          data-loader="sqs"
+                        >
+
+                        <div class="fluidImageOverlay"></div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  .sqs-block-image .sqs-block-content {
+                    height: 100%;
+                    width: 100%;
+                  }
+
+                  .fe-block-95441640d3ff031c4d19 .fluidImageOverlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    mix-blend-mode: normal;
+
+                    --image-block-overlay-color: hsla(var(--black-hsl), 0.18);
+
+                    opacity: 1;
+                  }
+                </style>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-77916ffacb3e8935069e" style="mix-blend-mode: normal;">
+            <div
+              class="sqs-block html-block sqs-block-html"
+              data-blend-mode="NORMAL"
+              data-block-type="2"
+              data-border-radii="{&quot;topLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;topRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0}}"
+              data-sqsp-block="text"
+              id="block-77916ffacb3e8935069e"
+            >
+              <div class="sqs-block-content" style="position: relative; z-index: 0;">
+                <script class="TextAttributes-props" type="application/json">
+                  [
+                    {
+                      "type": "highlight",
+                      "id": "4836e9e4-c3f9-4910-b01a-e1834f0dab65",
+                      "shape": "underline",
+                      "isFront": false,
+                      "isAnimationEnabled": false,
+                      "animation": "draw",
+                      "duration": 0.5,
+                      "direction": "right",
+                      "color": {
+                        "type": "SITE_PALETTE_COLOR",
+                        "sitePaletteColor": {
+                          "colorName": "accent",
+                          "alphaModifier": 1.0
+                        }
+                      },
+                      "thickness": {
+                        "unit": "em",
+                        "value": 0.1
+                      },
+                      "linecap": "square"
+                    }
+                  ]
+                </script>
+
+                <div class="sqs-html-content" data-sqsp-text-block-content="">
+                  <h3
+                    style="text-align: center; white-space: pre-wrap; transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.224516s;"
+                    class="preFade fadeIn"
+                  >
+                    <span class="sqsrte-text-highlight" data-text-attribute-id="4836e9e4-c3f9-4910-b01a-e1834f0dab65"
+                      >Hotels &amp; resorts
+                    </span>
+                  </h3>
+                </div>
+
+                <div
+                  class="TextShape-node"
+                  data-text-attribute-id="4836e9e4-c3f9-4910-b01a-e1834f0dab65"
+                  data-shape="underline"
+                  data-font-size="57"
+                  data-is-front="false"
+                  data-index="0"
+                  style="font-size: 57px; --stroke: hsla(var(--accent-hsl),1); --stroke-width: 0.1em; --stroke-linecap: square; --stroke-linejoin: bevel; --blend: none; --opacity: undefined; opacity: 1; transform: scale(1); width: 313px; height: 65px; left: 69px; top: -6px;"
+                >
+                  <svg>
+                    <path d="M0,58.5 L313,58.5" vector-effect="non-scaling-stroke" stroke-dasharray="313" stroke-dashoffset="626"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-43d96ef660285b79d3f1" style="mix-blend-mode: normal;">
+            <div
+              class="sqs-block html-block sqs-block-html"
+              data-blend-mode="NORMAL"
+              data-block-type="2"
+              data-border-radii="{&quot;topLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;topRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0}}"
+              data-sqsp-block="text"
+              id="block-43d96ef660285b79d3f1"
+            >
+              <div class="sqs-block-content">
+                <div class="sqs-html-content" data-sqsp-text-block-content="">
+                  <pre style="text-align:center;"><code>Exclusive scents inspired by your favorite hotels and resorts</code></pre>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      {%- endif -%}
+      </div>
     </div>
   </div>
-</div>
+</section>
 
 {% schema %}
 {

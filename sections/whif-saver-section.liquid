@@ -13,67 +13,928 @@
     }
   }
 {%- endstyle -%}
+<section
+  data-test="page-section"
+  data-section-theme="white"
+  class="
+    page-section
 
-<div class="whif-saver-section color-{{ section.settings.color_scheme }} gradient">
-  <div class="page-width section-{{ section.id }}-padding">
-    <div class="whif-saver-content">
-      {%- if section.settings.heading != blank -%}
-        <h2 class="whif-saver__heading">{{ section.settings.heading }}</h2>
-      {%- endif -%}
-      
-      {%- if section.settings.description != blank -%}
-        <div class="whif-saver__description rte">
-          {{ section.settings.description }}
-        </div>
-      {%- endif -%}
+      full-bleed-section
+      layout-engine-section
 
-      <div class="whif-saver__savings-grid">
-        {%- for block in section.blocks -%}
-          {%- case block.type -%}
-            {%- when 'whif_saver_item' -%}
-              <div class="savings-item" {{ block.shopify_attributes }}>
-                {%- if block.settings.savings_icon != blank -%}
-                  <div class="savings-item__icon">
-                    {{ block.settings.savings_icon | image_url: width: 80 | image_tag: loading: 'lazy', alt: block.settings.savings_title }}
-                  </div>
-                {%- endif -%}
-                <div class="savings-item__content">
-                  <h3>{{ block.settings.savings_title }}</h3>
-                  {%- if block.settings.savings_amount != blank -%}
-                    <div class="savings-amount">{{ block.settings.savings_amount }}</div>
-                  {%- endif -%}
-                  {%- if block.settings.savings_description != blank -%}
-                    <p>{{ block.settings.savings_description }}</p>
-                  {%- endif -%}
+    background-width--full-bleed
+
+
+        section-height--custom
+
+
+
+      content-width--wide
+
+    horizontal-alignment--center
+    vertical-alignment--middle
+
+
+
+
+    white
+  "
+  data-section-id="68b11b49494a40165cb63265"
+  data-controller="SectionWrapperController"
+  data-current-styles="
+    {
+    &quot;imageOverlayOpacity&quot;: 0.15,
+    &quot;backgroundWidth&quot;: &quot;background-width--full-bleed&quot;,
+    &quot;sectionHeight&quot;: &quot;section-height--custom&quot;,
+    &quot;customSectionHeight&quot;: 0,
+    &quot;horizontalAlignment&quot;: &quot;horizontal-alignment--center&quot;,
+    &quot;verticalAlignment&quot;: &quot;vertical-alignment--middle&quot;,
+    &quot;contentWidth&quot;: &quot;content-width--wide&quot;,
+    &quot;customContentWidth&quot;: 50,
+    &quot;sectionTheme&quot;: &quot;white&quot;,
+    &quot;sectionAnimation&quot;: &quot;none&quot;,
+    &quot;backgroundMode&quot;: &quot;image&quot;
+    }
+  "
+  data-current-context="
+    {
+    &quot;video&quot;: {
+    &quot;playbackSpeed&quot;: 0.5,
+    &quot;filter&quot;: 1,
+    &quot;filterStrength&quot;: 0,
+    &quot;zoom&quot;: 0,
+    &quot;videoSourceProvider&quot;: &quot;none&quot;
+    },
+    &quot;backgroundImageId&quot;: null,
+    &quot;backgroundMediaEffect&quot;: {
+    &quot;type&quot;: &quot;none&quot;
+    },
+    &quot;divider&quot;: {
+    &quot;enabled&quot;: false
+    },
+    &quot;typeName&quot;: &quot;page&quot;
+    }
+  "
+  data-animation="none"
+  data-fluid-engine-section=""
+  data-controllers-bound="SectionWrapperController,SectionWrapperController"
+  id="yui_3_17_2_1_1759180599887_469"
+  data-active="true"
+>
+  <div class="section-border">
+    <div class="section-background"></div>
+  </div>
+  <div
+    class="content-wrapper"
+    style="
+
+
+
+
+      padding-top: calc(0vmax / 10); padding-bottom: calc(0vmax / 10);
+    "
+    id="yui_3_17_2_1_1759180599887_468"
+  >
+    <div class="content" id="yui_3_17_2_1_1759180599887_467">
+      <div data-fluid-engine="true" id="yui_3_17_2_1_1759180599887_466">
+        <style>
+          .fe-68b11b49494a40165cb63264 {
+            --grid-gutter: calc(var(--sqs-mobile-site-gutter, 6vw) - 0px);
+            --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (0px * (8 - 1))) / 8);
+
+            display: grid;
+            position: relative;
+            grid-area: 1/1/-1/-1;
+            grid-template-rows: repeat(28, minmax(24px, auto));
+            grid-template-columns:
+              minmax(var(--grid-gutter), 1fr)
+              repeat(8, minmax(0, var(--cell-max-width)))
+              minmax(var(--grid-gutter), 1fr);
+            row-gap: 0px;
+            column-gap: 0px;
+            overflow-x: hidden;
+            overflow-x: clip;
+          }
+
+          @media (min-width: 768px) {
+            .background-width--inset .fe-68b11b49494a40165cb63264 {
+              --inset-padding: calc(var(--sqs-site-gutter) * 2);
+            }
+
+            .fe-68b11b49494a40165cb63264 {
+              --grid-gutter: calc(var(--sqs-site-gutter, 4vw) - 0px);
+              --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (0px * (24 - 1))) / 24);
+              --inset-padding: 0vw;
+
+              --row-height-scaling-factor: 0.0215;
+              --container-width: min(
+                var(--sqs-site-max-width, 1500px),
+                calc(100vw - var(--sqs-site-gutter, 4vw) * 2 - var(--inset-padding))
+              );
+
+              grid-template-rows: repeat(
+                22,
+                minmax(calc(var(--container-width) * var(--row-height-scaling-factor)), auto)
+              );
+              grid-template-columns:
+                minmax(var(--grid-gutter), 1fr)
+                repeat(24, minmax(0, var(--cell-max-width)))
+                minmax(var(--grid-gutter), 1fr);
+            }
+          }
+
+          .fe-block-c9aaf7f6d27870bc15df {
+            grid-area: 1/2/5/10;
+            z-index: 10;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-c9aaf7f6d27870bc15df .sqs-block {
+            justify-content: center;
+          }
+
+          .fe-block-c9aaf7f6d27870bc15df .sqs-block-alignment-wrapper {
+            align-items: center;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-c9aaf7f6d27870bc15df {
+              grid-area: 4/11/6/18;
+              z-index: 9;
+            }
+
+            .fe-block-c9aaf7f6d27870bc15df .sqs-block {
+              justify-content: flex-start;
+            }
+
+            .fe-block-c9aaf7f6d27870bc15df .sqs-block-alignment-wrapper {
+              align-items: flex-start;
+            }
+          }
+
+          .fe-block-d3517f6b51d5162a6984 {
+            grid-area: 4/2/5/10;
+            z-index: 11;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-d3517f6b51d5162a6984 .sqs-block {
+            justify-content: center;
+          }
+
+          .fe-block-d3517f6b51d5162a6984 .sqs-block-alignment-wrapper {
+            align-items: center;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-d3517f6b51d5162a6984 {
+              grid-area: 6/12/7/17;
+              z-index: 10;
+            }
+
+            .fe-block-d3517f6b51d5162a6984 .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-d3517f6b51d5162a6984 .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+
+          .fe-block-bc70443e2a55a24beeea {
+            grid-area: 6/2/9/10;
+            z-index: 11;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-bc70443e2a55a24beeea .sqs-block {
+            justify-content: flex-start;
+          }
+
+          .fe-block-bc70443e2a55a24beeea .sqs-block-alignment-wrapper {
+            align-items: flex-start;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-bc70443e2a55a24beeea {
+              grid-area: 8/10/10/19;
+              z-index: 10;
+            }
+
+            .fe-block-bc70443e2a55a24beeea .sqs-block {
+              justify-content: flex-start;
+            }
+
+            .fe-block-bc70443e2a55a24beeea .sqs-block-alignment-wrapper {
+              align-items: flex-start;
+            }
+          }
+
+          .fe-block-353cadca560486f94083 {
+            grid-area: 6/2/9/10;
+            z-index: 13;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-353cadca560486f94083 .sqs-block {
+            justify-content: center;
+          }
+
+          .fe-block-353cadca560486f94083 .sqs-block-alignment-wrapper {
+            align-items: center;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-353cadca560486f94083 {
+              grid-area: 10/10/12/19;
+              z-index: 12;
+            }
+
+            .fe-block-353cadca560486f94083 .sqs-block {
+              justify-content: flex-start;
+            }
+
+            .fe-block-353cadca560486f94083 .sqs-block-alignment-wrapper {
+              align-items: flex-start;
+            }
+          }
+
+          .fe-block-dcd5ac2fdb2cfcf5b292 {
+            grid-area: 7/2/10/10;
+            z-index: 12;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-dcd5ac2fdb2cfcf5b292 .sqs-block {
+            justify-content: center;
+          }
+
+          .fe-block-dcd5ac2fdb2cfcf5b292 .sqs-block-alignment-wrapper {
+            align-items: center;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-dcd5ac2fdb2cfcf5b292 {
+              grid-area: 12/10/14/19;
+              z-index: 11;
+            }
+
+            .fe-block-dcd5ac2fdb2cfcf5b292 .sqs-block {
+              justify-content: flex-start;
+            }
+
+            .fe-block-dcd5ac2fdb2cfcf5b292 .sqs-block-alignment-wrapper {
+              align-items: flex-start;
+            }
+          }
+
+          .fe-block-yui_3_17_2_1_1756437095453_35770 {
+            grid-area: 10/7/29/10;
+            z-index: 14;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-yui_3_17_2_1_1756437095453_35770 .sqs-block {
+            justify-content: flex-start;
+          }
+
+          .fe-block-yui_3_17_2_1_1756437095453_35770 .sqs-block-alignment-wrapper {
+            align-items: flex-start;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-yui_3_17_2_1_1756437095453_35770 {
+              grid-area: 2/19/22/23;
+              z-index: 13;
+            }
+
+            .fe-block-yui_3_17_2_1_1756437095453_35770 .sqs-block {
+              justify-content: flex-start;
+            }
+
+            .fe-block-yui_3_17_2_1_1756437095453_35770 .sqs-block-alignment-wrapper {
+              align-items: flex-start;
+            }
+          }
+
+          .fe-block-158f54840dd16fc3d256 {
+            grid-area: 10/2/29/5;
+            z-index: 15;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-158f54840dd16fc3d256 .sqs-block {
+            justify-content: flex-start;
+          }
+
+          .fe-block-158f54840dd16fc3d256 .sqs-block-alignment-wrapper {
+            align-items: flex-start;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-158f54840dd16fc3d256 {
+              grid-area: 2/6/22/10;
+              z-index: 14;
+            }
+
+            .fe-block-158f54840dd16fc3d256 .sqs-block {
+              justify-content: flex-start;
+            }
+
+            .fe-block-158f54840dd16fc3d256 .sqs-block-alignment-wrapper {
+              align-items: flex-start;
+            }
+          }
+        </style>
+        <div class="fluid-engine fe-68b11b49494a40165cb63264" id="yui_3_17_2_1_1759180599887_465">
+          <div class="fe-block fe-block-c9aaf7f6d27870bc15df" style="mix-blend-mode: normal;">
+            <div
+              class="sqs-block html-block sqs-block-html"
+              data-blend-mode="NORMAL"
+              data-block-type="2"
+              data-border-radii="{&quot;topLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;topRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0}}"
+              data-sqsp-block="text"
+              id="block-c9aaf7f6d27870bc15df"
+            >
+              <div class="sqs-block-content">
+                <div class="sqs-html-content" data-sqsp-text-block-content="">
+                  <h3
+                    style="text-align: center; white-space: pre-wrap; transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.16051s;"
+                    class="preFade"
+                  >
+                    SavE! over 60% off
+                  </h3>
                 </div>
               </div>
-            {%- when 'whif_saver_button' -%}
-              {%- if block.settings.button_label != blank -%}
-                <a
-                  {% if block.settings.button_link == blank %}
-                    role="link" aria-disabled="true"
-                  {% else %}
-                    href="{{ block.settings.button_link }}"
-                  {% endif %}
-                  class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
-                  {{ block.shopify_attributes }}
+            </div>
+          </div>
+          <div class="fe-block fe-block-d3517f6b51d5162a6984" style="mix-blend-mode: normal;">
+            <div
+              class="sqs-block html-block sqs-block-html"
+              data-blend-mode="NORMAL"
+              data-block-type="2"
+              data-border-radii="{&quot;topLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;topRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0}}"
+              data-sqsp-block="text"
+              id="block-d3517f6b51d5162a6984"
+            >
+              <div class="sqs-block-content">
+                <div class="sqs-html-content" data-sqsp-text-block-content="">
+                  <pre style="text-align:center;"><code>Only a few left</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-bc70443e2a55a24beeea" style="mix-blend-mode: normal;">
+            <div
+              class="sqs-block html-block sqs-block-html"
+              data-blend-mode="NORMAL"
+              data-block-type="2"
+              data-border-radii="{&quot;topLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;topRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0}}"
+              data-sqsp-block="text"
+              id="block-bc70443e2a55a24beeea"
+            >
+              <div class="sqs-block-content">
+                <div class="sqs-html-content" data-sqsp-text-block-content="">
+                  <h4
+                    style="text-align: center; white-space: pre-wrap; transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.164331s;"
+                    class="preFade"
+                  >
+                    <span class="sqsrte-text-color--accent">&lt; </span>up to 3,500 sq.ft. coverage with hvac
+                    <span class="sqsrte-text-color--accent">&gt;</span>
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-353cadca560486f94083" style="mix-blend-mode: normal;">
+            <div
+              class="sqs-block html-block sqs-block-html"
+              data-blend-mode="NORMAL"
+              data-block-type="2"
+              data-border-radii="{&quot;topLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;topRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0}}"
+              data-sqsp-block="text"
+              id="block-353cadca560486f94083"
+            >
+              <div class="sqs-block-content">
+                <div class="sqs-html-content" data-sqsp-text-block-content="">
+                  <h4
+                    style="text-align: center; white-space: pre-wrap; transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.168153s;"
+                    class="preFade"
+                  >
+                    <span class="sqsrte-text-color--accent">&lt; </span>Smart schedule with app control
+                    <span class="sqsrte-text-color--accent">&gt;</span>
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-dcd5ac2fdb2cfcf5b292" style="mix-blend-mode: normal;">
+            <div
+              class="sqs-block html-block sqs-block-html"
+              data-blend-mode="NORMAL"
+              data-block-type="2"
+              data-border-radii="{&quot;topLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;topRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0}}"
+              data-sqsp-block="text"
+              id="block-dcd5ac2fdb2cfcf5b292"
+            >
+              <div class="sqs-block-content">
+                <div class="sqs-html-content" data-sqsp-text-block-content="">
+                  <h4
+                    style="text-align: center; white-space: pre-wrap; transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.171975s;"
+                    class="preFade"
+                  >
+                    <span class="sqsrte-text-color--accent">&lt;</span> 200ml oil can scent beyond 45+ days
+                    <span class="sqsrte-text-color--accent">&gt;</span>
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-yui_3_17_2_1_1756437095453_35770" id="yui_3_17_2_1_1759180599887_464">
+            <div
+              class="sqs-block website-component-block sqs-block-website-component"
+              data-block-css="[&quot;https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.product/a5b131ac-f8ba-4abb-a559-14f9a36ff866_312/website.components.product.styles.css&quot;]"
+              data-block-scripts="[&quot;https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.product/a5b131ac-f8ba-4abb-a559-14f9a36ff866_312/website.components.product.visitor.js&quot;]"
+              data-block-type="1337"
+              data-definition-name="website.components.product"
+              id="block-yui_3_17_2_1_1756437095453_35770"
+            >
+              <div class="sqs-block-content" id="yui_3_17_2_1_1759180599887_463">
+                <div
+                  class="product-block sqs-block-product clear"
+                  data-product="{&quot;id&quot;:&quot;67deff9a6d2b5904d0d07d49&quot;,&quot;title&quot;:&quot;Metal Two &amp; Top Scent Bundle&quot;,&quot;fromPrice&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;189.00&quot;},&quot;soldOut&quot;:false,&quot;onSale&quot;:true,&quot;description&quot;:&quot;&lt;p style=\&quot;white-space:pre-wrap;\&quot; data-rte-preserve-empty=\&quot;true\&quot;&gt;&lt;strong&gt;The Metal Two bundle comes with one 150ml bottle of our most popular &lt;\/strong&gt;&lt;a href=\&quot;/substances-oils/hotels-and-resorts-collection\&quot;&gt;&lt;strong&gt;Hotel&lt;\/strong&gt;&lt;\/a&gt;&lt;strong&gt;, &lt;\/strong&gt;&lt;a href=\&quot;/substances-oils/gilded-exotics-collection\&quot;&gt;&lt;strong&gt;Gilded Exotics&lt;\/strong&gt;&lt;\/a&gt;&lt;strong&gt;, or &lt;\/strong&gt;&lt;a href=\&quot;/substances-oils/designer-inspired-collection\&quot;&gt;&lt;strong&gt;Designer&lt;\/strong&gt;&lt;\/a&gt;&lt;strong&gt; collection.&lt;\/strong&gt;&lt;\/p&gt;&lt;p style=\&quot;white-space:pre-wrap;\&quot; data-rte-preserve-empty=\&quot;true\&quot;&gt;Say hello to &lt;em&gt;Metal Two &lt;\/em&gt;— the sleek, scent-slinging genius your space has always needed.&lt;\/p&gt;&lt;p class=\&quot;preFade fadeIn\&quot; style=\&quot;white-space:pre-wrap;\&quot; data-rte-preserve-empty=\&quot;true\&quot;&gt;This machine, with an industrial flair, covers up to 3,500 sq.ft It uses cold air diffusion to mist pure fragrance without heat or water and no residue. It’s HVAC safe, mounts on walls, or stand solo — whatever your home’s style, the &lt;em&gt;Metal Two&lt;\/em&gt; complements.&lt;\/p&gt;&lt;p class=\&quot;preFade fadeIn\&quot; style=\&quot;white-space:pre-wrap;\&quot; data-rte-preserve-empty=\&quot;true\&quot;&gt;The &lt;em&gt;Metal Two&lt;\/em&gt; uses our, V1, unbranded scenting App.&lt;\/p&gt;&quot;,&quot;variants&quot;:[{&quot;id&quot;:&quot;bbc13904-d8b1-4245-84a8-c7b281e46543&quot;,&quot;sku&quot;:&quot;BDL-MTL1-DSN&quot;,&quot;price&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;499.00&quot;},&quot;salePrice&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;189.00&quot;},&quot;unlimited&quot;:false,&quot;qtyInStock&quot;:4,&quot;soldOut&quot;:false,&quot;scarce&quot;:true,&quot;attributes&quot;:{&quot;Scent&quot;:&quot;Designer&quot;}},{&quot;id&quot;:&quot;4df571cf-4539-4a79-b9e7-2605a392c94c&quot;,&quot;sku&quot;:&quot;BDL-MTL1-GE&quot;,&quot;price&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;499.00&quot;},&quot;salePrice&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;199.00&quot;},&quot;unlimited&quot;:false,&quot;qtyInStock&quot;:3,&quot;soldOut&quot;:false,&quot;scarce&quot;:true,&quot;attributes&quot;:{&quot;Scent&quot;:&quot;Gilded Exotics&quot;}},{&quot;id&quot;:&quot;ae7b37bc-b682-45ae-a75d-ceae2ace2abd&quot;,&quot;sku&quot;:&quot;BDL-MTL1-HTL&quot;,&quot;price&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;499.00&quot;},&quot;salePrice&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;189.00&quot;},&quot;unlimited&quot;:false,&quot;qtyInStock&quot;:3,&quot;soldOut&quot;:false,&quot;scarce&quot;:true,&quot;attributes&quot;:{&quot;Scent&quot;:&quot;Hotel&quot;}}],&quot;firstInStockVariant&quot;:{&quot;id&quot;:&quot;bbc13904-d8b1-4245-84a8-c7b281e46543&quot;,&quot;sku&quot;:&quot;BDL-MTL1-DSN&quot;,&quot;price&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;499.00&quot;},&quot;salePrice&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;189.00&quot;},&quot;unlimited&quot;:false,&quot;qtyInStock&quot;:4,&quot;soldOut&quot;:false,&quot;scarce&quot;:true,&quot;attributes&quot;:{&quot;Scent&quot;:&quot;Designer&quot;}},&quot;userDefinedVariantOptions&quot;:[{&quot;optionName&quot;:&quot;Scent&quot;,&quot;values&quot;:[&quot;Designer&quot;,&quot;Gilded Exotics&quot;,&quot;Hotel&quot;]}],&quot;productType&quot;:1,&quot;images&quot;:[{&quot;title&quot;:&quot;&quot;,&quot;originalSize&quot;:&quot;4710x4974&quot;,&quot;assetUrl&quot;:&quot;https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png&quot;,&quot;mediaFocalPoint&quot;:{&quot;x&quot;:0.5,&quot;y&quot;:0.5,&quot;source&quot;:3}},{&quot;title&quot;:&quot;&quot;,&quot;originalSize&quot;:&quot;2500x3320&quot;,&quot;assetUrl&quot;:&quot;https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/21d7c01b-ea16-4064-a052-86ab5b7d6f78/metal%2B1%2Bproduct%2Bimage%2B1.jpg&quot;,&quot;mediaFocalPoint&quot;:{&quot;x&quot;:0.5,&quot;y&quot;:0.5,&quot;source&quot;:3}},{&quot;title&quot;:&quot;&quot;,&quot;originalSize&quot;:&quot;3400x4814&quot;,&quot;assetUrl&quot;:&quot;https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/46c90011-9144-4492-a1cf-cdac43fc39d7/mel+1+product+image+2.JPG&quot;,&quot;mediaFocalPoint&quot;:{&quot;x&quot;:0.5,&quot;y&quot;:0.5,&quot;source&quot;:3}}],&quot;mainImage&quot;:{&quot;title&quot;:&quot;Metal Two &amp; Top Scent Bundle&quot;,&quot;originalSize&quot;:&quot;4710x4974&quot;,&quot;assetUrl&quot;:&quot;https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png&quot;,&quot;mediaFocalPoint&quot;:{&quot;x&quot;:0.5,&quot;y&quot;:0.5,&quot;source&quot;:3}},&quot;fullUrl&quot;:&quot;/machines-diffusers/p/metal-two&quot;,&quot;urlSlug&quot;:&quot;metal-two&quot;,&quot;qtyInStock&quot;:10,&quot;allowMultiplePurchase&quot;:true,&quot;scarce&quot;:false,&quot;additionalInfo&quot;:null,&quot;published&quot;:true,&quot;tags&quot;:[&quot;commercial&quot;,&quot;home&quot;,&quot;office&quot;,&quot;hotel&quot;,&quot;home office&quot;,&quot;hvac&quot;,&quot;whole home&quot;,&quot;entire house&quot;]}"
+                  data-merchandising-settings="{&quot;locale&quot;:&quot;en-US&quot;,&quot;restockNotificationsContext&quot;:{&quot;mailingListSignupEnabled&quot;:false,&quot;mailingListOptInByDefault&quot;:true,&quot;customMailingListDescription&quot;:&quot;Sign up to receive exclusive offers and product updates.&quot;},&quot;scarcityContext&quot;:{&quot;stockThreshold&quot;:5,&quot;labelTemplateKey&quot;:&quot;productScarcityMessage3&quot;},&quot;showSoldOutOnVariantsDropdown&quot;:true,&quot;expressCheckout&quot;:true,&quot;pinterestOverlayEnabled&quot;:false,&quot;productReviewsContext&quot;:{&quot;productReviewsEnabled&quot;:false,&quot;displayNativeProductReviewsEnabled&quot;:true,&quot;displayImportedProductReviewsEnabled&quot;:false}}"
+                  data-visitor-translations="{&quot;added&quot;:&quot;Added!&quot;,&quot;adding&quot;:&quot;Adding...&quot;,&quot;soldOut&quot;:&quot;Sold out&quot;,&quot;unavailable&quot;:&quot;Unavailable&quot;,&quot;salePriceText&quot;:&quot;Sale Price:&quot;,&quot;originalPriceText&quot;:&quot;Original Price:&quot;,&quot;addToCart&quot;:&quot;Add to cart&quot;,&quot;subscribe&quot;:&quot;Subscribe&quot;,&quot;purchase&quot;:&quot;Purchase&quot;,&quot;productPrice__singlePrice__1Weekly__indefinite&quot;:&quot;{price} every week&quot;,&quot;productPrice__singlePrice__1Weekly__limited__nWeeks&quot;:&quot;{price} every week for {duration} weeks&quot;,&quot;productPrice__singlePrice__1Weekly__limited__1Years&quot;:&quot;{price} every week for 1 year&quot;,&quot;productPrice__singlePrice__1Weekly__limited__nYears&quot;:&quot;{price} every week for {duration} years&quot;,&quot;productPrice__singlePrice__1Monthly__indefinite&quot;:&quot;{price} every month&quot;,&quot;productPrice__singlePrice__1Monthly__limited__nMonths&quot;:&quot;{price} every month for {duration} months&quot;,&quot;productPrice__singlePrice__1Monthly__limited__1Years&quot;:&quot;{price} every month for 1 year&quot;,&quot;productPrice__singlePrice__1Monthly__limited__nYears&quot;:&quot;{price} every month for {duration} years&quot;,&quot;productPrice__singlePrice__nWeekly__indefinite&quot;:&quot;{price} every {billingPeriodValue} weeks&quot;,&quot;productPrice__singlePrice__nWeekly__limited__nWeeks&quot;:&quot;{price} every {billingPeriodValue} weeks for {duration} weeks&quot;,&quot;productPrice__singlePrice__nWeekly__limited__1Years&quot;:&quot;{price} every {billingPeriodValue} weeks for 1 year&quot;,&quot;productPrice__singlePrice__nWeekly__limited__nYears&quot;:&quot;{price} every {billingPeriodValue} weeks for {duration} years&quot;,&quot;productPrice__singlePrice__nMonthly__indefinite&quot;:&quot;{price} every {billingPeriodValue} months&quot;,&quot;productPrice__singlePrice__nMonthly__limited__nMonths&quot;:&quot;{price} every {billingPeriodValue} months for {duration} months&quot;,&quot;productPrice__singlePrice__nMonthly__limited__1Years&quot;:&quot;{price} every {billingPeriodValue} months for 1 year&quot;,&quot;productPrice__singlePrice__nMonthly__limited__nYears&quot;:&quot;{price} every {billingPeriodValue} months for {duration} years&quot;}"
+                  data-r2-enabled="true"
+                  id="yui_3_17_2_1_1759180599887_462"
                 >
-                  {{ block.settings.button_label | escape }}
-                </a>
-              {%- endif -%}
-          {%- endcase -%}
-        {%- endfor -%}
-      </div>
+                  <div class="product-block-content" id="yui_3_17_2_1_1759180599887_461">
+                    <div class="image-container" id="yui_3_17_2_1_1759180599887_460">
+                      <a
+                        href="https://www.whiffedaromas.com/machines-diffusers/p/metal-two"
+                        style="overflow: hidden; position: relative;"
+                        id="yui_3_17_2_1_1759180599887_459"
+                        tabindex="0"
+                      >
+                        <img
+                          alt="Metal Two &amp; Top Scent Bundle"
+                          data-src="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png"
+                          data-image="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png"
+                          data-image-dimensions="4710x4974"
+                          data-image-focal-point="0.5,0.5"
+                          data-load="false"
+                          elementtiming="system-product"
+                          style="object-fit: cover; width:100%; height:100%;"
+                          class="sqs-product-block-variant-image"
+                          data-image-id="bbc13904-d8b1-4245-84a8-c7b281e46543"
+                          src="./Whiffed Aromas _ Luxury Home and Commercial Scenting_files/metal+1.png"
+                          width="4710"
+                          height="4974"
+                          sizes="auto"
+                          srcset="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png?format=100w 100w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png?format=300w 300w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png?format=500w 500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png?format=750w 750w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png?format=2500w 2500w"
+                          loading="lazy"
+                          decoding="async"
+                          data-loader="sqs"
+                        >
 
-      {%- if section.settings.promo_code != blank -%}
-        <div class="whif-saver__promo-code">
-          <span class="promo-label">Use code:</span>
-          <span class="promo-code">{{ section.settings.promo_code }}</span>
+                        <img
+                          alt="Metal Two &amp; Top Scent Bundle"
+                          data-src="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png"
+                          data-image="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png"
+                          data-image-dimensions="4710x4974"
+                          data-image-focal-point="0.5,0.5"
+                          data-load="false"
+                          elementtiming="system-product"
+                          style="object-fit: cover; width:100%; height:100%;"
+                          class="sqs-product-block-variant-image"
+                          data-image-id="4df571cf-4539-4a79-b9e7-2605a392c94c"
+                          src="./Whiffed Aromas _ Luxury Home and Commercial Scenting_files/metal+1.png"
+                          width="4710"
+                          height="4974"
+                          sizes="auto"
+                          srcset="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png?format=100w 100w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png?format=300w 300w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png?format=500w 500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png?format=750w 750w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png?format=2500w 2500w"
+                          loading="lazy"
+                          decoding="async"
+                          data-loader="sqs"
+                        >
+
+                        <img
+                          alt="Metal Two &amp; Top Scent Bundle"
+                          data-src="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png"
+                          data-image="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png"
+                          data-image-dimensions="4710x4974"
+                          data-image-focal-point="0.5,0.5"
+                          data-load="false"
+                          elementtiming="system-product"
+                          style="object-fit: cover; width:100%; height:100%;"
+                          class="sqs-product-block-variant-image"
+                          data-image-id="ae7b37bc-b682-45ae-a75d-ceae2ace2abd"
+                          src="./Whiffed Aromas _ Luxury Home and Commercial Scenting_files/metal+1.png"
+                          width="4710"
+                          height="4974"
+                          sizes="auto"
+                          srcset="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png?format=100w 100w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png?format=300w 300w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png?format=500w 500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png?format=750w 750w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png?format=2500w 2500w"
+                          loading="lazy"
+                          decoding="async"
+                          data-loader="sqs"
+                        >
+
+                        <img
+                          alt="Metal Two &amp; Top Scent Bundle"
+                          data-image-focal-point="0.5,0.5"
+                          data-src="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png"
+                          data-image="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png"
+                          data-image-dimensions="4710x4974"
+                          data-load="false"
+                          elementtiming="system-product"
+                          style="object-fit: cover; width:100%; height:100%; object-position: 50% 50%;"
+                          class="sqs-product-block-main-image"
+                          src="./Whiffed Aromas _ Luxury Home and Commercial Scenting_files/metal+1.png"
+                          width="4710"
+                          height="4974"
+                          sizes="auto"
+                          srcset="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png?format=100w 100w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png?format=300w 300w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png?format=500w 500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png?format=750w 750w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4590c51-9ffe-44a8-ae39-55f67f8bab78/metal+1.png?format=2500w 2500w"
+                          loading="lazy"
+                          decoding="async"
+                          data-loader="sqs"
+                        >
+                      </a>
+                      <a
+                        href="https://www.whiffedaromas.com/machines-diffusers/p/metal-two"
+                        class="product-status-link"
+                        tabindex="0"
+                      >
+                        <div class="sqs-product-mark-wrapper">
+                          <div class="product-mark sale">Sale</div>
+                        </div>
+                      </a>
+                    </div>
+
+                    <div class="productDetails left">
+                      <a
+                        href="https://www.whiffedaromas.com/machines-diffusers/p/metal-two"
+                        class="product-title"
+                        tabindex="0"
+                        >Metal Two &amp; Top Scent Bundle</a
+                      >
+
+                      <div class="product-price">from $189.00</div>
+
+                      <div
+                        class="product-variants sqs-site-style-form preFade"
+                        data-animation-role="content"
+                        style="transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.175796s;"
+                      >
+                        <div class="form-wrapper">
+                          <div class="form-inner-wrapper">
+                            <form class="react-form-contents">
+                              <div class="field-list">
+                                <div class="variant-option">
+                                  <fieldset class="form-item select">
+                                    <label for="Scent"> Scent: </label>
+                                    <div class="variant-dropdown">
+                                      <select
+                                        name="Scent"
+                                        aria-label="Select Scent"
+                                        class="show-placeholder"
+                                        tabindex="0"
+                                      >
+                                        <option value="">Select Scent</option>
+
+                                        <option value="Designer">Designer</option>
+
+                                        <option value="Gilded Exotics">Gilded Exotics</option>
+
+                                        <option value="Hotel">Hotel</option>
+                                      </select>
+                                      <span class="form-input-effects" aria-hidden="true">
+                                        <span class="form-input-effects-border"></span>
+                                        <span
+                                          class="form-input-effects-highlight form-field-highlight-single-trace"
+                                        ></span>
+                                      </span>
+                                      <div class="variant-select-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="12">
+                                          <path fill="currentColor" fillrule="evenodd" cliprule="evenodd" d="M0.439453 1.49825L1.56057 0.501709L9.00001 8.87108L16.4395 0.501709L17.5606 1.49825L9.00001 11.1289L0.439453 1.49825Z"></path>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                  </fieldset>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="product-purchase-controls-wrapper">
+                        <div
+                          class="sqs-add-to-cart-button-wrapper preFade"
+                          data-animation-role="button"
+                          style="visibility: visible; transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.179618s;"
+                        >
+                          <button
+                            class="
+                              sqs-add-to-cart-button sqs-suppress-edit-mode sqs-editable-button sqs-button-element--primary
+                            "
+                            tabindex="0"
+                          >
+                            <div class="sqs-add-to-cart-button-inner">
+                              <span class="add-to-cart-text"> Purchase </span>
+                              <span class="cart-loader"></span>
+                              <span class="cart-added-text"></span>
+                            </div>
+                          </button>
+                        </div>
+                      </div>
+
+                      <div
+                        class="product-scarcity"
+                        data-variant-attributes="{&quot;Scent&quot;:&quot;Designer&quot;}"
+                        hidden=""
+                      >
+                        Limited Availability
+                      </div>
+
+                      <div
+                        class="product-scarcity"
+                        data-variant-attributes="{&quot;Scent&quot;:&quot;Gilded Exotics&quot;}"
+                        hidden=""
+                      >
+                        Limited Availability
+                      </div>
+
+                      <div
+                        class="product-scarcity"
+                        data-variant-attributes="{&quot;Scent&quot;:&quot;Hotel&quot;}"
+                        hidden=""
+                      >
+                        Limited Availability
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <script>
+                  document
+                    .querySelector('[data-definition-name="website.components.product"] .product-block')
+                    .classList.add('is-first-product-block');
+                </script>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-158f54840dd16fc3d256" id="yui_3_17_2_1_1759180599887_479">
+            <div
+              class="sqs-block website-component-block sqs-block-website-component"
+              data-block-css="[&quot;https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.product/a5b131ac-f8ba-4abb-a559-14f9a36ff866_312/website.components.product.styles.css&quot;]"
+              data-block-scripts="[&quot;https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.product/a5b131ac-f8ba-4abb-a559-14f9a36ff866_312/website.components.product.visitor.js&quot;]"
+              data-block-type="1337"
+              data-definition-name="website.components.product"
+              id="block-158f54840dd16fc3d256"
+            >
+              <div class="sqs-block-content" id="yui_3_17_2_1_1759180599887_478">
+                <div
+                  class="product-block sqs-block-product clear"
+                  data-product="{&quot;id&quot;:&quot;68b121ada581a870f0839298&quot;,&quot;title&quot;:&quot;Metal One &amp; Top Scent Bundle&quot;,&quot;fromPrice&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;209.00&quot;},&quot;soldOut&quot;:false,&quot;onSale&quot;:true,&quot;description&quot;:&quot;&lt;p style=\&quot;white-space:pre-wrap;\&quot; data-rte-preserve-empty=\&quot;true\&quot;&gt;&lt;strong&gt;The Metal One bundle comes with one 150ml bottle of our most popular &lt;\/strong&gt;&lt;a href=\&quot;/substances-oils/hotels-and-resorts-collection\&quot;&gt;&lt;strong&gt;Hotel&lt;\/strong&gt;&lt;\/a&gt;&lt;strong&gt;, &lt;\/strong&gt;&lt;a href=\&quot;/substances-oils/gilded-exotics-collection\&quot;&gt;&lt;strong&gt;Gilded Exotics&lt;\/strong&gt;&lt;\/a&gt;&lt;strong&gt;, or &lt;\/strong&gt;&lt;a href=\&quot;/substances-oils/designer-inspired-collection\&quot;&gt;&lt;strong&gt;Designer&lt;\/strong&gt;&lt;\/a&gt;&lt;strong&gt; collection.&lt;\/strong&gt;&lt;\/p&gt;&lt;p class=\&quot;preFade fadeIn\&quot; style=\&quot;text-align: start; ; white-space:pre-wrap;\&quot; data-rte-preserve-empty=\&quot;true\&quot;&gt;Say hello to &lt;em&gt;Metal One &lt;\/em&gt;— the sleek, scent-slinging genius your space has always needed.&lt;\/p&gt;&lt;p class=\&quot;preFade fadeIn\&quot; style=\&quot;text-align: start; ; white-space:pre-wrap;\&quot; data-rte-preserve-empty=\&quot;true\&quot;&gt;This machine, with an industrial flair, covers up to 2,000 sq.ft. or up to 3,500 with HVAC. It uses cold air diffusion to mist pure fragrance without heat or water and no residue. It’s HVAC safe, mounts on walls, or stand solo — whatever your home’s style, the &lt;em&gt;Metal One&lt;\/em&gt; complements.&lt;\/p&gt;&quot;,&quot;variants&quot;:[{&quot;id&quot;:&quot;295e6bc1-ae4c-4088-b37f-dcca0188cc4d&quot;,&quot;sku&quot;:&quot;BDL-MTL1-GE&quot;,&quot;price&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;499.00&quot;},&quot;salePrice&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;209.00&quot;},&quot;unlimited&quot;:false,&quot;qtyInStock&quot;:3,&quot;soldOut&quot;:false,&quot;scarce&quot;:true,&quot;attributes&quot;:{&quot;Scent&quot;:&quot;Gilded Exotics&quot;}},{&quot;id&quot;:&quot;65a81e9d-3720-4623-b8d8-a37bf98e50a7&quot;,&quot;sku&quot;:&quot;BDL-MTL1-HTL&quot;,&quot;price&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;499.00&quot;},&quot;salePrice&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;219.00&quot;},&quot;unlimited&quot;:false,&quot;qtyInStock&quot;:4,&quot;soldOut&quot;:false,&quot;scarce&quot;:true,&quot;attributes&quot;:{&quot;Scent&quot;:&quot;Hotel and Resorts&quot;}},{&quot;id&quot;:&quot;d055fb88-bed1-439d-ae39-d9fe502f1551&quot;,&quot;sku&quot;:&quot;BDL-MTL1-DSN&quot;,&quot;price&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;499.00&quot;},&quot;salePrice&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;209.00&quot;},&quot;unlimited&quot;:false,&quot;qtyInStock&quot;:5,&quot;soldOut&quot;:false,&quot;scarce&quot;:true,&quot;attributes&quot;:{&quot;Scent&quot;:&quot;Designer&quot;}}],&quot;firstInStockVariant&quot;:{&quot;id&quot;:&quot;295e6bc1-ae4c-4088-b37f-dcca0188cc4d&quot;,&quot;sku&quot;:&quot;BDL-MTL1-GE&quot;,&quot;price&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;499.00&quot;},&quot;salePrice&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:&quot;209.00&quot;},&quot;unlimited&quot;:false,&quot;qtyInStock&quot;:3,&quot;soldOut&quot;:false,&quot;scarce&quot;:true,&quot;attributes&quot;:{&quot;Scent&quot;:&quot;Gilded Exotics&quot;}},&quot;userDefinedVariantOptions&quot;:[{&quot;optionName&quot;:&quot;Scent&quot;,&quot;values&quot;:[&quot;Gilded Exotics&quot;,&quot;Hotel and Resorts&quot;,&quot;Designer&quot;]}],&quot;productType&quot;:1,&quot;images&quot;:[{&quot;title&quot;:&quot;&quot;,&quot;originalSize&quot;:&quot;1512x1512&quot;,&quot;assetUrl&quot;:&quot;https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG&quot;,&quot;mediaFocalPoint&quot;:{&quot;x&quot;:0.5,&quot;y&quot;:0.5,&quot;source&quot;:3}}],&quot;mainImage&quot;:{&quot;title&quot;:&quot;Metal One &amp; Top Scent Bundle&quot;,&quot;originalSize&quot;:&quot;1512x1512&quot;,&quot;assetUrl&quot;:&quot;https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG&quot;,&quot;mediaFocalPoint&quot;:{&quot;x&quot;:0.5,&quot;y&quot;:0.5,&quot;source&quot;:3}},&quot;fullUrl&quot;:&quot;/machines-diffusers/p/metal-one-bundle&quot;,&quot;urlSlug&quot;:&quot;metal-one-bundle&quot;,&quot;qtyInStock&quot;:12,&quot;allowMultiplePurchase&quot;:true,&quot;scarce&quot;:false,&quot;additionalInfo&quot;:null,&quot;published&quot;:true,&quot;tags&quot;:[]}"
+                  data-merchandising-settings="{&quot;locale&quot;:&quot;en-US&quot;,&quot;restockNotificationsContext&quot;:{&quot;mailingListSignupEnabled&quot;:false,&quot;mailingListOptInByDefault&quot;:true,&quot;customMailingListDescription&quot;:&quot;Sign up to receive exclusive offers and product updates.&quot;},&quot;scarcityContext&quot;:{&quot;stockThreshold&quot;:5,&quot;labelTemplateKey&quot;:&quot;productScarcityMessage3&quot;},&quot;showSoldOutOnVariantsDropdown&quot;:true,&quot;expressCheckout&quot;:true,&quot;pinterestOverlayEnabled&quot;:false,&quot;productReviewsContext&quot;:{&quot;productReviewsEnabled&quot;:false,&quot;displayNativeProductReviewsEnabled&quot;:true,&quot;displayImportedProductReviewsEnabled&quot;:false}}"
+                  data-visitor-translations="{&quot;added&quot;:&quot;Added!&quot;,&quot;adding&quot;:&quot;Adding...&quot;,&quot;soldOut&quot;:&quot;Sold out&quot;,&quot;unavailable&quot;:&quot;Unavailable&quot;,&quot;salePriceText&quot;:&quot;Sale Price:&quot;,&quot;originalPriceText&quot;:&quot;Original Price:&quot;,&quot;addToCart&quot;:&quot;Add to cart&quot;,&quot;subscribe&quot;:&quot;Subscribe&quot;,&quot;purchase&quot;:&quot;Purchase&quot;,&quot;productPrice__singlePrice__1Weekly__indefinite&quot;:&quot;{price} every week&quot;,&quot;productPrice__singlePrice__1Weekly__limited__nWeeks&quot;:&quot;{price} every week for {duration} weeks&quot;,&quot;productPrice__singlePrice__1Weekly__limited__1Years&quot;:&quot;{price} every week for 1 year&quot;,&quot;productPrice__singlePrice__1Weekly__limited__nYears&quot;:&quot;{price} every week for {duration} years&quot;,&quot;productPrice__singlePrice__1Monthly__indefinite&quot;:&quot;{price} every month&quot;,&quot;productPrice__singlePrice__1Monthly__limited__nMonths&quot;:&quot;{price} every month for {duration} months&quot;,&quot;productPrice__singlePrice__1Monthly__limited__1Years&quot;:&quot;{price} every month for 1 year&quot;,&quot;productPrice__singlePrice__1Monthly__limited__nYears&quot;:&quot;{price} every month for {duration} years&quot;,&quot;productPrice__singlePrice__nWeekly__indefinite&quot;:&quot;{price} every {billingPeriodValue} weeks&quot;,&quot;productPrice__singlePrice__nWeekly__limited__nWeeks&quot;:&quot;{price} every {billingPeriodValue} weeks for {duration} weeks&quot;,&quot;productPrice__singlePrice__nWeekly__limited__1Years&quot;:&quot;{price} every {billingPeriodValue} weeks for 1 year&quot;,&quot;productPrice__singlePrice__nWeekly__limited__nYears&quot;:&quot;{price} every {billingPeriodValue} weeks for {duration} years&quot;,&quot;productPrice__singlePrice__nMonthly__indefinite&quot;:&quot;{price} every {billingPeriodValue} months&quot;,&quot;productPrice__singlePrice__nMonthly__limited__nMonths&quot;:&quot;{price} every {billingPeriodValue} months for {duration} months&quot;,&quot;productPrice__singlePrice__nMonthly__limited__1Years&quot;:&quot;{price} every {billingPeriodValue} months for 1 year&quot;,&quot;productPrice__singlePrice__nMonthly__limited__nYears&quot;:&quot;{price} every {billingPeriodValue} months for {duration} years&quot;}"
+                  data-r2-enabled="true"
+                  id="yui_3_17_2_1_1759180599887_477"
+                >
+                  <div class="product-block-content" id="yui_3_17_2_1_1759180599887_476">
+                    <div class="image-container" id="yui_3_17_2_1_1759180599887_475">
+                      <a
+                        href="https://www.whiffedaromas.com/machines-diffusers/p/metal-one-bundle"
+                        style="overflow: hidden; position: relative;"
+                        id="yui_3_17_2_1_1759180599887_474"
+                        tabindex="0"
+                      >
+                        <img
+                          alt="Metal One &amp; Top Scent Bundle"
+                          data-src="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG"
+                          data-image="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG"
+                          data-image-dimensions="1512x1512"
+                          data-image-focal-point="0.5,0.5"
+                          data-load="false"
+                          elementtiming="system-product"
+                          style="object-fit: cover; width:100%; height:100%;"
+                          class="sqs-product-block-variant-image"
+                          data-image-id="295e6bc1-ae4c-4088-b37f-dcca0188cc4d"
+                          src="./Whiffed Aromas _ Luxury Home and Commercial Scenting_files/Metal+One.1+Black.JPEG"
+                          width="1512"
+                          height="1512"
+                          sizes="auto"
+                          srcset="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG?format=100w 100w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG?format=300w 300w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG?format=500w 500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG?format=750w 750w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG?format=2500w 2500w"
+                          loading="lazy"
+                          decoding="async"
+                          data-loader="sqs"
+                        >
+
+                        <img
+                          alt="Metal One &amp; Top Scent Bundle"
+                          data-src="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG"
+                          data-image="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG"
+                          data-image-dimensions="1512x1512"
+                          data-image-focal-point="0.5,0.5"
+                          data-load="false"
+                          elementtiming="system-product"
+                          style="object-fit: cover; width:100%; height:100%;"
+                          class="sqs-product-block-variant-image"
+                          data-image-id="65a81e9d-3720-4623-b8d8-a37bf98e50a7"
+                          src="./Whiffed Aromas _ Luxury Home and Commercial Scenting_files/Metal+One.1+Black.JPEG"
+                          width="1512"
+                          height="1512"
+                          sizes="auto"
+                          srcset="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG?format=100w 100w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG?format=300w 300w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG?format=500w 500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG?format=750w 750w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG?format=2500w 2500w"
+                          loading="lazy"
+                          decoding="async"
+                          data-loader="sqs"
+                        >
+
+                        <img
+                          alt="Metal One &amp; Top Scent Bundle"
+                          data-src="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG"
+                          data-image="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG"
+                          data-image-dimensions="1512x1512"
+                          data-image-focal-point="0.5,0.5"
+                          data-load="false"
+                          elementtiming="system-product"
+                          style="object-fit: cover; width:100%; height:100%;"
+                          class="sqs-product-block-variant-image"
+                          data-image-id="d055fb88-bed1-439d-ae39-d9fe502f1551"
+                          src="./Whiffed Aromas _ Luxury Home and Commercial Scenting_files/Metal+One.1+Black.JPEG"
+                          width="1512"
+                          height="1512"
+                          sizes="auto"
+                          srcset="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG?format=100w 100w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG?format=300w 300w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG?format=500w 500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG?format=750w 750w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG?format=2500w 2500w"
+                          loading="lazy"
+                          decoding="async"
+                          data-loader="sqs"
+                        >
+
+                        <img
+                          alt="Metal One &amp; Top Scent Bundle"
+                          data-image-focal-point="0.5,0.5"
+                          data-src="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG"
+                          data-image="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG"
+                          data-image-dimensions="1512x1512"
+                          data-load="false"
+                          elementtiming="system-product"
+                          style="object-fit: cover; width:100%; height:100%; object-position: 50% 50%;"
+                          class="sqs-product-block-main-image"
+                          src="./Whiffed Aromas _ Luxury Home and Commercial Scenting_files/Metal+One.1+Black.JPEG"
+                          width="1512"
+                          height="1512"
+                          sizes="auto"
+                          srcset="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG?format=100w 100w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG?format=300w 300w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG?format=500w 500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG?format=750w 750w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e63b95c6-af6f-4ff7-adc2-6ae5d3c96ef3/Metal+One.1+Black.JPEG?format=2500w 2500w"
+                          loading="lazy"
+                          decoding="async"
+                          data-loader="sqs"
+                        >
+                      </a>
+                      <a
+                        href="https://www.whiffedaromas.com/machines-diffusers/p/metal-one-bundle"
+                        class="product-status-link"
+                        tabindex="0"
+                      >
+                        <div class="sqs-product-mark-wrapper">
+                          <div class="product-mark sale">Sale</div>
+                        </div>
+                      </a>
+                    </div>
+
+                    <div class="productDetails left">
+                      <a
+                        href="https://www.whiffedaromas.com/machines-diffusers/p/metal-one-bundle"
+                        class="product-title"
+                        tabindex="0"
+                        >Metal One &amp; Top Scent Bundle</a
+                      >
+
+                      <div class="product-price">from $209.00</div>
+
+                      <div
+                        class="product-variants sqs-site-style-form preFade"
+                        data-animation-role="content"
+                        style="transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.183439s;"
+                      >
+                        <div class="form-wrapper">
+                          <div class="form-inner-wrapper">
+                            <form class="react-form-contents">
+                              <div class="field-list">
+                                <div class="variant-option">
+                                  <fieldset class="form-item select">
+                                    <label for="Scent"> Scent: </label>
+                                    <div class="variant-dropdown">
+                                      <select
+                                        name="Scent"
+                                        aria-label="Select Scent"
+                                        class="show-placeholder"
+                                        tabindex="0"
+                                      >
+                                        <option value="">Select Scent</option>
+
+                                        <option value="Gilded Exotics">Gilded Exotics</option>
+
+                                        <option value="Hotel and Resorts">Hotel and Resorts</option>
+
+                                        <option value="Designer">Designer</option>
+                                      </select>
+                                      <span class="form-input-effects" aria-hidden="true">
+                                        <span class="form-input-effects-border"></span>
+                                        <span
+                                          class="form-input-effects-highlight form-field-highlight-single-trace"
+                                        ></span>
+                                      </span>
+                                      <div class="variant-select-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="12">
+                                          <path fill="currentColor" fillrule="evenodd" cliprule="evenodd" d="M0.439453 1.49825L1.56057 0.501709L9.00001 8.87108L16.4395 0.501709L17.5606 1.49825L9.00001 11.1289L0.439453 1.49825Z"></path>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                  </fieldset>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="product-purchase-controls-wrapper">
+                        <div
+                          class="sqs-add-to-cart-button-wrapper preFade"
+                          data-animation-role="button"
+                          style="visibility: visible; transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.187261s;"
+                        >
+                          <button
+                            class="
+                              sqs-add-to-cart-button sqs-suppress-edit-mode sqs-editable-button sqs-button-element--primary
+                            "
+                            tabindex="0"
+                          >
+                            <div class="sqs-add-to-cart-button-inner">
+                              <span class="add-to-cart-text"> Purchase </span>
+                              <span class="cart-loader"></span>
+                              <span class="cart-added-text"></span>
+                            </div>
+                          </button>
+                        </div>
+                      </div>
+
+                      <div
+                        class="product-scarcity"
+                        data-variant-attributes="{&quot;Scent&quot;:&quot;Gilded Exotics&quot;}"
+                        hidden=""
+                      >
+                        Limited Availability
+                      </div>
+
+                      <div
+                        class="product-scarcity"
+                        data-variant-attributes="{&quot;Scent&quot;:&quot;Hotel and Resorts&quot;}"
+                        hidden=""
+                      >
+                        Limited Availability
+                      </div>
+
+                      <div
+                        class="product-scarcity"
+                        data-variant-attributes="{&quot;Scent&quot;:&quot;Designer&quot;}"
+                        hidden=""
+                      >
+                        Limited Availability
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <script>
+                  document
+                    .querySelector('[data-definition-name="website.components.product"] .product-block')
+                    .classList.add('is-first-product-block');
+                </script>
+              </div>
+            </div>
+          </div>
         </div>
-      {%- endif -%}
+      </div>
     </div>
   </div>
-</div>
+</section>
 
 {% schema %}
 {

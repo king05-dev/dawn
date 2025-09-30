@@ -14,80 +14,552 @@
   }
 {%- endstyle -%}
 
-<div class="whif-flash-sale-section color-{{ section.settings.color_scheme }} gradient">
-  <div class="page-width section-{{ section.id }}-padding">
-    <div class="whif-flash-sale-content">
-      {%- if section.settings.heading != blank -%}
-        <h2 class="whif-flash-sale__heading">{{ section.settings.heading }}</h2>
-      {%- endif -%}
-      
-      {%- if section.settings.countdown_end_date != blank -%}
-        <div class="whif-flash-sale__countdown" data-countdown="{{ section.settings.countdown_end_date }}">
-          <div class="countdown-timer">
-            <div class="countdown-item">
-              <span class="countdown-number" id="days">00</span>
-              <span class="countdown-label">Days</span>
+<section
+  data-test="page-section"
+  data-section-theme="light"
+  class="
+    page-section
+
+      full-bleed-section
+      layout-engine-section
+
+    background-width--full-bleed
+
+      section-height--small
+
+
+      content-width--wide
+
+    horizontal-alignment--center
+    vertical-alignment--middle
+
+
+
+
+    light
+  "
+  data-section-id="68d05c16af4b826126225625"
+  data-controller="SectionWrapperController"
+  data-current-styles="
+    {
+    &quot;imageOverlayOpacity&quot;: 0.15,
+    &quot;backgroundWidth&quot;: &quot;background-width--full-bleed&quot;,
+    &quot;sectionHeight&quot;: &quot;section-height--small&quot;,
+    &quot;customSectionHeight&quot;: 1,
+    &quot;horizontalAlignment&quot;: &quot;horizontal-alignment--center&quot;,
+    &quot;verticalAlignment&quot;: &quot;vertical-alignment--middle&quot;,
+    &quot;contentWidth&quot;: &quot;content-width--wide&quot;,
+    &quot;customContentWidth&quot;: 50,
+    &quot;sectionTheme&quot;: &quot;light&quot;,
+    &quot;sectionAnimation&quot;: &quot;none&quot;,
+    &quot;backgroundMode&quot;: &quot;image&quot;
+    }
+  "
+  data-current-context="
+    {
+    &quot;video&quot;: {
+    &quot;playbackSpeed&quot;: 0.5,
+    &quot;filter&quot;: 1,
+    &quot;filterStrength&quot;: 0,
+    &quot;zoom&quot;: 0,
+    &quot;videoSourceProvider&quot;: &quot;none&quot;
+    },
+    &quot;backgroundImageId&quot;: null,
+    &quot;backgroundMediaEffect&quot;: {
+    &quot;type&quot;: &quot;none&quot;
+    },
+    &quot;divider&quot;: {
+    &quot;enabled&quot;: false
+    },
+    &quot;typeName&quot;: &quot;page&quot;
+    }
+  "
+  data-animation="none"
+  data-fluid-engine-section=""
+  data-controllers-bound="SectionWrapperController,SectionWrapperController"
+  id="yui_3_17_2_1_1759180599887_145"
+  data-active="true"
+>
+  <div class="section-border">
+    <div class="section-background"></div>
+  </div>
+  <div
+    class="content-wrapper"
+    style=""
+    id="yui_3_17_2_1_1759180599887_144"
+  >
+    <div class="content" id="yui_3_17_2_1_1759180599887_143">
+      <div data-fluid-engine="true" id="yui_3_17_2_1_1759180599887_142">
+        <style>
+          .fe-68d05c16af4b826126225624 {
+            --grid-gutter: calc(var(--sqs-mobile-site-gutter, 6vw) - 0px);
+            --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (0px * (8 - 1))) / 8);
+
+            display: grid;
+            position: relative;
+            grid-area: 1/1/-1/-1;
+            grid-template-rows: repeat(20, minmax(24px, auto));
+            grid-template-columns:
+              minmax(var(--grid-gutter), 1fr)
+              repeat(8, minmax(0, var(--cell-max-width)))
+              minmax(var(--grid-gutter), 1fr);
+            row-gap: 0px;
+            column-gap: 0px;
+            overflow-x: hidden;
+            overflow-x: clip;
+          }
+
+          @media (min-width: 768px) {
+            .background-width--inset .fe-68d05c16af4b826126225624 {
+              --inset-padding: calc(var(--sqs-site-gutter) * 2);
+            }
+
+            .fe-68d05c16af4b826126225624 {
+              --grid-gutter: calc(var(--sqs-site-gutter, 4vw) - 0px);
+              --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (0px * (24 - 1))) / 24);
+              --inset-padding: 0vw;
+
+              --row-height-scaling-factor: 0.0215;
+              --container-width: min(
+                var(--sqs-site-max-width, 1500px),
+                calc(100vw - var(--sqs-site-gutter, 4vw) * 2 - var(--inset-padding))
+              );
+
+              grid-template-rows: repeat(
+                15,
+                minmax(calc(var(--container-width) * var(--row-height-scaling-factor)), auto)
+              );
+              grid-template-columns:
+                minmax(var(--grid-gutter), 1fr)
+                repeat(24, minmax(0, var(--cell-max-width)))
+                minmax(var(--grid-gutter), 1fr);
+            }
+          }
+
+          .fe-block-e092b501a8d980932a55 {
+            grid-area: 1/1/11/11;
+            z-index: 1;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-e092b501a8d980932a55 .sqs-block {
+            justify-content: center;
+          }
+
+          .fe-block-e092b501a8d980932a55 .sqs-block-alignment-wrapper {
+            align-items: center;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-e092b501a8d980932a55 {
+              grid-area: 6/1/16/27;
+              z-index: 1;
+            }
+
+            .fe-block-e092b501a8d980932a55 .sqs-block {
+              justify-content: flex-start;
+            }
+
+            .fe-block-e092b501a8d980932a55 .sqs-block-alignment-wrapper {
+              align-items: flex-start;
+            }
+          }
+
+          .fe-block-66333822cb5ad6882099 {
+            grid-area: 1/2/11/6;
+            z-index: 2;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-66333822cb5ad6882099 .sqs-block {
+            justify-content: center;
+          }
+
+          .fe-block-66333822cb5ad6882099 .sqs-block-alignment-wrapper {
+            align-items: center;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-66333822cb5ad6882099 {
+              grid-area: 1/4/16/9;
+              z-index: 2;
+            }
+
+            .fe-block-66333822cb5ad6882099 .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-66333822cb5ad6882099 .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+
+          .fe-block-bd6442cdf5da357a8ae8 {
+            grid-area: 12/2/18/10;
+            z-index: 0;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-bd6442cdf5da357a8ae8 .sqs-block {
+            justify-content: center;
+          }
+
+          .fe-block-bd6442cdf5da357a8ae8 .sqs-block-alignment-wrapper {
+            align-items: center;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-bd6442cdf5da357a8ae8 {
+              grid-area: 2/11/6/26;
+              z-index: 0;
+            }
+
+            .fe-block-bd6442cdf5da357a8ae8 .sqs-block {
+              justify-content: flex-start;
+            }
+
+            .fe-block-bd6442cdf5da357a8ae8 .sqs-block-alignment-wrapper {
+              align-items: flex-start;
+            }
+          }
+
+          .fe-block-03a26d4e6a7b17833105 {
+            grid-area: 19/2/21/6;
+            z-index: 3;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-03a26d4e6a7b17833105 .sqs-block {
+            justify-content: center;
+          }
+
+          .fe-block-03a26d4e6a7b17833105 .sqs-block-alignment-wrapper {
+            align-items: center;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-03a26d4e6a7b17833105 {
+              grid-area: 7/16/9/20;
+              z-index: 3;
+            }
+
+            .fe-block-03a26d4e6a7b17833105 .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-03a26d4e6a7b17833105 .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+        </style>
+        <div class="fluid-engine fe-68d05c16af4b826126225624" id="yui_3_17_2_1_1759180599887_141">
+          <div class="fe-block fe-block-e092b501a8d980932a55" style="mix-blend-mode: normal;">
+            <div
+              class="sqs-block marquee-block sqs-block-marquee preFade fadeIn"
+              data-blend-mode="NORMAL"
+              data-block-type="70"
+              data-border-radii="{&quot;topLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;topRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0}}"
+              id="block-e092b501a8d980932a55"
+              style="transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.0670807s;"
+            >
+              <div class="sqs-block-content">
+                <div class="Marquee" style="font-size: 4rem; --marquee-font-size-value: 4;" data-ready="true">
+                  <script class="Marquee-props" type="application/json">
+                    {
+                      "marqueeItems": [
+                        {
+                          "text": "Flash sale up to 55 % off"
+                        }
+                      ],
+                      "linkTo": "",
+                      "waveFrequency": 4,
+                      "waveIntensity": 150,
+                      "animationDirection": "left",
+                      "animationSpeed": 0.5,
+                      "textStyle": "heading-1",
+                      "textSize": {
+                        "unit": "rem",
+                        "value": 4.0
+                      },
+                      "itemSpacing": {
+                        "unit": "em",
+                        "value": 1.2
+                      },
+                      "blockId": "e092b501a8d980932a55",
+                      "estimatedDimensions": {
+                        "estimatedColumnSpanDesktop": 24,
+                        "sectionColumnsDesktop": 24,
+                        "estimatedColumnSpanMobile": 8,
+                        "sectionColumnsMobile": 8
+                      },
+                      "containerStyles": {
+                        "backgroundEnabled": false,
+                        "borderRadii": {
+                          "topLeft": {
+                            "unit": "px",
+                            "value": 0.0
+                          },
+                          "topRight": {
+                            "unit": "px",
+                            "value": 0.0
+                          },
+                          "bottomLeft": {
+                            "unit": "px",
+                            "value": 0.0
+                          },
+                          "bottomRight": {
+                            "unit": "px",
+                            "value": 0.0
+                          }
+                        },
+                        "padding": {
+                          "top": {
+                            "unit": "%",
+                            "value": 3.0
+                          },
+                          "right": {
+                            "unit": "%",
+                            "value": 0.0
+                          },
+                          "bottom": {
+                            "unit": "%",
+                            "value": 3.0
+                          },
+                          "left": {
+                            "unit": "%",
+                            "value": 0.0
+                          }
+                        },
+                        "stretchedToFill": false,
+                        "backgroundColor": {
+                          "type": "THEME_COLOR"
+                        },
+                        "stroke": {
+                          "style": "none",
+                          "color": {
+                            "type": "THEME_COLOR"
+                          },
+                          "thickness": {
+                            "unit": "px",
+                            "value": 6.0
+                          },
+                          "dashLength": {
+                            "unit": "px",
+                            "value": 5.0
+                          },
+                          "gapLength": {
+                            "unit": "px",
+                            "value": 15.0
+                          },
+                          "linecap": "square"
+                        },
+                        "blendMode": "normal",
+                        "blur": {
+                          "enabled": false,
+                          "filterType": "backdrop",
+                          "blurRadius": {
+                            "unit": "px",
+                            "value": 15.0
+                          }
+                        }
+                      },
+                      "featureFlags": {
+                        "useCLDRMoneyFormat": true
+                      }
+                    }
+                  </script>
+                  <div class="Marquee-display ">
+                    <div class="Marquee-measure">
+                      <h1 class="Marquee-item Marquee-item--text" style="margin-right: 1.2em; font-size: 4rem;">
+                        Flash sale up to 55 % off
+                      </h1>
+                    </div>
+
+                    <h1
+                      style="font-size: 4rem; --marquee-font-size-value: 4; transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.0708075s;"
+                      class="preFade fadeIn"
+                    >
+                      <svg
+                        class="Marquee-svg"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        style="height: 273px; transform: translateY(12.3px); overflow: visible;"
+                      >
+                            <g class="Marquee-path-group" transform="translate(0, 6.15)">
+                              <path class="Marquee-path" fill="none" stroke="transparent" stroke-width="0" d="M-550,81.426  L-550,81.426 S-183.15,231.426 0,231.426 S366.85,81.426 550,81.426 S916.85,231.426 1100,231.426 S1466.85,81.426 1650,81.426 S2016.85,231.426 2200,231.426 S2566.85,81.426 2750,81.426" stroke-dasharray="678 105.6 " id="e092b501a8d980932a55"></path>
+                            </g>
+                            <text>
+                              <textPath class="Marquee-svg-text" href="#e092b501a8d980932a55"><tspan class="Marquee-svg-text" x="0">Flash sale up to 55 % off</tspan><tspan class="Marquee-svg-text" x="783.6">Flash sale up to 55 % off</tspan><tspan class="Marquee-svg-text" x="1567.2">Flash sale up to 55 % off</tspan><tspan class="Marquee-svg-text" x="2350.8">Flash sale up to 55 % off</tspan><tspan class="Marquee-svg-text" x="3134.4">Flash sale up to 55 % off</tspan><tspan class="Marquee-svg-text" x="3918">Flash sale up to 55 % off</tspan></textPath>
+                            </text>
+                            <text>
+                              <textPath class="Marquee-svg-group" visibility="hidden" href="#e092b501a8d980932a55">
+
+                                  <tspan class="Marquee-svg-text">Flash sale up to 55 % off</tspan>
+
+                              </textPath>
+                            </text>
+                            <g class="Marquee-hitbox" data-hitbox="" aria-labelledby="ariaLabele092b501a8d980932a55">
+                              <g class="Marquee-path-hitbox-group" transform="translate(0, -20.356499999999997)">
+                                <path class="Marquee-path-hitbox" fill="none" stroke="transparent" d="M-550,81.426  L-550,81.426 S-183.15,231.426 0,231.426 S366.85,81.426 550,81.426 S916.85,231.426 1100,231.426 S1466.85,81.426 1650,81.426 S2016.85,231.426 2200,231.426 S2566.85,81.426 2750,81.426" id="e092b501a8d980932a55" stroke-width="123"></path>
+                                <path class="Marquee-path-hitbox-focus-outline" fill="none" stroke="transparent" stroke-width="2px" d="
+                          M-550,273
+                           L-550,110.7 S-183.15,260.7 0,260.7 S366.85,110.7 550,110.7 S916.85,260.7 1100,260.7 S1466.85,110.7 1650,110.7 S2016.85,260.7 2200,260.7 S2566.85,110.7 2750,110.7
+                          M-550,150
+                           L-550,12.3 S-183.15,162.3 0,162.3 S366.85,12.3 550,12.3 S916.85,162.3 1100,162.3 S1466.85,12.3 1650,12.3 S2016.85,162.3 2200,162.3 S2566.85,12.3 2750,12.3
+                        " style="transform: translateY(12.3px);"></path>
+                              </g>
+                            </g>
+                      </svg>
+
+                      <span class="v6-visually-hidden" id="ariaLabele092b501a8d980932a55">
+                        Flash sale up to 55 % off
+                      </span>
+                    </h1>
+
+                    <div class="Marquee-track"></div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="countdown-item">
-              <span class="countdown-number" id="hours">00</span>
-              <span class="countdown-label">Hours</span>
+          </div>
+          <div class="fe-block fe-block-66333822cb5ad6882099" id="yui_3_17_2_1_1759180599887_140">
+            <div
+              class="sqs-block image-block sqs-block-image sqs-stretched sqs-text-ready"
+              data-aspect-ratio="138.57601297739535"
+              data-block-type="5"
+              data-sqsp-block="image"
+              id="block-66333822cb5ad6882099"
+            >
+              <div class="sqs-block-content" id="yui_3_17_2_1_1759180599887_139" style="height: 100%; width: 100%;">
+                <div
+                  class="image-block-outer-wrapper layout-caption-below design-layout-fluid image-position-center combination-animation-site-default individual-animation-site-default sqs-narrow-width"
+                  data-test="image-block-fluid-outer-wrapper"
+                  id="yui_3_17_2_1_1759180599887_138"
+                >
+                  <div
+                    class="fluid-image-animation-wrapper sqs-image sqs-block-alignment-wrapper preFade fadeIn"
+                    data-animation-role="image"
+                    id="yui_3_17_2_1_1759180599887_137"
+                    style="transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.0745342s;"
+                  >
+                    <div
+                      class="fluid-image-container sqs-image-content"
+                      style="overflow: hidden;-webkit-mask-image: -webkit-radial-gradient(white, black);border-top-left-radius: 10px;border-top-right-radius: 10px;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;position: relative;width: 100%;height: 100%;"
+                      data-sqsp-image-block-image-container=""
+                      id="yui_3_17_2_1_1759180599887_136"
+                    >
+                      <div class="content-fill" id="yui_3_17_2_1_1759180599887_133">
+                        <img
+                          data-stretch="true"
+                          data-src="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/1db30ef5-eeb1-45c5-bd3d-26f052660b30/wet+bar+bottle.jpeg"
+                          data-image="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/1db30ef5-eeb1-45c5-bd3d-26f052660b30/wet+bar+bottle.jpeg"
+                          data-image-dimensions="2400x2400"
+                          data-image-focal-point="0.5,0.5"
+                          alt=""
+                          data-load="false"
+                          elementtiming="system-image-block"
+                          data-sqsp-image-block-image=""
+                          src="./Whiffed Aromas _ Luxury Home and Commercial Scenting_files/wet+bar+bottle.jpeg"
+                          width="2400"
+                          height="2400"
+                          sizes="100vw"
+                          style="display:block;object-fit: cover; object-position: 50% 50%"
+                          srcset="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/1db30ef5-eeb1-45c5-bd3d-26f052660b30/wet+bar+bottle.jpeg?format=100w 100w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/1db30ef5-eeb1-45c5-bd3d-26f052660b30/wet+bar+bottle.jpeg?format=300w 300w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/1db30ef5-eeb1-45c5-bd3d-26f052660b30/wet+bar+bottle.jpeg?format=500w 500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/1db30ef5-eeb1-45c5-bd3d-26f052660b30/wet+bar+bottle.jpeg?format=750w 750w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/1db30ef5-eeb1-45c5-bd3d-26f052660b30/wet+bar+bottle.jpeg?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/1db30ef5-eeb1-45c5-bd3d-26f052660b30/wet+bar+bottle.jpeg?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/1db30ef5-eeb1-45c5-bd3d-26f052660b30/wet+bar+bottle.jpeg?format=2500w 2500w"
+                          loading="lazy"
+                          decoding="async"
+                          data-loader="sqs"
+                        >
+
+                        <div class="fluidImageOverlay"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  .sqs-block-image .sqs-block-content {
+                    height: 100%;
+                    width: 100%;
+                  }
+
+                  .fe-block-66333822cb5ad6882099 .fluidImageOverlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    mix-blend-mode: normal;
+
+                    opacity: 0;
+                  }
+                </style>
+              </div>
             </div>
-            <div class="countdown-item">
-              <span class="countdown-number" id="minutes">00</span>
-              <span class="countdown-label">Minutes</span>
+          </div>
+          <div class="fe-block fe-block-bd6442cdf5da357a8ae8" style="mix-blend-mode: normal;">
+            <div
+              class="sqs-block html-block sqs-block-html"
+              data-blend-mode="NORMAL"
+              data-block-type="2"
+              data-border-radii="{&quot;topLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;topRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0}}"
+              data-sqsp-block="text"
+              id="block-bd6442cdf5da357a8ae8"
+            >
+              <div class="sqs-block-content">
+                <div class="sqs-html-content" data-sqsp-text-block-content="">
+                  <h3
+                    style="white-space: pre-wrap; transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.0782609s;"
+                    class="preFade fadeIn"
+                  >
+                    We’re making space for new oil inventory. <br>
+                    Come get these extras while supplies last!
+                  </h3>
+                </div>
+              </div>
             </div>
-            <div class="countdown-item">
-              <span class="countdown-number" id="seconds">00</span>
-              <span class="countdown-label">Seconds</span>
+          </div>
+          <div class="fe-block fe-block-03a26d4e6a7b17833105">
+            <div
+              class="sqs-block button-block sqs-block-button sqs-stretched"
+              data-block-type="53"
+              data-sqsp-block="button"
+              id="block-03a26d4e6a7b17833105"
+            >
+              <div class="sqs-block-content" id="yui_3_17_2_1_1759180599887_557">
+                <div
+                  class="sqs-block-button-container sqs-block-button-container--center preFade"
+                  data-animation-role="button"
+                  data-alignment="center"
+                  data-button-size="large"
+                  data-button-type="secondary"
+                  id="yui_3_17_2_1_1759180599887_556"
+                  style="transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.0819876s;"
+                >
+                  <a
+                    href="https://www.whiffedaromas.com/substances-oils/flash-sale"
+                    class="sqs-block-button-element--large sqs-button-element--secondary sqs-block-button-element"
+                    data-sqsp-button=""
+                    data-initialized="true"
+                    tabindex="0"
+                  >
+                    Shop Flash Sale
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      {%- endif -%}
-
-      {%- if section.settings.collection != blank -%}
-        <div class="whif-flash-sale__products">
-          {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
-            <div class="whif-flash-sale__product">
-              <a href="{{ product.url }}">
-                {%- if product.featured_media -%}
-                  {{ product.featured_media | image_url: width: 300 | image_tag: loading: 'lazy', alt: product.title }}
-                {%- endif -%}
-                <h3>{{ product.title }}</h3>
-                <div class="price">
-                  {%- if product.compare_at_price > product.price -%}
-                    <span class="price-sale">{{ product.price | money }}</span>
-                    <span class="price-compare">{{ product.compare_at_price | money }}</span>
-                  {%- else -%}
-                    <span class="price-regular">{{ product.price | money }}</span>
-                  {%- endif -%}
-                </div>
-              </a>
-            </div>
-          {%- endfor -%}
-        </div>
-      {%- endif -%}
-
-      {%- for block in section.blocks -%}
-        {%- case block.type -%}
-          {%- when 'cta_button' -%}
-            {%- if block.settings.button_label != blank -%}
-              <a
-                {% if block.settings.button_link == blank %}
-                  role="link" aria-disabled="true"
-                {% else %}
-                  href="{{ block.settings.button_link }}"
-                {% endif %}
-                class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
-                {{ block.shopify_attributes }}
-              >
-                {{ block.settings.button_label | escape }}
-              </a>
-            {%- endif -%}
-        {%- endcase -%}
-      {%- endfor -%}
+      </div>
     </div>
   </div>
-</div>
+</section>
 
 {% schema %}
 {

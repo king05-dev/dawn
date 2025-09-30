@@ -172,40 +172,6 @@
     },
     "whif_collection_section_m9PecW": {
       "type": "whif-collection-section",
-      "blocks": {
-        "collection_item_cmcThj": {
-          "type": "collection_item",
-          "settings": {
-            "collection_title": "Collection Title",
-            "collection_description": "",
-            "collection_link": "",
-            "button_text": "Shop Collection"
-          }
-        },
-        "collection_item_BCpRdY": {
-          "type": "collection_item",
-          "settings": {
-            "collection_title": "Collection Title",
-            "collection_description": "",
-            "collection_link": "",
-            "button_text": "Shop Collection"
-          }
-        },
-        "collection_item_rkWqzJ": {
-          "type": "collection_item",
-          "settings": {
-            "collection_title": "Collection Title",
-            "collection_description": "",
-            "collection_link": "",
-            "button_text": "Shop Collection"
-          }
-        }
-      },
-      "block_order": [
-        "collection_item_cmcThj",
-        "collection_item_BCpRdY",
-        "collection_item_rkWqzJ"
-      ],
       "name": "Whif Collection Section",
       "settings": {
         "heading": "Our Collections",
@@ -355,45 +321,6 @@
     },
     "whif_scenting_section_KWRQ6H": {
       "type": "whif-scenting-section",
-      "blocks": {
-        "benefit_qwaqp9": {
-          "type": "benefit",
-          "settings": {
-            "benefit_title": "Enhanced Mood",
-            "benefit_description": "Scenting can improve mood and create positive associations."
-          }
-        },
-        "scent_category_3wmbVX": {
-          "type": "scent_category",
-          "settings": {
-            "category_name": "Fresh & Clean",
-            "category_description": "Light, airy scents perfect for modern spaces.",
-            "category_link": ""
-          }
-        },
-        "how_it_works_F8P6it": {
-          "type": "how_it_works",
-          "settings": {
-            "step_number": "1",
-            "step_title": "Choose Your Scent",
-            "step_description": "Select from our curated collection of premium fragrances."
-          }
-        },
-        "button_fEjVqh": {
-          "type": "button",
-          "settings": {
-            "button_label": "Explore Scenting Solutions",
-            "button_link": "",
-            "button_style_secondary": false
-          }
-        }
-      },
-      "block_order": [
-        "benefit_qwaqp9",
-        "scent_category_3wmbVX",
-        "how_it_works_F8P6it",
-        "button_fEjVqh"
-      ],
       "name": "Whif Scenting Section",
       "settings": {
         "heading": "The Science of Scenting",

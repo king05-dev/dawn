@@ -14,192 +14,1273 @@
   }
 {%- endstyle -%}
 
-<div class="whif-contact-us-section color-{{ section.settings.color_scheme }} gradient">
-  <div class="page-width section-{{ section.id }}-padding">
-    <div class="whif-contact-us-content">
-      {%- if section.settings.heading != blank -%}
-        <h2 class="whif-contact-us__heading">{{ section.settings.heading }}</h2>
-      {%- endif -%}
-      
-      {%- if section.settings.description != blank -%}
-        <div class="whif-contact-us__description rte">
-          {{ section.settings.description }}
-        </div>
-      {%- endif -%}
+<section
+  data-test="page-section"
+  data-section-theme="white"
+  class="
+    page-section
 
-      <div class="whif-contact-us__wrapper">
-        <div class="contact-info">
-          {%- for block in section.blocks -%}
-            {%- case block.type -%}
-              {%- when 'contact_info' -%}
-                <div class="contact-info-item" {{ block.shopify_attributes }}>
-                  {%- if block.settings.info_icon != blank -%}
-                    <div class="info-icon">
-                      {{ block.settings.info_icon | image_url: width: 40 | image_tag: loading: 'lazy', alt: block.settings.info_title }}
+      full-bleed-section
+      layout-engine-section
+
+    background-width--full-bleed
+
+      section-height--small
+
+
+      content-width--wide
+
+    horizontal-alignment--center
+    vertical-alignment--middle
+
+
+
+
+    white
+  "
+  data-section-id="6845fbaf5567181c215dc8ba"
+  data-controller="SectionWrapperController"
+  data-current-styles="
+    {
+    &quot;imageOverlayOpacity&quot;: 0.15,
+    &quot;backgroundWidth&quot;: &quot;background-width--full-bleed&quot;,
+    &quot;sectionHeight&quot;: &quot;section-height--small&quot;,
+    &quot;customSectionHeight&quot;: 27,
+    &quot;horizontalAlignment&quot;: &quot;horizontal-alignment--center&quot;,
+    &quot;verticalAlignment&quot;: &quot;vertical-alignment--middle&quot;,
+    &quot;contentWidth&quot;: &quot;content-width--wide&quot;,
+    &quot;customContentWidth&quot;: 50,
+    &quot;sectionTheme&quot;: &quot;white&quot;,
+    &quot;sectionAnimation&quot;: &quot;none&quot;,
+    &quot;backgroundMode&quot;: &quot;image&quot;
+    }
+  "
+  data-current-context="
+    {
+    &quot;video&quot;: {
+    &quot;playbackSpeed&quot;: 0.5,
+    &quot;filter&quot;: 1,
+    &quot;filterStrength&quot;: 0,
+    &quot;zoom&quot;: 0,
+    &quot;videoSourceProvider&quot;: &quot;none&quot;
+    },
+    &quot;backgroundImageId&quot;: null,
+    &quot;backgroundMediaEffect&quot;: {
+    &quot;type&quot;: &quot;none&quot;
+    },
+    &quot;divider&quot;: {
+    &quot;enabled&quot;: false
+    },
+    &quot;typeName&quot;: &quot;page&quot;
+    }
+  "
+  data-animation="none"
+  data-fluid-engine-section=""
+  data-controllers-bound="SectionWrapperController,SectionWrapperController"
+  id="yui_3_17_2_1_1759180599887_307"
+  data-active="true"
+>
+  <div class="section-border">
+    <div class="section-background"></div>
+  </div>
+  <div
+    class="content-wrapper"
+    style=""
+    id="yui_3_17_2_1_1759180599887_306"
+  >
+    <div class="content" id="yui_3_17_2_1_1759180599887_305">
+      <div data-fluid-engine="true" id="yui_3_17_2_1_1759180599887_304">
+        <style>
+          .fe-6845fbaf5567181c215dc8b9 {
+            --grid-gutter: calc(var(--sqs-mobile-site-gutter, 6vw) - 0px);
+            --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (0px * (8 - 1))) / 8);
+
+            display: grid;
+            position: relative;
+            grid-area: 1/1/-1/-1;
+            grid-template-rows: repeat(84, minmax(24px, auto));
+            grid-template-columns:
+              minmax(var(--grid-gutter), 1fr)
+              repeat(8, minmax(0, var(--cell-max-width)))
+              minmax(var(--grid-gutter), 1fr);
+            row-gap: 0px;
+            column-gap: 0px;
+            overflow-x: hidden;
+            overflow-x: clip;
+          }
+
+          @media (min-width: 768px) {
+            .background-width--inset .fe-6845fbaf5567181c215dc8b9 {
+              --inset-padding: calc(var(--sqs-site-gutter) * 2);
+            }
+
+            .fe-6845fbaf5567181c215dc8b9 {
+              --grid-gutter: calc(var(--sqs-site-gutter, 4vw) - 0px);
+              --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (0px * (24 - 1))) / 24);
+              --inset-padding: 0vw;
+
+              --row-height-scaling-factor: 0.0215;
+              --container-width: min(
+                var(--sqs-site-max-width, 1500px),
+                calc(100vw - var(--sqs-site-gutter, 4vw) * 2 - var(--inset-padding))
+              );
+
+              grid-template-rows: repeat(
+                28,
+                minmax(calc(var(--container-width) * var(--row-height-scaling-factor)), auto)
+              );
+              grid-template-columns:
+                minmax(var(--grid-gutter), 1fr)
+                repeat(24, minmax(0, var(--cell-max-width)))
+                minmax(var(--grid-gutter), 1fr);
+            }
+          }
+
+          .fe-block-b40951d608bba7ca7a8f {
+            grid-area: 1/2/2/10;
+            z-index: 1;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-b40951d608bba7ca7a8f .sqs-block {
+            justify-content: flex-start;
+          }
+
+          .fe-block-b40951d608bba7ca7a8f .sqs-block-alignment-wrapper {
+            align-items: flex-start;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-b40951d608bba7ca7a8f {
+              grid-area: 1/2/3/9;
+              z-index: 1;
+            }
+
+            .fe-block-b40951d608bba7ca7a8f .sqs-block {
+              justify-content: flex-start;
+            }
+
+            .fe-block-b40951d608bba7ca7a8f .sqs-block-alignment-wrapper {
+              align-items: flex-start;
+            }
+          }
+
+          .fe-block-24c6a952f69f2bdd20de {
+            grid-area: 3/2/9/10;
+            z-index: 7;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-24c6a952f69f2bdd20de .sqs-block {
+            justify-content: flex-start;
+          }
+
+          .fe-block-24c6a952f69f2bdd20de .sqs-block-alignment-wrapper {
+            align-items: flex-start;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-24c6a952f69f2bdd20de {
+              grid-area: 3/2/7/16;
+              z-index: 7;
+            }
+
+            .fe-block-24c6a952f69f2bdd20de .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-24c6a952f69f2bdd20de .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+
+          .fe-block-fafda562d6e3975cfd85 {
+            grid-area: 10/2/20/10;
+            z-index: 1;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-fafda562d6e3975cfd85 .sqs-block {
+            justify-content: center;
+          }
+
+          .fe-block-fafda562d6e3975cfd85 .sqs-block-alignment-wrapper {
+            align-items: center;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-fafda562d6e3975cfd85 {
+              grid-area: 8/2/18/9;
+              z-index: 1;
+            }
+
+            .fe-block-fafda562d6e3975cfd85 .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-fafda562d6e3975cfd85 .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+
+          .fe-block-yui_3_17_2_1_1749419752818_3010 {
+            grid-area: 15/2/16/10;
+            z-index: 8;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-yui_3_17_2_1_1749419752818_3010 .sqs-block {
+            justify-content: flex-start;
+          }
+
+          .fe-block-yui_3_17_2_1_1749419752818_3010 .sqs-block-alignment-wrapper {
+            align-items: flex-start;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-yui_3_17_2_1_1749419752818_3010 {
+              grid-area: 12/2/14/9;
+              z-index: 8;
+            }
+
+            .fe-block-yui_3_17_2_1_1749419752818_3010 .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-yui_3_17_2_1_1749419752818_3010 .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+
+          .fe-block-830b716e3802ae037b2c {
+            grid-area: 22/2/33/10;
+            z-index: 2;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-830b716e3802ae037b2c .sqs-block {
+            justify-content: center;
+          }
+
+          .fe-block-830b716e3802ae037b2c .sqs-block-alignment-wrapper {
+            align-items: center;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-830b716e3802ae037b2c {
+              grid-area: 19/2/29/9;
+              z-index: 2;
+            }
+
+            .fe-block-830b716e3802ae037b2c .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-830b716e3802ae037b2c .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+
+          .fe-block-568b569016edd1de1a5c {
+            grid-area: 27/2/28/10;
+            z-index: 9;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-568b569016edd1de1a5c .sqs-block {
+            justify-content: flex-start;
+          }
+
+          .fe-block-568b569016edd1de1a5c .sqs-block-alignment-wrapper {
+            align-items: flex-start;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-568b569016edd1de1a5c {
+              grid-area: 22/2/26/9;
+              z-index: 9;
+            }
+
+            .fe-block-568b569016edd1de1a5c .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-568b569016edd1de1a5c .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+
+          .fe-block-234ddc5672bebd97ffe1 {
+            grid-area: 34/2/45/10;
+            z-index: 1;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-234ddc5672bebd97ffe1 .sqs-block {
+            justify-content: center;
+          }
+
+          .fe-block-234ddc5672bebd97ffe1 .sqs-block-alignment-wrapper {
+            align-items: center;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-234ddc5672bebd97ffe1 {
+              grid-area: 8/10/18/18;
+              z-index: 1;
+            }
+
+            .fe-block-234ddc5672bebd97ffe1 .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-234ddc5672bebd97ffe1 .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+
+          .fe-block-cf713ebbb05b49a7b59d {
+            grid-area: 40/2/41/10;
+            z-index: 9;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-cf713ebbb05b49a7b59d .sqs-block {
+            justify-content: flex-start;
+          }
+
+          .fe-block-cf713ebbb05b49a7b59d .sqs-block-alignment-wrapper {
+            align-items: flex-start;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-cf713ebbb05b49a7b59d {
+              grid-area: 12/10/14/18;
+              z-index: 9;
+            }
+
+            .fe-block-cf713ebbb05b49a7b59d .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-cf713ebbb05b49a7b59d .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+
+          .fe-block-88bfe34efab3c3e1e6b8 {
+            grid-area: 47/2/57/10;
+            z-index: 2;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-88bfe34efab3c3e1e6b8 .sqs-block {
+            justify-content: center;
+          }
+
+          .fe-block-88bfe34efab3c3e1e6b8 .sqs-block-alignment-wrapper {
+            align-items: center;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-88bfe34efab3c3e1e6b8 {
+              grid-area: 19/19/29/26;
+              z-index: 2;
+            }
+
+            .fe-block-88bfe34efab3c3e1e6b8 .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-88bfe34efab3c3e1e6b8 .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+
+          .fe-block-2d75675fc74a5d8fdb58 {
+            grid-area: 52/2/53/10;
+            z-index: 11;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-2d75675fc74a5d8fdb58 .sqs-block {
+            justify-content: flex-start;
+          }
+
+          .fe-block-2d75675fc74a5d8fdb58 .sqs-block-alignment-wrapper {
+            align-items: flex-start;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-2d75675fc74a5d8fdb58 {
+              grid-area: 22/19/26/26;
+              z-index: 11;
+            }
+
+            .fe-block-2d75675fc74a5d8fdb58 .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-2d75675fc74a5d8fdb58 .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+
+          .fe-block-ab05cfb0b3b2250a4abc {
+            grid-area: 59/2/69/10;
+            z-index: 0;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-ab05cfb0b3b2250a4abc .sqs-block {
+            justify-content: center;
+          }
+
+          .fe-block-ab05cfb0b3b2250a4abc .sqs-block-alignment-wrapper {
+            align-items: center;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-ab05cfb0b3b2250a4abc {
+              grid-area: 19/10/29/18;
+              z-index: 0;
+            }
+
+            .fe-block-ab05cfb0b3b2250a4abc .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-ab05cfb0b3b2250a4abc .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+
+          .fe-block-3c0639898089fb918611 {
+            grid-area: 64/2/65/10;
+            z-index: 10;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-3c0639898089fb918611 .sqs-block {
+            justify-content: flex-start;
+          }
+
+          .fe-block-3c0639898089fb918611 .sqs-block-alignment-wrapper {
+            align-items: flex-start;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-3c0639898089fb918611 {
+              grid-area: 22/10/26/18;
+              z-index: 10;
+            }
+
+            .fe-block-3c0639898089fb918611 .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-3c0639898089fb918611 .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+
+          .fe-block-fc6ceb0ee0f8545c4bdd {
+            grid-area: 71/2/82/10;
+            z-index: 2;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-fc6ceb0ee0f8545c4bdd .sqs-block {
+            justify-content: center;
+          }
+
+          .fe-block-fc6ceb0ee0f8545c4bdd .sqs-block-alignment-wrapper {
+            align-items: center;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-fc6ceb0ee0f8545c4bdd {
+              grid-area: 8/19/18/26;
+              z-index: 2;
+            }
+
+            .fe-block-fc6ceb0ee0f8545c4bdd .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-fc6ceb0ee0f8545c4bdd .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+
+          .fe-block-be93c19bb529900ea9b1 {
+            grid-area: 76/2/77/10;
+            z-index: 12;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-be93c19bb529900ea9b1 .sqs-block {
+            justify-content: flex-start;
+          }
+
+          .fe-block-be93c19bb529900ea9b1 .sqs-block-alignment-wrapper {
+            align-items: flex-start;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-be93c19bb529900ea9b1 {
+              grid-area: 12/19/14/26;
+              z-index: 12;
+            }
+
+            .fe-block-be93c19bb529900ea9b1 .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-be93c19bb529900ea9b1 .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+
+          .fe-block-9173a7ffabf7612bebd5 {
+            grid-area: 83/3/85/9;
+            z-index: 4;
+
+            @media (max-width: 767px) {
+            }
+          }
+
+          .fe-block-9173a7ffabf7612bebd5 .sqs-block {
+            justify-content: center;
+          }
+
+          .fe-block-9173a7ffabf7612bebd5 .sqs-block-alignment-wrapper {
+            align-items: center;
+          }
+
+          @media (min-width: 768px) {
+            .fe-block-9173a7ffabf7612bebd5 {
+              grid-area: 4/20/6/24;
+              z-index: 4;
+            }
+
+            .fe-block-9173a7ffabf7612bebd5 .sqs-block {
+              justify-content: center;
+            }
+
+            .fe-block-9173a7ffabf7612bebd5 .sqs-block-alignment-wrapper {
+              align-items: center;
+            }
+          }
+        </style>
+        <div class="fluid-engine fe-6845fbaf5567181c215dc8b9" id="yui_3_17_2_1_1759180599887_303">
+          <div class="fe-block fe-block-b40951d608bba7ca7a8f" style="mix-blend-mode: normal;">
+            <div
+              class="sqs-block html-block sqs-block-html"
+              data-blend-mode="NORMAL"
+              data-block-type="2"
+              data-border-radii="{&quot;topLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;topRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0}}"
+              data-sqsp-block="text"
+              id="block-b40951d608bba7ca7a8f"
+            >
+              <div class="sqs-block-content">
+                <div class="sqs-html-content" data-sqsp-text-block-content="">
+                  <h3
+                    style="white-space: pre-wrap; transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.387097s;"
+                    class="preFade fadeIn"
+                  >
+                    <span class="sqsrte-text-color--black">elevate your brand</span>
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-24c6a952f69f2bdd20de" style="mix-blend-mode: normal;">
+            <div
+              class="sqs-block html-block sqs-block-html"
+              data-blend-mode="NORMAL"
+              data-block-type="2"
+              data-border-radii="{&quot;topLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;topRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0}}"
+              data-sqsp-block="text"
+              id="block-24c6a952f69f2bdd20de"
+            >
+              <div class="sqs-block-content">
+                <div class="sqs-html-content" data-sqsp-text-block-content="">
+                  <pre><code>Make scent part of your brand identity. Whiffed Aromas offers scenting solutions that boost foot traffic, increase sales, and leave a lasting impression. Turn your space into a full-sensory experience that's memorable, luxurious, and unmistakably your brand.</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-fafda562d6e3975cfd85" id="yui_3_17_2_1_1759180599887_302">
+            <div
+              class="sqs-block image-block sqs-block-image sqs-stretched sqs-text-ready"
+              data-aspect-ratio="81.06846274539818"
+              data-block-type="5"
+              data-sqsp-block="image"
+              id="block-fafda562d6e3975cfd85"
+            >
+              <div class="sqs-block-content" id="yui_3_17_2_1_1759180599887_301" style="height: 100%; width: 100%;">
+                <div
+                  class="image-block-outer-wrapper layout-caption-below design-layout-fluid image-position-center combination-animation-site-default individual-animation-site-default sqs-narrow-width"
+                  data-test="image-block-fluid-outer-wrapper"
+                  id="yui_3_17_2_1_1759180599887_300"
+                >
+                  <div
+                    class="fluid-image-animation-wrapper sqs-image sqs-block-alignment-wrapper preFade fadeIn"
+                    data-animation-role="image"
+                    id="yui_3_17_2_1_1759180599887_299"
+                    style="transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.390968s;"
+                  >
+                    <div
+                      class="fluid-image-container sqs-image-content"
+                      style="overflow: hidden;-webkit-mask-image: -webkit-radial-gradient(white, black);border-top-left-radius: 10px;border-top-right-radius: 10px;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;position: relative;width: 100%;height: 100%;"
+                      data-sqsp-image-block-image-container=""
+                      id="yui_3_17_2_1_1759180599887_298"
+                    >
+                      <a
+                        class="sqs-block-image-link content-fill"
+                        href="https://www.whiffedaromas.com/commercial-and-brands"
+                        data-sqsp-image-block-link=""
+                        id="yui_3_17_2_1_1759180599887_295"
+                        tabindex="0"
+                      >
+                        <img
+                          data-stretch="true"
+                          data-src="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/04d180ed-99ab-472e-8e2f-17d5cdf2524d/gym.jpg"
+                          data-image="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/04d180ed-99ab-472e-8e2f-17d5cdf2524d/gym.jpg"
+                          data-image-dimensions="2816x1536"
+                          data-image-focal-point="0.5,0.5"
+                          alt="Empty gym with treadmills, elliptical machines, and weightlifting equipment, bright natural light, and greenery decor."
+                          data-load="false"
+                          elementtiming="system-image-block"
+                          data-sqsp-image-block-image=""
+                          src="./Whiffed Aromas _ Luxury Home and Commercial Scenting_files/gym.jpg"
+                          width="2816"
+                          height="1536"
+                          sizes="100vw"
+                          style="display:block;object-fit: cover; object-position: 50% 50%"
+                          srcset="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/04d180ed-99ab-472e-8e2f-17d5cdf2524d/gym.jpg?format=100w 100w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/04d180ed-99ab-472e-8e2f-17d5cdf2524d/gym.jpg?format=300w 300w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/04d180ed-99ab-472e-8e2f-17d5cdf2524d/gym.jpg?format=500w 500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/04d180ed-99ab-472e-8e2f-17d5cdf2524d/gym.jpg?format=750w 750w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/04d180ed-99ab-472e-8e2f-17d5cdf2524d/gym.jpg?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/04d180ed-99ab-472e-8e2f-17d5cdf2524d/gym.jpg?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/04d180ed-99ab-472e-8e2f-17d5cdf2524d/gym.jpg?format=2500w 2500w"
+                          loading="lazy"
+                          decoding="async"
+                          data-loader="sqs"
+                        >
+
+                        <div class="fluidImageOverlay"></div>
+                      </a>
                     </div>
-                  {%- endif -%}
-                  <div class="info-content">
-                    <h4>{{ block.settings.info_title }}</h4>
-                    <p>{{ block.settings.info_details }}</p>
-                    {%- if block.settings.info_link != blank -%}
-                      <a href="{{ block.settings.info_link }}" class="info-link">
-                        {{ block.settings.link_text | default: 'Contact Us' }}
-                      </a>
-                    {%- endif -%}
                   </div>
                 </div>
-              
-              {%- when 'business_hours' -%}
-                <div class="business-hours" {{ block.shopify_attributes }}>
-                  <h4>{{ block.settings.hours_title }}</h4>
-                  <div class="hours-list">
-                    {%- if block.settings.monday_hours != blank -%}
-                      <div class="hours-item">
-                        <span class="day">Monday:</span>
-                        <span class="time">{{ block.settings.monday_hours }}</span>
-                      </div>
-                    {%- endif -%}
-                    {%- if block.settings.tuesday_hours != blank -%}
-                      <div class="hours-item">
-                        <span class="day">Tuesday:</span>
-                        <span class="time">{{ block.settings.tuesday_hours }}</span>
-                      </div>
-                    {%- endif -%}
-                    {%- if block.settings.wednesday_hours != blank -%}
-                      <div class="hours-item">
-                        <span class="day">Wednesday:</span>
-                        <span class="time">{{ block.settings.wednesday_hours }}</span>
-                      </div>
-                    {%- endif -%}
-                    {%- if block.settings.thursday_hours != blank -%}
-                      <div class="hours-item">
-                        <span class="day">Thursday:</span>
-                        <span class="time">{{ block.settings.thursday_hours }}</span>
-                      </div>
-                    {%- endif -%}
-                    {%- if block.settings.friday_hours != blank -%}
-                      <div class="hours-item">
-                        <span class="day">Friday:</span>
-                        <span class="time">{{ block.settings.friday_hours }}</span>
-                      </div>
-                    {%- endif -%}
-                    {%- if block.settings.saturday_hours != blank -%}
-                      <div class="hours-item">
-                        <span class="day">Saturday:</span>
-                        <span class="time">{{ block.settings.saturday_hours }}</span>
-                      </div>
-                    {%- endif -%}
-                    {%- if block.settings.sunday_hours != blank -%}
-                      <div class="hours-item">
-                        <span class="day">Sunday:</span>
-                        <span class="time">{{ block.settings.sunday_hours }}</span>
-                      </div>
-                    {%- endif -%}
+                <style>
+                  .sqs-block-image .sqs-block-content {
+                    height: 100%;
+                    width: 100%;
+                  }
+
+                  .fe-block-fafda562d6e3975cfd85 .fluidImageOverlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    mix-blend-mode: normal;
+
+                    opacity: 1;
+                  }
+                </style>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-yui_3_17_2_1_1749419752818_3010" style="mix-blend-mode: normal;">
+            <div
+              class="sqs-block html-block sqs-block-html"
+              data-blend-mode="NORMAL"
+              data-block-type="2"
+              data-border-radii="{&quot;topLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;topRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0}}"
+              data-sqsp-block="text"
+              id="block-yui_3_17_2_1_1749419752818_3010"
+            >
+              <div class="sqs-block-content">
+                <div class="sqs-html-content" data-sqsp-text-block-content="">
+                  <h4
+                    style="text-align: center; white-space: pre-wrap; transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.394839s;"
+                    class="preFade fadeIn"
+                  >
+                    <span class="sqsrte-text-color--white">Gyms and Fitness Centers</span>
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-830b716e3802ae037b2c" id="yui_3_17_2_1_1759180599887_318">
+            <div
+              class="sqs-block image-block sqs-block-image sqs-stretched sqs-text-ready"
+              data-aspect-ratio="81.06846274539818"
+              data-block-type="5"
+              data-sqsp-block="image"
+              id="block-830b716e3802ae037b2c"
+            >
+              <div class="sqs-block-content" id="yui_3_17_2_1_1759180599887_317" style="height: 100%; width: 100%;">
+                <div
+                  class="image-block-outer-wrapper layout-caption-below design-layout-fluid image-position-center combination-animation-site-default individual-animation-site-default sqs-narrow-width"
+                  data-test="image-block-fluid-outer-wrapper"
+                  id="yui_3_17_2_1_1759180599887_316"
+                >
+                  <div
+                    class="fluid-image-animation-wrapper sqs-image sqs-block-alignment-wrapper preFade fadeIn"
+                    data-animation-role="image"
+                    id="yui_3_17_2_1_1759180599887_315"
+                    style="transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.39871s;"
+                  >
+                    <div
+                      class="fluid-image-container sqs-image-content"
+                      style="overflow: hidden;-webkit-mask-image: -webkit-radial-gradient(white, black);border-top-left-radius: 10px;border-top-right-radius: 10px;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;position: relative;width: 100%;height: 100%;"
+                      data-sqsp-image-block-image-container=""
+                      id="yui_3_17_2_1_1759180599887_314"
+                    >
+                      <a
+                        class="sqs-block-image-link content-fill"
+                        href="https://www.whiffedaromas.com/commercial-and-brands"
+                        data-sqsp-image-block-link=""
+                        id="yui_3_17_2_1_1759180599887_311"
+                        tabindex="0"
+                      >
+                        <img
+                          data-stretch="true"
+                          data-src="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/44093d18-bde0-4daa-8279-23d2afb7b3b8/retail.jpg"
+                          data-image="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/44093d18-bde0-4daa-8279-23d2afb7b3b8/retail.jpg"
+                          data-image-dimensions="2048x2048"
+                          data-image-focal-point="0.5,0.5"
+                          alt="Interior of a modern boutique store with display tables of beauty and skincare products, decorated with pink and white flowers in vases, large windows, and warm lighting."
+                          data-load="false"
+                          elementtiming="system-image-block"
+                          data-sqsp-image-block-image=""
+                          src="./Whiffed Aromas _ Luxury Home and Commercial Scenting_files/retail.jpg"
+                          width="2048"
+                          height="2048"
+                          sizes="100vw"
+                          style="display:block;object-fit: cover; object-position: 50% 50%"
+                          srcset="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/44093d18-bde0-4daa-8279-23d2afb7b3b8/retail.jpg?format=100w 100w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/44093d18-bde0-4daa-8279-23d2afb7b3b8/retail.jpg?format=300w 300w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/44093d18-bde0-4daa-8279-23d2afb7b3b8/retail.jpg?format=500w 500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/44093d18-bde0-4daa-8279-23d2afb7b3b8/retail.jpg?format=750w 750w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/44093d18-bde0-4daa-8279-23d2afb7b3b8/retail.jpg?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/44093d18-bde0-4daa-8279-23d2afb7b3b8/retail.jpg?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/44093d18-bde0-4daa-8279-23d2afb7b3b8/retail.jpg?format=2500w 2500w"
+                          loading="lazy"
+                          decoding="async"
+                          data-loader="sqs"
+                        >
+
+                        <div class="fluidImageOverlay"></div>
+                      </a>
+                    </div>
                   </div>
                 </div>
-              
-              {%- when 'social_links' -%}
-                <div class="social-links" {{ block.shopify_attributes }}>
-                  <h4>{{ block.settings.social_title }}</h4>
-                  <div class="social-icons">
-                    {%- if block.settings.facebook_url != blank -%}
-                      <a href="{{ block.settings.facebook_url }}" target="_blank" class="social-link">
-                        <span class="social-icon">📘</span> Facebook
+                <style>
+                  .sqs-block-image .sqs-block-content {
+                    height: 100%;
+                    width: 100%;
+                  }
+
+                  .fe-block-830b716e3802ae037b2c .fluidImageOverlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    mix-blend-mode: normal;
+
+                    opacity: 1;
+                  }
+                </style>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-568b569016edd1de1a5c" style="mix-blend-mode: normal;">
+            <div
+              class="sqs-block html-block sqs-block-html"
+              data-blend-mode="NORMAL"
+              data-block-type="2"
+              data-border-radii="{&quot;topLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;topRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0}}"
+              data-sqsp-block="text"
+              id="block-568b569016edd1de1a5c"
+            >
+              <div class="sqs-block-content">
+                <div class="sqs-html-content" data-sqsp-text-block-content="">
+                  <h4
+                    style="text-align: center; white-space: pre-wrap; transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.402581s;"
+                    class="preFade fadeIn"
+                  >
+                    <span class="sqsrte-text-color--white">retail</span>
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-234ddc5672bebd97ffe1" id="yui_3_17_2_1_1759180599887_329">
+            <div
+              class="sqs-block image-block sqs-block-image sqs-stretched sqs-text-ready"
+              data-block-type="5"
+              data-sqsp-block="image"
+              id="block-234ddc5672bebd97ffe1"
+            >
+              <div class="sqs-block-content" id="yui_3_17_2_1_1759180599887_328" style="height: 100%; width: 100%;">
+                <div
+                  class="
+                    image-block-outer-wrapper
+                    layout-caption-below
+                    design-layout-fluid
+                    image-position-left
+                    combination-animation-none
+                    individual-animation-none
+                  "
+                  data-test="image-block-fluid-outer-wrapper"
+                  id="yui_3_17_2_1_1759180599887_327"
+                >
+                  <div
+                    class="fluid-image-animation-wrapper sqs-image sqs-block-alignment-wrapper preFade fadeIn"
+                    data-animation-role="image"
+                    id="yui_3_17_2_1_1759180599887_326"
+                    style="transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.406452s;"
+                  >
+                    <div
+                      class="fluid-image-container sqs-image-content"
+                      style="overflow: hidden;-webkit-mask-image: -webkit-radial-gradient(white, black);border-top-left-radius: 10px;border-top-right-radius: 10px;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;position: relative;width: 100%;height: 100%;"
+                      data-sqsp-image-block-image-container=""
+                      id="yui_3_17_2_1_1759180599887_325"
+                    >
+                      <a
+                        class="sqs-block-image-link content-fill"
+                        href="https://www.whiffedaromas.com/commercial-and-brands"
+                        target="_blank"
+                        data-sqsp-image-block-link=""
+                        id="yui_3_17_2_1_1759180599887_322"
+                        tabindex="0"
+                      >
+                        <img
+                          data-stretch="true"
+                          data-src="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4222f40-1a29-4008-b235-b5972a62ea93/auto+dealership.jpg"
+                          data-image="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4222f40-1a29-4008-b235-b5972a62ea93/auto+dealership.jpg"
+                          data-image-dimensions="2816x1536"
+                          data-image-focal-point="0.9084084084084084,0.6560410025626602"
+                          alt="A modern car showroom with BMW and Mercedes-Benz vehicles on display, a seating area with brown couches, small tables, and a coffee station."
+                          data-load="false"
+                          elementtiming="system-image-block"
+                          data-sqsp-image-block-image=""
+                          src="./Whiffed Aromas _ Luxury Home and Commercial Scenting_files/auto+dealership.jpg"
+                          width="2816"
+                          height="1536"
+                          sizes="100vw"
+                          style="display:block;object-fit: cover; object-position: 90.84084084084084% 65.60410025626602%"
+                          srcset="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4222f40-1a29-4008-b235-b5972a62ea93/auto+dealership.jpg?format=100w 100w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4222f40-1a29-4008-b235-b5972a62ea93/auto+dealership.jpg?format=300w 300w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4222f40-1a29-4008-b235-b5972a62ea93/auto+dealership.jpg?format=500w 500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4222f40-1a29-4008-b235-b5972a62ea93/auto+dealership.jpg?format=750w 750w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4222f40-1a29-4008-b235-b5972a62ea93/auto+dealership.jpg?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4222f40-1a29-4008-b235-b5972a62ea93/auto+dealership.jpg?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/e4222f40-1a29-4008-b235-b5972a62ea93/auto+dealership.jpg?format=2500w 2500w"
+                          loading="lazy"
+                          decoding="async"
+                          data-loader="sqs"
+                        >
+
+                        <div class="fluidImageOverlay"></div>
                       </a>
-                    {%- endif -%}
-                    {%- if block.settings.instagram_url != blank -%}
-                      <a href="{{ block.settings.instagram_url }}" target="_blank" class="social-link">
-                        <span class="social-icon">📷</span> Instagram
-                      </a>
-                    {%- endif -%}
-                    {%- if block.settings.twitter_url != blank -%}
-                      <a href="{{ block.settings.twitter_url }}" target="_blank" class="social-link">
-                        <span class="social-icon">🐦</span> Twitter
-                      </a>
-                    {%- endif -%}
-                    {%- if block.settings.linkedin_url != blank -%}
-                      <a href="{{ block.settings.linkedin_url }}" target="_blank" class="social-link">
-                        <span class="social-icon">💼</span> LinkedIn
-                      </a>
-                    {%- endif -%}
+                    </div>
                   </div>
                 </div>
-            {%- endcase -%}
-          {%- endfor -%}
-        </div>
+                <style>
+                  .sqs-block-image .sqs-block-content {
+                    height: 100%;
+                    width: 100%;
+                  }
 
-        <div class="contact-form">
-          <h3>{{ section.settings.form_title | default: 'Send us a message' }}</h3>
-          {%- form 'contact', class: 'whif-contact-form' -%}
-            {%- if form.posted_successfully? -%}
-              <div class="form-success">
-                <p>{{ section.settings.success_message | default: "Thank you for your message. We'll get back to you soon!" }}</p>
-              </div>
-            {%- endif -%}
+                  .fe-block-234ddc5672bebd97ffe1 .fluidImageOverlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    mix-blend-mode: normal;
 
-            {%- if form.errors -%}
-              <div class="form-errors">
-                <p>Please correct the following errors:</p>
-                <ul>
-                  {%- for field in form.errors -%}
-                    <li>{{ field | capitalize }} {{ form.errors[field] }}</li>
-                  {%- endfor -%}
-                </ul>
-              </div>
-            {%- endif -%}
-
-            <div class="form-row">
-              <div class="form-field">
-                <label for="contact-name">Name *</label>
-                <input type="text" id="contact-name" name="contact[name]" value="{{ form.name }}" required>
-              </div>
-              <div class="form-field">
-                <label for="contact-email">Email *</label>
-                <input type="email" id="contact-email" name="contact[email]" value="{{ form.email }}" required>
+                    opacity: 1;
+                  }
+                </style>
               </div>
             </div>
-
-            <div class="form-field">
-              <label for="contact-phone">Phone</label>
-              <input type="tel" id="contact-phone" name="contact[phone]" value="{{ form.phone }}">
+          </div>
+          <div class="fe-block fe-block-cf713ebbb05b49a7b59d" style="mix-blend-mode: normal;">
+            <div
+              class="sqs-block html-block sqs-block-html"
+              data-blend-mode="NORMAL"
+              data-block-type="2"
+              data-border-radii="{&quot;topLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;topRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0}}"
+              data-sqsp-block="text"
+              id="block-cf713ebbb05b49a7b59d"
+            >
+              <div class="sqs-block-content">
+                <div class="sqs-html-content" data-sqsp-text-block-content="">
+                  <h4
+                    style="text-align: center; white-space: pre-wrap; transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.410323s;"
+                    class="preFade fadeIn"
+                  >
+                    <span class="sqsrte-text-color--white">auto dealerships</span>
+                  </h4>
+                </div>
+              </div>
             </div>
+          </div>
+          <div class="fe-block fe-block-88bfe34efab3c3e1e6b8" id="yui_3_17_2_1_1759180599887_340">
+            <div
+              class="sqs-block image-block sqs-block-image sqs-stretched sqs-text-ready"
+              data-aspect-ratio="71.64434922335298"
+              data-block-type="5"
+              data-sqsp-block="image"
+              id="block-88bfe34efab3c3e1e6b8"
+            >
+              <div class="sqs-block-content" id="yui_3_17_2_1_1759180599887_339" style="height: 100%; width: 100%;">
+                <div
+                  class="image-block-outer-wrapper layout-caption-below design-layout-fluid image-position-center combination-animation-site-default individual-animation-site-default sqs-narrow-width"
+                  data-test="image-block-fluid-outer-wrapper"
+                  id="yui_3_17_2_1_1759180599887_338"
+                >
+                  <div
+                    class="fluid-image-animation-wrapper sqs-image sqs-block-alignment-wrapper preFade fadeIn"
+                    data-animation-role="image"
+                    id="yui_3_17_2_1_1759180599887_337"
+                    style="transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.414194s;"
+                  >
+                    <div
+                      class="fluid-image-container sqs-image-content"
+                      style="overflow: hidden;-webkit-mask-image: -webkit-radial-gradient(white, black);border-top-left-radius: 10px;border-top-right-radius: 10px;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;position: relative;width: 100%;height: 100%;"
+                      data-sqsp-image-block-image-container=""
+                      id="yui_3_17_2_1_1759180599887_336"
+                    >
+                      <a
+                        class="sqs-block-image-link content-fill"
+                        href="https://www.whiffedaromas.com/commercial-and-brands"
+                        data-sqsp-image-block-link=""
+                        id="yui_3_17_2_1_1759180599887_333"
+                        tabindex="0"
+                      >
+                        <img
+                          data-stretch="true"
+                          data-src="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/06d38eb1-661c-4342-86f2-b2922114ea4c/hotel.jpg"
+                          data-image="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/06d38eb1-661c-4342-86f2-b2922114ea4c/hotel.jpg"
+                          data-image-dimensions="2816x1536"
+                          data-image-focal-point="0.5,0.5"
+                          alt="Luxurious hotel lobby with high ceilings, large windows, modern furniture, indoor trees, and a staircase leading to the upper floor."
+                          data-load="false"
+                          elementtiming="system-image-block"
+                          data-sqsp-image-block-image=""
+                          src="./Whiffed Aromas _ Luxury Home and Commercial Scenting_files/hotel.jpg"
+                          width="2816"
+                          height="1536"
+                          sizes="100vw"
+                          style="display:block;object-fit: cover; object-position: 50% 50%"
+                          srcset="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/06d38eb1-661c-4342-86f2-b2922114ea4c/hotel.jpg?format=100w 100w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/06d38eb1-661c-4342-86f2-b2922114ea4c/hotel.jpg?format=300w 300w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/06d38eb1-661c-4342-86f2-b2922114ea4c/hotel.jpg?format=500w 500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/06d38eb1-661c-4342-86f2-b2922114ea4c/hotel.jpg?format=750w 750w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/06d38eb1-661c-4342-86f2-b2922114ea4c/hotel.jpg?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/06d38eb1-661c-4342-86f2-b2922114ea4c/hotel.jpg?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/06d38eb1-661c-4342-86f2-b2922114ea4c/hotel.jpg?format=2500w 2500w"
+                          loading="lazy"
+                          decoding="async"
+                          data-loader="sqs"
+                        >
 
-            <div class="form-field">
-              <label for="contact-subject">Subject</label>
-              <select id="contact-subject" name="contact[subject]">
-                <option value="General Inquiry">General Inquiry</option>
-                <option value="Product Support">Product Support</option>
-                <option value="Order Status">Order Status</option>
-                <option value="Partnership">Partnership</option>
-                <option value="Other">Other</option>
-              </select>
+                        <div class="fluidImageOverlay"></div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  .sqs-block-image .sqs-block-content {
+                    height: 100%;
+                    width: 100%;
+                  }
+
+                  .fe-block-88bfe34efab3c3e1e6b8 .fluidImageOverlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    mix-blend-mode: normal;
+
+                    opacity: 1;
+                  }
+                </style>
+              </div>
             </div>
-
-            <div class="form-field">
-              <label for="contact-message">Message *</label>
-              <textarea id="contact-message" name="contact[body]" rows="5" required>{{ form.body }}</textarea>
+          </div>
+          <div class="fe-block fe-block-2d75675fc74a5d8fdb58" style="mix-blend-mode: normal;">
+            <div
+              class="sqs-block html-block sqs-block-html"
+              data-blend-mode="NORMAL"
+              data-block-type="2"
+              data-border-radii="{&quot;topLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;topRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0}}"
+              data-sqsp-block="text"
+              id="block-2d75675fc74a5d8fdb58"
+            >
+              <div class="sqs-block-content">
+                <div class="sqs-html-content" data-sqsp-text-block-content="">
+                  <h4
+                    style="text-align: center; white-space: pre-wrap; transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.418065s;"
+                    class="preFade fadeIn"
+                  >
+                    <span class="sqsrte-text-color--white">Resorts &amp; hotels </span>
+                  </h4>
+                </div>
+              </div>
             </div>
+          </div>
+          <div class="fe-block fe-block-ab05cfb0b3b2250a4abc" id="yui_3_17_2_1_1759180599887_351">
+            <div
+              class="sqs-block image-block sqs-block-image sqs-stretched sqs-text-ready"
+              data-aspect-ratio="118.943011779688"
+              data-block-type="5"
+              data-sqsp-block="image"
+              id="block-ab05cfb0b3b2250a4abc"
+            >
+              <div class="sqs-block-content" id="yui_3_17_2_1_1759180599887_350" style="height: 100%; width: 100%;">
+                <div
+                  class="image-block-outer-wrapper layout-caption-below design-layout-fluid image-position-center combination-animation-site-default individual-animation-site-default"
+                  data-test="image-block-fluid-outer-wrapper"
+                  id="yui_3_17_2_1_1759180599887_349"
+                >
+                  <div
+                    class="fluid-image-animation-wrapper sqs-image sqs-block-alignment-wrapper preFade fadeIn"
+                    data-animation-role="image"
+                    id="yui_3_17_2_1_1759180599887_348"
+                    style="transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.421935s;"
+                  >
+                    <div
+                      class="fluid-image-container sqs-image-content"
+                      style="overflow: hidden;-webkit-mask-image: -webkit-radial-gradient(white, black);border-top-left-radius: 10px;border-top-right-radius: 10px;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;position: relative;width: 100%;height: 100%;"
+                      data-sqsp-image-block-image-container=""
+                      id="yui_3_17_2_1_1759180599887_347"
+                    >
+                      <a
+                        class="sqs-block-image-link content-fill"
+                        href="https://www.whiffedaromas.com/commercial-and-brands"
+                        data-sqsp-image-block-link=""
+                        id="yui_3_17_2_1_1759180599887_344"
+                        tabindex="0"
+                      >
+                        <img
+                          data-stretch="true"
+                          data-src="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/d150bb1b-b53f-44d3-9046-6cdd82f13ea5/medical+clinic.jpg"
+                          data-image="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/d150bb1b-b53f-44d3-9046-6cdd82f13ea5/medical+clinic.jpg"
+                          data-image-dimensions="2816x1536"
+                          data-image-focal-point="0.5,0.5"
+                          alt="Modern lobby with large glass windows, white and green furniture, abstract art, and reception desk."
+                          data-load="false"
+                          elementtiming="system-image-block"
+                          data-sqsp-image-block-image=""
+                          src="./Whiffed Aromas _ Luxury Home and Commercial Scenting_files/medical+clinic.jpg"
+                          width="2816"
+                          height="1536"
+                          sizes="100vw"
+                          style="display:block;object-fit: cover; object-position: 50% 50%"
+                          srcset="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/d150bb1b-b53f-44d3-9046-6cdd82f13ea5/medical+clinic.jpg?format=100w 100w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/d150bb1b-b53f-44d3-9046-6cdd82f13ea5/medical+clinic.jpg?format=300w 300w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/d150bb1b-b53f-44d3-9046-6cdd82f13ea5/medical+clinic.jpg?format=500w 500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/d150bb1b-b53f-44d3-9046-6cdd82f13ea5/medical+clinic.jpg?format=750w 750w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/d150bb1b-b53f-44d3-9046-6cdd82f13ea5/medical+clinic.jpg?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/d150bb1b-b53f-44d3-9046-6cdd82f13ea5/medical+clinic.jpg?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/d150bb1b-b53f-44d3-9046-6cdd82f13ea5/medical+clinic.jpg?format=2500w 2500w"
+                          loading="lazy"
+                          decoding="async"
+                          data-loader="sqs"
+                        >
 
-            <div class="form-field">
-              <button type="submit" class="button button--primary">
-                {{ section.settings.submit_button_text | default: 'Send Message' }}
-              </button>
+                        <div class="fluidImageOverlay"></div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  .sqs-block-image .sqs-block-content {
+                    height: 100%;
+                    width: 100%;
+                  }
+
+                  .fe-block-ab05cfb0b3b2250a4abc .fluidImageOverlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    mix-blend-mode: normal;
+
+                    opacity: 1;
+                  }
+                </style>
+              </div>
             </div>
-          {%- endform -%}
-        </div>
-      </div>
+          </div>
+          <div class="fe-block fe-block-3c0639898089fb918611" style="mix-blend-mode: normal;">
+            <div
+              class="sqs-block html-block sqs-block-html"
+              data-blend-mode="NORMAL"
+              data-block-type="2"
+              data-border-radii="{&quot;topLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;topRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0}}"
+              data-sqsp-block="text"
+              id="block-3c0639898089fb918611"
+            >
+              <div class="sqs-block-content">
+                <div class="sqs-html-content" data-sqsp-text-block-content="">
+                  <h4
+                    style="text-align: center; white-space: pre-wrap; transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.425806s;"
+                    class="preFade fadeIn"
+                  >
+                    <span class="sqsrte-text-color--white">medical clinics</span>
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-fc6ceb0ee0f8545c4bdd" id="yui_3_17_2_1_1759180599887_362">
+            <div
+              class="sqs-block image-block sqs-block-image sqs-stretched sqs-text-ready"
+              data-aspect-ratio="118.943011779688"
+              data-block-type="5"
+              data-sqsp-block="image"
+              id="block-fc6ceb0ee0f8545c4bdd"
+            >
+              <div class="sqs-block-content" id="yui_3_17_2_1_1759180599887_361" style="height: 100%; width: 100%;">
+                <div
+                  class="image-block-outer-wrapper layout-caption-below design-layout-fluid image-position-center combination-animation-site-default individual-animation-site-default sqs-narrow-width"
+                  data-test="image-block-fluid-outer-wrapper"
+                  id="yui_3_17_2_1_1759180599887_360"
+                >
+                  <div
+                    class="fluid-image-animation-wrapper sqs-image sqs-block-alignment-wrapper preFade fadeIn"
+                    data-animation-role="image"
+                    id="yui_3_17_2_1_1759180599887_359"
+                    style="transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.429677s;"
+                  >
+                    <div
+                      class="fluid-image-container sqs-image-content"
+                      style="overflow: hidden;-webkit-mask-image: -webkit-radial-gradient(white, black);border-top-left-radius: 10px;border-top-right-radius: 10px;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;position: relative;width: 100%;height: 100%;"
+                      data-sqsp-image-block-image-container=""
+                      id="yui_3_17_2_1_1759180599887_358"
+                    >
+                      <a
+                        class="sqs-block-image-link content-fill"
+                        href="https://www.whiffedaromas.com/commercial-and-brands"
+                        data-sqsp-image-block-link=""
+                        id="yui_3_17_2_1_1759180599887_355"
+                        tabindex="0"
+                      >
+                        <img
+                          data-stretch="true"
+                          data-src="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/0fa342a0-8948-46bb-a644-55ccf8fea180/office.jpg"
+                          data-image="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/0fa342a0-8948-46bb-a644-55ccf8fea180/office.jpg"
+                          data-image-dimensions="2816x1536"
+                          data-image-focal-point="0.5,0.5"
+                          alt="Modern open-plan office space with employees working at desks, colorful chairs, plants, and large windows."
+                          data-load="false"
+                          elementtiming="system-image-block"
+                          data-sqsp-image-block-image=""
+                          src="./Whiffed Aromas _ Luxury Home and Commercial Scenting_files/office.jpg"
+                          width="2816"
+                          height="1536"
+                          sizes="100vw"
+                          style="display:block;object-fit: cover; object-position: 50% 50%"
+                          srcset="https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/0fa342a0-8948-46bb-a644-55ccf8fea180/office.jpg?format=100w 100w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/0fa342a0-8948-46bb-a644-55ccf8fea180/office.jpg?format=300w 300w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/0fa342a0-8948-46bb-a644-55ccf8fea180/office.jpg?format=500w 500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/0fa342a0-8948-46bb-a644-55ccf8fea180/office.jpg?format=750w 750w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/0fa342a0-8948-46bb-a644-55ccf8fea180/office.jpg?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/0fa342a0-8948-46bb-a644-55ccf8fea180/office.jpg?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/0fa342a0-8948-46bb-a644-55ccf8fea180/office.jpg?format=2500w 2500w"
+                          loading="lazy"
+                          decoding="async"
+                          data-loader="sqs"
+                        >
 
-      {%- if section.settings.show_map and section.settings.map_embed_code != blank -%}
-        <div class="contact-map">
-          <h3>{{ section.settings.map_title | default: 'Visit Our Store' }}</h3>
-          <div class="map-wrapper">
-            {{ section.settings.map_embed_code }}
+                        <div class="fluidImageOverlay"></div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <style>
+                  .sqs-block-image .sqs-block-content {
+                    height: 100%;
+                    width: 100%;
+                  }
+
+                  .fe-block-fc6ceb0ee0f8545c4bdd .fluidImageOverlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    mix-blend-mode: normal;
+
+                    opacity: 1;
+                  }
+                </style>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-be93c19bb529900ea9b1" style="mix-blend-mode: normal;">
+            <div
+              class="sqs-block html-block sqs-block-html"
+              data-blend-mode="NORMAL"
+              data-block-type="2"
+              data-border-radii="{&quot;topLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;topRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0}}"
+              data-sqsp-block="text"
+              id="block-be93c19bb529900ea9b1"
+            >
+              <div class="sqs-block-content">
+                <div class="sqs-html-content" data-sqsp-text-block-content="">
+                  <h4
+                    style="text-align: center; white-space: pre-wrap; transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.433548s;"
+                    class="preFade fadeIn"
+                  >
+                    <span class="sqsrte-text-color--white">offices</span>
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fe-block fe-block-9173a7ffabf7612bebd5">
+            <div
+              class="sqs-block button-block sqs-block-button sqs-stretched"
+              data-block-type="53"
+              data-sqsp-block="button"
+              id="block-9173a7ffabf7612bebd5"
+            >
+              <div class="sqs-block-content" id="yui_3_17_2_1_1759180599887_655">
+                <div
+                  class="sqs-block-button-container sqs-block-button-container--center preFade fadeIn"
+                  data-animation-role="button"
+                  data-alignment="center"
+                  data-button-size="large"
+                  data-button-type="secondary"
+                  id="yui_3_17_2_1_1759180599887_654"
+                  style="transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.437419s;"
+                >
+                  <a
+                    href="https://www.whiffedaromas.com/commercial-and-brands"
+                    class="sqs-block-button-element--large sqs-button-element--secondary sqs-block-button-element"
+                    data-sqsp-button=""
+                    data-initialized="true"
+                    tabindex="0"
+                  >
+                    Contact Us
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      {%- endif -%}
+      </div>
     </div>
   </div>
-</div>
+</section>
 
 {% schema %}
 {
