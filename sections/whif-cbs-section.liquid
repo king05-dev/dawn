@@ -13,337 +13,175 @@
     }
   }
 {%- endstyle -%}
-<section
-  data-test="page-section"
-  data-section-theme="dark-bold"
-  class="
-    page-section
 
-      full-bleed-section
-      layout-engine-section
+<div class="whif-cbs-section color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="whif-cbs-content">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="whif-cbs__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      
+      {%- if section.settings.description != blank -%}
+        <div class="whif-cbs__description rte">
+          {{ section.settings.description }}
+        </div>
+      {%- endif -%}
 
-    background-width--full-bleed
-
-
-        section-height--custom
-
-
-
-      content-width--wide
-
-    horizontal-alignment--center
-    vertical-alignment--middle
-
-
-
-
-    dark-bold
-  "
-  data-section-id="689417d96ee871174088fc63"
-  data-controller="SectionWrapperController"
-  data-current-styles="
-    {
-    &quot;imageOverlayOpacity&quot;: 0.15,
-    &quot;backgroundWidth&quot;: &quot;background-width--full-bleed&quot;,
-    &quot;sectionHeight&quot;: &quot;section-height--custom&quot;,
-    &quot;customSectionHeight&quot;: 0,
-    &quot;horizontalAlignment&quot;: &quot;horizontal-alignment--center&quot;,
-    &quot;verticalAlignment&quot;: &quot;vertical-alignment--middle&quot;,
-    &quot;contentWidth&quot;: &quot;content-width--wide&quot;,
-    &quot;customContentWidth&quot;: 50,
-    &quot;sectionTheme&quot;: &quot;dark-bold&quot;,
-    &quot;sectionAnimation&quot;: &quot;none&quot;,
-    &quot;backgroundMode&quot;: &quot;image&quot;
-    }
-  "
-  data-current-context="
-    {
-    &quot;video&quot;: {
-    &quot;playbackSpeed&quot;: 1,
-    &quot;filter&quot;: 1,
-    &quot;filterStrength&quot;: 0,
-    &quot;zoom&quot;: 0,
-    &quot;videoSourceProvider&quot;: &quot;none&quot;
-    },
-    &quot;backgroundImageId&quot;: null,
-    &quot;backgroundMediaEffect&quot;: {
-    &quot;type&quot;: &quot;none&quot;
-    },
-    &quot;divider&quot;: {
-    &quot;enabled&quot;: false
-    },
-    &quot;typeName&quot;: &quot;page&quot;
-    }
-  "
-  data-animation="none"
-  data-fluid-engine-section=""
-  data-controllers-bound="SectionWrapperController,SectionWrapperController"
-  data-active="true"
->
-  <div class="section-border">
-    <div class="section-background"></div>
-  </div>
-  <div
-    class="content-wrapper"
-    style="
-
-
-
-
-      padding-top: calc(0vmax / 10); padding-bottom: calc(0vmax / 10);
-    "
-  >
-    <div class="content">
-      <div data-fluid-engine="true">
-        <style>
-          .fe-689417d951982e45d75e7035 {
-            --grid-gutter: calc(var(--sqs-mobile-site-gutter, 6vw) - 0px);
-            --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (0px * (8 - 1))) / 8);
-
-            display: grid;
-            position: relative;
-            grid-area: 1/1/-1/-1;
-            grid-template-rows: repeat(2, minmax(24px, auto));
-            grid-template-columns:
-              minmax(var(--grid-gutter), 1fr)
-              repeat(8, minmax(0, var(--cell-max-width)))
-              minmax(var(--grid-gutter), 1fr);
-            row-gap: 0px;
-            column-gap: 0px;
-            overflow-x: hidden;
-            overflow-x: clip;
-          }
-
-          @media (min-width: 768px) {
-            .background-width--inset .fe-689417d951982e45d75e7035 {
-              --inset-padding: calc(var(--sqs-site-gutter) * 2);
-            }
-
-            .fe-689417d951982e45d75e7035 {
-              --grid-gutter: calc(var(--sqs-site-gutter, 4vw) - 0px);
-              --cell-max-width: calc((var(--sqs-site-max-width, 1500px) - (0px * (24 - 1))) / 24);
-              --inset-padding: 0vw;
-
-              --row-height-scaling-factor: 0.0215;
-              --container-width: min(
-                var(--sqs-site-max-width, 1500px),
-                calc(100vw - var(--sqs-site-gutter, 4vw) * 2 - var(--inset-padding))
-              );
-
-              grid-template-rows: repeat(
-                2,
-                minmax(calc(var(--container-width) * var(--row-height-scaling-factor)), auto)
-              );
-              grid-template-columns:
-                minmax(var(--grid-gutter), 1fr)
-                repeat(24, minmax(0, var(--cell-max-width)))
-                minmax(var(--grid-gutter), 1fr);
-            }
-          }
-
-          .fe-block-yui_3_17_2_1_1754535766595_4008 {
-            grid-area: 1/2/3/10;
-            z-index: 1;
-
-            @media (max-width: 767px) {
-            }
-          }
-
-          .fe-block-yui_3_17_2_1_1754535766595_4008 .sqs-block {
-            justify-content: center;
-          }
-
-          .fe-block-yui_3_17_2_1_1754535766595_4008 .sqs-block-alignment-wrapper {
-            align-items: center;
-          }
-
-          @media (min-width: 768px) {
-            .fe-block-yui_3_17_2_1_1754535766595_4008 {
-              grid-area: 1/1/3/27;
-              z-index: 1;
-            }
-
-            .fe-block-yui_3_17_2_1_1754535766595_4008 .sqs-block {
-              justify-content: center;
-            }
-
-            .fe-block-yui_3_17_2_1_1754535766595_4008 .sqs-block-alignment-wrapper {
-              align-items: center;
-            }
-          }
-        </style>
-        <div class="fluid-engine fe-689417d951982e45d75e7035">
-          <div class="fe-block fe-block-yui_3_17_2_1_1754535766595_4008" style="mix-blend-mode: normal;">
-            <div
-              class="sqs-block marquee-block sqs-block-marquee preFade fadeIn"
-              data-blend-mode="NORMAL"
-              data-block-type="70"
-              data-border-radii="{&quot;topLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;topRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomLeft&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0},&quot;bottomRight&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;value&quot;:0.0}}"
-              id="block-yui_3_17_2_1_1754535766595_4008"
-              style="transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.468387s;"
-            >
-              <div class="sqs-block-content">
-                <div class="Marquee" style="font-size: 1.3rem; --marquee-font-size-value: 1.3;" data-ready="true">
-                  <script class="Marquee-props" type="application/json">
-                    {
-                      "marqueeItems": [
-                        {
-                          "text": "FREE U.S. SHIPPING ON ORDERS OVER $200 | 25% off with code 'labor25'"
-                        }
-                      ],
-                      "linkTo": "",
-                      "waveFrequency": 4,
-                      "waveIntensity": 0,
-                      "animationDirection": "left",
-                      "animationSpeed": 0.5,
-                      "textStyle": "heading-1",
-                      "textSize": {
-                        "unit": "rem",
-                        "value": 1.3
-                      },
-                      "itemSpacing": {
-                        "unit": "em",
-                        "value": 2.6
-                      },
-                      "blockId": "yui_3_17_2_1_1754535766595_4008",
-                      "estimatedDimensions": {
-                        "estimatedColumnSpanDesktop": 24,
-                        "sectionColumnsDesktop": 24,
-                        "estimatedColumnSpanMobile": 8,
-                        "sectionColumnsMobile": 8
-                      },
-                      "containerStyles": {
-                        "backgroundEnabled": false,
-                        "borderRadii": {
-                          "topLeft": {
-                            "unit": "px",
-                            "value": 0.0
-                          },
-                          "topRight": {
-                            "unit": "px",
-                            "value": 0.0
-                          },
-                          "bottomLeft": {
-                            "unit": "px",
-                            "value": 0.0
-                          },
-                          "bottomRight": {
-                            "unit": "px",
-                            "value": 0.0
-                          }
-                        },
-                        "padding": {
-                          "top": {
-                            "unit": "%",
-                            "value": 3.0
-                          },
-                          "right": {
-                            "unit": "%",
-                            "value": 0.0
-                          },
-                          "bottom": {
-                            "unit": "%",
-                            "value": 3.0
-                          },
-                          "left": {
-                            "unit": "%",
-                            "value": 0.0
-                          }
-                        },
-                        "stretchedToFill": false,
-                        "stroke": {
-                          "style": "none",
-                          "color": {
-                            "type": "THEME_COLOR"
-                          },
-                          "thickness": {
-                            "unit": "px",
-                            "value": 6.0
-                          },
-                          "dashLength": {
-                            "unit": "px",
-                            "value": 5.0
-                          },
-                          "gapLength": {
-                            "unit": "px",
-                            "value": 15.0
-                          },
-                          "linecap": "square"
-                        },
-                        "blendMode": "normal",
-                        "blur": {
-                          "enabled": false,
-                          "filterType": "backdrop",
-                          "blurRadius": {
-                            "unit": "px",
-                            "value": 15.0
-                          }
-                        }
-                      },
-                      "featureFlags": {
-                        "useCLDRMoneyFormat": true
-                      }
-                    }
-                  </script>
-                  <div class="Marquee-display ">
-                    <div class="Marquee-measure">
-                      <h1 class="Marquee-item Marquee-item--text" style="margin-right: 2.6em; font-size: 1.3rem;">
-                        FREE U.S. SHIPPING ON ORDERS OVER $200 | 25% off with code 'labor25'
-                      </h1>
-                    </div>
-
-                    <h1
-                      style="font-size: 1.3rem; --marquee-font-size-value: 1.3; transition-timing-function: ease; transition-duration: 0.9s; transition-delay: 0.472258s;"
-                      class="preFade fadeIn"
-                    >
-                      <svg
-                        class="Marquee-svg"
-                        fill="currentColor"
-                        aria-hidden="true"
-                        style="height: 40px; transform: translateY(4px); overflow: visible;"
-                      >
-                            <g class="Marquee-path-group" transform="translate(0, 2)">
-                              <path class="Marquee-path" fill="none" stroke="transparent" stroke-width="0" d="M-550,26.48  L-550,26.48 S-183.15,26.48 0,26.48 S366.85,26.48 550,26.48 S916.85,26.48 1100,26.48 S1466.85,26.48 1650,26.48 S2016.85,26.48 2200,26.48 S2566.85,26.48 2750,26.48" stroke-dasharray="603 74.36 " id="yui_3_17_2_1_1754535766595_4008"></path>
-                            </g>
-                            <text>
-                              <textPath class="Marquee-svg-text" href="#yui_3_17_2_1_1754535766595_4008"><tspan class="Marquee-svg-text" x="0">FREE U.S. SHIPPING ON ORDERS OVER $200 | 25% off with code 'labor25'</tspan><tspan class="Marquee-svg-text" x="677.36">FREE U.S. SHIPPING ON ORDERS OVER $200 | 25% off with code 'labor25'</tspan><tspan class="Marquee-svg-text" x="1354.72">FREE U.S. SHIPPING ON ORDERS OVER $200 | 25% off with code 'labor25'</tspan><tspan class="Marquee-svg-text" x="2032.08">FREE U.S. SHIPPING ON ORDERS OVER $200 | 25% off with code 'labor25'</tspan><tspan class="Marquee-svg-text" x="2709.44">FREE U.S. SHIPPING ON ORDERS OVER $200 | 25% off with code 'labor25'</tspan><tspan class="Marquee-svg-text" x="3386.8">FREE U.S. SHIPPING ON ORDERS OVER $200 | 25% off with code 'labor25'</tspan></textPath>
-                            </text>
-                            <text>
-                              <textPath class="Marquee-svg-group" visibility="hidden" href="#yui_3_17_2_1_1754535766595_4008">
-
-                                  <tspan class="Marquee-svg-text">FREE U.S. SHIPPING ON ORDERS OVER $200 | 25% off with code 'labor25'</tspan>
-
-                              </textPath>
-                            </text>
-                            <g class="Marquee-hitbox" data-hitbox="" aria-labelledby="ariaLabelyui_3_17_2_1_1754535766595_4008">
-                              <g class="Marquee-path-hitbox-group" transform="translate(0, -6.620000000000001)">
-                                <path class="Marquee-path-hitbox" fill="none" stroke="transparent" d="M-550,26.48  L-550,26.48 S-183.15,26.48 0,26.48 S366.85,26.48 550,26.48 S916.85,26.48 1100,26.48 S1466.85,26.48 1650,26.48 S2016.85,26.48 2200,26.48 S2566.85,26.48 2750,26.48" id="yui_3_17_2_1_1754535766595_4008" stroke-width="40"></path>
-                                <path class="Marquee-path-hitbox-focus-outline" fill="none" stroke="transparent" stroke-width="2px" d="
-                          M-550,40
-                           L-550,36 S-183.15,36 0,36 S366.85,36 550,36 S916.85,36 1100,36 S1466.85,36 1650,36 S2016.85,36 2200,36 S2566.85,36 2750,36
-                          M-550,4
-                           L-550,4 S-183.15,4 0,4 S366.85,4 550,4 S916.85,4 1100,4 S1466.85,4 1650,4 S2016.85,4 2200,4 S2566.85,4 2750,4
-                        " style="transform: translateY(4px);"></path>
-                              </g>
-                            </g>
-                      </svg>
-
-                      <span class="v6-visually-hidden" id="ariaLabelyui_3_17_2_1_1754535766595_4008">
-                        FREE U.S. SHIPPING ON ORDERS OVER $200 | 25% off with code 'labor25'
-                      </span>
-                    </h1>
-
-                    <div class="Marquee-track"></div>
+      <div class="whif-cbs__grid">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'cbs_item' -%}
+              <div class="cbs-item" {{ block.shopify_attributes }}>
+                {%- if block.settings.cbs_icon != blank -%}
+                  <div class="cbs-item__icon">
+                    {{ block.settings.cbs_icon | image_url: width: 80 | image_tag: loading: 'lazy', alt: block.settings.cbs_title }}
                   </div>
+                {%- endif -%}
+                
+                <div class="cbs-item__content">
+                  <h3>{{ block.settings.cbs_title }}</h3>
+                  
+                  {%- if block.settings.cbs_subtitle != blank -%}
+                    <p class="cbs-subtitle">{{ block.settings.cbs_subtitle }}</p>
+                  {%- endif -%}
+                  
+                  {%- if block.settings.cbs_description != blank -%}
+                    <div class="cbs-description rte">{{ block.settings.cbs_description }}</div>
+                  {%- endif -%}
+                  
+                  {%- if block.settings.cbs_features != blank -%}
+                    <ul class="cbs-features">
+                      {%- assign features = block.settings.cbs_features | split: ',' -%}
+                      {%- for feature in features -%}
+                        <li>{{ feature | strip }}</li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- endif -%}
+                  
+                  {%- if block.settings.cbs_link != blank -%}
+                    <a href="{{ block.settings.cbs_link }}" class="cbs-link button button--secondary">
+                      {{ block.settings.link_text | default: 'Learn More' }}
+                    </a>
+                  {%- endif -%}
                 </div>
               </div>
-            </div>
+            
+            {%- when 'cbs_stats' -%}
+              <div class="cbs-stats" {{ block.shopify_attributes }}>
+                <h3>{{ block.settings.stats_title }}</h3>
+                <div class="stats-container">
+                  {%- if block.settings.stat_1_number != blank -%}
+                    <div class="stat-box">
+                      <span class="stat-number">{{ block.settings.stat_1_number }}</span>
+                      <span class="stat-label">{{ block.settings.stat_1_label }}</span>
+                      {%- if block.settings.stat_1_description != blank -%}
+                        <p class="stat-description">{{ block.settings.stat_1_description }}</p>
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+                  
+                  {%- if block.settings.stat_2_number != blank -%}
+                    <div class="stat-box">
+                      <span class="stat-number">{{ block.settings.stat_2_number }}</span>
+                      <span class="stat-label">{{ block.settings.stat_2_label }}</span>
+                      {%- if block.settings.stat_2_description != blank -%}
+                        <p class="stat-description">{{ block.settings.stat_2_description }}</p>
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+                  
+                  {%- if block.settings.stat_3_number != blank -%}
+                    <div class="stat-box">
+                      <span class="stat-number">{{ block.settings.stat_3_number }}</span>
+                      <span class="stat-label">{{ block.settings.stat_3_label }}</span>
+                      {%- if block.settings.stat_3_description != blank -%}
+                        <p class="stat-description">{{ block.settings.stat_3_description }}</p>
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+                </div>
+              </div>
+            
+            {%- when 'cbs_process' -%}
+              <div class="cbs-process" {{ block.shopify_attributes }}>
+                <h3>{{ block.settings.process_title }}</h3>
+                <div class="process-steps">
+                  {%- if block.settings.step_1_title != blank -%}
+                    <div class="process-step">
+                      <div class="step-number">1</div>
+                      <div class="step-content">
+                        <h4>{{ block.settings.step_1_title }}</h4>
+                        <p>{{ block.settings.step_1_description }}</p>
+                      </div>
+                    </div>
+                  {%- endif -%}
+                  
+                  {%- if block.settings.step_2_title != blank -%}
+                    <div class="process-step">
+                      <div class="step-number">2</div>
+                      <div class="step-content">
+                        <h4>{{ block.settings.step_2_title }}</h4>
+                        <p>{{ block.settings.step_2_description }}</p>
+                      </div>
+                    </div>
+                  {%- endif -%}
+                  
+                  {%- if block.settings.step_3_title != blank -%}
+                    <div class="process-step">
+                      <div class="step-number">3</div>
+                      <div class="step-content">
+                        <h4>{{ block.settings.step_3_title }}</h4>
+                        <p>{{ block.settings.step_3_description }}</p>
+                      </div>
+                    </div>
+                  {%- endif -%}
+                  
+                  {%- if block.settings.step_4_title != blank -%}
+                    <div class="process-step">
+                      <div class="step-number">4</div>
+                      <div class="step-content">
+                        <h4>{{ block.settings.step_4_title }}</h4>
+                        <p>{{ block.settings.step_4_description }}</p>
+                      </div>
+                    </div>
+                  {%- endif -%}
+                </div>
+              </div>
+            
+            {%- when 'button' -%}
+              {%- if block.settings.button_label != blank -%}
+                <a
+                  {% if block.settings.button_link == blank %}
+                    role="link" aria-disabled="true"
+                  {% else %}
+                    href="{{ block.settings.button_link }}"
+                  {% endif %}
+                  class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
+                  {{ block.shopify_attributes }}
+                >
+                  {{ block.settings.button_label | escape }}
+                </a>
+              {%- endif -%}
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+
+      {%- if section.settings.show_cta_banner -%}
+        <div class="cbs-cta-banner">
+          <div class="cta-content">
+            <h3>{{ section.settings.cta_title | default: 'Ready to Get Started?' }}</h3>
+            <p>{{ section.settings.cta_description | default: 'Contact us today to learn more about our CBS solutions.' }}</p>
+            {%- if section.settings.cta_button_link != blank -%}
+              <a href="{{ section.settings.cta_button_link }}" class="button button--primary">
+                {{ section.settings.cta_button_text | default: 'Get Started' }}
+              </a>
+            {%- endif -%}
           </div>
         </div>
-      </div>
+      {%- endif -%}
     </div>
   </div>
-</section>
+</div>
 
 {% schema %}
 {
