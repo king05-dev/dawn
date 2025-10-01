@@ -14,91 +14,50 @@
   }
 {%- endstyle -%}
 
-<div class="whif-promo-oils-section color-{{ section.settings.color_scheme }} gradient">
-  <div class="page-width section-{{ section.id }}-padding">
-    <div class="whif-promo-oils-content">
-      {%- if section.settings.heading != blank -%}
-        <h2 class="whif-promo-oils__heading">{{ section.settings.heading }}</h2>
-      {%- endif -%}
-      
-      {%- if section.settings.description != blank -%}
-        <div class="whif-promo-oils__description rte">
-          {{ section.settings.description }}
-        </div>
-      {%- endif -%}
-
-      {%- if section.settings.promo_image != blank -%}
-        <div class="whif-promo-oils__image">
-          {%- assign image_height = section.settings.promo_image.width | divided_by: section.settings.promo_image.aspect_ratio -%}
-          {{ section.settings.promo_image | image_url: width: section.settings.promo_image.width | image_tag:
-            loading: 'lazy',
-            width: section.settings.promo_image.width,
-            height: image_height,
-            alt: section.settings.promo_image.alt | escape
-          }}
-        </div>
-      {%- endif -%}
-
-      {%- if section.settings.oils_collection != blank -%}
-        <div class="whif-promo-oils__products">
-          {%- for product in section.settings.oils_collection.products limit: section.settings.products_to_show -%}
-            <div class="oil-product-card">
-              <a href="{{ product.url }}">
-                {%- if product.featured_media -%}
-                  {{ product.featured_media | image_url: width: 250 | image_tag: loading: 'lazy', alt: product.title }}
-                {%- endif -%}
-                <h4>{{ product.title }}</h4>
-                <div class="price">
-                  {%- if product.compare_at_price > product.price -%}
-                    <span class="price-sale">{{ product.price | money }}</span>
-                    <span class="price-compare">{{ product.compare_at_price | money }}</span>
-                    <span class="price-discount">
-                      {{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round }}% OFF
-                    </span>
-                  {%- else -%}
-                    <span class="price-regular">{{ product.price | money }}</span>
-                  {%- endif -%}
-                </div>
-                {%- if product.description != blank -%}
-                  <p class="product-description">{{ product.description | strip_html | truncate: 100 }}</p>
-                {%- endif -%}
-              </a>
-            </div>
-          {%- endfor -%}
-        </div>
-      {%- endif -%}
-
-      {%- for block in section.blocks -%}
-        {%- case block.type -%}
-          {%- when 'feature' -%}
-            <div class="whif-promo-oils__feature" {{ block.shopify_attributes }}>
-              {%- if block.settings.feature_icon != blank -%}
-                <div class="feature-icon">
-                  {{ block.settings.feature_icon | image_url: width: 60 | image_tag: loading: 'lazy', alt: block.settings.feature_title }}
-                </div>
-              {%- endif -%}
-              <h4>{{ block.settings.feature_title }}</h4>
-              <p>{{ block.settings.feature_description }}</p>
-            </div>
-          {%- when 'button' -%}
-            {%- if block.settings.button_label != blank -%}
-              <a
-                {% if block.settings.button_link == blank %}
-                  role="link" aria-disabled="true"
-                {% else %}
-                  href="{{ block.settings.button_link }}"
-                {% endif %}
-                class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
-                {{ block.shopify_attributes }}
-              >
-                {{ block.settings.button_label | escape }}
-              </a>
-            {%- endif -%}
-        {%- endcase -%}
-      {%- endfor -%}
+<section class="relative py-32 overflow-hidden">
+  <div class="absolute inset-0">
+    <img
+      alt="Fall Background"
+      loading="lazy"
+      decoding="async"
+      data-nimg="fill"
+      class="object-cover opacity-40"
+      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/autumn-leaves-and-cozy-fall-atmosphere-dark-moody--6FLpa96ipWtZ2Oqoj26u3t8LTwoto6.jpg"
+      style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
+    >
+    <div class="absolute inset-0 bg-gradient-to-r to-background via-background/80 from-transparent"></div>
+  </div>
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2
+          class="font-serif text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-balance"
+          style="font-family: var(--font-playfair);"
+        >
+          FALL VIBES, BUT MAKE IT DESIGNER
+        </h2>
+        <p class="text-xl mb-8 text-muted-foreground">WARM. SMOOTH. COZY</p>
+        <button
+          data-slot="button"
+          class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive shadow-xs h-10 rounded-md has-[&gt;svg]:px-4 bg-primary hover:bg-primary/90 text-primary-foreground px-8"
+        >
+          SHOP FALL SCENTS
+        </button>
+      </div>
+      <div class="relative h-[500px]">
+        <img
+          alt="Fall Collection"
+          loading="lazy"
+          decoding="async"
+          data-nimg="fill"
+          class="object-contain"
+          src="https://cdn.shopify.com/s/files/1/0713/6057/7719/files/smoke_26_mirrors._bottle_06acb11b-21b6-4d36-be2c-da2b8955f1f0.webp?v=1759119176"
+          style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
+        >
+      </div>
     </div>
   </div>
-</div>
+</section>
 
 {% schema %}
 {

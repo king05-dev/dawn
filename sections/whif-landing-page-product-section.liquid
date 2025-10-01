@@ -14,91 +14,150 @@
   }
 {%- endstyle -%}
 
-<div class="whif-landing-page-product-section color-{{ section.settings.color_scheme }} gradient">
-  <div class="page-width section-{{ section.id }}-padding">
-    <div class="whif-landing-page-product-content">
-      {%- if section.settings.heading != blank -%}
-        <h2 class="whif-landing-page-product__heading">{{ section.settings.heading }}</h2>
-      {%- endif -%}
-      
-      {%- if section.settings.description != blank -%}
-        <div class="whif-landing-page-product__description rte">
-          {{ section.settings.description }}
-        </div>
-      {%- endif -%}
-
-      {%- if section.settings.featured_product != blank -%}
-        {%- assign product = section.settings.featured_product -%}
-        <div class="whif-landing-page-product__featured">
-          <div class="product-media">
-            {%- if product.featured_media -%}
-              {{ product.featured_media | image_url: width: 600 | image_tag: loading: 'lazy', alt: product.title }}
-            {%- endif -%}
-          </div>
-          <div class="product-info">
-            <h3 class="product-title">{{ product.title }}</h3>
-            <div class="product-price">
-              {%- if product.compare_at_price > product.price -%}
-                <span class="price-sale">{{ product.price | money }}</span>
-                <span class="price-compare">{{ product.compare_at_price | money }}</span>
-              {%- else -%}
-                <span class="price-regular">{{ product.price | money }}</span>
-              {%- endif -%}
-            </div>
-            <div class="product-description rte">
-              {{ product.description | truncate: 200 }}
-            </div>
-            <a href="{{ product.url }}" class="button button--primary">
-              View Product
-            </a>
-          </div>
-        </div>
-      {%- endif -%}
-
-      {%- if section.settings.collection != blank -%}
-        <div class="whif-landing-page-product__grid">
-          {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
-            <div class="product-card">
-              <a href="{{ product.url }}">
-                {%- if product.featured_media -%}
-                  {{ product.featured_media | image_url: width: 300 | image_tag: loading: 'lazy', alt: product.title }}
-                {%- endif -%}
-                <h4>{{ product.title }}</h4>
-                <div class="price">
-                  {%- if product.compare_at_price > product.price -%}
-                    <span class="price-sale">{{ product.price | money }}</span>
-                    <span class="price-compare">{{ product.compare_at_price | money }}</span>
-                  {%- else -%}
-                    <span class="price-regular">{{ product.price | money }}</span>
-                  {%- endif -%}
-                </div>
-              </a>
-            </div>
-          {%- endfor -%}
-        </div>
-      {%- endif -%}
-
-      {%- for block in section.blocks -%}
-        {%- case block.type -%}
-          {%- when 'button' -%}
-            {%- if block.settings.button_label != blank -%}
-              <a
-                {% if block.settings.button_link == blank %}
-                  role="link" aria-disabled="true"
-                {% else %}
-                  href="{{ block.settings.button_link }}"
-                {% endif %}
-                class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
-                {{ block.shopify_attributes }}
+<section class="py-20 bg-background">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="font-serif text-4xl md:text-5xl font-bold mb-4" style="font-family: var(--font-playfair);">
+        SHOP BY CATEGORY
+      </h2>
+      <p class="text-lg text-muted-foreground">Find the perfect scenting solution for every space</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div
+        data-slot="card"
+        class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group overflow-hidden bg-card border-border hover:border-primary transition-all duration-300 hover:shadow-xl"
+      >
+        <div class="relative h-[400px] overflow-hidden">
+          <img
+            alt="Room &amp; Office Diffuser"
+            loading="lazy"
+            decoding="async"
+            data-nimg="fill"
+            class="object-cover group-hover:scale-110 transition-transform duration-500"
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/black-luxury-aroma-diffuser-with-blue-light-in-mod-DNxhhMKroDIRE7Sumf86V31KATcloV.jpg"
+            style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
+          >
+          <div class="absolute inset-0 bg-gradient-to-t from-background/95 via-background/50 to-transparent"></div>
+          <span
+            data-slot="badge"
+            class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent [a&amp;]:hover:bg-primary/90 absolute top-4 right-4 bg-primary text-primary-foreground"
+            >POPULAR</span
+          >
+          <div class="absolute bottom-6 left-6 right-6">
+            <h3 class="text-2xl font-bold mb-2 text-foreground">ROOM | OFFICE</h3>
+            <p class="text-sm text-muted-foreground mb-4">Premium diffusers for home and workspace</p>
+            <button
+              data-slot="button"
+              class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive shadow-xs h-9 px-4 py-2 has-[&gt;svg]:px-3 w-full bg-primary hover:bg-primary/90 text-primary-foreground group-hover:gap-3 transition-all"
+            >
+              SHOP NOW
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-arrow-right h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform"
               >
-                {{ block.settings.button_label | escape }}
-              </a>
-            {%- endif -%}
-        {%- endcase -%}
-      {%- endfor -%}
+                <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        data-slot="card"
+        class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group overflow-hidden bg-card border-border hover:border-primary transition-all duration-300 hover:shadow-xl"
+      >
+        <div class="relative h-[400px] overflow-hidden">
+          <img
+            alt="Car &amp; Mobile Diffuser"
+            loading="lazy"
+            decoding="async"
+            data-nimg="fill"
+            class="object-cover group-hover:scale-110 transition-transform duration-500"
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/black-portable-aroma-diffuser-in-car-cup-holder-rG1QWomARpFVzfJnysGHNrRF41pGQT.jpg"
+            style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
+          >
+          <div class="absolute inset-0 bg-gradient-to-t from-background/95 via-background/50 to-transparent"></div>
+          <span
+            data-slot="badge"
+            class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent [a&amp;]:hover:bg-primary/90 absolute top-4 right-4 bg-primary text-primary-foreground"
+            >BESTSELLER</span
+          >
+          <div class="absolute bottom-6 left-6 right-6">
+            <h3 class="text-2xl font-bold mb-2 text-foreground">CAR | MOBILE</h3>
+            <p class="text-sm text-muted-foreground mb-4">Portable scenting for on-the-go</p>
+            <button
+              data-slot="button"
+              class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive shadow-xs h-9 px-4 py-2 has-[&gt;svg]:px-3 w-full bg-primary hover:bg-primary/90 text-primary-foreground group-hover:gap-3 transition-all"
+            >
+              SHOP NOW
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-arrow-right h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform"
+              >
+                <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        data-slot="card"
+        class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group overflow-hidden bg-card border-border hover:border-primary transition-all duration-300 hover:shadow-xl md:col-span-2 lg:col-span-1"
+      >
+        <div class="relative h-[400px] overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary flex items-center justify-center">
+            <div class="text-center p-8">
+              <span
+                data-slot="badge"
+                class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent [a&amp;]:hover:bg-primary/90 mb-4 bg-primary text-primary-foreground"
+                >SAVE UP TO 30%</span
+              >
+              <h3 class="font-serif text-4xl font-bold mb-4 text-foreground" style="font-family: var(--font-playfair);">
+                BUNDLED MACHINES AND SCENTS
+              </h3>
+              <p class="text-muted-foreground mb-6">Complete scenting solutions at unbeatable prices</p>
+              <button
+                data-slot="button"
+                class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive shadow-xs h-10 rounded-md px-6 has-[&gt;svg]:px-4 bg-primary hover:bg-primary/90 text-primary-foreground group-hover:gap-3 transition-all"
+              >
+                SHOP BUNDLES
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-arrow-right h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform"
+                >
+                  <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
 {% schema %}
 {

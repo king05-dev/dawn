@@ -129,3 +129,11 @@
  color-mix(in oklab, var(--background) 95%, transparent);
     }
 }
+
+.slide-in-from-left {
+  --tw-enter-translate-x: -100%;
+}
+
+.slide-in-from-right {
+  --tw-enter-translate-x: 100%;
+}
