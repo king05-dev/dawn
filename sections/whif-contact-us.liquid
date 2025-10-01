@@ -1,5 +1,3 @@
-{{ 'section-whif-contact-us.css' | asset_url | stylesheet_tag }}
-
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -20,7 +18,7 @@
       {%- if section.settings.heading != blank -%}
         <h2 class="whif-contact-us__heading">{{ section.settings.heading }}</h2>
       {%- endif -%}
-      
+
       {%- if section.settings.description != blank -%}
         <div class="whif-contact-us__description rte">
           {{ section.settings.description }}
@@ -35,7 +33,11 @@
                 <div class="contact-info-item" {{ block.shopify_attributes }}>
                   {%- if block.settings.info_icon != blank -%}
                     <div class="info-icon">
-                      {{ block.settings.info_icon | image_url: width: 40 | image_tag: loading: 'lazy', alt: block.settings.info_title }}
+                      {{
+                        block.settings.info_icon
+                        | image_url: width: 40
+                        | image_tag: loading: 'lazy', alt: block.settings.info_title
+                      }}
                     </div>
                   {%- endif -%}
                   <div class="info-content">
@@ -48,7 +50,7 @@
                     {%- endif -%}
                   </div>
                 </div>
-              
+
               {%- when 'business_hours' -%}
                 <div class="business-hours" {{ block.shopify_attributes }}>
                   <h4>{{ block.settings.hours_title }}</h4>
@@ -97,7 +99,7 @@
                     {%- endif -%}
                   </div>
                 </div>
-              
+
               {%- when 'social_links' -%}
                 <div class="social-links" {{ block.shopify_attributes }}>
                   <h4>{{ block.settings.social_title }}</h4>
@@ -133,7 +135,12 @@
           {%- form 'contact', class: 'whif-contact-form' -%}
             {%- if form.posted_successfully? -%}
               <div class="form-success">
-                <p>{{ section.settings.success_message | default: "Thank you for your message. We'll get back to you soon!" }}</p>
+                <p>
+                  {{
+                    section.settings.success_message
+                    | default: "Thank you for your message. We'll get back to you soon!"
+                  }}
+                </p>
               </div>
             {%- endif -%}
 
@@ -142,7 +149,10 @@
                 <p>Please correct the following errors:</p>
                 <ul>
                   {%- for field in form.errors -%}
-                    <li>{{ field | capitalize }} {{ form.errors[field] }}</li>
+                    <li>
+                      {{ field | capitalize }}
+                      {{ form.errors[field] }}
+                    </li>
                   {%- endfor -%}
                 </ul>
               </div>

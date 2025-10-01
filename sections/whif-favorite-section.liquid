@@ -1,5 +1,3 @@
-{{ 'section-whif-favorite.css' | asset_url | stylesheet_tag }}
-
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -20,7 +18,7 @@
       {%- if section.settings.heading != blank -%}
         <h2 class="whif-favorite__heading">{{ section.settings.heading }}</h2>
       {%- endif -%}
-      
+
       {%- if section.settings.description != blank -%}
         <div class="whif-favorite__description rte">
           {{ section.settings.description }}
@@ -30,7 +28,9 @@
       <div class="whif-favorite__products">
         {%- if section.settings.favorites_collection != blank -%}
           <div class="favorite-products-grid">
-            {%- for product in section.settings.favorites_collection.products limit: section.settings.products_to_show -%}
+            {%- for product in section.settings.favorites_collection.products
+              limit: section.settings.products_to_show
+            -%}
               <div class="favorite-product-card">
                 <div class="product-badges">
                   <span class="favorite-badge">❤️ Customer Favorite</span>
@@ -38,21 +38,25 @@
                     <span class="sale-badge">Sale</span>
                   {%- endif -%}
                 </div>
-                
+
                 <a href="{{ product.url }}" class="product-link">
                   {%- if product.featured_media -%}
                     <div class="product-image">
-                      {{ product.featured_media | image_url: width: 350 | image_tag: loading: 'lazy', alt: product.title }}
+                      {{
+                        product.featured_media
+                        | image_url: width: 350
+                        | image_tag: loading: 'lazy', alt: product.title
+                      }}
                     </div>
                   {%- endif -%}
-                  
+
                   <div class="product-info">
                     <h4 class="product-title">{{ product.title }}</h4>
-                    
+
                     {%- if product.description != blank -%}
                       <p class="product-description">{{ product.description | strip_html | truncate: 100 }}</p>
                     {%- endif -%}
-                    
+
                     <div class="product-price">
                       {%- if product.compare_at_price > product.price -%}
                         <span class="price-sale">{{ product.price | money }}</span>
@@ -64,7 +68,7 @@
                         <span class="price-regular">{{ product.price | money }}</span>
                       {%- endif -%}
                     </div>
-                    
+
                     {%- if product.available -%}
                       <div class="product-availability in-stock">
                         <span class="availability-icon">✓</span>
@@ -78,14 +82,17 @@
                     {%- endif -%}
                   </div>
                 </a>
-                
+
                 <div class="product-actions">
                   <button class="wishlist-btn" onclick="toggleWishlist('{{ product.id }}')">
                     <span class="wishlist-icon">🤍</span>
                     Add to Wishlist
                   </button>
                   {%- if product.available -%}
-                    <button class="quick-add-btn button button--primary" onclick="quickAdd('{{ product.variants.first.id }}')">
+                    <button
+                      class="quick-add-btn button button--primary"
+                      onclick="quickAdd('{{ product.variants.first.id }}')"
+                    >
                       Quick Add
                     </button>
                   {%- endif -%}
@@ -103,7 +110,11 @@
               <div class="favorite-feature" {{ block.shopify_attributes }}>
                 {%- if block.settings.feature_icon != blank -%}
                   <div class="feature-icon">
-                    {{ block.settings.feature_icon | image_url: width: 60 | image_tag: loading: 'lazy', alt: block.settings.feature_title }}
+                    {{
+                      block.settings.feature_icon
+                      | image_url: width: 60
+                      | image_tag: loading: 'lazy', alt: block.settings.feature_title
+                    }}
                   </div>
                 {%- endif -%}
                 <div class="feature-content">
@@ -111,7 +122,7 @@
                   <p>{{ block.settings.feature_description }}</p>
                 </div>
               </div>
-            
+
             {%- when 'popularity_stats' -%}
               <div class="popularity-stats" {{ block.shopify_attributes }}>
                 <h3>{{ block.settings.stats_title }}</h3>
@@ -136,7 +147,7 @@
                   {%- endif -%}
                 </div>
               </div>
-            
+
             {%- when 'whif_favorite_button' -%}
               {%- if block.settings.button_label != blank -%}
                 <a
@@ -159,42 +170,42 @@
 </div>
 
 <script>
-function toggleWishlist(productId) {
-  // Simple wishlist toggle functionality
-  const btn = event.target.closest('.wishlist-btn');
-  const icon = btn.querySelector('.wishlist-icon');
-  
-  if (icon.textContent === '🤍') {
-    icon.textContent = '❤️';
-    btn.innerHTML = '<span class="wishlist-icon">❤️</span> Added to Wishlist';
-    btn.classList.add('added');
-  } else {
-    icon.textContent = '🤍';
-    btn.innerHTML = '<span class="wishlist-icon">🤍</span> Add to Wishlist';
-    btn.classList.remove('added');
-  }
-}
+  function toggleWishlist(productId) {
+    // Simple wishlist toggle functionality
+    const btn = event.target.closest('.wishlist-btn');
+    const icon = btn.querySelector('.wishlist-icon');
 
-function quickAdd(variantId) {
-  // Simple quick add functionality
-  const btn = event.target;
-  const originalText = btn.textContent;
-  
-  btn.textContent = 'Adding...';
-  btn.disabled = true;
-  
-  // Simulate adding to cart
-  setTimeout(() => {
-    btn.textContent = 'Added!';
-    btn.classList.add('added');
-    
-    setTimeout(() => {
-      btn.textContent = originalText;
-      btn.disabled = false;
+    if (icon.textContent === '🤍') {
+      icon.textContent = '❤️';
+      btn.innerHTML = '<span class="wishlist-icon">❤️</span> Added to Wishlist';
+      btn.classList.add('added');
+    } else {
+      icon.textContent = '🤍';
+      btn.innerHTML = '<span class="wishlist-icon">🤍</span> Add to Wishlist';
       btn.classList.remove('added');
-    }, 2000);
-  }, 1000);
-}
+    }
+  }
+
+  function quickAdd(variantId) {
+    // Simple quick add functionality
+    const btn = event.target;
+    const originalText = btn.textContent;
+
+    btn.textContent = 'Adding...';
+    btn.disabled = true;
+
+    // Simulate adding to cart
+    setTimeout(() => {
+      btn.textContent = 'Added!';
+      btn.classList.add('added');
+
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.disabled = false;
+        btn.classList.remove('added');
+      }, 2000);
+    }, 1000);
+  }
 </script>
 
 {% schema %}

@@ -1,26 +1,10 @@
-{{ 'section-whif-scenting.css' | asset_url | stylesheet_tag }}
-
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
-
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
-  }
-{%- endstyle -%}
-
 <div class="whif-scenting-section color-{{ section.settings.color_scheme }} gradient">
   <div class="page-width section-{{ section.id }}-padding">
     <div class="whif-scenting-content">
       {%- if section.settings.heading != blank -%}
         <h2 class="whif-scenting__heading">{{ section.settings.heading }}</h2>
       {%- endif -%}
-      
+
       {%- if section.settings.description != blank -%}
         <div class="whif-scenting__description rte">
           {{ section.settings.description }}
@@ -34,7 +18,11 @@
               <div class="scenting-benefit" {{ block.shopify_attributes }}>
                 {%- if block.settings.benefit_icon != blank -%}
                   <div class="benefit-icon">
-                    {{ block.settings.benefit_icon | image_url: width: 80 | image_tag: loading: 'lazy', alt: block.settings.benefit_title }}
+                    {{
+                      block.settings.benefit_icon
+                      | image_url: width: 80
+                      | image_tag: loading: 'lazy', alt: block.settings.benefit_title
+                    }}
                   </div>
                 {%- endif -%}
                 <div class="benefit-content">
@@ -46,7 +34,11 @@
               <div class="scent-category" {{ block.shopify_attributes }}>
                 {%- if block.settings.category_image != blank -%}
                   <div class="category-image">
-                    {{ block.settings.category_image | image_url: width: 300 | image_tag: loading: 'lazy', alt: block.settings.category_name }}
+                    {{
+                      block.settings.category_image
+                      | image_url: width: 300
+                      | image_tag: loading: 'lazy', alt: block.settings.category_name
+                    }}
                   </div>
                 {%- endif -%}
                 <div class="category-info">
@@ -87,7 +79,9 @@
         <div class="whif-scenting__video">
           <h3>See Scenting in Action</h3>
           <div class="video-wrapper">
-            {%- if section.settings.video_url contains 'youtube.com' or section.settings.video_url contains 'youtu.be' -%}
+            {%- if section.settings.video_url contains 'youtube.com'
+              or section.settings.video_url contains 'youtu.be'
+            -%}
               <iframe src="{{ section.settings.video_url }}" frameborder="0" allowfullscreen></iframe>
             {%- else -%}
               <video controls>
