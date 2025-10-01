@@ -1,7 +1,12 @@
 <link rel="stylesheet" href="{{ 'component-list-menu.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-search.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-menu-drawer.css' | asset_url }}" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="{{ 'component-cart-notification.css' | asset_url }}" media="print" onload="this.media='all'">
+<link
+  rel="stylesheet"
+  href="{{ 'component-cart-notification.css' | asset_url }}"
+  media="print"
+  onload="this.media='all'"
+>
 
 {%- if settings.predictive_search_enabled -%}
   <link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
@@ -10,7 +15,6 @@
 {%- if section.settings.menu_type_desktop == 'mega' -%}
   <link rel="stylesheet" href="{{ 'component-mega-menu.css' | asset_url }}" media="print" onload="this.media='all'">
 {%- endif -%}
-
 
 <style>
   header-drawer {
@@ -114,7 +118,12 @@
   endif
 %}
 
-<{{ header_tag }} {% if header_tag == 'sticky-header' %}data-sticky-type="{{ section.settings.sticky_header_type }}"{% endif %} class="header-wrapper color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}">
+<{{ header_tag }}
+  {% if header_tag == 'sticky-header' %}
+    data-sticky-type="{{ section.settings.sticky_header_type }}"
+  {% endif %}
+  class="header-wrapper color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}"
+>
   {%- liquid
     assign social_links = false
     assign localization_forms = false
@@ -127,351 +136,136 @@
       assign localization_forms = true
     endif
   -%}
-  <header class="header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if localization_forms %} header--has-localizations{% endif %}">
-    <div
-  class="flex justify-between items-center w-[1920px] h-[147.86px] relative px-[58px] py-[13px] bg-black"
->
-  <svg
-    width="123"
-    height="122"
-    viewBox="0 0 123 122"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-    class="flex-grow-0 flex-shrink-0 w-[121.2px] h-[120.98px] relative"
-    preserveAspectRatio="none"
-  >
-    <rect
-      width="121.2"
-      height="120.98"
-      transform="translate(0.910156 0.296021)"
-      fill="url(#pattern0_2097_4364)"
-    ></rect>
-    <defs>
-      <pattern id="pattern0_2097_4364" patternContentUnits="objectBoundingBox" width="1" height="1">
-        <use xlink:href="#image0_2097_4364" transform="scale(0.00178277 0.00178601)"></use>
-      </pattern>
-      <image
-        id="image0_2097_4364"
-        width="561"
-        height="560"
-        preserveAspectRatio="none"
-       />
-    </defs>
-  </svg>
-  <div
-    class="flex justify-center items-center flex-grow-0 flex-shrink-0 w-[577px] h-[84px] relative gap-10 px-[59px]"
-  >
-    <div class="flex-grow-0 flex-shrink-0 w-[48.44px] h-[31.66px] relative">
-      <p
-        class="w-[48.79px] h-[29px] absolute left-0 top-[0.97px] text-[19.799999237060547px] text-center uppercase text-white"
-      >
-        Home
-      </p>
-    </div>
-    <div class="flex-grow-0 flex-shrink-0 w-[84.75px] h-[31.66px] relative">
-      <p
-        class="w-[85.08px] h-[29px] absolute left-0 top-[0.97px] text-[19.799999237060547px] text-center uppercase text-white"
-      >
-        Bundles
-      </p>
-    </div>
-    <div class="flex-grow-0 flex-shrink-0 w-[75.16px] h-[31.66px] relative">
-      <div class="w-[75.16px] h-[31.66px] absolute left-0 top-0">
-        <p
-          class="w-[48.79px] h-[27.72px] absolute left-0 top-[1.97px] text-[19.799999237060547px] text-center uppercase text-white"
-        >
-          Shop
-        </p>
-        <svg
-          width="21"
-          height="21"
-          viewBox="0 0 21 21"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          class="w-[19.8px] h-[19.8px] absolute left-[55.36px] top-[5.92px]"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M17.0609 7.00623L10.7609 13.3062L4.46094 7.00623"
-            stroke="white"
-            stroke-width="0.9"
-            stroke-linecap="square"
-          ></path>
-        </svg>
-      </div>
-    </div>
-    <div class="flex-grow-0 flex-shrink-0 w-[130.65px] h-[31.66px] relative">
-      <div class="w-[123.58px] h-[31.66px] absolute left-[3px] top-0">
-        <p
-          class="w-[97.21px] h-[27.72px] absolute left-0 top-[1.97px] text-[19.799999237060547px] text-center uppercase text-white"
-        >
-          Machines
-        </p>
-        <svg
-          width="21"
-          height="21"
-          viewBox="0 0 21 21"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          class="w-[19.8px] h-[19.8px] absolute left-[103.79px] top-[5.92px]"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M16.6498 7.00623L10.3498 13.3062L4.0498 7.00623"
-            stroke="white"
-            stroke-width="0.9"
-            stroke-linecap="square"
-          ></path>
-        </svg>
-      </div>
-    </div>
-    <div class="flex-grow-0 flex-shrink-0 w-[99.36px] h-[31.66px] relative">
-      <div class="w-[99.36px] h-[31.66px] absolute left-0 top-0">
-        <p
-          class="w-[72.95px] h-[27.72px] absolute left-0 top-[1.97px] text-[19.799999237060547px] text-center uppercase text-white"
-        >
-          Scents
-        </p>
-        <svg
-          width="21"
-          height="20"
-          viewBox="0 0 21 20"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          class="w-[19.8px] h-[19.8px] absolute left-[79.56px] top-[5.93px]"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M17.1547 6.3562L10.8547 12.6562L4.55469 6.3562"
-            stroke="white"
-            stroke-width="0.9"
-            stroke-linecap="square"
-          ></path>
-        </svg>
-      </div>
-    </div>
-    <div class="flex-grow-0 flex-shrink-0 w-[111.47px] h-[31.66px] relative">
-      <div class="w-[111.47px] h-[31.66px] absolute left-0 top-0">
-        <p
-          class="w-[85.08px] h-[27.72px] absolute left-0 top-[1.97px] text-[19.799999237060547px] text-center uppercase text-white"
-        >
-          Company
-        </p>
-        <svg
-          width="21"
-          height="20"
-          viewBox="0 0 21 20"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          class="w-[19.8px] h-[19.8px] absolute left-[91.67px] top-[5.93px]"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M16.6254 6.3562L10.3254 12.6562L4.02539 6.3562"
-            stroke="white"
-            stroke-width="0.9"
-            stroke-linecap="square"
-          ></path>
-        </svg>
-      </div>
-    </div>
-  </div>
-  <div
-    class="flex-grow-0 flex-shrink-0 w-[148.2px] h-[46px] relative opacity-70 overflow-hidden bg-[url(&#x27;input---search.png&#x27;)] border border-[#eee]"
-  >
-    <div class="w-[85.2px] h-5 absolute left-[46px] top-[13px] overflow-hidden">
-      <p
-        class="w-[48.79px] h-5 absolute left-0 top-0 text-[13.199999809265137px] text-left text-[#757575]"
-      >
-        Search
-      </p>
-    </div>
-  </div>
-  <div class="flex justify-between items-center flex-grow-0 flex-shrink-0 w-[198px] relative">
-    <div class="flex-grow-0 flex-shrink-0 w-[60.53px] h-[27.72px] relative">
-      <p
-        class="w-[60.92px] h-[27.72px] absolute left-0 top-0 text-[19.799999237060547px] text-left uppercase text-white"
-      >
-        Login
-      </p>
-    </div>
-    <div
-      class="flex-grow-0 flex-shrink-0 w-[120.86px] h-[47.72px] relative rounded-[7.92px] bg-white"
-    >
-      <p
-        class="w-[97.21px] h-[29px] absolute left-3 top-[9px] text-[19.799999237060547px] text-center uppercase text-black"
-      >
-        Cart (0)
-      </p>
-    </div>
-  </div>
-</div>
-  
-  {% comment %} {%- liquid
-      if section.settings.menu != blank
-        render 'header-drawer'
-      endif
-
-      if section.settings.logo_position == 'top-center' or section.settings.menu == blank
-        render 'header-search', input_id: 'Search-In-Modal-1'
-      endif
-    -%}
-
-    {%- if section.settings.logo_position != 'middle-center' -%}
-      {%- if request.page_type == 'index' -%}
-        <h1 class="header__heading">
-      {%- endif -%}
-          <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
-            {%- if settings.logo != blank -%}
-              <div class="header__heading-logo-wrapper">
-                {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
-                {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
-                {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
-                {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
-                {{ settings.logo | image_url: width: 600 | image_tag:
-                  class: 'header__heading-logo motion-reduce',
-                  widths: widths,
-                  height: logo_height,
-                  width: settings.logo_width,
-                  alt: logo_alt,
-                  sizes: sizes,
-                  preload: true
-                }}
-              </div>
-            {%- else -%}
-              <span class="h2">{{ shop.name }}</span>
-            {%- endif -%}
-          </a>
-      {%- if request.page_type == 'index' -%}
-        </h1>
-      {%- endif -%}
-    {%- endif -%}
-
-    {%- liquid
-      if section.settings.menu != blank
-        if section.settings.menu_type_desktop == 'dropdown'
-          render 'header-dropdown-menu'
-        elsif section.settings.menu_type_desktop != 'drawer'
-          render 'header-mega-menu'
-        endif
-      endif
-    %}
-
-    {%- if section.settings.logo_position == 'middle-center' -%}
-      {%- if request.page_type == 'index' -%}
-        <h1 class="header__heading">
-      {%- endif -%}
-          <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
-            {%- if settings.logo != blank -%}
-              <div class="header__heading-logo-wrapper">
-                {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
-                {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
-                {% capture sizes %}(min-width: 750px) {{ settings.logo_width }}px, 50vw{% endcapture %}
-                {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
-                {{ settings.logo | image_url: width: 600 | image_tag:
-                  class: 'header__heading-logo',
-                  widths: widths,
-                  height: logo_height,
-                  width: settings.logo_width,
-                  alt: logo_alt,
-                  sizes: sizes,
-                  preload: true
-                }}
-              </div>
-            {%- else -%}
-              <span class="h2">{{ shop.name }}</span>
-            {%- endif -%}
-          </a>
-      {%- if request.page_type == 'index' -%}
-        </h1>
-      {%- endif -%}
-    {%- endif -%}
-
-    <div class="header__icons{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header__icons--localization header-localization{% endif %}">
-      <div class="desktop-localization-wrapper">
-        {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
-          <localization-form class="small-hide medium-hide" data-prevent-hide>
-            {%- form 'localization', id: 'HeaderCountryForm', class: 'localization-form' -%}
-              <div>
-                <h2 class="visually-hidden" id="HeaderCountryLabel">{{ 'localization.country_label' | t }}</h2>
-                {%- render 'country-localization', localPosition: 'HeaderCountry' -%}
-              </div>
-            {%- endform -%}
-          </localization-form>
-        {% endif %}
-
-        {%- if section.settings.enable_language_selector and localization.available_languages.size > 1 -%}
-          <localization-form class="small-hide medium-hide" data-prevent-hide>
-            {%- form 'localization', id: 'HeaderLanguageForm', class: 'localization-form' -%}
-              <div>
-                <h2 class="visually-hidden" id="HeaderLanguageLabel">{{ 'localization.language_label' | t }}</h2>
-                {%- render 'language-localization', localPosition: 'HeaderLanguage' -%}
-              </div>
-            {%- endform -%}
-          </localization-form>
-        {%- endif -%}
-      </div>
-      {% render 'header-search', input_id: 'Search-In-Modal' %}
-
-      {%- if shop.customer_accounts_enabled -%}
-        <a
-          href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
-          class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}"
-          rel="nofollow"
-        >
-          {%- if section.settings.enable_customer_avatar -%}
-            <account-icon>
-              {%- if customer and customer.has_avatar? -%}
-                {{ customer | avatar }}
-              {%- else -%}
-                <span class="svg-wrapper">{{ 'icon-account.svg' | inline_asset_content }}</span>
-              {%- endif -%}
-            </account-icon>
-          {%- else -%}
-            <span class="svg-wrapper">{{ 'icon-account.svg' | inline_asset_content }}</span>
-          {%- endif -%}
-          <span class="visually-hidden">
-            {%- liquid
-              if customer
-                echo 'customer.account_fallback' | t
-              else
-                echo 'customer.log_in' | t
-              endif
-            -%}
-          </span>
-        </a>
-      {%- endif -%}
-
-      {%- for block in section.blocks -%}
-        {%- case block.type -%}
-          {%- when '@app' -%}
-            {% render block %}
-        {%- endcase -%}
-      {%- endfor -%}
-
-      <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
-          {% if cart == empty %}
-            <span class="svg-wrapper">{{'icon-cart-empty.svg' | inline_asset_content }}</span>
-          {% else %}
-            <span class="svg-wrapper">{{'icon-cart.svg' | inline_asset_content }}</span>
-          {% endif %}
-        <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
-        {%- if cart != empty -%}
-          <div class="cart-count-bubble">
-            {%- if cart.item_count < 100 -%}
-              <span aria-hidden="true">{{ cart.item_count }}</span>
-            {%- endif -%}
-            <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+  <header class="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between h-24">
+        <a href="/" class="flex items-center">
+          <div class="text-2xl font-bold tracking-tight text-foreground hover:text-primary transition-colors p-2">
+            <img
+              elementtiming="nbf-header-logo-desktop"
+              src="//images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/98398d47-4a7a-44bb-a374-962a6d6df255/Whiffed+Aroma+main+transparent.png?format=1500w"
+              alt="Whiffed Aromas"
+              style="display:block"
+              fetchpriority="high"
+              loading="eager"
+              decoding="async"
+              data-loader="raw"
+              width="100"
+              height="100"
+            >
           </div>
-        {%- endif -%}
-      </a>
-    </div> {% endcomment %}
+        </a>
+        <nav class="hidden lg:flex items-center gap-8">
+          <a href="/" class="text-sm font-medium text-foreground hover:text-primary transition-colors">HOME</a>
+          <div class="relative">
+            <button class="text-sm font-medium text-foreground hover:text-primary transition-colors flex items-center gap-1">
+              SHOP
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-chevron-down h-3 w-3"
+              >
+                <path d="m6 9 6 6 6-6"></path>
+              </svg>
+            </button>
+          </div>
+          <a href="/bundles" class="text-sm font-medium text-foreground hover:text-primary transition-colors">BUNDLES</a
+          ><a href="/scents" class="text-sm font-medium text-foreground hover:text-primary transition-colors">SCENTS</a
+          ><a href="/machines" class="text-sm font-medium text-foreground hover:text-primary transition-colors"
+            >MACHINES</a
+          ><a href="/company" class="text-sm font-medium text-foreground hover:text-primary transition-colors"
+            >COMPANY</a
+          >
+        </nav>
+        <div class="flex items-center gap-4">
+          <button
+            data-slot="button"
+            class="items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent dark:hover:bg-accent/50 size-9 hidden md:flex hover:text-primary"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-search h-5 w-5"
+            >
+              <circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path>
+            </svg></button
+          ><a
+            href="/login"
+            class="hidden md:block text-sm font-medium text-foreground hover:text-primary transition-colors"
+            >LOGIN</a
+          >
+          <div class="hidden md:block">
+            <a href="/checkout"
+              ><button
+                data-slot="button"
+                class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 size-9 relative"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-shopping-cart h-5 w-5"
+                >
+                  <circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+                </svg>
+                <span
+                  data-slot="badge"
+                  class="border font-medium whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent bg-primary text-primary-foreground [a&amp;]:hover:bg-primary/90 absolute -top-1 -right-1 h-5 w-5 rounded-full p-0 flex items-center justify-center text-xs"
+                  >3</span
+                >
+              </button></a
+            >
+          </div>
+          <button
+            data-slot="button"
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 size-9 lg:hidden"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-menu h-6 w-6"
+            >
+              <line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
   </header>
 </{{ header_tag }}>
 
-{%- if settings.cart_type == "notification" -%}
-  {%- render 'cart-notification', color_scheme: section.settings.color_scheme, desktop_menu_type: section.settings.menu_type_desktop -%}
+{%- if settings.cart_type == 'notification' -%}
+  {%- render 'cart-notification',
+    color_scheme: section.settings.color_scheme,
+    desktop_menu_type: section.settings.menu_type_desktop
+  -%}
 {%- endif -%}
 
 {% javascript %}
@@ -482,7 +276,9 @@
 
     connectedCallback() {
       this.header = document.querySelector('.section-header');
-      this.headerIsAlwaysSticky = this.getAttribute('data-sticky-type') === 'always' || this.getAttribute('data-sticky-type') === 'reduce-logo-size';
+      this.headerIsAlwaysSticky =
+        this.getAttribute('data-sticky-type') === 'always' ||
+        this.getAttribute('data-sticky-type') === 'reduce-logo-size';
       this.headerBounds = {};
 
       this.setHeaderHeight();
@@ -491,14 +287,14 @@
 
       if (this.headerIsAlwaysSticky) {
         this.header.classList.add('shopify-section-header-sticky');
-      };
+      }
 
       this.currentScrollTop = 0;
       this.preventReveal = false;
       this.predictiveSearch = this.querySelector('predictive-search');
 
       this.onScrollHandler = this.onScroll.bind(this);
-      this.hideHeaderOnScrollUp = () => this.preventReveal = true;
+      this.hideHeaderOnScrollUp = () => (this.preventReveal = true);
 
       this.addEventListener('preventHeaderReveal', this.hideHeaderOnScrollUp);
       window.addEventListener('scroll', this.onScrollHandler, false);
@@ -574,7 +370,7 @@
 
     closeMenuDisclosure() {
       this.disclosures = this.disclosures || this.header.querySelectorAll('header-menu');
-      this.disclosures.forEach(disclosure => disclosure.close());
+      this.disclosures.forEach((disclosure) => disclosure.close());
     }
 
     closeSearchModal() {
@@ -610,7 +406,7 @@
 </script>
 
 {%- if request.page_type == 'index' -%}
-  {% assign potential_action_target = request.origin | append: routes.search_url | append: "?q={search_term_string}" %}
+  {% assign potential_action_target = request.origin | append: routes.search_url | append: '?q={search_term_string}' %}
   <script type="application/ld+json">
     {
       "@context": "http://schema.org",
@@ -672,7 +468,7 @@
       ],
       "default": "center",
       "label": "t:sections.header.settings.mobile_logo_position.label"
-    },    
+    },
     {
       "type": "link_list",
       "id": "menu",
@@ -754,14 +550,14 @@
       "id": "enable_country_selector",
       "default": true,
       "label": "t:sections.header.settings.enable_country_selector.label",
-      "info":"t:sections.header.settings.enable_country_selector.info"
+      "info": "t:sections.header.settings.enable_country_selector.info"
     },
     {
       "type": "checkbox",
       "id": "enable_language_selector",
       "default": true,
       "label": "t:sections.header.settings.enable_language_selector.label",
-      "info":"t:sections.header.settings.enable_language_selector.info"
+      "info": "t:sections.header.settings.enable_language_selector.info"
     },
     {
       "type": "checkbox",

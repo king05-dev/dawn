@@ -13,40 +13,165 @@
     }
   }
 {%- endstyle -%}
-
-<div class="whif-promote-section color-{{ section.settings.color_scheme }} gradient">
-  <div class="page-width section-{{ section.id }}-padding">
-    <div class="whif-promote-content">
-      {%- for block in section.blocks -%}
-        {%- case block.type -%}
-          {%- when 'heading' -%}
-            <h2 class="whif-promote__heading {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>
-              {{ block.settings.heading }}
-            </h2>
-          {%- when 'text' -%}
-            <div class="whif-promote__text rte" {{ block.shopify_attributes }}>
-              {{ block.settings.text }}
-            </div>
-          {%- when 'button' -%}
-            {%- if block.settings.button_label != blank -%}
-              <a
-                {% if block.settings.button_link == blank %}
-                  role="link" aria-disabled="true"
-                {% else %}
-                  href="{{ block.settings.button_link }}"
-                {% endif %}
-                class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
-                {{ block.shopify_attributes }}
+<section class="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-b from-background to-secondary/50"></div>
+  <div class="container mx-auto px-4 py-20 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="relative h-[400px] lg:h-[600px] animate-in fade-in slide-in-from-left duration-700">
+        <img
+          alt="Whiffed Aroma Diffusers"
+          decoding="async"
+          data-nimg="fill"
+          class="object-contain drop-shadow-2xl"
+          src="https://cdn.shopify.com/s/files/1/0713/6057/7719/files/WhatsApp_Image_2025-07-09_at_15.28.13_b01f0a08.webp?v=1759093158"
+          style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
+        >
+      </div>
+      <div class="text-center lg:text-left animate-in fade-in slide-in-from-right duration-700">
+        <div class="flex flex-wrap justify-center lg:justify-start gap-4 mb-8">
+          <span
+            data-slot="badge"
+            class="inline-flex items-center justify-center rounded-md border text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden [a&amp;]:hover:bg-accent [a&amp;]:hover:text-accent-foreground border-primary text-primary px-3 py-1"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-award h-3 w-3 mr-1"
+            >
+              <path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path><circle cx="12" cy="8" r="6"></circle>
+            </svg>
+            SCENTING TECHNOLOGY USED BY LUXURY HOTELS AND COMMERCIAL RETAIL</span
+          >
+        </div>
+        <h1
+          class="font-serif text-5xl md:text-7xl lg:text-8xl font-bold mb-6 text-balance leading-tight"
+          style="font-family: var(--font-playfair);"
+        >
+          THE ART OF <span style="text-decoration:line-through">SCENTING</span> WHIFFING
+        </h1>
+        <div class="flex items-center justify-center lg:justify-start gap-6 mb-8">
+          <div class="flex items-center gap-2">
+            <div class="flex">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-star h-5 w-5 fill-primary text-primary"
               >
-                {{ block.settings.button_label | escape }}
-              </a>
-            {%- endif -%}
-        {%- endcase -%}
-      {%- endfor -%}
+                <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-star h-5 w-5 fill-primary text-primary"
+              >
+                <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-star h-5 w-5 fill-primary text-primary"
+              >
+                <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-star h-5 w-5 fill-primary text-primary"
+              >
+                <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-star h-5 w-5 fill-primary text-primary"
+              >
+                <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+              </svg>
+            </div>
+            <span class="text-sm font-semibold">4.9/5</span>
+          </div>
+          <div class="h-6 w-px bg-border"></div>
+          <p class="text-sm text-muted-foreground">
+            <span class="font-bold text-foreground">10,000+</span> Happy Customers
+          </p>
+        </div>
+        <p class="text-lg text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+          Transform any space with our premium scent diffusion technology. Experience luxury aromatherapy designed for
+          modern living.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mt-8">
+          <button
+            data-slot="button"
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive shadow-xs h-10 rounded-md has-[&gt;svg]:px-4 bg-primary hover:bg-primary/90 text-primary-foreground px-8 text-base"
+          >
+            SHOP MACHINES</button
+          ><button
+            data-slot="button"
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border shadow-xs dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-10 rounded-md has-[&gt;svg]:px-4 px-8 text-base border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
+          >
+            SHOP SCENTS
+          </button>
+        </div>
+        <div class="grid grid-cols-3 gap-4 mt-12 pt-8 border-t border-border">
+          <div class="text-center lg:text-left">
+            <p class="text-2xl font-bold text-primary mb-1">Free Shipping</p>
+            <p class="text-xs text-muted-foreground">Orders over $75</p>
+          </div>
+          <div class="text-center lg:text-left">
+            <p class="text-2xl font-bold text-primary mb-1">30-Day Returns</p>
+            <p class="text-xs text-muted-foreground">Money-back guarantee</p>
+          </div>
+          <div class="text-center lg:text-left">
+            <p class="text-2xl font-bold text-primary mb-1">App Control</p>
+            <p class="text-xs text-muted-foreground">Smart technology</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-
+</section>
 {% schema %}
 {
   "name": "Whif Promote Section",

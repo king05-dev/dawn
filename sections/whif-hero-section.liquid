@@ -13,53 +13,41 @@
     }
   }
 {%- endstyle -%}
-
-<div class="whif-hero-section color-{{ section.settings.color_scheme }} gradient">
-  <div class="page-width section-{{ section.id }}-padding">
-    <div class="whif-hero-content">
-      {%- if section.settings.image != blank -%}
-        <div class="whif-hero__media">
-          {%- assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio -%}
-          {{ section.settings.image | image_url: width: section.settings.image.width | image_tag:
-            loading: 'lazy',
-            width: section.settings.image.width,
-            height: image_height,
-            alt: section.settings.image.alt | escape
-          }}
+<section class="py-20 bg-muted/30">
+  <div class="container mx-auto px-4">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="relative h-[400px] lg:h-[500px]">
+        <img
+          alt="Flash Sale Products"
+          loading="lazy"
+          decoding="async"
+          data-nimg="fill"
+          class="object-contain"
+          src="https://cdn.shopify.com/s/files/1/0713/6057/7719/files/wet_bar_bottle_dda5085c-4dd0-4147-a20c-7ececd83ed97.webp?v=1759119181"
+          style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
+        >
+      </div>
+      <div class="text-center lg:text-left">
+        <div class="inline-block mb-6">
+          <div class="text-sm font-bold tracking-widest text-primary mb-2">FLASH SALE • UP TO 50% OFF</div>
         </div>
-      {%- endif -%}
-      
-      <div class="whif-hero__text">
-        {%- for block in section.blocks -%}
-          {%- case block.type -%}
-            {%- when 'heading' -%}
-              <h1 class="whif-hero__heading {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>
-                {{ block.settings.heading }}
-              </h1>
-            {%- when 'text' -%}
-              <div class="whif-hero__description rte" {{ block.shopify_attributes }}>
-                {{ block.settings.text }}
-              </div>
-            {%- when 'button' -%}
-              {%- if block.settings.button_label != blank -%}
-                <a
-                  {% if block.settings.button_link == blank %}
-                    role="link" aria-disabled="true"
-                  {% else %}
-                    href="{{ block.settings.button_link }}"
-                  {% endif %}
-                  class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
-                  {{ block.shopify_attributes }}
-                >
-                  {{ block.settings.button_label | escape }}
-                </a>
-              {%- endif -%}
-          {%- endcase -%}
-        {%- endfor -%}
+        <h2
+          class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-balance"
+          style="font-family: var(--font-playfair);"
+        >
+          WE'RE MAKING SPACE FOR NEW OIL INVENTORY.
+        </h2>
+        <p class="text-xl mb-8 text-muted-foreground">COME GET THESE EXTRAS WHILE SUPPLIES LAST!</p>
+        <button
+          data-slot="button"
+          class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive shadow-xs h-10 rounded-md has-[&gt;svg]:px-4 bg-primary hover:bg-primary/90 text-primary-foreground px-8"
+        >
+          SHOP FLASH SALE
+        </button>
       </div>
     </div>
   </div>
-</div>
+</section>
 
 {% schema %}
 {
