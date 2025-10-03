@@ -610,6 +610,66 @@
         "padding_bottom": 36
       }
     },
+    "whif_media_press_section_AsSeenIn": {
+      "type": "whif_media_press_section",
+      "blocks": {
+        "heading_AsSeenIn": {
+          "type": "heading",
+          "settings": {
+            "heading": "As Seen In"
+          }
+        },
+        "subheading_AsSeenIn": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Discover what top media outlets are saying about our revolutionary scenting technology"
+          }
+        },
+        "press_item_bbpr": {
+          "type": "press_item",
+          "settings": {
+            "publisher_name": "BuzzBlastPR",
+            "article_title": "Whiffed Aromas Disrupts Fragrance Industry with Hotel-Level Scenting Technology for Homes",
+            "article_excerpt": "Revolutionary scenting technology brings luxury hotel experiences to residential spaces.",
+            "reach_number": "25,536,500 visits/month",
+            "publication_date": "2024-01-15"
+          }
+        },
+        "press_item_tiw": {
+          "type": "press_item",
+          "settings": {
+            "publisher_name": "Tech Innovation Weekly",
+            "article_title": "Smart Home Fragrance: The Next Frontier in Home Automation",
+            "article_excerpt": "Whiffed Aromas leads the charge in smart scenting solutions with app-controlled diffusers.",
+            "reach_number": "15,200,000 visits/month",
+            "publication_date": "2024-02-20"
+          }
+        },
+        "press_item_llm": {
+          "type": "press_item",
+          "settings": {
+            "publisher_name": "Luxury Living Magazine",
+            "article_title": "Creating Signature Scents: How Whiffed Aromas Transforms Spaces",
+            "article_excerpt": "From boutique hotels to luxury homes, discover how scenting technology is revolutionizing interior design.",
+            "reach_number": "8,750,000 visits/month",
+            "publication_date": "2024-03-10"
+          }
+        },
+
+      },
+      "block_order": [
+        "heading_AsSeenIn",
+        "subheading_AsSeenIn",
+        "press_item_bbpr",
+        "press_item_tiw",
+        "press_item_llm",
+   
+      ],
+      "settings": {
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
     "whif_contact_us_68reNi": {
       "type": "whif-contact-us",
       "blocks": {
@@ -801,6 +861,7 @@
     "whif_recommendation_section_cQB63k",
     "whif_bundle_section_FW6TA3",
     "whif_testimonial_section_aX6Hh3",
+    "whif_media_press_section_AsSeenIn",
     "whif_contact_us_68reNi",
     "whif_favorite_section_j984wL",
     "whif_cbs_section_Mhwmj9"
