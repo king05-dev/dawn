@@ -140,3 +140,6 @@
 .shopify-section-header-sticky {
   z-index: 999;
 }
+.hero-swiper {
+  z-index: -1!important;
+}
