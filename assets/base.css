@@ -137,6 +137,6 @@
 .slide-in-from-right {
   --tw-enter-translate-x: 100%;
 }
-#shopify-section-sections--18895104835767__header {
+.shopify-section-header-sticky {
   z-index: 999;
 }
