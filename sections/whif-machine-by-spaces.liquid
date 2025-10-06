@@ -1,5 +1,3 @@
-{{ 'section-whif-machine-by-spaces.css' | asset_url | stylesheet_tag }}
-
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -20,7 +18,7 @@
       {%- if section.settings.heading != blank -%}
         <h2 class="whif-machine-by-spaces__heading">{{ section.settings.heading }}</h2>
       {%- endif -%}
-      
+
       {%- if section.settings.description != blank -%}
         <div class="whif-machine-by-spaces__description rte">
           {{ section.settings.description }}
@@ -34,7 +32,11 @@
               <div class="space-type-card" {{ block.shopify_attributes }}>
                 {%- if block.settings.space_image != blank -%}
                   <div class="space-type-card__image">
-                    {{ block.settings.space_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: block.settings.space_name }}
+                    {{
+                      block.settings.space_image
+                      | image_url: width: 400
+                      | image_tag: loading: 'lazy', alt: block.settings.space_name
+                    }}
                   </div>
                 {%- endif -%}
                 <div class="space-type-card__content">
@@ -43,14 +45,18 @@
                   {%- if block.settings.space_description != blank -%}
                     <p>{{ block.settings.space_description }}</p>
                   {%- endif -%}
-                  
+
                   {%- if block.settings.recommended_machine != blank -%}
                     <div class="recommended-machine">
                       <h4>Recommended Machine:</h4>
                       <div class="machine-recommendation">
                         {%- assign product = block.settings.recommended_machine -%}
                         {%- if product.featured_media -%}
-                          {{ product.featured_media | image_url: width: 150 | image_tag: loading: 'lazy', alt: product.title }}
+                          {{
+                            product.featured_media
+                            | image_url: width: 150
+                            | image_tag: loading: 'lazy', alt: product.title
+                          }}
                         {%- endif -%}
                         <div class="machine-info">
                           <h5>{{ product.title }}</h5>
@@ -100,27 +106,27 @@
 </div>
 
 <script>
-function calculateMachine() {
-  const spaceSize = document.getElementById('space-size-input').value;
-  const resultDiv = document.getElementById('calculator-result');
-  const resultContent = document.getElementById('recommended-machine-result');
-  
-  if (spaceSize) {
-    let recommendation = '';
-    if (spaceSize <= 200) {
-      recommendation = 'Small Space Machine - Perfect for rooms up to 200 sq ft';
-    } else if (spaceSize <= 500) {
-      recommendation = 'Medium Space Machine - Ideal for areas up to 500 sq ft';
-    } else if (spaceSize <= 1000) {
-      recommendation = 'Large Space Machine - Great for spaces up to 1000 sq ft';
-    } else {
-      recommendation = 'Commercial Machine - Designed for large commercial spaces';
+  function calculateMachine() {
+    const spaceSize = document.getElementById('space-size-input').value;
+    const resultDiv = document.getElementById('calculator-result');
+    const resultContent = document.getElementById('recommended-machine-result');
+
+    if (spaceSize) {
+      let recommendation = '';
+      if (spaceSize <= 200) {
+        recommendation = 'Small Space Machine - Perfect for rooms up to 200 sq ft';
+      } else if (spaceSize <= 500) {
+        recommendation = 'Medium Space Machine - Ideal for areas up to 500 sq ft';
+      } else if (spaceSize <= 1000) {
+        recommendation = 'Large Space Machine - Great for spaces up to 1000 sq ft';
+      } else {
+        recommendation = 'Commercial Machine - Designed for large commercial spaces';
+      }
+
+      resultContent.innerHTML = `<p><strong>${recommendation}</strong></p>`;
+      resultDiv.style.display = 'block';
     }
-    
-    resultContent.innerHTML = `<p><strong>${recommendation}</strong></p>`;
-    resultDiv.style.display = 'block';
   }
-}
 </script>
 
 {% schema %}

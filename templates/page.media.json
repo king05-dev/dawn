@@ -1,0 +1,180 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "media_hero": {
+      "type": "whif_media_press_section",
+      "blocks": {
+        "heading_media": {
+          "type": "heading",
+          "settings": {
+            "heading": "Press & Media Coverage"
+          }
+        },
+        "subheading_media": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "See what top-tier media outlets are saying about Whiffed Aromas and our revolutionary scenting technology"
+          }
+        },
+        "press_item_bbpr": {
+          "type": "press_item",
+          "settings": {
+            "publisher_name": "BuzzBlastPR",
+            "article_title": "Whiffed Aromas Disrupts Fragrance Industry with Hotel-Level Scenting Technology for Homes",
+            "article_excerpt": "Revolutionary scenting technology brings luxury hotel experiences to residential spaces with innovative diffusion systems.",
+            "reach_number": "25,536,500 visits/month",
+            "publication_date": "2024-01-15"
+          }
+        },
+        "press_item_tiw": {
+          "type": "press_item",
+          "settings": {
+            "publisher_name": "Tech Innovation Weekly",
+            "article_title": "Smart Home Fragrance: The Next Frontier in Home Automation",
+            "article_excerpt": "Whiffed Aromas leads the charge in smart scenting solutions with app-controlled diffusers and premium oil collections.",
+            "reach_number": "15,200,000 visits/month",
+            "publication_date": "2024-02-20"
+          }
+        },
+        "press_item_llm": {
+          "type": "press_item",
+          "settings": {
+            "publisher_name": "Luxury Living Magazine",
+            "article_title": "Creating Signature Scents: How Whiffed Aromas Transforms Spaces",
+            "article_excerpt": "From boutique hotels to luxury homes, discover how scenting technology is revolutionizing interior design.",
+            "reach_number": "8,750,000 visits/month",
+            "publication_date": "2024-03-10"
+          }
+        },
+        "press_item_bit": {
+          "type": "press_item",
+          "settings": {
+            "publisher_name": "Business Innovation Today",
+            "article_title": "Startup Spotlight: Whiffed Aromas Raises Series A for Scenting Expansion",
+            "article_excerpt": "Company secures funding to expand commercial scenting solutions and develop new residential product lines.",
+            "reach_number": "12,400,000 visits/month",
+            "publication_date": "2024-04-05"
+          }
+        },
+        "press_item_hdt": {
+          "type": "press_item",
+          "settings": {
+            "publisher_name": "Home & Design Trends",
+            "article_title": "The Science of Scent: How Aromatherapy Enhances Modern Living",
+            "article_excerpt": "Expert insights on how strategic scenting improves mood, productivity, and overall well-being in residential spaces.",
+            "reach_number": "6,890,000 visits/month",
+            "publication_date": "2024-05-12"
+          }
+        },
+        "press_item_rtn": {
+          "type": "press_item",
+          "settings": {
+            "publisher_name": "Retail Technology News",
+            "article_title": "Commercial Scenting Solutions Drive Customer Engagement",
+            "article_excerpt": "Case studies show how Whiffed Aromas' commercial diffusers increase dwell time and sales in retail environments.",
+            "reach_number": "9,320,000 visits/month",
+            "publication_date": "2024-06-18"
+          }
+        }
+      },
+      "block_order": [
+        "heading_media",
+        "subheading_media",
+        "press_item_bbpr",
+        "press_item_tiw",
+        "press_item_llm",
+        "press_item_bit",
+        "press_item_hdt",
+        "press_item_rtn"
+      ],
+      "settings": {
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "media_stats": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_media_stats": {
+          "type": "heading",
+          "settings": {
+            "heading": "Media Impact",
+            "heading_size": "h1"
+          }
+        },
+        "text_media_stats": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Our innovative scenting technology has captured the attention of leading media outlets, reaching millions of readers worldwide. From tech publications to luxury lifestyle magazines, industry experts recognize Whiffed Aromas as a pioneer in the home and commercial scenting space.</p><p><strong>Total Media Reach:</strong> 78+ Million Monthly Visitors<br><strong>Press Features:</strong> 402+ Published Articles<br><strong>Industry Recognition:</strong> Featured in Top-Tier Publications</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_media_stats",
+        "text_media_stats"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "contact_cta": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_contact": {
+          "type": "heading",
+          "settings": {
+            "heading": "Media Inquiries",
+            "heading_size": "h2"
+          }
+        },
+        "text_contact": {
+          "type": "text",
+          "settings": {
+            "text": "<p>For press inquiries, product samples, or interview requests, please contact our media relations team.</p>"
+          }
+        },
+        "button_contact": {
+          "type": "button",
+          "settings": {
+            "button_label": "Contact Media Team",
+            "button_link": "/pages/contact",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_contact",
+        "text_contact",
+        "button_contact"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "main",
+    "media_hero",
+    "media_stats",
+    "contact_cta"
+  ]
+}

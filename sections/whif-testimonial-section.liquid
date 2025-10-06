@@ -1,26 +1,10 @@
-{{ 'section-whif-testimonial.css' | asset_url | stylesheet_tag }}
-
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
-
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
-  }
-{%- endstyle -%}
-
 <div class="whif-testimonial-section color-{{ section.settings.color_scheme }} gradient">
   <div class="page-width section-{{ section.id }}-padding">
     <div class="whif-testimonial-content">
       {%- if section.settings.heading != blank -%}
         <h2 class="whif-testimonial__heading">{{ section.settings.heading }}</h2>
       {%- endif -%}
-      
+
       {%- if section.settings.description != blank -%}
         <div class="whif-testimonial__description rte">
           {{ section.settings.description }}
@@ -45,15 +29,17 @@
                       {%- endfor -%}
                     </div>
                   {%- endif -%}
-                  
-                  <blockquote class="testimonial-quote">
-                    "{{ block.settings.testimonial_text }}"
-                  </blockquote>
-                  
+
+                  <blockquote class="testimonial-quote">"{{ block.settings.testimonial_text }}"</blockquote>
+
                   <div class="testimonial-author">
                     {%- if block.settings.customer_photo != blank -%}
                       <div class="author-photo">
-                        {{ block.settings.customer_photo | image_url: width: 80 | image_tag: loading: 'lazy', alt: block.settings.customer_name }}
+                        {{
+                          block.settings.customer_photo
+                          | image_url: width: 80
+                          | image_tag: loading: 'lazy', alt: block.settings.customer_name
+                        }}
                       </div>
                     {%- endif -%}
                     <div class="author-info">
@@ -66,7 +52,7 @@
                       {%- endif -%}
                     </div>
                   </div>
-                  
+
                   {%- if block.settings.verified_purchase -%}
                     <div class="verified-badge">
                       <span class="verified-icon">✓</span>
@@ -75,7 +61,7 @@
                   {%- endif -%}
                 </div>
               </div>
-            
+
             {%- when 'review_summary' -%}
               <div class="review-summary" {{ block.shopify_attributes }}>
                 <h3>{{ block.settings.summary_title }}</h3>
@@ -100,13 +86,15 @@
                   {%- endif -%}
                 </div>
               </div>
-            
+
             {%- when 'video_testimonial' -%}
               <div class="video-testimonial" {{ block.shopify_attributes }}>
                 <h4>{{ block.settings.video_title }}</h4>
                 {%- if block.settings.video_url != blank -%}
                   <div class="video-wrapper">
-                    {%- if block.settings.video_url contains 'youtube.com' or block.settings.video_url contains 'youtu.be' -%}
+                    {%- if block.settings.video_url contains 'youtube.com'
+                      or block.settings.video_url contains 'youtu.be'
+                    -%}
                       <iframe src="{{ block.settings.video_url }}" frameborder="0" allowfullscreen></iframe>
                     {%- else -%}
                       <video controls>
@@ -118,7 +106,7 @@
                 {%- endif -%}
                 <p class="video-description">{{ block.settings.video_description }}</p>
               </div>
-            
+
             {%- when 'button' -%}
               {%- if block.settings.button_label != blank -%}
                 <a

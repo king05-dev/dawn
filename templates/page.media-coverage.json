@@ -1,0 +1,42 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "media_coverage": {
+      "type": "whif_media_press_section",
+      "blocks": {
+        "heading_media_cov": {
+          "type": "heading",
+          "settings": {
+            "heading": "Press & Media Coverage"
+          }
+        },
+        "subheading_media_cov": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "See what top-tier media outlets are saying about Whiffed Aromas and our revolutionary scenting technology that's transforming homes and businesses worldwide."
+          }
+        },
+
+      },
+      "block_order": [
+        "heading_media_cov",
+        "subheading_media_cov",
+
+      ],
+      "settings": {
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+  },
+  "order": [
+    "main",
+    "media_coverage"
+  ]
+}

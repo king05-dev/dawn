@@ -1,5 +1,3 @@
-{{ 'section-whif-collection.css' | asset_url | stylesheet_tag }}
-
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -13,48 +11,406 @@
     }
   }
 {%- endstyle -%}
-
-<div class="whif-collection-section color-{{ section.settings.color_scheme }} gradient">
-  <div class="page-width section-{{ section.id }}-padding">
-    <div class="whif-collection-content">
-      {%- if section.settings.heading != blank -%}
-        <h2 class="whif-collection__heading">{{ section.settings.heading }}</h2>
-      {%- endif -%}
-      
-      {%- if section.settings.description != blank -%}
-        <div class="whif-collection__description rte">
-          {{ section.settings.description }}
-        </div>
-      {%- endif -%}
-
-      <div class="whif-collection__grid">
-        {%- for block in section.blocks -%}
-          {%- case block.type -%}
-            {%- when 'collection_item' -%}
-              <div class="collection-item" {{ block.shopify_attributes }}>
-                {%- if block.settings.collection_image != blank -%}
-                  <div class="collection-item__image">
-                    {{ block.settings.collection_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: block.settings.collection_title }}
-                  </div>
-                {%- endif -%}
-                <div class="collection-item__content">
-                  <h3>{{ block.settings.collection_title }}</h3>
-                  {%- if block.settings.collection_description != blank -%}
-                    <p>{{ block.settings.collection_description }}</p>
-                  {%- endif -%}
-                  {%- if block.settings.collection_link != blank -%}
-                    <a href="{{ block.settings.collection_link }}" class="button button--primary">
-                      {{ block.settings.button_text | default: 'Shop Collection' }}
-                    </a>
-                  {%- endif -%}
-                </div>
-              </div>
-          {%- endcase -%}
-        {%- endfor -%}
+<section class="py-20 bg-muted/30">
+  <div class="container mx-auto px-4">
+    <div class="flex items-center justify-between mb-12">
+      <div class="text-center flex-1">
+        <h2
+          class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
+          style="font-family: var(--font-playfair);"
+        >
+          WHIFF MAKERS
+        </h2>
+        <p class="text-xl text-muted-foreground">Browse our collection of heat and water-free machines[diffusers]</p>
       </div>
     </div>
+    <div class="relative">
+      <!-- Swiper CSS -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+      <div class="swiper collection-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div
+              data-slot="card"
+              class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group overflow-hidden bg-card border-border hover:border-primary transition-all duration-300 h-full"
+            >
+              <div class="relative h-[300px] overflow-hidden">
+                <img
+                  alt="CITRUS BLEND"
+                  loading="lazy"
+                  decoding="async"
+                  data-nimg="fill"
+                  class="object-cover group-hover:scale-105 transition-transform duration-500"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/luxury-aroma-oil-bottle-with-citrus-fruits-nSJSfaprbnWDRTJVBcm1YAk9qnRghc.jpg"
+                  style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
+                >
+                <div class="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 text-xs font-bold rounded-full">
+                  BESTSELLER
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-bold mb-2 text-foreground">CITRUS BLEND</h3>
+                <p class="text-sm text-muted-foreground mb-3 line-clamp-2">
+                  Energizing citrus notes with hints of bergamot
+                </p>
+                <div class="flex items-center gap-1 mb-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-star h-4 w-4 fill-primary text-primary"
+                  >
+                    <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+                  </svg>
+                  <span class="text-sm font-semibold">4.9</span><span class="text-xs text-muted-foreground">(234)</span>
+                </div>
+                <button
+                  data-slot="button"
+                  class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border shadow-xs dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-9 px-4 py-2 has-[&gt;svg]:px-3 w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
+                >
+                  VIEW DETAILS
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div
+              data-slot="card"
+              class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group overflow-hidden bg-card border-border hover:border-primary transition-all duration-300 h-full"
+            >
+              <div class="relative h-[300px] overflow-hidden">
+                <img
+                  alt="LAVENDER DREAMS"
+                  loading="lazy"
+                  decoding="async"
+                  data-nimg="fill"
+                  class="object-cover group-hover:scale-105 transition-transform duration-500"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/luxury-aroma-oil-bottle-with-lavender-flowers-Wk6dgMfLTcuQRWKYldSysJJfSqDFUD.jpg"
+                  style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
+                >
+                <div class="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 text-xs font-bold rounded-full">
+                  NEW
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-bold mb-2 text-foreground">LAVENDER DREAMS</h3>
+                <p class="text-sm text-muted-foreground mb-3 line-clamp-2">
+                  Calming lavender with subtle vanilla undertones
+                </p>
+                <div class="flex items-center gap-1 mb-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-star h-4 w-4 fill-primary text-primary"
+                  >
+                    <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+                  </svg>
+                  <span class="text-sm font-semibold">4.8</span><span class="text-xs text-muted-foreground">(189)</span>
+                </div>
+                <button
+                  data-slot="button"
+                  class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border shadow-xs dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-9 px-4 py-2 has-[&gt;svg]:px-3 w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
+                >
+                  VIEW DETAILS
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div
+              data-slot="card"
+              class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group overflow-hidden bg-card border-border hover:border-primary transition-all duration-300 h-full"
+            >
+              <div class="relative h-[300px] overflow-hidden">
+                <img
+                  alt="OCEAN BREEZE"
+                  loading="lazy"
+                  decoding="async"
+                  data-nimg="fill"
+                  class="object-cover group-hover:scale-105 transition-transform duration-500"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/luxury-aroma-oil-bottle-with-ocean-theme-Wu0IkLbhaOBEvhgdcYiNBHfaBEr7xv.jpg"
+                  style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
+                >
+                <div class="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 text-xs font-bold rounded-full">
+                  POPULAR
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-bold mb-2 text-foreground">OCEAN BREEZE</h3>
+                <p class="text-sm text-muted-foreground mb-3 line-clamp-2">
+                  Fresh aquatic scent with sea salt and driftwood
+                </p>
+                <div class="flex items-center gap-1 mb-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-star h-4 w-4 fill-primary text-primary"
+                  >
+                    <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+                  </svg>
+                  <span class="text-sm font-semibold">4.7</span><span class="text-xs text-muted-foreground">(312)</span>
+                </div>
+                <button
+                  data-slot="button"
+                  class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border shadow-xs dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-9 px-4 py-2 has-[&gt;svg]:px-3 w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
+                >
+                  VIEW DETAILS
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div
+              data-slot="card"
+              class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group overflow-hidden bg-card border-border hover:border-primary transition-all duration-300 h-full"
+            >
+              <div class="relative h-[300px] overflow-hidden">
+                <img
+                  alt="VANILLA NOIR"
+                  loading="lazy"
+                  decoding="async"
+                  data-nimg="fill"
+                  class="object-cover group-hover:scale-105 transition-transform duration-500"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/luxury-aroma-oil-bottle-with-vanilla-beans-pgG9E9DPwExSk0Wm0QPA3k0HGCowwm.jpg"
+                  style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
+                >
+                <div class="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 text-xs font-bold rounded-full">
+                  LIMITED
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-bold mb-2 text-foreground">VANILLA NOIR</h3>
+                <p class="text-sm text-muted-foreground mb-3 line-clamp-2">
+                  Rich vanilla with warm amber and sandalwood
+                </p>
+                <div class="flex items-center gap-1 mb-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-star h-4 w-4 fill-primary text-primary"
+                  >
+                    <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+                  </svg>
+                  <span class="text-sm font-semibold">5</span><span class="text-xs text-muted-foreground">(156)</span>
+                </div>
+                <button
+                  data-slot="button"
+                  class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border shadow-xs dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-9 px-4 py-2 has-[&gt;svg]:px-3 w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
+                >
+                  VIEW DETAILS
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div
+              data-slot="card"
+              class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group overflow-hidden bg-card border-border hover:border-primary transition-all duration-300 h-full"
+            >
+              <div class="relative h-[300px] overflow-hidden">
+                <img
+                  alt="FOREST PINE"
+                  loading="lazy"
+                  decoding="async"
+                  data-nimg="fill"
+                  class="object-cover group-hover:scale-105 transition-transform duration-500"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/luxury-aroma-oil-bottle-with-citrus-fruits-nSJSfaprbnWDRTJVBcm1YAk9qnRghc.jpg"
+                  style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
+                >
+                <div class="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 text-xs font-bold rounded-full">
+                  SEASONAL
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-bold mb-2 text-foreground">FOREST PINE</h3>
+                <p class="text-sm text-muted-foreground mb-3 line-clamp-2">
+                  Crisp pine needles with cedarwood and moss
+                </p>
+                <div class="flex items-center gap-1 mb-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-star h-4 w-4 fill-primary text-primary"
+                  >
+                    <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+                  </svg>
+                  <span class="text-sm font-semibold">4.6</span><span class="text-xs text-muted-foreground">(98)</span>
+                </div>
+                <button
+                  data-slot="button"
+                  class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border shadow-xs dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-9 px-4 py-2 has-[&gt;svg]:px-3 w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
+                >
+                  VIEW DETAILS
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div
+              data-slot="card"
+              class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group overflow-hidden bg-card border-border hover:border-primary transition-all duration-300 h-full"
+            >
+              <div class="relative h-[300px] overflow-hidden">
+                <img
+                  alt="ROSE GARDEN"
+                  loading="lazy"
+                  decoding="async"
+                  data-nimg="fill"
+                  class="object-cover group-hover:scale-105 transition-transform duration-500"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/luxury-aroma-oil-bottle-with-lavender-flowers-Wk6dgMfLTcuQRWKYldSysJJfSqDFUD.jpg"
+                  style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
+                >
+                <div class="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 text-xs font-bold rounded-full">
+                  LUXURY
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-bold mb-2 text-foreground">ROSE GARDEN</h3>
+                <p class="text-sm text-muted-foreground mb-3 line-clamp-2">
+                  Elegant rose petals with jasmine and peony
+                </p>
+                <div class="flex items-center gap-1 mb-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-star h-4 w-4 fill-primary text-primary"
+                  >
+                    <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+                  </svg>
+                  <span class="text-sm font-semibold">4.9</span><span class="text-xs text-muted-foreground">(267)</span>
+                </div>
+                <button
+                  data-slot="button"
+                  class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border shadow-xs dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-9 px-4 py-2 has-[&gt;svg]:px-3 w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
+                >
+                  VIEW DETAILS
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Swiper Navigation Buttons -->
+      <div class="swiper-button-prev collection-swiper-prev absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 hidden lg:flex items-center justify-center size-9 rounded-md border border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-background/80 backdrop-blur transition-all">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-chevron-left h-5 w-5"
+        >
+          <path d="m15 18-6-6 6-6"></path>
+        </svg>
+      </div>
+
+      <div class="swiper-button-next collection-swiper-next absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 hidden lg:flex items-center justify-center size-9 rounded-md border border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-background/80 backdrop-blur transition-all">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-chevron-right h-5 w-5"
+        >
+          <path d="m9 18 6-6-6-6"></path>
+        </svg>
+      </div>
+    </div>
+    <div class="text-center mt-12">
+      <button
+        data-slot="button"
+        class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive shadow-xs h-10 rounded-md has-[&gt;svg]:px-4 bg-primary hover:bg-primary/90 text-primary-foreground px-12"
+      >
+        VIEW ALL SCENTS
+      </button>
+    </div>
   </div>
-</div>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const swiper = new Swiper('.collection-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 24,
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        },
+        navigation: {
+          nextEl: '.collection-swiper-next',
+          prevEl: '.collection-swiper-prev',
+        },
+        breakpoints: {
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 24,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 24,
+          },
+        },
+      });
+    });
+  </script>
+</section>
 
 {% schema %}
 {

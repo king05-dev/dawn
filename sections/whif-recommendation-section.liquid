@@ -1,26 +1,10 @@
-{{ 'section-whif-recommendation.css' | asset_url | stylesheet_tag }}
-
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
-
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
-  }
-{%- endstyle -%}
-
 <div class="whif-recommendation-section color-{{ section.settings.color_scheme }} gradient">
   <div class="page-width section-{{ section.id }}-padding">
     <div class="whif-recommendation-content">
       {%- if section.settings.heading != blank -%}
         <h2 class="whif-recommendation__heading">{{ section.settings.heading }}</h2>
       {%- endif -%}
-      
+
       {%- if section.settings.description != blank -%}
         <div class="whif-recommendation__description rte">
           {{ section.settings.description }}
@@ -30,12 +14,18 @@
       <div class="whif-recommendation__products">
         {%- if section.settings.recommended_collection != blank -%}
           <div class="recommended-products-grid">
-            {%- for product in section.settings.recommended_collection.products limit: section.settings.products_to_show -%}
+            {%- for product in section.settings.recommended_collection.products
+              limit: section.settings.products_to_show
+            -%}
               <div class="recommended-product-card">
                 <div class="product-badge">Recommended</div>
                 <a href="{{ product.url }}">
                   {%- if product.featured_media -%}
-                    {{ product.featured_media | image_url: width: 300 | image_tag: loading: 'lazy', alt: product.title }}
+                    {{
+                      product.featured_media
+                      | image_url: width: 300
+                      | image_tag: loading: 'lazy', alt: product.title
+                    }}
                   {%- endif -%}
                   <div class="product-info">
                     <h4>{{ product.title }}</h4>
@@ -65,7 +55,11 @@
               <div class="recommendation-category" {{ block.shopify_attributes }}>
                 {%- if block.settings.category_icon != blank -%}
                   <div class="category-icon">
-                    {{ block.settings.category_icon | image_url: width: 60 | image_tag: loading: 'lazy', alt: block.settings.category_title }}
+                    {{
+                      block.settings.category_icon
+                      | image_url: width: 60
+                      | image_tag: loading: 'lazy', alt: block.settings.category_title
+                    }}
                   </div>
                 {%- endif -%}
                 <div class="category-content">
@@ -77,7 +71,11 @@
                         <div class="mini-product-card">
                           <a href="{{ product.url }}">
                             {%- if product.featured_media -%}
-                              {{ product.featured_media | image_url: width: 100 | image_tag: loading: 'lazy', alt: product.title }}
+                              {{
+                                product.featured_media
+                                | image_url: width: 100
+                                | image_tag: loading: 'lazy', alt: product.title
+                              }}
                             {%- endif -%}
                             <span>{{ product.title }}</span>
                           </a>
@@ -142,31 +140,35 @@
 </div>
 
 <script>
-function getRecommendation() {
-  const spaceType = document.querySelector('[data-question="space-type"]').value;
-  const intensity = document.querySelector('[data-question="intensity"]').value;
-  const resultDiv = document.getElementById('quiz-result');
-  const contentDiv = document.getElementById('recommendation-content');
-  
-  if (spaceType && intensity) {
-    let recommendation = '';
-    
-    if (spaceType === 'home' && intensity === 'light') {
-      recommendation = 'We recommend our Home Essential Collection with light, fresh scents perfect for daily living.';
-    } else if (spaceType === 'office' && intensity === 'medium') {
-      recommendation = 'Our Professional Workspace Collection offers clean, energizing scents that enhance productivity.';
-    } else if (spaceType === 'retail' && intensity === 'strong') {
-      recommendation = 'The Retail Signature Collection features bold, memorable scents that create lasting impressions.';
+  function getRecommendation() {
+    const spaceType = document.querySelector('[data-question="space-type"]').value;
+    const intensity = document.querySelector('[data-question="intensity"]').value;
+    const resultDiv = document.getElementById('quiz-result');
+    const contentDiv = document.getElementById('recommendation-content');
+
+    if (spaceType && intensity) {
+      let recommendation = '';
+
+      if (spaceType === 'home' && intensity === 'light') {
+        recommendation =
+          'We recommend our Home Essential Collection with light, fresh scents perfect for daily living.';
+      } else if (spaceType === 'office' && intensity === 'medium') {
+        recommendation =
+          'Our Professional Workspace Collection offers clean, energizing scents that enhance productivity.';
+      } else if (spaceType === 'retail' && intensity === 'strong') {
+        recommendation =
+          'The Retail Signature Collection features bold, memorable scents that create lasting impressions.';
+      } else {
+        recommendation =
+          'Based on your preferences, we recommend exploring our curated collections to find your perfect match.';
+      }
+
+      contentDiv.innerHTML = `<p>${recommendation}</p><a href="/collections/all" class="button button--secondary">Shop Recommended Products</a>`;
+      resultDiv.style.display = 'block';
     } else {
-      recommendation = 'Based on your preferences, we recommend exploring our curated collections to find your perfect match.';
+      alert('Please answer all questions to get your recommendation.');
     }
-    
-    contentDiv.innerHTML = `<p>${recommendation}</p><a href="/collections/all" class="button button--secondary">Shop Recommended Products</a>`;
-    resultDiv.style.display = 'block';
-  } else {
-    alert('Please answer all questions to get your recommendation.');
   }
-}
 </script>
 
 {% schema %}

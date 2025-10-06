@@ -62,191 +62,95 @@
     </div>
     <div class="swiper bundles-swiper">
       <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <div
-            data-slot="card"
-            class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group overflow-hidden bg-card border-border hover:border-primary transition-all duration-300 h-full"
-          >
-            <div class="relative h-[300px] overflow-hidden">
-              <img
-                alt="STARTER BUNDLE"
-                loading="lazy"
-                decoding="async"
-                data-nimg="fill"
-                class="object-cover group-hover:scale-105 transition-transform duration-500"
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/black-luxury-aroma-diffuser-with-blue-light-in-mod-DNxhhMKroDIRE7Sumf86V31KATcloV.jpg"
-                style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
-              >
-              <div class="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 text-xs font-bold rounded-full">
-                BEST VALUE
+        {% assign collection = collections['whif-landing-page'].products %}
+        {% for product in collection limit: 7 %}
+          <div class="swiper-slide">
+            <div
+              data-slot="card"
+              class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group overflow-hidden bg-card border-border hover:border-primary transition-all duration-300 h-full"
+            >
+              <div class="relative h-[300px] overflow-hidden">
+                {%- if product.featured_image -%}
+                  <img
+                    alt="{{ product.featured_image.alt | escape }}"
+                    loading="lazy"
+                    decoding="async"
+                    data-nimg="fill"
+                    width="400"
+                    height="300"
+                    class="object-cover group-hover:scale-105 transition-transform duration-500"
+                    src="{{ product.featured_image | image_url: width: 400 }}"
+                    style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
+                  >
+                {%- else -%}
+                  <div class="absolute inset-0 bg-gray-200 flex items-center justify-center">
+                    <span class="text-gray-500">No Image</span>
+                  </div>
+                {%- endif -%}
+
+                {%- if product.compare_at_price > product.price -%}
+                  {%- assign discount_percentage = product.compare_at_price
+                    | minus: product.price
+                    | times: 100
+                    | divided_by: product.compare_at_price
+                  -%}
+                  <div class="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 text-xs font-bold rounded-full">
+                    {{ discount_percentage }}% OFF
+                  </div>
+                {%- elsif product.tags contains 'new' -%}
+                  <div class="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 text-xs font-bold rounded-full">
+                    NEW
+                  </div>
+                {%- elsif product.tags contains 'bestseller' or product.tags contains 'popular' -%}
+                  <div class="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 text-xs font-bold rounded-full">
+                    POPULAR
+                  </div>
+                {%- elsif product.tags contains 'premium' or product.tags contains 'luxury' -%}
+                  <div class="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 text-xs font-bold rounded-full">
+                    PREMIUM
+                  </div>
+                {%- endif -%}
               </div>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-2 text-foreground">STARTER BUNDLE</h3>
-              <p class="text-sm text-muted-foreground mb-4 line-clamp-2">
-                Complete home scenting solution with diffuser + 3 premium oils
-              </p>
-              <div class="flex items-center gap-2 mb-4">
-                <span class="text-2xl font-bold text-primary">$149.99</span
-                ><span class="text-sm text-muted-foreground line-through">$199.99</span>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 text-foreground">{{ product.title | upcase }}</h3>
+                <p class="text-sm text-muted-foreground mb-4 line-clamp-2">
+                  {%- if product.description != blank -%}
+                    {{ product.description | strip_html | truncate: 80 }}
+                  {%- else -%}
+                    Premium fragrance collection
+                  {%- endif -%}
+                </p>
+                <div class="flex items-center gap-2 mb-4">
+                  <span class="text-2xl font-bold text-primary">{{ product.price | money }}</span>
+                  {%- if product.compare_at_price > product.price -%}
+                    <span class="text-sm text-muted-foreground line-through">
+                      {{- product.compare_at_price | money -}}
+                    </span>
+                  {%- endif -%}
+                </div>
+                <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data">
+                  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                  <button
+                    type="submit"
+                    data-slot="button"
+                    class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive shadow-xs h-9 px-4 py-2 has-[&gt;svg]:px-3 w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+                    {%- unless product.available -%}
+                      disabled
+                    {%- endunless -%}
+                  >
+                    {%- if product.available -%}
+                      ADD TO CART
+                    {%- else -%}
+                      SOLD OUT
+                    {%- endif -%}
+                  </button>
+                </form>
               </div>
-              <button
-                data-slot="button"
-                class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive shadow-xs h-9 px-4 py-2 has-[&gt;svg]:px-3 w-full bg-primary hover:bg-primary/90 text-primary-foreground"
-              >
-                ADD TO CART
-              </button>
             </div>
           </div>
-        </div>
-        <div class="swiper-slide">
-          <div
-            data-slot="card"
-            class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group overflow-hidden bg-card border-border hover:border-primary transition-all duration-300 h-full"
-          >
-            <div class="relative h-[300px] overflow-hidden">
-              <img
-                alt="CAR ESSENTIAL KIT"
-                loading="lazy"
-                decoding="async"
-                data-nimg="fill"
-                class="object-cover group-hover:scale-105 transition-transform duration-500"
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/black-portable-aroma-diffuser-in-car-cup-holder-rG1QWomARpFVzfJnysGHNrRF41pGQT.jpg"
-                style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
-              >
-              <div class="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 text-xs font-bold rounded-full">
-                POPULAR
-              </div>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-2 text-foreground">CAR ESSENTIAL KIT</h3>
-              <p class="text-sm text-muted-foreground mb-4 line-clamp-2">
-                Portable diffuser with 2 signature scents for on-the-go
-              </p>
-              <div class="flex items-center gap-2 mb-4">
-                <span class="text-2xl font-bold text-primary">$79.99</span
-                ><span class="text-sm text-muted-foreground line-through">$99.99</span>
-              </div>
-              <button
-                data-slot="button"
-                class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive shadow-xs h-9 px-4 py-2 has-[&gt;svg]:px-3 w-full bg-primary hover:bg-primary/90 text-primary-foreground"
-              >
-                ADD TO CART
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div
-            data-slot="card"
-            class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group overflow-hidden bg-card border-border hover:border-primary transition-all duration-300 h-full"
-          >
-            <div class="relative h-[300px] overflow-hidden">
-              <img
-                alt="PREMIUM SCENT SET"
-                loading="lazy"
-                decoding="async"
-                data-nimg="fill"
-                class="object-cover group-hover:scale-105 transition-transform duration-500"
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/luxury-aroma-oil-bottle-with-citrus-fruits-nSJSfaprbnWDRTJVBcm1YAk9qnRghc.jpg"
-                style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
-              >
-              <div class="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 text-xs font-bold rounded-full">
-                NEW
-              </div>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-2 text-foreground">PREMIUM SCENT SET</h3>
-              <p class="text-sm text-muted-foreground mb-4 line-clamp-2">
-                Collection of 5 luxury oils for every mood and season
-              </p>
-              <div class="flex items-center gap-2 mb-4">
-                <span class="text-2xl font-bold text-primary">$89.99</span
-                ><span class="text-sm text-muted-foreground line-through">$119.99</span>
-              </div>
-              <button
-                data-slot="button"
-                class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive shadow-xs h-9 px-4 py-2 has-[&gt;svg]:px-3 w-full bg-primary hover:bg-primary/90 text-primary-foreground"
-              >
-                ADD TO CART
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="flex-[0_0_100%] min-w-0 sm:flex-[0_0_50%] lg:flex-[0_0_33.333%]">
-          <div
-            data-slot="card"
-            class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group overflow-hidden bg-card border-border hover:border-primary transition-all duration-300 h-full"
-          >
-            <div class="relative h-[300px] overflow-hidden">
-              <img
-                alt="OFFICE PRO BUNDLE"
-                loading="lazy"
-                decoding="async"
-                data-nimg="fill"
-                class="object-cover group-hover:scale-105 transition-transform duration-500"
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/black-luxury-aroma-diffuser-with-blue-light-in-mod-DNxhhMKroDIRE7Sumf86V31KATcloV.jpg"
-                style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
-              >
-              <div class="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 text-xs font-bold rounded-full">
-                TRENDING
-              </div>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-2 text-foreground">OFFICE PRO BUNDLE</h3>
-              <p class="text-sm text-muted-foreground mb-4 line-clamp-2">
-                Smart diffuser with app control + 4 focus-enhancing scents
-              </p>
-              <div class="flex items-center gap-2 mb-4">
-                <span class="text-2xl font-bold text-primary">$169.99</span
-                ><span class="text-sm text-muted-foreground line-through">$229.99</span>
-              </div>
-              <button
-                data-slot="button"
-                class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive shadow-xs h-9 px-4 py-2 has-[&gt;svg]:px-3 w-full bg-primary hover:bg-primary/90 text-primary-foreground"
-              >
-                ADD TO CART
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div
-            data-slot="card"
-            class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group overflow-hidden bg-card border-border hover:border-primary transition-all duration-300 h-full"
-          >
-            <div class="relative h-[300px] overflow-hidden">
-              <img
-                alt="LUXURY COLLECTION"
-                loading="lazy"
-                decoding="async"
-                data-nimg="fill"
-                class="object-cover group-hover:scale-105 transition-transform duration-500"
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/elegant-white-aroma-diffuser-with-gold-accents-on-m-vQxKrM8jT2L9P4N6S1H3F5G7J8K0.jpg"
-                style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
-              >
-              <div class="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 text-xs font-bold rounded-full">
-                LUXURY
-              </div>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-2 text-foreground">LUXURY COLLECTION</h3>
-              <p class="text-sm text-muted-foreground mb-4 line-clamp-2">
-                Premium marble diffuser with 5 exclusive signature scents
-              </p>
-              <div class="flex items-center gap-2 mb-4">
-                <span class="text-2xl font-bold text-primary">$299.99</span
-                ><span class="text-sm text-muted-foreground line-through">$399.99</span>
-              </div>
-              <button
-                data-slot="button"
-                class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive shadow-xs h-9 px-4 py-2 has-[&gt;svg]:px-3 w-full bg-primary hover:bg-primary/90 text-primary-foreground"
-              >
-                ADD TO CART
-              </button>
-            </div>
-          </div>
-        </div>
+        {%- endfor -%}
+
+        <!-- Fallback: Show original hardcoded slide when no collection is selected -->
       </div>
 
       <!-- Swiper Pagination -->
@@ -256,78 +160,86 @@
 </section>
 
 <!-- Swiper CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  const swiper = new Swiper('.bundles-swiper', {
-    // Basic settings
-    slidesPerView: 1,
-    spaceBetween: 24,
-    loop: false,
-    
-    // Responsive breakpoints
-    breakpoints: {
-      640: {
-        slidesPerView: 2,
-        spaceBetween: 24,
+  document.addEventListener('DOMContentLoaded', function () {
+    const swiper = new Swiper('.bundles-swiper', {
+      // Basic settings
+      slidesPerView: 1,
+      spaceBetween: 24,
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
       },
-      1024: {
-        slidesPerView: 3,
-        spaceBetween: 24,
+      // Responsive breakpoints
+      breakpoints: {
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 24,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 24,
+        },
       },
-    },
-    
-    // Navigation arrows
-    navigation: {
-      nextEl: '.swiper-button-next-custom',
-      prevEl: '.swiper-button-prev-custom',
-    },
-    
-    // Pagination dots
-    pagination: {
-      el: '.swiper-pagination-custom',
-      clickable: true,
-      renderBullet: function (index, className) {
-        return '<span class="' + className + ' w-2 h-2 rounded-full bg-muted cursor-pointer transition-colors duration-200"></span>';
+
+      // Navigation arrows
+      navigation: {
+        nextEl: '.swiper-button-next-custom',
+        prevEl: '.swiper-button-prev-custom',
       },
-    },
-    
-    // Touch settings
-    touchRatio: 1,
-    touchAngle: 45,
-    grabCursor: true,
-    
-    // Smooth transitions
-    speed: 300,
-    effect: 'slide',
-  });
-  
-  // Custom pagination styling
-  const paginationBullets = document.querySelectorAll('.swiper-pagination-custom .swiper-pagination-bullet');
-  paginationBullets.forEach(bullet => {
-    bullet.addEventListener('click', function() {
-      paginationBullets.forEach(b => b.classList.remove('bg-primary'));
-      paginationBullets.forEach(b => b.classList.add('bg-muted'));
-      this.classList.remove('bg-muted');
-      this.classList.add('bg-primary');
+
+      // Pagination dots
+      pagination: {
+        el: '.swiper-pagination-custom',
+        clickable: true,
+        renderBullet: function (index, className) {
+          return (
+            '<span class="' +
+            className +
+            ' w-2 h-2 rounded-full bg-muted cursor-pointer transition-colors duration-200"></span>'
+          );
+        },
+      },
+
+      // Touch settings
+      touchRatio: 1,
+      touchAngle: 45,
+      grabCursor: true,
+
+      // Smooth transitions
+      speed: 300,
+      effect: 'slide',
+    });
+
+    // Custom pagination styling
+    const paginationBullets = document.querySelectorAll('.swiper-pagination-custom .swiper-pagination-bullet');
+    paginationBullets.forEach((bullet) => {
+      bullet.addEventListener('click', function () {
+        paginationBullets.forEach((b) => b.classList.remove('bg-primary'));
+        paginationBullets.forEach((b) => b.classList.add('bg-muted'));
+        this.classList.remove('bg-muted');
+        this.classList.add('bg-primary');
+      });
+    });
+
+    // Update active bullet on slide change
+    swiper.on('slideChange', function () {
+      paginationBullets.forEach((b) => b.classList.remove('bg-primary'));
+      paginationBullets.forEach((b) => b.classList.add('bg-muted'));
+      const activeBullet = document.querySelector('.swiper-pagination-custom .swiper-pagination-bullet-active');
+      if (activeBullet) {
+        activeBullet.classList.remove('bg-muted');
+        activeBullet.classList.add('bg-primary');
+      }
     });
   });
-  
-  // Update active bullet on slide change
-  swiper.on('slideChange', function () {
-    paginationBullets.forEach(b => b.classList.remove('bg-primary'));
-    paginationBullets.forEach(b => b.classList.add('bg-muted'));
-    const activeBullet = document.querySelector('.swiper-pagination-custom .swiper-pagination-bullet-active');
-    if (activeBullet) {
-      activeBullet.classList.remove('bg-muted');
-      activeBullet.classList.add('bg-primary');
-    }
-  });
-});
 </script>
 
 {% schema %}
