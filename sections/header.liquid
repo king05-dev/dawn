@@ -74,6 +74,46 @@
       padding-top: 0.5rem;
     }
   }
+
+  /* Search overlay animations */
+  .fade-in-from-header {
+    animation: fadeInFromHeader 0.3s ease-out forwards;
+  }
+
+  @keyframes fadeInFromHeader {
+    from {
+      opacity: 0;
+      transform: translateX(-50%) translateY(-20px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0) scale(1);
+    }
+  }
+
+  .bg-search {
+    background-color: rgba(var(--color-base-accent-1), 0.08);
+  }
+
+  .bg-card {
+    background-color: rgb(var(--color-base-background-1));
+  }
+
+  .border-border {
+    border-color: rgba(var(--color-base-accent-1), 0.2);
+  }
+
+  .text-muted-foreground {
+    color: rgba(var(--color-base-text), 0.6);
+  }
+
+  .bg-background {
+    background-color: rgb(var(--color-base-background-1));
+  }
+
+  .focus\:ring-accent:focus {
+    --tw-ring-color: rgb(var(--color-base-accent-1));
+  }
 </style>
 
 {%- style -%}
@@ -101,6 +141,7 @@
 {%- endstyle -%}
 
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'chl-custom-js.js' | asset_url }}" defer="defer"></script>
 
 {%- liquid
   for block in section.blocks
@@ -188,6 +229,7 @@
         </nav>
         <div class="flex items-center gap-4">
           <button
+            id="search-collapsed"
             data-slot="button"
             class="items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent dark:hover:bg-accent/50 size-9 hidden md:flex hover:text-primary"
           >
@@ -204,8 +246,9 @@
               class="lucide lucide-search h-5 w-5"
             >
               <circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path>
-            </svg></button
-          ><a
+            </svg>
+          </button>
+          <a
             href="/login"
             class="hidden md:block text-sm font-medium text-foreground hover:text-primary transition-colors"
             >LOGIN</a
@@ -377,6 +420,85 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search Overlay -->
+  <div
+    id="search-overlay"
+    class="fixed inset-0 bg-foreground/20 backdrop-blur-sm animate-in fade-in duration-200 hidden"
+    style="z-index: 1"
+  ></div>
+
+  <div
+    id="search-modal"
+    class="fixed left-1/2 w-[calc(100vw-2rem)] max-w-3xl animate-in duration-300 hidden"
+    style="z-index: 9999; top: 10rem;"
+  >
+    <div class="bg-black border border-border rounded-2xl shadow-2xl overflow-hidden">
+      <div class="p-6 border-b border-border">
+        <div class="relative">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+          </svg>
+          <input
+            id="search-modal-input"
+            placeholder="Search products, collections, and more..."
+            class="w-full !pl-12 !pr-12 !py-4 bg-background rounded-xl border border-border focus:outline-none focus:ring-2 focus:ring-accent text-base"
+            type="text"
+            value=""
+          >
+          <button
+            id="search-modal-close"
+            class="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M18 6 6 18"></path>
+              <path d="m6 6 12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="max-h-[60vh] overflow-y-auto">
+        <div id="search-modal-results" class="hidden">
+          <!-- Search results will be populated here -->
+        </div>
+        <div id="search-modal-popular" class="p-6">
+          <h3 class="text-xs uppercase tracking-wider text-muted-foreground !mb-4">Popular Products</h3>
+          <div class="flex flex-wrap gap-2">
+            {% for product in collections['featured-products'].products limit: 5 %}
+              <a
+                href="{{ product.url }}"
+                class="!px-4 !py-2 bg-search rounded-full text-sm !hover:bg-accent !hover:text-accent-foreground transition-colors"
+              >
+                {{ product.title }}
+              </a>
+            {% endfor %}
           </div>
         </div>
       </div>
