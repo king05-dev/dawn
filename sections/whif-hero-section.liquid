@@ -11,41 +11,118 @@
     }
   }
 {%- endstyle -%}
-<section class="py-20 bg-muted/30">
-  <div class="container mx-auto px-4">
-    <div class="grid lg:grid-cols-2 gap-12 items-center">
-      <div class="relative h-[400px] lg:h-[500px]">
-        <img
-          alt="Flash Sale Products"
-          loading="lazy"
-          decoding="async"
-          data-nimg="fill"
-          class="object-contain"
-          src="https://cdn.shopify.com/s/files/1/0713/6057/7719/files/wet_bar_bottle_dda5085c-4dd0-4147-a20c-7ececd83ed97.webp?v=1759119181"
-          style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
-        >
-      </div>
-      <div class="text-center lg:text-left">
-        <div class="inline-block mb-6">
-          <div class="text-sm font-bold tracking-widest text-primary mb-2">FLASH SALE • UP TO 50% OFF</div>
+
+<!-- Hero Video Section -->
+<section class="relative h-screen w-full overflow-hidden bg-black">
+  <!-- Video Background -->
+  <div class="absolute inset-0 w-full h-full">
+    <video
+      class="w-full h-full object-cover"
+      playsinline
+      webkit-playsinline
+      loop
+      muted
+      autoplay
+      poster="{{ section.settings.video_poster | default: 'https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/4b22870d-131d-41e4-be3b-7457035d8762/whiffed+capture.png' | image_url: width: 1920, height: 1080 }}"
+    >
+      {% if section.settings.video_url != blank %}
+        <source src="{{ section.settings.video_url }}" type="video/mp4">
+      {% endif %}
+      <!-- Fallback for browsers that don't support video -->
+      <img
+        src="{{ section.settings.video_poster | default: 'https://images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/4b22870d-131d-41e4-be3b-7457035d8762/whiffed+capture.png' | image_url: width: 1920, height: 1080 }}"
+        alt="Whiffed Aromas Hero"
+        width="1920"
+        height="1080"
+        class="w-full h-full object-cover"
+      >
+    </video>
+  </div>
+
+  <!-- Overlay for better text readability -->
+  <div class="absolute inset-0 bg-black/20"></div>
+
+  <!-- Content Overlay -->
+  <div class="relative z-10 flex items-center justify-center h-full">
+    <div class="text-center text-white px-4 max-w-4xl mx-auto">
+      {% for block in section.blocks %}
+        {% case block.type %}
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
+              <a
+                href="{{ block.settings.button_link | default: '#' }}"
+                class="inline-flex items-center justify-center px-8 py-4 {% if block.settings.button_style_secondary %}border-2 border-white text-white hover:bg-white hover:text-black{% else %}bg-white text-black hover:bg-white/90{% endif %} font-semibold rounded-full transition-all duration-300 transform hover:scale-105"
+              >
+                {{ block.settings.button_label | default: 'Shop Now' }}
+              </a>
+            </div>
+        {% endcase %}
+      {% endfor %}
+
+      <!-- Default content if no blocks -->
+      {% if section.blocks.size == 0 %}
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">Experience Whiffed Aromas</h1>
+        <p class="text-lg md:text-xl lg:text-2xl mb-8 text-white/90 max-w-2xl mx-auto">
+          Transform your space with premium scent diffusion technology
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a
+            href="{{ routes.all_products_collection_url }}"
+            class="inline-flex items-center justify-center px-8 py-4 bg-white text-black font-semibold rounded-full hover:bg-white/90 transition-all duration-300 transform hover:scale-105"
+          >
+            Shop Now
+          </a>
         </div>
-        <h2
-          class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-balance"
-          style="font-family: var(--font-playfair);"
-        >
-          WE'RE MAKING SPACE FOR NEW OIL INVENTORY.
-        </h2>
-        <p class="text-xl mb-8 text-muted-foreground">COME GET THESE EXTRAS WHILE SUPPLIES LAST!</p>
-        <button
-          data-slot="button"
-          class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive shadow-xs h-10 rounded-md has-[&gt;svg]:px-4 bg-primary hover:bg-primary/90 text-primary-foreground px-8"
-        >
-          SHOP FLASH SALE
-        </button>
-      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+    <div class="animate-bounce">
+      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
     </div>
   </div>
 </section>
+
+{% comment %}
+  <section class="py-20 bg-muted/30">
+    <div class="container mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="relative h-[400px] lg:h-[500px]">
+          <img
+            alt="Flash Sale Products"
+            loading="lazy"
+            decoding="async"
+            data-nimg="fill"
+            class="object-contain"
+            src="https://cdn.shopify.com/s/files/1/0713/6057/7719/files/wet_bar_bottle_dda5085c-4dd0-4147-a20c-7ececd83ed97.webp?v=1759119181"
+            style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
+          >
+        </div>
+        <div class="text-center lg:text-left">
+          <div class="inline-block mb-6">
+            <div class="text-sm font-bold tracking-widest text-primary mb-2">FLASH SALE • UP TO 50% OFF</div>
+          </div>
+          <h2
+            class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-balance"
+            style="font-family: var(--font-playfair);"
+          >
+            WE'RE MAKING SPACE FOR NEW OIL INVENTORY.
+          </h2>
+          <p class="text-xl mb-8 text-muted-foreground">COME GET THESE EXTRAS WHILE SUPPLIES LAST!</p>
+          <button
+            data-slot="button"
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive shadow-xs h-10 rounded-md has-[&gt;svg]:px-4 bg-primary hover:bg-primary/90 text-primary-foreground px-8"
+          >
+            SHOP FLASH SALE
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endcomment %}
 
 {% schema %}
 {
@@ -56,6 +133,18 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "url",
+      "id": "video_url",
+      "label": "Video URL",
+      "info": "Upload your video to Shopify Files and paste the URL here"
+    },
+    {
+      "type": "image_picker",
+      "id": "video_poster",
+      "label": "Video poster image",
+      "info": "Fallback image shown before video loads"
+    },
     {
       "type": "image_picker",
       "id": "image",
@@ -99,12 +188,6 @@
       "limit": 1,
       "settings": [
         {
-          "type": "inline_richtext",
-          "id": "heading",
-          "default": "Hero Section Title",
-          "label": "Heading"
-        },
-        {
           "type": "select",
           "id": "heading_size",
           "options": [
@@ -143,25 +226,7 @@
       "type": "button",
       "name": "Button",
       "limit": 2,
-      "settings": [
-        {
-          "type": "text",
-          "id": "button_label",
-          "default": "Shop Now",
-          "label": "Button label"
-        },
-        {
-          "type": "url",
-          "id": "button_link",
-          "label": "Button link"
-        },
-        {
-          "type": "checkbox",
-          "id": "button_style_secondary",
-          "default": false,
-          "label": "Use outline button style"
-        }
-      ]
+      "settings": []
     }
   ],
   "presets": [
