@@ -128,7 +128,7 @@
                     </span>
                   {%- endif -%}
                 </div>
-                <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data">
+                <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" class="cart-form">
                   <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
                   <button
                     type="submit"
@@ -242,20 +242,98 @@
   });
 </script>
 
+<style>
+  .flash-sale-section {
+    background: linear-gradient(135deg, var(--gradient-base-background-1, #fafafa) 0%, var(--gradient-base-background-2, #f4f4f5) 100%);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Handle cart form submissions
+    const cartForms = document.querySelectorAll('.cart-form');
+    
+    cartForms.forEach(form => {
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(form);
+        const button = form.querySelector('button[type="submit"]');
+        const originalText = button.textContent;
+        
+        // Show loading state
+        button.textContent = 'ADDING...';
+        button.disabled = true;
+        
+        try {
+          const response = await fetch('/cart/add.js', {
+            method: 'POST',
+            body: formData
+          });
+          
+          if (response.ok) {
+            const item = await response.json();
+            
+            // Show success state briefly
+            button.textContent = 'ADDED!';
+            
+            // Trigger cart drawer opening
+            setTimeout(() => {
+              // Dispatch custom event to open cart drawer
+              document.dispatchEvent(new CustomEvent('cart:updated'));
+              
+              // Open cart drawer if function exists
+              if (typeof window.openCartDrawer === 'function') {
+                window.openCartDrawer();
+              } else {
+                // Fallback: trigger cart drawer via event
+                const cartTrigger = document.getElementById('cart-trigger');
+                if (cartTrigger) {
+                  cartTrigger.click();
+                }
+              }
+              
+              // Reset button
+              setTimeout(() => {
+                button.textContent = originalText;
+                button.disabled = false;
+              }, 1000);
+            }, 500);
+            
+          } else {
+            throw new Error('Failed to add to cart');
+          }
+        } catch (error) {
+          console.error('Error adding to cart:', error);
+          button.textContent = 'ERROR';
+          
+          setTimeout(() => {
+            button.textContent = originalText;
+            button.disabled = false;
+          }, 2000);
+        }
+      });
+    });
+  });
+</script>
+
 {% schema %}
 {
   "name": "Whif Flash Sale Section",
   "tag": "section",
   "class": "section",
-  "disabled_on": {
-    "groups": ["header", "footer"]
-  },
   "settings": [
     {
-      "type": "inline_richtext",
+      "type": "text",
       "id": "heading",
       "default": "Flash Sale",
       "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "default": "Limited time offers on premium fragrances",
+      "label": "Subheading"
     },
     {
       "type": "text",
