@@ -17,103 +17,106 @@
 {%- endif -%}
 
 <style>
-  header-drawer {
-    justify-self: start;
-    margin-left: -1.2rem;
-  }
-
-  {%- if section.settings.sticky_header_type == 'reduce-logo-size' -%}
-    .scrolled-past-header .header__heading-logo-wrapper {
-      width: 75%;
+    header-drawer {
+      justify-self: start;
+      margin-left: -1.2rem;
     }
-  {%- endif -%}
+    .bg-card {
+      background-color: #232422!important;
+    }
 
-  {%- if section.settings.menu_type_desktop != "drawer" -%}
-    @media screen and (min-width: 990px) {
-      header-drawer {
-        display: none;
+    {%- if section.settings.sticky_header_type == 'reduce-logo-size' -%}
+      .scrolled-past-header .header__heading-logo-wrapper {
+        width: 75%;
+      }
+    {%- endif -%}
+
+    {%- if section.settings.menu_type_desktop != "drawer" -%}
+      @media screen and (min-width: 990px) {
+        header-drawer {
+          display: none;
+        }
+      }
+    {%- endif -%}
+
+    .menu-drawer-container {
+      display: flex;
+    }
+
+    .list-menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .list-menu--inline {
+      display: inline-flex;
+      flex-wrap: wrap;
+    }
+
+    summary.list-menu__item {
+      padding-right: 2.7rem;
+    }
+
+    .list-menu__item {
+      display: flex;
+      align-items: center;
+      line-height: calc(1 + 0.3 / var(--font-body-scale));
+    }
+
+    .list-menu__item--link {
+      text-decoration: none;
+      padding-bottom: 1rem;
+      padding-top: 1rem;
+      line-height: calc(1 + 0.8 / var(--font-body-scale));
+    }
+
+    @media screen and (min-width: 750px) {
+      .list-menu__item--link {
+        padding-bottom: 0.5rem;
+        padding-top: 0.5rem;
       }
     }
-  {%- endif -%}
 
-  .menu-drawer-container {
-    display: flex;
-  }
-
-  .list-menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .list-menu--inline {
-    display: inline-flex;
-    flex-wrap: wrap;
-  }
-
-  summary.list-menu__item {
-    padding-right: 2.7rem;
-  }
-
-  .list-menu__item {
-    display: flex;
-    align-items: center;
-    line-height: calc(1 + 0.3 / var(--font-body-scale));
-  }
-
-  .list-menu__item--link {
-    text-decoration: none;
-    padding-bottom: 1rem;
-    padding-top: 1rem;
-    line-height: calc(1 + 0.8 / var(--font-body-scale));
-  }
-
-  @media screen and (min-width: 750px) {
-    .list-menu__item--link {
-      padding-bottom: 0.5rem;
-      padding-top: 0.5rem;
+    /* Search overlay animations */
+    .fade-in-from-header {
+      animation: fadeInFromHeader 0.3s ease-out forwards;
     }
-  }
 
-  /* Search overlay animations */
-  .fade-in-from-header {
-    animation: fadeInFromHeader 0.3s ease-out forwards;
-  }
-
-  @keyframes fadeInFromHeader {
-    from {
-      opacity: 0;
-      transform: translateX(-50%) translateY(-20px) scale(0.95);
+    @keyframes fadeInFromHeader {
+      from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+      }
     }
-    to {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0) scale(1);
+
+    .bg-search {
+      background-color: rgba(var(--color-base-accent-1), 0.08);
     }
-  }
 
-  .bg-search {
-    background-color: rgba(var(--color-base-accent-1), 0.08);
-  }
+    .bg-card {
+      background-color: rgb(var(--color-base-background-1));
+    }
 
-  .bg-card {
-    background-color: rgb(var(--color-base-background-1));
-  }
+    .border-border {
+      border-color: rgba(var(--color-base-accent-1), 0.2);
+    }
 
-  .border-border {
-    border-color: rgba(var(--color-base-accent-1), 0.2);
-  }
+    .text-muted-foreground {
+      color: rgba(var(--color-base-text), 0.6);
+    }
+  {% comment %}
+    .bg-background {
+      background-color: '));
+    } {% endcomment %}
 
-  .text-muted-foreground {
-    color: rgba(var(--color-base-text), 0.6);
-  }
-
-  .bg-background {
-    background-color: rgb(var(--color-base-background-1));
-  }
-
-  .focus\:ring-accent:focus {
-    --tw-ring-color: rgb(var(--color-base-accent-1));
-  }
+    .focus\:ring-accent:focus {
+      --tw-ring-color: rgb(var(--color-base-accent-1));
+    }
 </style>
 
 {%- style -%}
@@ -198,7 +201,7 @@
         </a>
         <nav class="hidden lg:flex items-center gap-8">
           <a href="/" class="text-sm font-medium text-foreground hover:text-primary transition-colors">HOME</a>
-          <div class="relative">
+          <div class="relative group">
             <button class="text-sm font-medium text-foreground hover:text-primary transition-colors flex items-center gap-1">
               SHOP
               <svg
@@ -211,19 +214,1062 @@
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="lucide lucide-chevron-down h-3 w-3"
+                class="lucide lucide-chevron-down h-3 w-3 transition-transform group-hover:rotate-180"
               >
                 <path d="m6 9 6 6 6-6"></path>
               </svg>
             </button>
+
+            <!-- Mega Menu -->
+            <div
+              class="mega-menu-container absolute left-1/2 -translate-x-1/2 top-full pt-4 transition-all duration-300 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0"
+              style="transform: translateX(20%);"
+            >
+              <div class="bg-card border border-border rounded-2xl shadow-2xl overflow-hidden">
+                <div class="p-4 md:p-8 grid grid-cols-1 md:grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4 md:gap-8 w-[calc(100vw-2rem)] md:w-auto md:min-w-[700px] max-w-[calc(100vw-2rem)] md:max-w-6xl">
+                  <!-- Scent Collections -->
+                  <div class="space-y-4">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                      Scent Collections
+                    </h3>
+                    <ul class="space-y-3">
+                      <li>
+                        <a
+                          href="/collections/citrus-fresh"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Citrus & Fresh
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/collections/floral-garden"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Floral & Garden
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/collections/woody-warm"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Woody & Warm
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/collections/ocean-breeze"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Ocean & Aquatic
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/collections/seasonal-scents"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Seasonal Scents
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/collections/luxury-premium"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Luxury & Premium
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <!-- Diffuser Types -->
+                  <div class="space-y-4">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Diffuser Types</h3>
+                    <ul class="space-y-3">
+                      <li>
+                        <a
+                          href="/collections/home-diffusers"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Home Diffusers
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/collections/car-diffusers"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Car Diffusers
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/collections/commercial-diffusers"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Commercial Units
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/collections/portable-diffusers"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Portable Units
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <!-- Popular Collections -->
+                  <div class="space-y-4">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                      Popular Collections
+                    </h3>
+                    <ul class="space-y-3">
+                      <li>
+                        <a
+                          href="/collections/best-sellers"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Best Sellers
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/collections/new-arrivals"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >New Arrivals
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/collections/bundles-deals"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Bundle Deals
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/collections/starter-kits"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Starter Kits
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <!-- Featured Product Card -->
+                  <a
+                    href="/collections/best-sellers"
+                    class="group relative overflow-hidden rounded-xl bg-secondary hover:shadow-lg transition-all"
+                  >
+                    <div class="aspect-[3/4] relative overflow-hidden bg-gradient-to-br from-purple-50 to-purple-100">
+                      <div class="absolute inset-0 flex flex-col">
+                        <div class="flex-1 flex items-center justify-center p-6">
+                          <div class="text-center">
+                            <div class="w-16 h-16 mx-auto mb-4 bg-purple-500 rounded-full flex items-center justify-center">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="32"
+                                height="32"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="white"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              >
+                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                              </svg>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="p-6 bg-gradient-to-t from-purple-900/90 to-transparent text-white">
+                          <p class="text-xs uppercase tracking-wider mb-1 opacity-90">Best Sellers</p>
+                          <h4 class="text-lg font-semibold mb-2">Top Scents</h4>
+                          <p class="text-sm opacity-90">Most loved fragrances</p>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                  <!-- Bundle Deal Card -->
+                  <a
+                    href="/collections/bundles-deals"
+                    class="group relative overflow-hidden rounded-xl bg-secondary hover:shadow-lg transition-all"
+                  >
+                    <div class="aspect-[3/4] relative overflow-hidden bg-gradient-to-br from-orange-50 to-orange-100">
+                      <div class="absolute inset-0 flex flex-col">
+                        <div class="flex-1 flex items-center justify-center p-6">
+                          <div class="text-center">
+                            <div class="w-16 h-16 mx-auto mb-4 bg-orange-500 rounded-full flex items-center justify-center">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="32"
+                                height="32"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="white"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              >
+                                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                                <rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect>
+                                <path d="m9 14 2 2 4-4"></path>
+                              </svg>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="p-6 bg-gradient-to-t from-orange-900/90 to-transparent text-white">
+                          <p class="text-xs uppercase tracking-wider mb-1 opacity-90">Save More</p>
+                          <h4 class="text-lg font-semibold mb-2">Bundle Deals</h4>
+                          <p class="text-sm opacity-90">Complete scent packages</p>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
-          <a href="/bundles" class="text-sm font-medium text-foreground hover:text-primary transition-colors">BUNDLES</a
-          ><a href="/scents" class="text-sm font-medium text-foreground hover:text-primary transition-colors">SCENTS</a
-          ><a href="/machines" class="text-sm font-medium text-foreground hover:text-primary transition-colors"
-            >MACHINES</a
-          ><a href="/company" class="text-sm font-medium text-foreground hover:text-primary transition-colors"
+
+          <!-- BUNDLES Mega Menu -->
+          <div class="relative group">
+            <button class="text-sm font-medium text-foreground hover:text-primary transition-colors flex items-center gap-1">
+              BUNDLES
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-chevron-down h-3 w-3 transition-transform group-hover:rotate-180"
+              >
+                <path d="m6 9 6 6 6-6"></path>
+              </svg>
+            </button>
+
+            <div class="mega-menu-container absolute left-1/2 -translate-x-1/2 top-full pt-4 transition-all duration-300 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0">
+              <div class="bg-card border border-border rounded-2xl shadow-2xl overflow-hidden">
+                <div class="p-6 grid grid-cols-2 gap-6 w-[400px]">
+                  <div class="space-y-4">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Bundle Types</h3>
+                    <ul class="space-y-3">
+                      <li>
+                        <a
+                          href="/collections/starter-bundles"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Starter Bundles
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/collections/home-bundles"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Home Bundles
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/collections/car-bundles"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Car Bundles
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/collections/gift-bundles"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Gift Bundles
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="space-y-4">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Special Offers</h3>
+                    <ul class="space-y-3">
+                      <li>
+                        <a
+                          href="/collections/flash-deals"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Flash Deals
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/collections/seasonal-bundles"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Seasonal Bundles
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/collections/bulk-deals"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Bulk Deals
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/collections/subscription-deals"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Subscription Deals
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SCENTS Mega Menu -->
+          <div class="relative group">
+            <button class="text-sm font-medium text-foreground hover:text-primary transition-colors flex items-center gap-1">
+              SCENTS
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-chevron-down h-3 w-3 transition-transform group-hover:rotate-180"
+              >
+                <path d="m6 9 6 6 6-6"></path>
+              </svg>
+            </button>
+
+            <div class="mega-menu-container absolute left-1/2 -translate-x-1/2 top-full pt-4 transition-all duration-300 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0">
+              <div class="bg-card border border-border rounded-2xl shadow-2xl overflow-hidden">
+                <div class="p-6 grid grid-cols-3 gap-6 w-[600px]">
+                  <div class="space-y-4">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Fresh & Clean</h3>
+                    <ul class="space-y-3">
+                      <li>
+                        <a
+                          href="/collections/citrus-scents"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Citrus
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/collections/ocean-scents"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Ocean Breeze
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/collections/mint-scents"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Mint & Eucalyptus
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="space-y-4">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Warm & Cozy</h3>
+                    <ul class="space-y-3">
+                      <li>
+                        <a
+                          href="/collections/vanilla-scents"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Vanilla
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/collections/woody-scents"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Woody
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/collections/spice-scents"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Spice & Amber
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="space-y-4">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Floral & Sweet</h3>
+                    <ul class="space-y-3">
+                      <li>
+                        <a
+                          href="/collections/floral-scents"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Floral
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/collections/lavender-scents"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Lavender
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/collections/fruity-scents"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Fruity & Sweet
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- MACHINES Mega Menu -->
+          <div class="relative group">
+            <button class="text-sm font-medium text-foreground hover:text-primary transition-colors flex items-center gap-1">
+              MACHINES
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-chevron-down h-3 w-3 transition-transform group-hover:rotate-180"
+              >
+                <path d="m6 9 6 6 6-6"></path>
+              </svg>
+            </button>
+
+            <div class="mega-menu-container absolute left-1/2 -translate-x-1/2 top-full pt-4 transition-all duration-300 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0">
+              <div class="bg-card border border-border rounded-2xl shadow-2xl overflow-hidden">
+                <div class="p-6 grid grid-cols-2 gap-6 w-[500px]">
+                  <div class="space-y-4">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">By Location</h3>
+                    <ul class="space-y-3">
+                      <li>
+                        <a
+                          href="/collections/home-diffusers"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Home Diffusers
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/collections/car-diffusers"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Car Diffusers
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/collections/office-diffusers"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Office Diffusers
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/collections/commercial-diffusers"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Commercial Units
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="space-y-4">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">By Size</h3>
+                    <ul class="space-y-3">
+                      <li>
+                        <a
+                          href="/collections/small-diffusers"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Small (100-500 sq ft)
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/collections/medium-diffusers"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Medium (500-1500 sq ft)
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/collections/large-diffusers"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Large (1500+ sq ft)
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/collections/portable-diffusers"
+                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                          >Portable Units
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                          >
+                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <a href="/company" class="text-sm font-medium text-foreground hover:text-primary transition-colors"
             >COMPANY</a
-          ><a href="/pages/media" class="text-sm font-medium text-foreground hover:text-primary transition-colors"
+          >
+          <a href="/pages/media" class="text-sm font-medium text-foreground hover:text-primary transition-colors"
             >MEDIA</a
           >
         </nav>
@@ -254,32 +1300,32 @@
             >LOGIN</a
           >
           <div class="hidden md:block">
-            <a href="/checkout"
-              ><button
-                data-slot="button"
-                class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 size-9 relative"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="lucide lucide-shopping-cart h-5 w-5"
-                >
-                  <circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
-                </svg>
-                <span
-                  data-slot="badge"
-                  class="border font-medium whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent bg-primary text-primary-foreground [a&amp;]:hover:bg-primary/90 absolute -top-1 -right-1 h-5 w-5 rounded-full p-0 flex items-center justify-center text-xs"
-                  >3</span
-                >
-              </button></a
+            <button
+              id="cart-trigger"
+              data-slot="button"
+              class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 size-9 relative"
             >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-shopping-cart h-5 w-5"
+              >
+                <circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+              </svg>
+              <span
+                id="cart-count"
+                data-slot="badge"
+                class="border font-medium whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent bg-primary text-primary-foreground [a&amp;]:hover:bg-primary/90 absolute -top-1 -right-1 h-5 w-5 rounded-full p-0 flex items-center justify-center text-xs hidden"
+                >0</span
+              >
+            </button>
           </div>
           <button
             id="mobile-menu-trigger"
@@ -293,6 +1339,73 @@
       </div>
     </div>
   </header>
+
+  <!-- Cart Drawer -->
+  <div
+    id="cart-drawer"
+    class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 opacity-0 invisible transition-all duration-300"
+  >
+    <div class="absolute right-0 top-0 h-full w-full max-w-md bg-background transform translate-x-full transition-transform duration-300">
+      <div class="flex flex-col h-full">
+        <!-- Header -->
+        <div class="flex items-center justify-between p-4 border-b border-border">
+          <h2 class="text-lg font-semibold">Shopping Cart</h2>
+          <button id="cart-drawer-close" class="p-2 hover:bg-accent rounded-lg transition-colors">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Cart Items -->
+        <div class="flex-1 overflow-y-auto" id="cart-items-container">
+          <div id="cart-empty" class="p-6 text-center">
+            <svg
+              class="w-16 h-16 mx-auto mb-4 text-muted-foreground"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
+            </svg>
+            <p class="text-muted-foreground mb-4">Your cart is empty</p>
+            <button
+              id="continue-shopping"
+              class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all h-9 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground"
+            >
+              Continue Shopping
+            </button>
+          </div>
+
+          <div id="cart-items" class="hidden">
+            <!-- Cart items will be dynamically loaded here -->
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div id="cart-footer" class="hidden border-t border-border p-4 space-y-4">
+          <div class="flex items-center justify-between text-lg font-semibold">
+            <span>Total:</span>
+            <span id="cart-total">$0.00</span>
+          </div>
+          <div class="space-y-2">
+            <button
+              id="view-cart"
+              class="w-full inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all h-9 px-4 py-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground"
+            >
+              View Cart
+            </button>
+            <button
+              id="checkout-btn"
+              class="w-full inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all h-9 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground"
+            >
+              Checkout
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Mobile Menu -->
   <div
@@ -438,7 +1551,7 @@
     class="fixed left-1/2 w-[calc(100vw-2rem)] max-w-3xl animate-in duration-300 hidden"
     style="z-index: 9999; top: 10rem;"
   >
-    <div class="bg-black border border-border rounded-2xl shadow-2xl overflow-hidden">
+    <div class="bg-card border border-border rounded-2xl shadow-2xl overflow-hidden">
       <div class="p-6 border-b border-border">
         <div class="relative">
           <svg
@@ -527,10 +1640,13 @@
           mobileMenu.classList.remove('opacity-0', 'invisible');
 
           // Find the sliding panel and show it
-          const slidePanel = mobileMenu.querySelector('.transform');
+          const slidePanel = mobileMenu.querySelector('div.transform');
           if (slidePanel) {
             console.log('Sliding panel found, removing translate-x-full');
-            slidePanel.classList.remove('translate-x-full');
+            // Use setTimeout to ensure the backdrop is visible first
+            setTimeout(() => {
+              slidePanel.classList.remove('translate-x-full');
+            }, 10);
           } else {
             console.log('Slide panel not found');
           }
@@ -544,7 +1660,7 @@
           e.preventDefault();
           console.log('Mobile menu close clicked');
 
-          const slidePanel = mobileMenu.querySelector('.transform');
+          const slidePanel = mobileMenu.querySelector('div.transform');
           if (slidePanel) {
             slidePanel.classList.add('translate-x-full');
           }
@@ -560,7 +1676,7 @@
         mobileMenu.addEventListener('click', (e) => {
           if (e.target === mobileMenu) {
             console.log('Clicked outside mobile menu');
-            const slidePanel = mobileMenu.querySelector('.transform');
+            const slidePanel = mobileMenu.querySelector('div.transform');
             if (slidePanel) {
               slidePanel.classList.add('translate-x-full');
             }
@@ -572,18 +1688,252 @@
         });
       }
 
+      // Cart Drawer functionality
+      const cartTrigger = document.getElementById('cart-trigger');
+      const cartDrawer = document.getElementById('cart-drawer');
+      const cartDrawerClose = document.getElementById('cart-drawer-close');
+      const cartCount = document.getElementById('cart-count');
+      const cartItemsContainer = document.getElementById('cart-items');
+      const cartEmpty = document.getElementById('cart-empty');
+      const cartFooter = document.getElementById('cart-footer');
+      const cartTotal = document.getElementById('cart-total');
+      const continueShoppingBtn = document.getElementById('continue-shopping');
+      const viewCartBtn = document.getElementById('view-cart');
+      const checkoutBtn = document.getElementById('checkout-btn');
+
+      // Cart drawer open/close functions
+      function openCartDrawer() {
+        cartDrawer.classList.remove('opacity-0', 'invisible');
+        const slidePanel = cartDrawer.querySelector('div.transform');
+        if (slidePanel) {
+          setTimeout(() => {
+            slidePanel.classList.remove('translate-x-full');
+          }, 10);
+        }
+        loadCartData();
+      }
+
+      function closeCartDrawer() {
+        const slidePanel = cartDrawer.querySelector('div.transform');
+        if (slidePanel) {
+          slidePanel.classList.add('translate-x-full');
+        }
+        setTimeout(() => {
+          cartDrawer.classList.add('opacity-0', 'invisible');
+        }, 300);
+      }
+
+      // Load cart data from Shopify
+      async function loadCartData() {
+        try {
+          const response = await fetch('/cart.js');
+          const cart = await response.json();
+          updateCartDisplay(cart);
+        } catch (error) {
+          console.error('Error loading cart:', error);
+        }
+      }
+
+      // Update cart display
+      function updateCartDisplay(cart) {
+        const itemCount = cart.item_count;
+
+        // Update cart count badge
+        if (itemCount > 0) {
+          cartCount.textContent = itemCount;
+          cartCount.classList.remove('hidden');
+        } else {
+          cartCount.classList.add('hidden');
+        }
+
+        // Show/hide empty state
+        if (cart.items.length === 0) {
+          cartEmpty.classList.remove('hidden');
+          cartItemsContainer.classList.add('hidden');
+          cartFooter.classList.add('hidden');
+        } else {
+          cartEmpty.classList.add('hidden');
+          cartItemsContainer.classList.remove('hidden');
+          cartFooter.classList.remove('hidden');
+
+          // Render cart items
+          renderCartItems(cart.items);
+
+          // Update total
+          cartTotal.textContent = formatMoney(cart.total_price);
+        }
+      }
+
+      // Render cart items
+      function renderCartItems(items) {
+        const cartItemsHtml = items
+          .map(
+            (item) => `
+          <div class="flex items-center gap-4 p-4 border-b border-border" data-key="${item.key}">
+            <div class="w-16 h-16 bg-muted rounded-md overflow-hidden flex-shrink-0">
+              ${
+                item.image
+                  ? `<img src="${item.image}" alt="${item.product_title}" class="w-full h-full object-cover">`
+                  : '<div class="w-full h-full bg-muted"></div>'
+              }
+            </div>
+            <div class="flex-1 min-w-0">
+              <h4 class="font-medium text-sm truncate">${item.product_title}</h4>
+              ${item.variant_title ? `<p class="text-xs text-muted-foreground">${item.variant_title}</p>` : ''}
+              <div class="flex items-center gap-2 mt-1">
+                <span class="text-sm font-medium">${formatMoney(item.final_price)}</span>
+                ${
+                  item.original_price > item.final_price
+                    ? `<span class="text-xs text-muted-foreground line-through">${formatMoney(
+                        item.original_price
+                      )}</span>`
+                    : ''
+                }
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <button class="quantity-btn" data-key="${item.key}" data-action="decrease">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
+                </svg>
+              </button>
+              <span class="w-8 text-center text-sm">${item.quantity}</span>
+              <button class="quantity-btn" data-key="${item.key}" data-action="increase">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                </svg>
+              </button>
+            </div>
+            <button class="remove-item text-muted-foreground hover:text-destructive" data-key="${item.key}">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+        `
+          )
+          .join('');
+
+        cartItemsContainer.innerHTML = cartItemsHtml;
+
+        // Add event listeners for quantity and remove buttons
+        addCartItemEventListeners();
+      }
+
+      // Add event listeners for cart item actions
+      function addCartItemEventListeners() {
+        // Quantity buttons
+        document.querySelectorAll('.quantity-btn').forEach((btn) => {
+          btn.addEventListener('click', async (e) => {
+            const key = e.currentTarget.dataset.key;
+            const action = e.currentTarget.dataset.action;
+            const currentItem = document.querySelector(`[data-key="${key}"]`);
+            const currentQty = parseInt(currentItem.querySelector('span').textContent);
+
+            let newQty = action === 'increase' ? currentQty + 1 : currentQty - 1;
+            if (newQty < 0) newQty = 0;
+
+            await updateCartItem(key, newQty);
+          });
+        });
+
+        // Remove buttons
+        document.querySelectorAll('.remove-item').forEach((btn) => {
+          btn.addEventListener('click', async (e) => {
+            const key = e.currentTarget.dataset.key;
+            await updateCartItem(key, 0);
+          });
+        });
+      }
+
+      // Update cart item quantity
+      async function updateCartItem(key, quantity) {
+        try {
+          const response = await fetch('/cart/change.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              id: key,
+              quantity: quantity,
+            }),
+          });
+
+          if (response.ok) {
+            const cart = await response.json();
+            updateCartDisplay(cart);
+          }
+        } catch (error) {
+          console.error('Error updating cart:', error);
+        }
+      }
+
+      // Format money helper
+      function formatMoney(cents) {
+        return (cents / 100).toLocaleString('en-US', {
+          style: 'currency',
+          currency: 'USD',
+        });
+      }
+
+      // Event listeners
+      if (cartTrigger) {
+        cartTrigger.addEventListener('click', openCartDrawer);
+      }
+
+      if (cartDrawerClose) {
+        cartDrawerClose.addEventListener('click', closeCartDrawer);
+      }
+
+      if (continueShoppingBtn) {
+        continueShoppingBtn.addEventListener('click', closeCartDrawer);
+      }
+
+      if (viewCartBtn) {
+        viewCartBtn.addEventListener('click', () => {
+          window.location.href = '/cart';
+        });
+      }
+
+      if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', () => {
+          window.location.href = '/checkout';
+        });
+      }
+
+      // Close cart drawer when clicking outside
+      if (cartDrawer) {
+        cartDrawer.addEventListener('click', (e) => {
+          if (e.target === cartDrawer) {
+            closeCartDrawer();
+          }
+        });
+      }
+
+      // Load initial cart data
+      loadCartData();
+
+      // Listen for cart updates from other parts of the site
+      document.addEventListener('cart:updated', loadCartData);
+
       // Escape key handling
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
           // Close mobile menu
           if (mobileMenu && !mobileMenu.classList.contains('invisible')) {
-            const slidePanel = mobileMenu.querySelector('.transform');
+            const slidePanel = mobileMenu.querySelector('div.transform');
             if (slidePanel) {
               slidePanel.classList.add('translate-x-full');
             }
             setTimeout(() => {
               mobileMenu.classList.add('opacity-0', 'invisible');
             }, 300);
+          }
+
+          // Close cart drawer
+          if (cartDrawer && !cartDrawer.classList.contains('invisible')) {
+            closeCartDrawer();
           }
         }
       });
