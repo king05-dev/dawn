@@ -101,6 +101,7 @@
       "name": "Whif Flash Sale Section",
       "settings": {
         "heading": "Flash Sale",
+        "subheading": "Limited time offers on premium fragrances",
         "countdown_end_date": "",
         "collection": "",
         "products_to_show": 4,
@@ -248,6 +249,7 @@
         "whif_saver_item_iGReBF",
         "whif_saver_button_axcjGp"
       ],
+      "disabled": true,
       "name": "Whif Saver Section",
       "settings": {
         "heading": "Save More with Whif",
@@ -289,6 +291,7 @@
         "whif_machine_spec_yEbmY4",
         "whif_machine_button_CYHdQ4"
       ],
+      "disabled": true,
       "name": "Whif Machine Section",
       "settings": {
         "heading": "Whif Scenting Machines",
@@ -343,6 +346,7 @@
         "story_eDTQTU",
         "button_KGiNX6"
       ],
+      "disabled": true,
       "name": "Whif Makers Section",
       "settings": {
         "heading": "Meet the Makers",
@@ -394,6 +398,7 @@
         "how_it_works_F8P6it",
         "button_fEjVqh"
       ],
+      "disabled": true,
       "name": "Whif Scenting Section",
       "settings": {
         "heading": "The Science of Scenting",
@@ -447,6 +452,7 @@
         "space_calculator_akh9yi",
         "button_GBRMCb"
       ],
+      "disabled": true,
       "name": "Whif Machine by Spaces",
       "settings": {
         "heading": "Find the Perfect Machine for Your Space",
@@ -488,6 +494,7 @@
         "quiz_prompt_c9JTRi",
         "button_6YK8DL"
       ],
+      "disabled": true,
       "name": "Whif Recommendations",
       "settings": {
         "heading": "Personalized Recommendations",
@@ -542,6 +549,7 @@
         "bundle_benefits_k7Rqby",
         "button_iRxgVq"
       ],
+      "disabled": true,
       "name": "Whif Bundle Section",
       "settings": {
         "heading": "Bundle & Save",
@@ -600,6 +608,7 @@
         "review_summary_WKkxXk",
         "button_TMrW9X"
       ],
+      "disabled": true,
       "name": "Whif Testimonial Section",
       "settings": {
         "heading": "What Our Customers Say",
@@ -631,8 +640,9 @@
             "publisher_name": "BuzzBlastPR",
             "article_title": "Whiffed Aromas Disrupts Fragrance Industry with Hotel-Level Scenting Technology for Homes",
             "article_excerpt": "Revolutionary scenting technology brings luxury hotel experiences to residential spaces.",
-            "reach_number": "25,536,500 visits/month",
-            "publication_date": "2024-01-15"
+            "article_url": "",
+            "publication_date": "2024-01-15",
+            "reach_number": "25,536,500 visits/month"
           }
         },
         "press_item_tiw": {
@@ -641,8 +651,9 @@
             "publisher_name": "Tech Innovation Weekly",
             "article_title": "Smart Home Fragrance: The Next Frontier in Home Automation",
             "article_excerpt": "Whiffed Aromas leads the charge in smart scenting solutions with app-controlled diffusers.",
-            "reach_number": "15,200,000 visits/month",
-            "publication_date": "2024-02-20"
+            "article_url": "",
+            "publication_date": "2024-02-20",
+            "reach_number": "15,200,000 visits/month"
           }
         },
         "press_item_llm": {
@@ -651,21 +662,21 @@
             "publisher_name": "Luxury Living Magazine",
             "article_title": "Creating Signature Scents: How Whiffed Aromas Transforms Spaces",
             "article_excerpt": "From boutique hotels to luxury homes, discover how scenting technology is revolutionizing interior design.",
-            "reach_number": "8,750,000 visits/month",
-            "publication_date": "2024-03-10"
+            "article_url": "",
+            "publication_date": "2024-03-10",
+            "reach_number": "8,750,000 visits/month"
           }
-        },
-
+        }
       },
       "block_order": [
         "heading_AsSeenIn",
         "subheading_AsSeenIn",
         "press_item_bbpr",
         "press_item_tiw",
-        "press_item_llm",
-   
+        "press_item_llm"
       ],
       "settings": {
+        "color_scheme": "",
         "padding_top": 64,
         "padding_bottom": 64
       }
@@ -711,6 +722,7 @@
         "business_hours_J4YrBA",
         "social_links_akiXNr"
       ],
+      "disabled": true,
       "name": "Whif Contact Us",
       "settings": {
         "heading": "Get in Touch",
@@ -762,6 +774,7 @@
         "popularity_stats_G8hq8H",
         "whif_favorite_button_GJd4dQ"
       ],
+      "disabled": true,
       "name": "Whif Favorite Section",
       "settings": {
         "heading": "Customer Favorites",
@@ -831,6 +844,7 @@
         "cbs_process_9dftrU",
         "button_XBBRak"
       ],
+      "disabled": true,
       "name": "Whif CBS Section",
       "settings": {
         "heading": "CBS Solutions",
