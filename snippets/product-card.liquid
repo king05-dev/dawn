@@ -1,0 +1,168 @@
+{% comment %}
+  Renders a product card with modern UI design
+  
+  Accepts:
+  - product: product object
+  - show_badge: boolean (optional) - whether to show sale badge
+  - card_class: string (optional) - additional CSS classes
+  
+  Usage:
+  {% render 'product-card', product: product, show_badge: true %}
+{% endcomment %}
+
+{% assign show_badge = show_badge | default: true %}
+{% assign card_class = card_class | default: '' %}
+
+<div class="group relative bg-card border border-border rounded-lg overflow-hidden hover:border-primary/50 transition-all duration-300 {{ card_class }}">
+  
+  {% comment %} Sale Badge {% endcomment %}
+  {% if show_badge and product.compare_at_price > product.price %}
+    <div class="absolute top-4 left-4 z-10 bg-primary text-primary-foreground px-3 py-1 text-xs font-bold tracking-wider">
+      ON SALE
+    </div>
+  {% elsif show_badge and product.tags contains 'new' %}
+    <div class="absolute top-4 left-4 z-10 bg-green-600 text-white px-3 py-1 text-xs font-bold tracking-wider">
+      NEW
+    </div>
+  {% elsif show_badge and product.tags contains 'bestseller' %}
+    <div class="absolute top-4 left-4 z-10 bg-orange-600 text-white px-3 py-1 text-xs font-bold tracking-wider">
+      BESTSELLER
+    </div>
+  {% endif %}
+
+  {% comment %} Action Buttons {% endcomment %}
+  <div class="absolute top-4 right-4 z-10 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+    {% comment %} Wishlist Button {% endcomment %}
+    <button class="bg-background/90 backdrop-blur-sm p-2 rounded-full hover:bg-primary hover:text-primary-foreground transition-colors" 
+            aria-label="Add to wishlist">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart h-4 w-4">
+        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+      </svg>
+    </button>
+    
+    {% comment %} Quick View Button {% endcomment %}
+    <button class="bg-background/90 backdrop-blur-sm p-2 rounded-full hover:bg-primary hover:text-primary-foreground transition-colors" 
+            aria-label="Quick view">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye h-4 w-4">
+        <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path>
+        <circle cx="12" cy="12" r="3"></circle>
+      </svg>
+    </button>
+  </div>
+
+  {% comment %} Product Image {% endcomment %}
+  <div class="relative aspect-square bg-black overflow-hidden">
+    <a href="{{ product.url }}" class="block h-full w-full">
+      {% if product.featured_image %}
+        <img
+          alt="{{ product.featured_image.alt | escape }}"
+          loading="lazy"
+          decoding="async"
+          class="object-cover group-hover:scale-105 transition-transform duration-500 w-full h-full"
+          src="{{ product.featured_image | image_url: width: 600 }}"
+          width="600"
+          height="600"
+        >
+      {% else %}
+        <div class="w-full h-full bg-gray-200 flex items-center justify-center">
+          <svg class="w-16 h-16 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"></path>
+          </svg>
+        </div>
+      {% endif %}
+    </a>
+  </div>
+
+  {% comment %} Product Details {% endcomment %}
+  <div class="p-5">
+    <h3 class="font-display text-2xl text-foreground mb-1 tracking-tight">
+      <a href="{{ product.url }}" class="hover:text-primary transition-colors">
+        {{ product.title }}
+      </a>
+    </h3>
+    
+    {% comment %} Product Description/Tags {% endcomment %}
+    {% if product.description != blank %}
+      <p class="text-xs text-muted-foreground mb-3 uppercase tracking-wide">
+        {{ product.description | strip_html | truncate: 50 }}
+      </p>
+    {% elsif product.tags.size > 0 %}
+      <p class="text-xs text-muted-foreground mb-3 uppercase tracking-wide">
+        {% assign display_tags = product.tags | slice: 0, 3 %}
+        {{ display_tags | join: ', ' }}
+      </p>
+    {% endif %}
+
+    {% comment %} Pricing {% endcomment %}
+    <div class="flex items-center gap-2 mb-4">
+      {% if product.variants.size > 1 %}
+        {% comment %} Price range for multiple variants {% endcomment %}
+        {% assign min_price = product.price_min %}
+        {% assign max_price = product.price_max %}
+        {% if min_price != max_price %}
+          <span class="text-lg font-bold text-foreground">{{ min_price | money }} - {{ max_price | money }}</span>
+        {% else %}
+          <span class="text-lg font-bold text-foreground">{{ min_price | money }}</span>
+        {% endif %}
+        
+        {% comment %} Show compare at price range if on sale {% endcomment %}
+        {% if product.compare_at_price_min > product.price_min %}
+          <span class="text-sm text-muted-foreground line-through">{{ product.compare_at_price_min | money }}{% if product.compare_at_price_min != product.compare_at_price_max %} - {{ product.compare_at_price_max | money }}{% endif %}</span>
+        {% endif %}
+      {% else %}
+        {% comment %} Single variant pricing {% endcomment %}
+        {% if product.compare_at_price > product.price %}
+          <span class="text-lg font-bold text-primary">{{ product.price | money }}</span>
+          <span class="text-sm text-muted-foreground line-through">{{ product.compare_at_price | money }}</span>
+        {% else %}
+          <span class="text-lg font-bold text-foreground">{{ product.price | money }}</span>
+        {% endif %}
+      {% endif %}
+    </div>
+
+    {% comment %} Variant Selector {% endcomment %}
+    {% if product.variants.size > 1 %}
+      <product-card-form>
+        <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" class="product-form">
+        <select name="id" class="data-[placeholder]:text-muted-foreground [&_svg:not([class*='text-'])]:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 dark:hover:bg-input/50 flex items-center justify-between gap-2 rounded-md border bg-transparent px-3 py-2 text-sm whitespace-nowrap shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 w-full mb-3 border-primary/30 focus:border-primary">
+          {% for variant in product.variants %}
+            <option value="{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %}selected{% endif %}>
+              {{ variant.title }} - {{ variant.price | money }}
+            </option>
+          {% endfor %}
+        </select>
+        
+        {% comment %} Add to Cart Button {% endcomment %}
+        <button type="submit" name="add" class="add-to-cart-btn inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive h-9 px-4 py-2 has-[>svg]:px-3 w-full bg-primary text-primary-foreground hover:bg-primary/90 font-display text-base tracking-wide shadow-[0_4px_0_0_rgba(0,0,0,0.3)] hover:shadow-[0_2px_0_0_rgba(0,0,0,0.3)] active:shadow-none active:translate-y-1 transition-all group">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart h-4 w-4 mr-2">
+            <circle cx="8" cy="21" r="1"></circle>
+            <circle cx="19" cy="21" r="1"></circle>
+            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+          </svg>
+          <span class="btn-text">ADD TO CART</span>
+        </button>
+        </form>
+      </product-card-form>
+    {% else %}
+      {% comment %} Single Variant Add to Cart {% endcomment %}
+      <product-card-form>
+        <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" class="product-form">
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        
+        <div class="mb-3 text-sm text-muted-foreground">
+          {{ product.selected_or_first_available_variant.title }} - {{ product.selected_or_first_available_variant.price | money }}
+        </div>
+        
+        <button type="submit" name="add" class="add-to-cart-btn inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive h-9 px-4 py-2 has-[>svg]:px-3 w-full bg-primary text-primary-foreground hover:bg-primary/90 font-display text-base tracking-wide shadow-[0_4px_0_0_rgba(0,0,0,0.3)] hover:shadow-[0_2px_0_0_rgba(0,0,0,0.3)] active:shadow-none active:translate-y-1 transition-all group">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart h-4 w-4 mr-2">
+            <circle cx="8" cy="21" r="1"></circle>
+            <circle cx="19" cy="21" r="1"></circle>
+            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+          </svg>
+          <span class="btn-text">ADD TO CART</span>
+        </button>
+        </form>
+      </product-card-form>
+    {% endif %}
+  </div>
+</div>
