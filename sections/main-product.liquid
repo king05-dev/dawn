@@ -73,15 +73,786 @@
   {%- endif -%}
 
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
-  <div class="page-width">
-    <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
-      <div class="grid__item product__media-wrapper">
+
+  {% comment %} start block  {% endcomment %}
+  <div class="container mx-auto px-4 py-8">
+    <div class="text-sm text-muted-foreground mb-6">
+      <span class="hover:text-primary cursor-pointer">Shop</span><span class="mx-2">/</span
+      ><span class="hover:text-primary cursor-pointer">Oils</span><span class="mx-2">/</span
+      ><span class="text-foreground">Black</span>
+    </div>
+    <div class="grid lg:grid-cols-2 gap-12 mb-16">
+      <div class="space-y-4">
+        <div class="relative aspect-square rounded-lg overflow-hidden bg-card border border-border group">
+          <img
+            alt="Black Oil"
+            loading="lazy"
+            decoding="async"
+            data-nimg="fill"
+            class="object-cover"
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-duYz8z8d39e0Z3vR3dKuTr6ZfvkscQ.png"
+            style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
+
+          ><button class="absolute left-4 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-background/80 backdrop-blur-sm border border-border flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-primary hover:border-primary hover:text-primary-foreground">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-chevron-left h-6 w-6"
+            >
+              <path d="m15 18-6-6 6-6"></path>
+            </svg></button
+          ><button class="absolute right-4 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-background/80 backdrop-blur-sm border border-border flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-primary hover:border-primary hover:text-primary-foreground">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-chevron-right h-6 w-6"
+            >
+              <path d="m9 18 6-6-6-6"></path>
+            </svg>
+          </button>
+          <div class="absolute top-4 left-4 flex flex-col gap-2">
+            <span
+              data-slot="badge"
+              class="inline-flex items-center justify-center rounded-md border text-xs w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent [a&amp;]:hover:bg-primary/90 bg-primary text-primary-foreground px-3 py-1 font-bold"
+              >ON SALE</span
+            ><span
+              data-slot="badge"
+              class="inline-flex items-center justify-center rounded-md border text-xs w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent [a&amp;]:hover:bg-primary/90 bg-accent text-accent-foreground px-3 py-1 font-bold"
+              >BESTSELLER</span
+            >
+          </div>
+        </div>
+        <div class="grid grid-cols-3 gap-4">
+          <button class="relative aspect-square rounded-lg overflow-hidden border-2 transition-all border-primary">
+            <img
+              alt="View 1"
+              loading="lazy"
+              decoding="async"
+              data-nimg="fill"
+              class="object-cover"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-duYz8z8d39e0Z3vR3dKuTr6ZfvkscQ.png"
+              style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
+            ></button
+          ><button class="relative aspect-square rounded-lg overflow-hidden border-2 transition-all border-border hover:border-primary/50">
+            <img
+              alt="View 2"
+              loading="lazy"
+              decoding="async"
+              data-nimg="fill"
+              class="object-cover"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/black-luxury-perfume-bottle-with-citrus-and-spices-Zi7zhispYnuxcOfKcD2SuKBbi09b7r.jpg"
+              style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
+            ></button
+          ><button class="relative aspect-square rounded-lg overflow-hidden border-2 transition-all border-border hover:border-primary/50">
+            <img
+              alt="View 3"
+              loading="lazy"
+              decoding="async"
+              data-nimg="fill"
+              class="object-cover"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/luxury-perfume-bottle-with-smoke-and-mirrors-effec-eixaW2a47AooKY4YVnGIjzqojg1Sg0.jpg"
+              style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
+            >
+          </button>
+        </div>
+        <div class="grid grid-cols-3 gap-4 pt-4">
+          <div
+            data-slot="card"
+            class="text-card-foreground flex flex-col gap-6 rounded-xl border shadow-sm p-4 text-center border-border bg-card"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-truck h-6 w-6 mx-auto mb-2 text-primary"
+            >
+              <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path><path d="M15 18H9"></path><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path><circle cx="17" cy="18" r="2"></circle><circle cx="7" cy="18" r="2"></circle>
+            </svg>
+            <p class="text-xs font-bold text-foreground">FREE SHIPPING</p>
+            <p class="text-xs text-muted-foreground">On orders $50+</p>
+          </div>
+          <div
+            data-slot="card"
+            class="text-card-foreground flex flex-col gap-6 rounded-xl border shadow-sm p-4 text-center border-border bg-card"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-shield h-6 w-6 mx-auto mb-2 text-primary"
+            >
+              <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
+            </svg>
+            <p class="text-xs font-bold text-foreground">GUARANTEED</p>
+            <p class="text-xs text-muted-foreground">100% Authentic</p>
+          </div>
+          <div
+            data-slot="card"
+            class="text-card-foreground flex flex-col gap-6 rounded-xl border shadow-sm p-4 text-center border-border bg-card"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-rotate-ccw h-6 w-6 mx-auto mb-2 text-primary"
+            >
+              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path>
+            </svg>
+            <p class="text-xs font-bold text-foreground">30-DAY RETURNS</p>
+            <p class="text-xs text-muted-foreground">Money back</p>
+          </div>
+        </div>
+      </div>
+      <div class="space-y-6">
+        <div>
+          <div class="flex items-start justify-between mb-2">
+            <div>
+              <p class="text-sm text-muted-foreground mb-1">INSPIRED BY YSL BLACK OPIUM</p>
+              <h1 class="font-display text-5xl md:text-6xl text-foreground mb-3">BLACK</h1>
+            </div>
+            <div class="flex gap-2">
+              <button
+                data-slot="button"
+                class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 size-9 h-12 w-12 rounded-full border-border"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-heart h-5 w-5"
+                >
+                  <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+                </svg></button
+              ><button
+                data-slot="button"
+                class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 size-9 h-12 w-12 rounded-full border-border bg-transparent"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-share2 h-5 w-5"
+                >
+                  <circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 mb-4">
+            <div class="flex">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-star h-4 w-4 fill-primary text-primary"
+              >
+                <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-star h-4 w-4 fill-primary text-primary"
+              >
+                <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-star h-4 w-4 fill-primary text-primary"
+              >
+                <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-star h-4 w-4 fill-primary text-primary"
+              >
+                <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-star h-4 w-4 fill-primary text-primary"
+              >
+                <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+              </svg>
+            </div>
+            <span class="text-sm font-bold text-foreground">5.0</span
+            ><span class="text-sm text-muted-foreground">(61 reviews)</span>
+          </div>
+          <div class="flex items-baseline gap-3 mb-4"><span class="text-4xl font-bold text-primary">$34.99</span></div>
+          <div class="flex items-center gap-4 mb-6">
+            <span
+              data-slot="badge"
+              class="inline-flex items-center justify-center rounded-md border text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden [a&amp;]:hover:bg-accent [a&amp;]:hover:text-accent-foreground border-primary text-primary px-3 py-1"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-flame h-3 w-3 mr-1 inline"
+              >
+                <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path>
+              </svg>
+              SELLING FAST</span
+            ><span class="text-sm text-muted-foreground">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-clock h-4 w-4 inline mr-1"
+              >
+                <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              Only 12 left in stock</span
+            >
+          </div>
+          <p class="text-muted-foreground leading-relaxed mb-6">
+            Black is that bold scent you'll live in. A little bit of cardamom heat cooled off by a whiff of iris and
+            violet—then, yeah, a creamy, sweet vanilla that sticks around like a lover you won't forget. The velvety
+            cashmere vibes and sweet heat that sticks around like a lover you won't leave your wheels.
+          </p>
+        </div>
+        <div
+          data-slot="card"
+          class="text-card-foreground flex flex-col gap-6 rounded-xl border shadow-sm p-6 border-border bg-card"
+        >
+          <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-sparkles h-5 w-5 text-primary"
+            >
+              <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path><path d="M20 3v4"></path><path d="M22 5h-4"></path><path d="M4 17v2"></path><path d="M5 18H3"></path>
+            </svg>
+            SCENT PROFILE
+          </h3>
+          <div class="space-y-4">
+            <div>
+              <p class="text-sm font-bold text-foreground mb-2">TOP NOTES</p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  data-slot="badge"
+                  class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden [a&amp;]:hover:bg-accent [a&amp;]:hover:text-accent-foreground border-primary/30 text-foreground"
+                  >Bergamot</span
+                ><span
+                  data-slot="badge"
+                  class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden [a&amp;]:hover:bg-accent [a&amp;]:hover:text-accent-foreground border-primary/30 text-foreground"
+                  >Pink Pepper</span
+                ><span
+                  data-slot="badge"
+                  class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden [a&amp;]:hover:bg-accent [a&amp;]:hover:text-accent-foreground border-primary/30 text-foreground"
+                  >Cardamom</span
+                >
+              </div>
+            </div>
+            <div>
+              <p class="text-sm font-bold text-foreground mb-2">MIDDLE NOTES</p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  data-slot="badge"
+                  class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden [a&amp;]:hover:bg-accent [a&amp;]:hover:text-accent-foreground border-primary/30 text-foreground"
+                  >Iris</span
+                ><span
+                  data-slot="badge"
+                  class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden [a&amp;]:hover:bg-accent [a&amp;]:hover:text-accent-foreground border-primary/30 text-foreground"
+                  >Violet</span
+                ><span
+                  data-slot="badge"
+                  class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden [a&amp;]:hover:bg-accent [a&amp;]:hover:text-accent-foreground border-primary/30 text-foreground"
+                  >Incense</span
+                >
+              </div>
+            </div>
+            <div>
+              <p class="text-sm font-bold text-foreground mb-2">BASE NOTES</p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  data-slot="badge"
+                  class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden [a&amp;]:hover:bg-accent [a&amp;]:hover:text-accent-foreground border-primary/30 text-foreground"
+                  >Vanilla</span
+                ><span
+                  data-slot="badge"
+                  class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden [a&amp;]:hover:bg-accent [a&amp;]:hover:text-accent-foreground border-primary/30 text-foreground"
+                  >Tonka Bean</span
+                ><span
+                  data-slot="badge"
+                  class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden [a&amp;]:hover:bg-accent [a&amp;]:hover:text-accent-foreground border-primary/30 text-foreground"
+                  >Patchouli</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-bold text-foreground mb-3">SELECT SIZE</label>
+          <div class="grid grid-cols-4 gap-3">
+            <button class="p-4 rounded-lg border-2 transition-all text-center border-border hover:border-primary/50">
+              <p class="font-bold text-foreground">10ml</p>
+              <p class="text-xs text-muted-foreground">$14.99</p></button
+            ><button class="p-4 rounded-lg border-2 transition-all text-center border-primary bg-primary/10">
+              <p class="font-bold text-foreground">30ml</p>
+              <p class="text-xs text-muted-foreground">$34.99</p></button
+            ><button class="p-4 rounded-lg border-2 transition-all text-center border-border hover:border-primary/50">
+              <p class="font-bold text-foreground">100ml</p>
+              <p class="text-xs text-muted-foreground">$79.99</p></button
+            ><button class="p-4 rounded-lg border-2 transition-all text-center border-border hover:border-primary/50">
+              <p class="font-bold text-foreground">500ml</p>
+              <p class="text-xs text-muted-foreground">$299.99</p>
+            </button>
+          </div>
+        </div>
+        <div class="space-y-3">
+          <button class="w-full p-4 rounded-lg border-2 transition-all text-left border-primary bg-primary/10">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="font-bold text-foreground">One-time purchase</p>
+                <p class="text-sm text-muted-foreground">$34.99</p>
+              </div>
+              <div class="h-5 w-5 rounded-full border-2 border-primary bg-primary">
+                <div class="h-full w-full rounded-full bg-background m-0.5"></div>
+              </div>
+            </div></button
+          ><button class="w-full p-4 rounded-lg border-2 transition-all text-left relative overflow-hidden border-border hover:border-primary/50">
+            <span
+              data-slot="badge"
+              class="inline-flex items-center justify-center rounded-md border font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent [a&amp;]:hover:bg-primary/90 absolute top-2 right-2 bg-primary text-primary-foreground text-xs px-2 py-0.5"
+              >SAVE 10%</span
+            >
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="font-bold text-foreground">Subscribe &amp; Save</p>
+                <p class="text-sm text-primary font-bold">$31.49 every month</p>
+              </div>
+              <div class="h-5 w-5 rounded-full border-2 border-border"></div>
+            </div>
+          </button>
+        </div>
+        <div class="flex gap-4">
+          <div class="flex items-center border-2 border-border rounded-lg">
+            <button class="p-4 hover:bg-primary/10 transition-colors">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-minus h-4 w-4"
+              >
+                <path d="M5 12h14"></path>
+              </svg></button
+            ><span class="px-6 font-bold text-foreground">1</span
+            ><button class="p-4 hover:bg-primary/10 transition-colors">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-plus h-4 w-4"
+              >
+                <path d="M5 12h14"></path><path d="M12 5v14"></path>
+              </svg>
+            </button>
+          </div>
+          <button
+            data-slot="button"
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive px-4 has-[&gt;svg]:px-3 flex-1 h-auto py-4 text-lg font-bold bg-primary hover:bg-primary/90 text-primary-foreground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-shopping-cart mr-2 h-5 w-5"
+            >
+              <circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+            </svg>
+            ADD TO CART
+          </button>
+        </div>
+        <p class="text-sm text-muted-foreground text-center">
+          Or 4 interest-free payments of $8.75 with <span class="font-bold text-foreground">Afterpay</span>
+        </p>
+      </div>
+    </div>
+    <div dir="ltr" data-orientation="horizontal" data-slot="tabs" class="flex flex-col gap-2 mb-16">
+      <div
+        role="tablist"
+        aria-orientation="horizontal"
+        data-slot="tabs-list"
+        class="text-muted-foreground inline-flex items-center w-full justify-start border-b border-border rounded-none bg-transparent h-auto p-0"
+        tabindex="0"
+        data-orientation="horizontal"
+        style="outline: none;"
+      >
+        <button
+          type="button"
+          role="tab"
+          aria-selected="true"
+          aria-controls="radix-_r_0_-content-details"
+          data-state="active"
+          id="radix-_r_0_-trigger-details"
+          data-slot="tabs-trigger"
+          class="dark:data-[state=active]:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:outline-ring dark:data-[state=active]:border-input dark:data-[state=active]:bg-input/30 text-foreground dark:text-muted-foreground inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 border text-sm whitespace-nowrap transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:shadow-sm [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 [&amp;_svg:not([class*='size-'])]:size-4 rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent px-6 py-4 font-bold"
+          tabindex="-1"
+          data-orientation="horizontal"
+          data-radix-collection-item=""
+        >
+          DETAILS</button
+        ><button
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="radix-_r_0_-content-howto"
+          data-state="inactive"
+          id="radix-_r_0_-trigger-howto"
+          data-slot="tabs-trigger"
+          class="dark:data-[state=active]:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:outline-ring dark:data-[state=active]:border-input dark:data-[state=active]:bg-input/30 text-foreground dark:text-muted-foreground inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 border text-sm whitespace-nowrap transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:shadow-sm [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 [&amp;_svg:not([class*='size-'])]:size-4 rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent px-6 py-4 font-bold"
+          tabindex="-1"
+          data-orientation="horizontal"
+          data-radix-collection-item=""
+        >
+          HOW TO USE</button
+        ><button
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="radix-_r_0_-content-ingredients"
+          data-state="inactive"
+          id="radix-_r_0_-trigger-ingredients"
+          data-slot="tabs-trigger"
+          class="dark:data-[state=active]:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:outline-ring dark:data-[state=active]:border-input dark:data-[state=active]:bg-input/30 text-foreground dark:text-muted-foreground inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 border text-sm whitespace-nowrap transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:shadow-sm [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 [&amp;_svg:not([class*='size-'])]:size-4 rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent px-6 py-4 font-bold"
+          tabindex="-1"
+          data-orientation="horizontal"
+          data-radix-collection-item=""
+        >
+          INGREDIENTS</button
+        ><button
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="radix-_r_0_-content-reviews"
+          data-state="inactive"
+          id="radix-_r_0_-trigger-reviews"
+          data-slot="tabs-trigger"
+          class="dark:data-[state=active]:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:outline-ring dark:data-[state=active]:border-input dark:data-[state=active]:bg-input/30 text-foreground dark:text-muted-foreground inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 border text-sm whitespace-nowrap transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:shadow-sm [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 [&amp;_svg:not([class*='size-'])]:size-4 rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent px-6 py-4 font-bold"
+          tabindex="-1"
+          data-orientation="horizontal"
+          data-radix-collection-item=""
+        >
+          REVIEWS (61)
+        </button>
+      </div>
+      <div
+        data-state="active"
+        data-orientation="horizontal"
+        role="tabpanel"
+        aria-labelledby="radix-_r_0_-trigger-details"
+        id="radix-_r_0_-content-details"
+        tabindex="0"
+        data-slot="tabs-content"
+        class="flex-1 outline-none py-8"
+        style="animation-duration: 0s;"
+      >
+        <div class="max-w-3xl space-y-4 text-muted-foreground leading-relaxed">
+          <p>
+            <strong class="text-foreground">Black</strong> is our boldest, most unapologetic scent. Inspired by YSL
+            Black Opium, this isn't your grandma's perfume oil—it's a statement.
+          </p>
+          <p>
+            The opening hits with spicy cardamom and pink pepper that wakes you up, then mellows into a floral heart of
+            iris and violet that's somehow both delicate and intense. The base? Pure addiction: creamy vanilla, warm
+            tonka bean, and earthy patchouli that lingers for hours.
+          </p>
+          <p>
+            <strong class="text-foreground">Perfect for:</strong> Night outs, date nights, or any time you want to leave
+            an impression. This scent doesn't whisper—it announces.
+          </p>
+          <p><strong class="text-foreground">Longevity:</strong> 6-8 hours on skin, even longer on clothes</p>
+          <p><strong class="text-foreground">Sillage:</strong> Moderate to heavy—people will notice</p>
+        </div>
+      </div>
+      <div
+        data-state="inactive"
+        data-orientation="horizontal"
+        role="tabpanel"
+        aria-labelledby="radix-_r_0_-trigger-howto"
+        hidden=""
+        id="radix-_r_0_-content-howto"
+        tabindex="0"
+        data-slot="tabs-content"
+        class="flex-1 outline-none py-8"
+      ></div>
+      <div
+        data-state="inactive"
+        data-orientation="horizontal"
+        role="tabpanel"
+        aria-labelledby="radix-_r_0_-trigger-ingredients"
+        hidden=""
+        id="radix-_r_0_-content-ingredients"
+        tabindex="0"
+        data-slot="tabs-content"
+        class="flex-1 outline-none py-8"
+      ></div>
+      <div
+        data-state="inactive"
+        data-orientation="horizontal"
+        role="tabpanel"
+        aria-labelledby="radix-_r_0_-trigger-reviews"
+        hidden=""
+        id="radix-_r_0_-content-reviews"
+        tabindex="0"
+        data-slot="tabs-content"
+        class="flex-1 outline-none py-8"
+      ></div>
+    </div>
+    <section>
+      <h2 class="font-display text-4xl md:text-5xl text-foreground mb-8">YOU MIGHT ALSO LIKE</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div
+          data-slot="card"
+          class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group overflow-hidden border-border bg-card hover:border-primary transition-all"
+        >
+          <div class="relative h-[300px] overflow-hidden">
+            <img
+              alt="VELVET"
+              loading="lazy"
+              decoding="async"
+              data-nimg="fill"
+              class="object-cover group-hover:scale-110 transition-transform duration-500"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/luxury-perfume-bottle-with-velvet-texture-and-herb-fNcl5c8936Y84qtNEv7fjbkDuNeLzw.jpg"
+              style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
+
+            ><span
+              data-slot="badge"
+              class="inline-flex items-center justify-center rounded-md border w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent [a&amp;]:hover:bg-primary/90 absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 text-xs font-bold"
+              >NEW</span
+            >
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold text-foreground mb-2">VELVET</h3>
+            <p class="text-xl font-bold text-primary mb-3">$34.99</p>
+            <button
+              data-slot="button"
+              class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border shadow-xs dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-8 rounded-md gap-1.5 px-3 has-[&gt;svg]:px-2.5 w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
+            >
+              QUICK ADD
+            </button>
+          </div>
+        </div>
+        <div
+          data-slot="card"
+          class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group overflow-hidden border-border bg-card hover:border-primary transition-all"
+        >
+          <div class="relative h-[300px] overflow-hidden">
+            <img
+              alt="CITRUS BLOOM"
+              loading="lazy"
+              decoding="async"
+              data-nimg="fill"
+              class="object-cover group-hover:scale-110 transition-transform duration-500"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/perfume-bottle-with-fresh-citrus-and-florals-dark--bup255WioMxwEGvei2gaX6Q4an5oCV.jpg"
+              style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
+
+            ><span
+              data-slot="badge"
+              class="inline-flex items-center justify-center rounded-md border w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent [a&amp;]:hover:bg-primary/90 absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 text-xs font-bold"
+              >BESTSELLER</span
+            >
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold text-foreground mb-2">CITRUS BLOOM</h3>
+            <p class="text-xl font-bold text-primary mb-3">$29.99</p>
+            <button
+              data-slot="button"
+              class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border shadow-xs dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-8 rounded-md gap-1.5 px-3 has-[&gt;svg]:px-2.5 w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
+            >
+              QUICK ADD
+            </button>
+          </div>
+        </div>
+        <div
+          data-slot="card"
+          class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group overflow-hidden border-border bg-card hover:border-primary transition-all"
+        >
+          <div class="relative h-[300px] overflow-hidden">
+            <img
+              alt="ROSE NOIR"
+              loading="lazy"
+              decoding="async"
+              data-nimg="fill"
+              class="object-cover group-hover:scale-110 transition-transform duration-500"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/minimalist-perfume-bottle-with-rose-and-citrus-dar-giDX0bwld6sXlbvNdrRj5hg0btH1tn.jpg"
+              style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
+            >
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold text-foreground mb-2">ROSE NOIR</h3>
+            <p class="text-xl font-bold text-primary mb-3">$39.99</p>
+            <button
+              data-slot="button"
+              class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border shadow-xs dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-8 rounded-md gap-1.5 px-3 has-[&gt;svg]:px-2.5 w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
+            >
+              QUICK ADD
+            </button>
+          </div>
+        </div>
+        <div
+          data-slot="card"
+          class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group overflow-hidden border-border bg-card hover:border-primary transition-all"
+        >
+          <div class="relative h-[300px] overflow-hidden">
+            <img
+              alt="WILD HERBS"
+              loading="lazy"
+              decoding="async"
+              data-nimg="fill"
+              class="object-cover group-hover:scale-110 transition-transform duration-500"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/bold-perfume-bottle-with-herbs-and-botanicals-dark-5RewjtUWllozbMWomn8e1jrwgiZFJj.jpg"
+              style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
+
+            ><span
+              data-slot="badge"
+              class="inline-flex items-center justify-center rounded-md border w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent [a&amp;]:hover:bg-primary/90 absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 text-xs font-bold"
+              >ON SALE</span
+            >
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold text-foreground mb-2">WILD HERBS</h3>
+            <p class="text-xl font-bold text-primary mb-3">$34.99</p>
+            <button
+              data-slot="button"
+              class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border shadow-xs dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-8 rounded-md gap-1.5 px-3 has-[&gt;svg]:px-2.5 w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
+            >
+              QUICK ADD
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  {% comment %} end block  {% endcomment %}
+  <div class="container mx-auto px-4 max-w-7xl">
+    <div class="product-layout grid grid-cols-1 {% if product.media.size > 0 %}lg:grid-cols-2{% endif %} gap-8 lg:gap-12 product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }}{% unless product.media.size > 0 %} product--no-media{% endunless %}">
+      <div class="product-media-wrapper order-1 lg:order-1">
         {% render 'product-media-gallery', variant_images: variant_images %}
       </div>
-      <div class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      <div class="product-info-wrapper order-2 lg:order-2{% if settings.page_width > 1400 and section.settings.media_size == "small" %} lg:pl-8{% endif %}{% if settings.animations_reveal_on_scroll %} opacity-0 transform translate-y-8 transition-all duration-700 ease-out{% endif %}">
         <section
           id="ProductInfo-{{ section.id }}"
-          class="product__info-container{% if section.settings.enable_sticky_info %} product__column-sticky{% endif %}"
+          class="product-info-container space-y-6{% if section.settings.enable_sticky_info %} lg:sticky lg:top-8{% endif %}"
         >
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
@@ -90,17 +861,19 @@
               {%- when '@app' -%}
                 {% render block %}
               {%- when 'text' -%}
-                <p
-                  class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
+                <div
+                  class="product-text prose prose-sm max-w-none{% if block.settings.text_style == 'uppercase' %} uppercase tracking-wider text-xs font-medium{% elsif block.settings.text_style == 'subtitle' %} text-lg font-medium text-gray-700{% endif %}"
                   {{ block.shopify_attributes }}
                 >
                   {{- block.settings.text -}}
-                </p>
+                </div>
               {%- when 'title' -%}
-                <div class="product__title" {{ block.shopify_attributes }}>
-                  <h1>{{ product.title | escape }}</h1>
-                  <a href="{{ product.url }}" class="product__title">
-                    <h2 class="h1">
+                <div class="product-title" {{ block.shopify_attributes }}>
+                  <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight mb-2">
+                    {{ product.title | escape }}
+                  </h1>
+                  <a href="{{ product.url }}" class="product-title-link hover:text-primary transition-colors">
+                    <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
                       {{ product.title | escape }}
                     </h2>
                   </a>
@@ -115,12 +888,15 @@
                   -%}
                 </div>
                 {%- if product.quantity_price_breaks_configured? -%}
-                  <div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
+                  <div
+                    class="volume-pricing-note bg-blue-50 border border-blue-200 rounded-lg p-3 text-sm text-blue-800"
+                    id="Volume-Note-{{ section.id }}"
+                  >
                     <span>{{ 'products.product.volume_pricing.note' | t }}</span>
                   </div>
                 {%- endif -%}
                 {%- if cart.taxes_included or cart.duties_included or shop.shipping_policy.body != blank -%}
-                  <div class="product__tax caption rte">
+                  <div class="product-tax text-sm text-gray-600 prose prose-sm max-w-none">
                     {%- if cart.duties_included and cart.taxes_included -%}
                       {{ 'products.product.duties_and_taxes_included' | t }}
                     {%- elsif cart.taxes_included -%}
@@ -141,8 +917,8 @@
                   {%- endform -%}
                 </div>
               {%- when 'inventory' -%}
-                <p
-                  class="product__inventory{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
+                <div
+                  class="product-inventory flex items-center gap-2 text-sm font-medium{% if block.settings.text_style == 'uppercase' %} uppercase tracking-wider{% elsif block.settings.text_style == 'subtitle' %} text-lg{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} hidden{% endif %}"
                   {{ block.shopify_attributes }}
                   id="Inventory-{{ section.id }}"
                   role="status"
@@ -152,7 +928,7 @@
                       {%- if product.selected_or_first_available_variant.inventory_quantity
                           <= block.settings.inventory_threshold
                       -%}
-                        <span class="svg-wrapper" style="color: rgb(238, 148, 65)">
+                        <span class="w-4 h-4 text-orange-500 flex-shrink-0">
                           {{- 'icon-inventory-status.svg' | inline_asset_content -}}
                         </span>
                         {%- if block.settings.show_inventory_quantity -%}
@@ -164,7 +940,7 @@
                           {{- 'products.product.inventory_low_stock' | t -}}
                         {%- endif -%}
                       {%- else -%}
-                        <span class="svg-wrapper" style="color: rgb(62, 214, 96)">
+                        <span class="w-4 h-4 text-green-500 flex-shrink-0">
                           {{- 'icon-inventory-status.svg' | inline_asset_content -}}
                         </span>
                         {%- if block.settings.show_inventory_quantity -%}
@@ -178,50 +954,61 @@
                       {%- endif -%}
                     {%- else -%}
                       {%- if product.selected_or_first_available_variant.inventory_policy == 'continue' -%}
-                        <span class="svg-wrapper" style="color: rgb(62, 214, 96)">
+                        <span class="w-4 h-4 text-green-500 flex-shrink-0">
                           {{- 'icon-inventory-status.svg' | inline_asset_content -}}
                         </span>
                         {{- 'products.product.inventory_out_of_stock_continue_selling' | t -}}
                       {%- else -%}
-                        <span class="svg-wrapper" style="color: rgb(200, 200, 200)">
+                        <span class="w-4 h-4 text-gray-400 flex-shrink-0">
                           {{- 'icon-inventory-status.svg' | inline_asset_content -}}
                         </span>
                         {{- 'products.product.inventory_out_of_stock' | t -}}
                       {%- endif -%}
                     {%- endif -%}
                   {%- endif -%}
-                </p>
+                </div>
               {%- when 'description' -%}
                 {%- if product.description != blank -%}
-                  <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
+                  <div
+                    class="product-description prose prose-gray max-w-none text-gray-700 leading-relaxed"
+                    {{ block.shopify_attributes }}
+                  >
                     {{ product.description }}
                   </div>
                 {%- endif -%}
               {%- when 'sku' -%}
-                <p
-                  class="product__sku{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.sku.size == 0 %} visibility-hidden{% endif %}"
+                <div
+                  class="product-sku text-sm text-gray-600{% if block.settings.text_style == 'uppercase' %} uppercase tracking-wider font-medium{% elsif block.settings.text_style == 'subtitle' %} text-lg font-medium{% endif %}{% if product.selected_or_first_available_variant.sku.size == 0 %} hidden{% endif %}"
                   id="Sku-{{ section.id }}"
                   role="status"
                   {{ block.shopify_attributes }}
                 >
-                  <span class="visually-hidden">{{ 'products.product.sku' | t }}:</span>
-                  {{- product.selected_or_first_available_variant.sku -}}
-                </p>
+                  <span class="sr-only">{{ 'products.product.sku' | t }}:</span>
+                  <span class="font-mono">{{- product.selected_or_first_available_variant.sku -}}</span>
+                </div>
               {%- when 'custom_liquid' -%}
                 {{ block.settings.custom_liquid }}
               {%- when 'collapsible_tab' -%}
-                <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
-                  <details id="Details-{{ block.id }}-{{ section.id }}">
-                    <summary>
-                      <div class="summary__title">
+                <div
+                  class="product-accordion border border-gray-200 rounded-lg overflow-hidden"
+                  {{ block.shopify_attributes }}
+                >
+                  <details id="Details-{{ block.id }}-{{ section.id }}" class="group">
+                    <summary class="flex items-center justify-between p-4 cursor-pointer hover:bg-gray-50 transition-colors">
+                      <div class="flex items-center gap-3">
                         {% render 'icon-accordion', icon: block.settings.icon %}
-                        <h2 class="h4 accordion__title inline-richtext">
+                        <h3 class="text-lg font-medium text-gray-900">
                           {{ block.settings.heading | default: block.settings.page.title | escape }}
-                        </h2>
+                        </h3>
                       </div>
-                      {{- 'icon-caret.svg' | inline_asset_content -}}
+                      <span class="w-5 h-5 text-gray-400 transform transition-transform group-open:rotate-180">
+                        {{- 'icon-caret.svg' | inline_asset_content -}}
+                      </span>
                     </summary>
-                    <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
+                    <div
+                      class="accordion-content p-4 pt-0 prose prose-sm max-w-none text-gray-700"
+                      id="ProductAccordion-{{ block.id }}-{{ section.id }}"
+                    >
                       {{ block.settings.content }}
                       {{ block.settings.page.content }}
                     </div>
