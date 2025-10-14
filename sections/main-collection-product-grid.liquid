@@ -52,7 +52,7 @@
 
         {% comment %} Grid classes based on column settings {% endcomment %}
 
-        <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
           {% comment %} Loop through collection products {% endcomment %}
           {% if collection.products.size > 0 %}
             {% for product in collection.products limit: products_per_page %}
