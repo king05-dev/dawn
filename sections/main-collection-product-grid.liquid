@@ -1,4 +1,4 @@
-<section class="relative bg-background py-16 border-b border-border neg-zindex">
+<section class=" bg-background py-16 border-b border-border neg-zindex">
   <div class="container mx-auto px-4">
     <div class="max-w-4xl">
       <h1 class="font-display text-4xl md:text-6xl text-foreground mb-4 tracking-tight">SUBSTANCES [OILS]</h1>
@@ -107,11 +107,11 @@
       this.submitButton = this.querySelector('.add-to-cart-btn');
       this.submitButtonText = this.submitButton.querySelector('.btn-text');
       this.cart = document.querySelector('cart-drawer') || document.querySelector('cart-notification');
-      
+
       if (this.cart && this.submitButton) {
         this.submitButton.setAttribute('aria-haspopup', 'dialog');
       }
-      
+
       this.form.addEventListener('submit', this.onSubmitHandler.bind(this));
     }
 
@@ -124,7 +124,7 @@
       this.submitButtonText.textContent = 'ADDING...';
 
       const formData = new FormData(this.form);
-      
+
       if (this.cart) {
         formData.append(
           'sections',
@@ -138,56 +138,58 @@
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
-          'X-Requested-With': 'XMLHttpRequest'
+          'X-Requested-With': 'XMLHttpRequest',
         },
-        body: new URLSearchParams(formData)
+        body: new URLSearchParams(formData),
       })
-      .then(response => response.json())
-      .then(data => {
-        if (data.status) {
-          this.handleError(data.description);
-          return;
-        }
-        
-        // Success - show ADDED! briefly
-        this.submitButtonText.textContent = 'ADDED!';
-        this.submitButton.classList.remove('loading');
-        
-        // Update cart and open drawer
-        if (this.cart) {
-          fetch('/cart.js')
-            .then(response => response.json())
-            .then(cartData => {
-              // Trigger cart update event
-              document.dispatchEvent(new CustomEvent('cart:updated', {
-                detail: { cart: cartData }
-              }));
-              
-              // Open cart drawer
-              this.cart.open(this.submitButton);
-              
-              // Reset button after delay
-              setTimeout(() => {
-                this.resetButton();
-              }, 1000);
-            });
-        } else {
-          // Fallback - redirect to cart
-          setTimeout(() => {
-            window.location = window.Shopify.routes.root + 'cart';
-          }, 1000);
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        this.handleError('Something went wrong. Please try again.');
-      });
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.status) {
+            this.handleError(data.description);
+            return;
+          }
+
+          // Success - show ADDED! briefly
+          this.submitButtonText.textContent = 'ADDED!';
+          this.submitButton.classList.remove('loading');
+
+          // Update cart and open drawer
+          if (this.cart) {
+            fetch('/cart.js')
+              .then((response) => response.json())
+              .then((cartData) => {
+                // Trigger cart update event
+                document.dispatchEvent(
+                  new CustomEvent('cart:updated', {
+                    detail: { cart: cartData },
+                  })
+                );
+
+                // Open cart drawer
+                this.cart.open(this.submitButton);
+
+                // Reset button after delay
+                setTimeout(() => {
+                  this.resetButton();
+                }, 1000);
+              });
+          } else {
+            // Fallback - redirect to cart
+            setTimeout(() => {
+              window.location = window.Shopify.routes.root + 'cart';
+            }, 1000);
+          }
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+          this.handleError('Something went wrong. Please try again.');
+        });
     }
 
     handleError(message) {
       this.submitButtonText.textContent = 'ERROR';
       this.submitButton.classList.remove('loading');
-      
+
       // Show error briefly then reset
       setTimeout(() => {
         this.resetButton();

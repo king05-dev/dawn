@@ -15,6 +15,9 @@
   {{ 'component-slider.css' | asset_url | stylesheet_tag }}
   {{ 'component-rating.css' | asset_url | stylesheet_tag }}
   {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+  
+  {% comment %} Swiper CSS {% endcomment %}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
   {% unless product.has_only_default_variant %}
     {{ 'component-product-variant-picker.css' | asset_url | stylesheet_tag }}
@@ -76,99 +79,150 @@
 
   {% comment %} start block  {% endcomment %}
   <div class="container mx-auto px-4 py-8">
+    {% comment %} Breadcrumb {% endcomment %}
     <div class="text-sm text-muted-foreground mb-6">
-      <span class="hover:text-primary cursor-pointer">Shop</span><span class="mx-2">/</span
-      ><span class="hover:text-primary cursor-pointer">Oils</span><span class="mx-2">/</span
-      ><span class="text-foreground">Black</span>
+      <span class="hover:text-primary cursor-pointer">
+        <a href="{{ routes.root_url }}">Shop</a>
+      </span>
+      <span class="mx-2">/</span>
+      {% if collection %}
+        <span class="hover:text-primary cursor-pointer">
+          <a href="{{ collection.url }}">{{ collection.title }}</a>
+        </span>
+        <span class="mx-2">/</span>
+      {% endif %}
+      <span class="text-foreground">{{ product.title }}</span>
     </div>
+    
     <div class="grid lg:grid-cols-2 gap-12 mb-16">
       <div class="space-y-4">
-        <div class="relative aspect-square rounded-lg overflow-hidden bg-card border border-border group">
-          <img
-            alt="Black Oil"
-            loading="lazy"
-            decoding="async"
-            data-nimg="fill"
-            class="object-cover"
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-duYz8z8d39e0Z3vR3dKuTr6ZfvkscQ.png"
-            style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
-
-          ><button class="absolute left-4 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-background/80 backdrop-blur-sm border border-border flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-primary hover:border-primary hover:text-primary-foreground">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-chevron-left h-6 w-6"
-            >
-              <path d="m15 18-6-6 6-6"></path>
-            </svg></button
-          ><button class="absolute right-4 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-background/80 backdrop-blur-sm border border-border flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-primary hover:border-primary hover:text-primary-foreground">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-chevron-right h-6 w-6"
-            >
-              <path d="m9 18 6-6-6-6"></path>
-            </svg>
-          </button>
-          <div class="absolute top-4 left-4 flex flex-col gap-2">
-            <span
-              data-slot="badge"
-              class="inline-flex items-center justify-center rounded-md border text-xs w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent [a&amp;]:hover:bg-primary/90 bg-primary text-primary-foreground px-3 py-1 font-bold"
-              >ON SALE</span
-            ><span
-              data-slot="badge"
-              class="inline-flex items-center justify-center rounded-md border text-xs w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent [a&amp;]:hover:bg-primary/90 bg-accent text-accent-foreground px-3 py-1 font-bold"
-              >BESTSELLER</span
-            >
+        {% comment %} Main Product Image Swiper {% endcomment %}
+        <div class="relative group">
+          <div class="swiper product-main-swiper aspect-square rounded-lg overflow-hidden bg-card border border-border">
+            <div class="swiper-wrapper">
+              {% if product.media.size > 0 %}
+                {% for media in product.media limit: 10 %}
+                  <div class="swiper-slide">
+                    {% if media.media_type == 'image' %}
+                      <img
+                        alt="{{ media.alt | escape }}"
+                        loading="lazy"
+                        decoding="async"
+                        class="object-cover w-full h-full"
+                        src="{{ media | image_url: width: 800 }}"
+                      >
+                    {% elsif media.media_type == 'video' %}
+                      <video
+                        class="object-cover w-full h-full"
+                        controls
+                        preload="metadata"
+                      >
+                        <source src="{{ media.sources[1].url }}" type="{{ media.sources[1].mime_type }}">
+                        Your browser does not support the video tag.
+                      </video>
+                    {% endif %}
+                  </div>
+                {% endfor %}
+              {% else %}
+                <div class="swiper-slide">
+                  <div class="w-full h-full bg-gray-100 flex items-center justify-center">
+                    <span class="text-gray-400">No image available</span>
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+            
+            {% comment %} Navigation buttons {% endcomment %}
+            <div class="swiper-button-prev !left-4 !w-12 !h-12 !mt-0 !top-1/2 !-translate-y-1/2 !rounded-full !bg-background/80 backdrop-blur-sm !border !border-border !opacity-0 group-hover:!opacity-100 !transition-opacity hover:!bg-primary hover:!border-primary hover:!text-primary-foreground !text-foreground after:!hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-chevron-left h-6 w-6"
+              >
+                <path d="m15 18-6-6 6-6"></path>
+              </svg>
+            </div>
+            <div class="swiper-button-next !right-4 !w-12 !h-12 !mt-0 !top-1/2 !-translate-y-1/2 !rounded-full !bg-background/80 backdrop-blur-sm !border !border-border !opacity-0 group-hover:!opacity-100 !transition-opacity hover:!bg-primary hover:!border-primary hover:!text-primary-foreground !text-foreground after:!hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-chevron-right h-6 w-6"
+              >
+                <path d="m9 18 6-6-6-6"></path>
+              </svg>
+            </div>
+            
+            {% comment %} Product badges {% endcomment %}
+            <div class="absolute top-4 left-4 flex flex-col gap-2">
+              {% if product.compare_at_price > product.price %}
+                <span class="inline-flex items-center justify-center rounded-md border text-xs w-fit whitespace-nowrap shrink-0 bg-primary text-primary-foreground px-3 py-1 font-bold">
+                  ON SALE
+                </span>
+              {% endif %}
+              {% if product.tags contains 'bestseller' %}
+                <span class="inline-flex items-center justify-center rounded-md border text-xs w-fit whitespace-nowrap shrink-0 bg-accent text-accent-foreground px-3 py-1 font-bold">
+                  BESTSELLER
+                </span>
+              {% endif %}
+              {% if product.tags contains 'new' %}
+                <span class="inline-flex items-center justify-center rounded-md border text-xs w-fit whitespace-nowrap shrink-0 bg-green-600 text-white px-3 py-1 font-bold">
+                  NEW
+                </span>
+              {% endif %}
+            </div>
           </div>
         </div>
-        <div class="grid grid-cols-3 gap-4">
-          <button class="relative aspect-square rounded-lg overflow-hidden border-2 transition-all border-primary">
-            <img
-              alt="View 1"
-              loading="lazy"
-              decoding="async"
-              data-nimg="fill"
-              class="object-cover"
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-duYz8z8d39e0Z3vR3dKuTr6ZfvkscQ.png"
-              style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
-            ></button
-          ><button class="relative aspect-square rounded-lg overflow-hidden border-2 transition-all border-border hover:border-primary/50">
-            <img
-              alt="View 2"
-              loading="lazy"
-              decoding="async"
-              data-nimg="fill"
-              class="object-cover"
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/black-luxury-perfume-bottle-with-citrus-and-spices-Zi7zhispYnuxcOfKcD2SuKBbi09b7r.jpg"
-              style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
-            ></button
-          ><button class="relative aspect-square rounded-lg overflow-hidden border-2 transition-all border-border hover:border-primary/50">
-            <img
-              alt="View 3"
-              loading="lazy"
-              decoding="async"
-              data-nimg="fill"
-              class="object-cover"
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/luxury-perfume-bottle-with-smoke-and-mirrors-effec-eixaW2a47AooKY4YVnGIjzqojg1Sg0.jpg"
-              style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
-            >
-          </button>
-        </div>
+        {% comment %} Thumbnail Swiper {% endcomment %}
+        {% if product.media.size > 1 %}
+          <div class="swiper product-thumbs-swiper">
+            <div class="swiper-wrapper">
+              {% for media in product.media limit: 10 %}
+                <div class="swiper-slide">
+                  <button class="relative aspect-square rounded-lg overflow-hidden border-2 transition-all border-border hover:border-primary/50 swiper-slide-thumb-active:border-primary w-full">
+                    {% if media.media_type == 'image' %}
+                      <img
+                        alt="{{ media.alt | escape }}"
+                        loading="lazy"
+                        decoding="async"
+                        class="object-cover w-full h-full"
+                        src="{{ media | image_url: width: 200 }}"
+                      >
+                    {% elsif media.media_type == 'video' %}
+                      <div class="relative w-full h-full">
+                        <img
+                          alt="{{ media.alt | escape }}"
+                          loading="lazy"
+                          decoding="async"
+                          class="object-cover w-full h-full"
+                          src="{{ media.preview_image | image_url: width: 200 }}"
+                        >
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/20">
+                          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                          </svg>
+                        </div>
+                      </div>
+                    {% endif %}
+                  </button>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
         <div class="grid grid-cols-3 gap-4 pt-4">
           <div
             data-slot="card"
@@ -239,8 +293,10 @@
         <div>
           <div class="flex items-start justify-between mb-2">
             <div>
-              <p class="text-sm text-muted-foreground mb-1">INSPIRED BY YSL BLACK OPIUM</p>
-              <h1 class="font-display text-5xl md:text-6xl text-foreground mb-3">BLACK</h1>
+              {% if product.vendor != blank %}
+                <p class="text-sm text-muted-foreground mb-1 uppercase tracking-wide">{{ product.vendor }}</p>
+              {% endif %}
+              <h1 class="font-display text-5xl md:text-6xl text-foreground mb-3">{{ product.title }}</h1>
             </div>
             <div class="flex gap-2">
               <button
@@ -358,7 +414,14 @@
             <span class="text-sm font-bold text-foreground">5.0</span
             ><span class="text-sm text-muted-foreground">(61 reviews)</span>
           </div>
-          <div class="flex items-baseline gap-3 mb-4"><span class="text-4xl font-bold text-primary">$34.99</span></div>
+          <div class="flex items-baseline gap-3 mb-4">
+            {% if product.compare_at_price > product.price %}
+              <span class="text-4xl font-bold text-primary">{{ product.price | money }}</span>
+              <span class="text-2xl text-muted-foreground line-through">{{ product.compare_at_price | money }}</span>
+            {% else %}
+              <span class="text-4xl font-bold text-primary">{{ product.price | money }}</span>
+            {% endif %}
+          </div>
           <div class="flex items-center gap-4 mb-6">
             <span
               data-slot="badge"
@@ -397,11 +460,11 @@
               Only 12 left in stock</span
             >
           </div>
-          <p class="text-muted-foreground leading-relaxed mb-6">
-            Black is that bold scent you'll live in. A little bit of cardamom heat cooled off by a whiff of iris and
-            violet—then, yeah, a creamy, sweet vanilla that sticks around like a lover you won't forget. The velvety
-            cashmere vibes and sweet heat that sticks around like a lover you won't leave your wheels.
-          </p>
+          {% if product.description != blank %}
+            <div class="text-muted-foreground leading-relaxed mb-6 prose prose-sm max-w-none">
+              {{ product.description }}
+            </div>
+          {% endif %}
         </div>
         <div
           data-slot="card"
@@ -481,106 +544,125 @@
             </div>
           </div>
         </div>
-        <div>
-          <label class="block text-sm font-bold text-foreground mb-3">SELECT SIZE</label>
-          <div class="grid grid-cols-4 gap-3">
-            <button class="p-4 rounded-lg border-2 transition-all text-center border-border hover:border-primary/50">
-              <p class="font-bold text-foreground">10ml</p>
-              <p class="text-xs text-muted-foreground">$14.99</p></button
-            ><button class="p-4 rounded-lg border-2 transition-all text-center border-primary bg-primary/10">
-              <p class="font-bold text-foreground">30ml</p>
-              <p class="text-xs text-muted-foreground">$34.99</p></button
-            ><button class="p-4 rounded-lg border-2 transition-all text-center border-border hover:border-primary/50">
-              <p class="font-bold text-foreground">100ml</p>
-              <p class="text-xs text-muted-foreground">$79.99</p></button
-            ><button class="p-4 rounded-lg border-2 transition-all text-center border-border hover:border-primary/50">
-              <p class="font-bold text-foreground">500ml</p>
-              <p class="text-xs text-muted-foreground">$299.99</p>
-            </button>
+        {% if product.variants.size > 1 %}
+          <div>
+            <label class="block text-sm font-bold text-foreground mb-3">SELECT VARIANT</label>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+              {% for variant in product.variants %}
+                <button 
+                  class="variant-option p-4 rounded-lg border-2 transition-all text-center border-border hover:border-primary/50 {% if variant == product.selected_or_first_available_variant %}border-primary bg-primary/10{% endif %}"
+                  data-variant-id="{{ variant.id }}"
+                  data-variant-price="{{ variant.price | money }}"
+                >
+                  <p class="font-bold text-foreground">{{ variant.title }}</p>
+                  <p class="text-xs text-muted-foreground">{{ variant.price | money }}</p>
+                </button>
+              {% endfor %}
+            </div>
           </div>
-        </div>
+        {% endif %}
         <div class="space-y-3">
-          <button class="w-full p-4 rounded-lg border-2 transition-all text-left border-primary bg-primary/10">
+          <div class="w-full p-4 rounded-lg border-2 border-primary bg-primary/10">
             <div class="flex items-center justify-between">
               <div>
                 <p class="font-bold text-foreground">One-time purchase</p>
-                <p class="text-sm text-muted-foreground">$34.99</p>
+                <p class="text-sm text-muted-foreground" id="selected-price">{{ product.selected_or_first_available_variant.price | money }}</p>
               </div>
               <div class="h-5 w-5 rounded-full border-2 border-primary bg-primary">
                 <div class="h-full w-full rounded-full bg-background m-0.5"></div>
               </div>
-            </div></button
-          ><button class="w-full p-4 rounded-lg border-2 transition-all text-left relative overflow-hidden border-border hover:border-primary/50">
-            <span
-              data-slot="badge"
-              class="inline-flex items-center justify-center rounded-md border font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent [a&amp;]:hover:bg-primary/90 absolute top-2 right-2 bg-primary text-primary-foreground text-xs px-2 py-0.5"
-              >SAVE 10%</span
-            >
-            <div class="flex items-center justify-between">
-              <div>
-                <p class="font-bold text-foreground">Subscribe &amp; Save</p>
-                <p class="text-sm text-primary font-bold">$31.49 every month</p>
-              </div>
-              <div class="h-5 w-5 rounded-full border-2 border-border"></div>
             </div>
-          </button>
-        </div>
-        <div class="flex gap-4">
-          <div class="flex items-center border-2 border-border rounded-lg">
-            <button class="p-4 hover:bg-primary/10 transition-colors">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-minus h-4 w-4"
-              >
-                <path d="M5 12h14"></path>
-              </svg></button
-            ><span class="px-6 font-bold text-foreground">1</span
-            ><button class="p-4 hover:bg-primary/10 transition-colors">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-plus h-4 w-4"
-              >
-                <path d="M5 12h14"></path><path d="M12 5v14"></path>
-              </svg>
-            </button>
           </div>
-          <button
-            data-slot="button"
-            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive px-4 has-[&gt;svg]:px-3 flex-1 h-auto py-4 text-lg font-bold bg-primary hover:bg-primary/90 text-primary-foreground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-shopping-cart mr-2 h-5 w-5"
-            >
-              <circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
-            </svg>
-            ADD TO CART
-          </button>
+          
+          {% comment %} Subscription option - can be enabled via settings {% endcomment %}
+          {% if section.settings.show_subscription_option %}
+            <button class="w-full p-4 rounded-lg border-2 transition-all text-left relative overflow-hidden border-border hover:border-primary/50">
+              <span class="absolute top-2 right-2 bg-primary text-primary-foreground text-xs px-2 py-0.5 rounded-md font-medium">
+                SAVE 10%
+              </span>
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="font-bold text-foreground">Subscribe &amp; Save</p>
+                  <p class="text-sm text-primary font-bold" id="subscription-price">
+                    {{ product.selected_or_first_available_variant.price | times: 0.9 | money }} every month
+                  </p>
+                </div>
+                <div class="h-5 w-5 rounded-full border-2 border-border"></div>
+              </div>
+            </button>
+          {% endif %}
         </div>
+        <product-form class="product-form">
+          <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" class="flex gap-4">
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" id="product-variant-id">
+            
+            <div class="flex items-center border-2 border-border rounded-lg">
+              <button type="button" class="quantity-decrease p-4 hover:bg-primary/10 transition-colors">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-minus h-4 w-4"
+                >
+                  <path d="M5 12h14"></path>
+                </svg>
+              </button>
+              <input 
+                type="number" 
+                name="quantity" 
+                value="1" 
+                min="1" 
+                class="quantity-input w-16 text-center font-bold text-foreground bg-transparent border-none focus:outline-none"
+              >
+              <button type="button" class="quantity-increase p-4 hover:bg-primary/10 transition-colors">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-plus h-4 w-4"
+                >
+                  <path d="M5 12h14"></path><path d="M12 5v14"></path>
+                </svg>
+              </button>
+            </div>
+            
+            <button
+              type="submit"
+              name="add"
+              class="add-to-cart-btn inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive px-4 has-[>svg]:px-3 flex-1 h-auto py-4 text-lg font-bold bg-primary hover:bg-primary/90 text-primary-foreground"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-shopping-cart mr-2 h-5 w-5"
+              >
+                <circle cx="8" cy="21" r="1"></circle>
+                <circle cx="19" cy="21" r="1"></circle>
+                <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+              </svg>
+              <span class="btn-text">ADD TO CART</span>
+            </button>
+          </form>
+        </product-form>
         <p class="text-sm text-muted-foreground text-center">
           Or 4 interest-free payments of $8.75 with <span class="font-bold text-foreground">Afterpay</span>
         </p>
@@ -3053,3 +3135,126 @@
   ]
 }
 {% endschema %}
+
+{% comment %} Swiper JavaScript {% endcomment %}
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize thumbnails swiper first
+  const thumbsSwiper = new Swiper('.product-thumbs-swiper', {
+    spaceBetween: 16,
+    slidesPerView: 3,
+    freeMode: true,
+    watchSlidesProgress: true,
+    breakpoints: {
+      640: {
+        slidesPerView: 3,
+        spaceBetween: 16,
+      },
+      768: {
+        slidesPerView: 3,
+        spaceBetween: 16,
+      },
+      1024: {
+        slidesPerView: 3,
+        spaceBetween: 16,
+      },
+    },
+  });
+
+  // Initialize main swiper
+  const mainSwiper = new Swiper('.product-main-swiper', {
+    spaceBetween: 10,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    thumbs: {
+      swiper: thumbsSwiper,
+    },
+    keyboard: {
+      enabled: true,
+    },
+    mousewheel: {
+      forceToAxis: true,
+    },
+    loop: false,
+    effect: 'slide',
+    speed: 300,
+  });
+
+  // Handle variant selection and price updates
+  const variantOptions = document.querySelectorAll('.variant-option');
+  const selectedPrice = document.getElementById('selected-price');
+  const subscriptionPrice = document.getElementById('subscription-price');
+  const productVariantId = document.getElementById('product-variant-id');
+
+  variantOptions.forEach(option => {
+    option.addEventListener('click', function() {
+      // Remove active class from all options
+      variantOptions.forEach(opt => {
+        opt.classList.remove('border-primary', 'bg-primary/10');
+        opt.classList.add('border-border');
+      });
+      
+      // Add active class to clicked option
+      this.classList.remove('border-border');
+      this.classList.add('border-primary', 'bg-primary/10');
+      
+      // Update prices and variant ID
+      const variantId = this.dataset.variantId;
+      const variantPrice = this.dataset.variantPrice;
+      
+      if (selectedPrice) selectedPrice.textContent = variantPrice;
+      if (subscriptionPrice) {
+        // Calculate 10% discount for subscription
+        const price = parseFloat(variantPrice.replace(/[^0-9.]/g, ''));
+        const discountedPrice = (price * 0.9).toFixed(2);
+        subscriptionPrice.textContent = `$${discountedPrice} every month`;
+      }
+      if (productVariantId) productVariantId.value = variantId;
+    });
+  });
+
+  // Handle quantity controls
+  const quantityInput = document.querySelector('.quantity-input');
+  const quantityDecrease = document.querySelector('.quantity-decrease');
+  const quantityIncrease = document.querySelector('.quantity-increase');
+
+  if (quantityDecrease && quantityIncrease && quantityInput) {
+    quantityDecrease.addEventListener('click', function() {
+      const currentValue = parseInt(quantityInput.value);
+      if (currentValue > 1) {
+        quantityInput.value = currentValue - 1;
+      }
+    });
+
+    quantityIncrease.addEventListener('click', function() {
+      const currentValue = parseInt(quantityInput.value);
+      quantityInput.value = currentValue + 1;
+    });
+  }
+});
+</script>
+
+<style>
+  .product-main-swiper {
+    --swiper-navigation-color: currentColor;
+    --swiper-navigation-size: 24px;
+  }
+  
+  .product-thumbs-swiper .swiper-slide-thumb-active button {
+    border-color: rgb(var(--color-primary)) !important;
+  }
+  
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: currentColor;
+  }
+  
+  .swiper-button-prev:after,
+  .swiper-button-next:after {
+    display: none;
+  }
+</style>
