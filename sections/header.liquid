@@ -104,11 +104,9 @@
     .bg-card {
       background-color: rgb(var(--color-base-background-1));
     }
-
     .border-border {
-      border-color: rgba(var(--color-base-accent-1), 0.2);
-    }
-
+      border-color: var(--border);
+  }
     .text-muted-foreground {
       color: rgba(var(--color-base-text), 0.6);
     }
@@ -183,8 +181,8 @@
       assign localization_forms = true
     endif
   -%}
-  <header class="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
-    <div class="container mx-auto px-4">
+  <header class="sticky top-0 z-[60] bg-background/95 backdrop-blur-sm border-b border-border">
+    <div class="container mx-auto px-4 relative">
       <div class="flex items-center justify-between h-24">
         <a href="/" class="flex items-center">
           <div class="text-2xl font-bold tracking-tight text-foreground hover:text-primary transition-colors p-2">
@@ -225,333 +223,145 @@
 
             <!-- Mega Menu -->
             <div
-              class="mega-menu-container absolute left-1/2 -translate-x-1/2 top-full pt-4 transition-all duration-300 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0"
-              style="transform: translateX(20%);"
+              class="mega-menu-container fixed left-1/2 -translate-x-1/2 pt-4 transition-all duration-300 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 z-[9999]"
+              style="top: 96px; transform: translateX(20%);"
             >
               <div class="bg-card border border-border rounded-2xl shadow-2xl overflow-hidden">
                 <div class="p-4 md:p-8 grid grid-cols-1 md:grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4 md:gap-8 w-[calc(100vw-2rem)] md:w-auto md:min-w-[700px] max-w-[calc(100vw-2rem)] md:max-w-6xl">
-                  <!-- Scent Collections -->
+                  <!-- Hotel Collection -->
                   <div class="space-y-4">
+                    {% assign hotel_title = section.settings.hotel_collection_title | default: 'Hotel Collection' %}
                     <h3 class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                      Hotel Collection
+                      {{ hotel_title }}
                     </h3>
                     <ul class="space-y-3">
-                      <li>
-                        <a
-                          href="/collections/calm-down"
-                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
-                          >Calm Down
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
-                          >
-                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
-                          </svg>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="/collections/zest-the-city"
-                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
-                          >Zest & The City
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
-                          >
-                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
-                          </svg>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="/collections/peach-tease"
-                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
-                          >Peach Tease
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
-                          >
-                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
-                          </svg>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="/collections/mystic-nights"
-                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
-                          >Mystic Nights
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
-                          >
-                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
-                          </svg>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="/collections/blooming-flirt"
-                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
-                          >Blooming Flirt
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
-                          >
-                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
-                          </svg>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="/collections/wet-bar"
-                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
-                          >Wet Bar
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
-                          >
-                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
-                          </svg>
-                        </a>
-                      </li>
+                      {% assign hotel_links = section.settings.hotel_collection_links
+                        | default: 'Calm Down|/collections/calm-down,Zest & The City|/collections/zest-the-city,Peach Tease|/collections/peach-tease,Mystic Nights|/collections/mystic-nights,Blooming Flirt|/collections/blooming-flirt,Wet Bar|/collections/wet-bar'
+                      %}
+                      {% assign hotel_items = hotel_links | split: ',' %}
+                      {% for item in hotel_items %}
+                        {% assign link_parts = item | split: '|' %}
+                        {% if link_parts.size == 2 %}
+                          <li>
+                            <a
+                              href="{{ link_parts[1] | strip }}"
+                              class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                            >
+                              {{- link_parts[0] | strip }}
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="14"
+                                height="14"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                              >
+                                <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                              </svg>
+                            </a>
+                          </li>
+                        {% endif %}
+                      {% endfor %}
                     </ul>
                   </div>
 
                   <!-- Gilded Exotics -->
                   <div class="space-y-4">
-                    <h3 class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Gilded Exotics</h3>
+                    {% assign gilded_title = section.settings.gilded_collection_title | default: 'Gilded Exotics' %}
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                      {{ gilded_title }}
+                    </h3>
                     <ul class="space-y-3">
-                      <li>
-                        <a
-                          href="/collections/on-par"
-                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
-                          >On Par
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
-                          >
-                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
-                          </svg>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="/collections/sweet-juliet"
-                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
-                          >Sweet Juliet
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
-                          >
-                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
-                          </svg>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="/collections/juicy-theory"
-                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
-                          >Juicy Theory
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
-                          >
-                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
-                          </svg>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="/collections/portable-diffusers"
-                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
-                          >Portable Units
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
-                          >
-                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
-                          </svg>
-                        </a>
-                      </li>
+                      {% assign gilded_links = section.settings.gilded_collection_links
+                        | default: 'On Par|/collections/on-par,Sweet Juliet|/collections/sweet-juliet,Juicy Theory|/collections/juicy-theory,Portable Units|/collections/portable-diffusers'
+                      %}
+                      {% assign gilded_items = gilded_links | split: ',' %}
+                      {% for item in gilded_items %}
+                        {% assign link_parts = item | split: '|' %}
+                        {% if link_parts.size == 2 %}
+                          <li>
+                            <a
+                              href="{{ link_parts[1] | strip }}"
+                              class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                            >
+                              {{- link_parts[0] | strip }}
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="14"
+                                height="14"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                              >
+                                <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                              </svg>
+                            </a>
+                          </li>
+                        {% endif %}
+                      {% endfor %}
                     </ul>
                   </div>
 
                   <!-- Popular Collections -->
                   <div class="space-y-4">
+                    {% assign popular_title = section.settings.popular_collection_title
+                      | default: 'Popular Collections'
+                    %}
                     <h3 class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                      Popular Collections
+                      {{ popular_title }}
                     </h3>
                     <ul class="space-y-3">
-                      <li>
-                        <a
-                          href="/collections/best-sellers"
-                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
-                          >Best Sellers
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
-                          >
-                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
-                          </svg>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="/collections/new-arrivals"
-                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
-                          >New Arrivals
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
-                          >
-                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
-                          </svg>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="/collections/bundles-deals"
-                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
-                          >Bundle Deals
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
-                          >
-                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
-                          </svg>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="/collections/starter-kits"
-                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
-                          >Starter Kits
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
-                          >
-                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
-                          </svg>
-                        </a>
-                      </li>
+                      {% assign popular_links = section.settings.popular_collection_links
+                        | default: 'Best Sellers|/collections/best-sellers,New Arrivals|/collections/new-arrivals,Bundle Deals|/collections/bundles-deals,Starter Kits|/collections/starter-kits'
+                      %}
+                      {% assign popular_items = popular_links | split: ',' %}
+                      {% for item in popular_items %}
+                        {% assign link_parts = item | split: '|' %}
+                        {% if link_parts.size == 2 %}
+                          <li>
+                            <a
+                              href="{{ link_parts[1] | strip }}"
+                              class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                            >
+                              {{- link_parts[0] | strip }}
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="14"
+                                height="14"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                              >
+                                <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                              </svg>
+                            </a>
+                          </li>
+                        {% endif %}
+                      {% endfor %}
                     </ul>
                   </div>
 
-                  <!-- Featured Product Card -->
+                  <!-- Featured Product Card 1 -->
+                  {% assign card1_url = section.settings.featured_card1_url | default: '/collections/best-sellers' %}
+                  {% assign card1_category = section.settings.featured_card1_category | default: 'Best Sellers' %}
+                  {% assign card1_title = section.settings.featured_card1_title | default: 'Top Scents' %}
+                  {% assign card1_description = section.settings.featured_card1_description
+                    | default: 'Most loved fragrances'
+                  %}
                   <a
-                    href="/collections/best-sellers"
+                    href="{{ card1_url }}"
                     class="group relative overflow-hidden rounded-xl bg-secondary hover:shadow-lg transition-all"
                   >
                     <div class="aspect-[3/4] relative overflow-hidden bg-gradient-to-br from-purple-50 to-purple-100">
@@ -576,17 +386,23 @@
                           </div>
                         </div>
                         <div class="p-6 bg-gradient-to-t from-purple-900/90 to-transparent text-white">
-                          <p class="text-xs uppercase tracking-wider mb-1 opacity-90">Best Sellers</p>
-                          <h4 class="text-lg font-semibold mb-2">Top Scents</h4>
-                          <p class="text-sm opacity-90">Most loved fragrances</p>
+                          <p class="text-xs uppercase tracking-wider mb-1 opacity-90">{{ card1_category }}</p>
+                          <h4 class="text-lg font-semibold mb-2">{{ card1_title }}</h4>
+                          <p class="text-sm opacity-90">{{ card1_description }}</p>
                         </div>
                       </div>
                     </div>
                   </a>
 
-                  <!-- Bundle Deal Card -->
+                  <!-- Featured Product Card 2 -->
+                  {% assign card2_url = section.settings.featured_card2_url | default: '/collections/bundles-deals' %}
+                  {% assign card2_category = section.settings.featured_card2_category | default: 'Save More' %}
+                  {% assign card2_title = section.settings.featured_card2_title | default: 'Bundle Deals' %}
+                  {% assign card2_description = section.settings.featured_card2_description
+                    | default: 'Complete scent packages'
+                  %}
                   <a
-                    href="/collections/bundles-deals"
+                    href="{{ card2_url }}"
                     class="group relative overflow-hidden rounded-xl bg-secondary hover:shadow-lg transition-all"
                   >
                     <div class="aspect-[3/4] relative overflow-hidden bg-gradient-to-br from-orange-50 to-orange-100">
@@ -613,9 +429,9 @@
                           </div>
                         </div>
                         <div class="p-6 bg-gradient-to-t from-orange-900/90 to-transparent text-white">
-                          <p class="text-xs uppercase tracking-wider mb-1 opacity-90">Save More</p>
-                          <h4 class="text-lg font-semibold mb-2">Bundle Deals</h4>
-                          <p class="text-sm opacity-90">Complete scent packages</p>
+                          <p class="text-xs uppercase tracking-wider mb-1 opacity-90">{{ card2_category }}</p>
+                          <h4 class="text-lg font-semibold mb-2">{{ card2_title }}</h4>
+                          <p class="text-sm opacity-90">{{ card2_description }}</p>
                         </div>
                       </div>
                     </div>
@@ -645,185 +461,90 @@
               </svg>
             </button>
 
-            <div class="mega-menu-container absolute left-1/2 -translate-x-1/2 top-full pt-4 transition-all duration-300 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0">
+            <div class="mega-menu-container fixed left-1/2 -translate-x-1/2 pt-4 transition-all duration-300 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 z-[9999]" style="top: 96px;">
               <div class="bg-card border border-border rounded-2xl shadow-2xl overflow-hidden">
                 <div class="p-6 grid grid-cols-2 gap-6 w-[400px]">
+                  <!-- Bundle Types -->
                   <div class="space-y-4">
-                    <h3 class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Bundle Types</h3>
+                    {% assign bundle_types_title = section.settings.bundle_types_title | default: 'Bundle Types' %}
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                      {{ bundle_types_title }}
+                    </h3>
                     <ul class="space-y-3">
-                      <li>
-                        <a
-                          href="/collections/starter-bundles"
-                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
-                          >Starter Bundles
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
-                          >
-                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
-                          </svg>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="/collections/home-bundles"
-                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
-                          >Home Bundles
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
-                          >
-                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
-                          </svg>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="/collections/car-bundles"
-                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
-                          >Car Bundles
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
-                          >
-                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
-                          </svg>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="/collections/gift-bundles"
-                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
-                          >Gift Bundles
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
-                          >
-                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
-                          </svg>
-                        </a>
-                      </li>
+                      {% assign bundle_types_links = section.settings.bundle_types_links
+                        | default: 'Starter Bundles|/collections/starter-bundles,Home Bundles|/collections/home-bundles,Car Bundles|/collections/car-bundles,Gift Bundles|/collections/gift-bundles'
+                      %}
+                      {% assign bundle_types_items = bundle_types_links | split: ',' %}
+                      {% for item in bundle_types_items %}
+                        {% assign link_parts = item | split: '|' %}
+                        {% if link_parts.size == 2 %}
+                          <li>
+                            <a
+                              href="{{ link_parts[1] | strip }}"
+                              class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                            >
+                              {{- link_parts[0] | strip }}
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="14"
+                                height="14"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                              >
+                                <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                              </svg>
+                            </a>
+                          </li>
+                        {% endif %}
+                      {% endfor %}
                     </ul>
                   </div>
+
+                  <!-- Special Offers -->
                   <div class="space-y-4">
-                    <h3 class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Special Offers</h3>
+                    {% assign special_offers_title = section.settings.special_offers_title
+                      | default: 'Special Offers'
+                    %}
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                      {{ special_offers_title }}
+                    </h3>
                     <ul class="space-y-3">
-                      <li>
-                        <a
-                          href="/collections/flash-deals"
-                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
-                          >Flash Deals
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
-                          >
-                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
-                          </svg>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="/collections/seasonal-bundles"
-                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
-                          >Seasonal Bundles
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
-                          >
-                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
-                          </svg>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="/collections/bulk-deals"
-                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
-                          >Bulk Deals
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
-                          >
-                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
-                          </svg>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="/collections/subscription-deals"
-                          class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
-                          >Subscription Deals
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
-                          >
-                            <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
-                          </svg>
-                        </a>
-                      </li>
+                      {% assign special_offers_links = section.settings.special_offers_links
+                        | default: 'Flash Deals|/collections/flash-deals,Seasonal Bundles|/collections/seasonal-bundles,Bulk Deals|/collections/bulk-deals,Subscription Deals|/collections/subscription-deals'
+                      %}
+                      {% assign special_offers_items = special_offers_links | split: ',' %}
+                      {% for item in special_offers_items %}
+                        {% assign link_parts = item | split: '|' %}
+                        {% if link_parts.size == 2 %}
+                          <li>
+                            <a
+                              href="{{ link_parts[1] | strip }}"
+                              class="text-sm hover:text-accent transition-colors inline-flex items-center gap-2 group"
+                            >
+                              {{- link_parts[0] | strip }}
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="14"
+                                height="14"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                              >
+                                <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+                              </svg>
+                            </a>
+                          </li>
+                        {% endif %}
+                      {% endfor %}
                     </ul>
                   </div>
                 </div>
@@ -851,7 +572,7 @@
               </svg>
             </button>
 
-            <div class="mega-menu-container absolute left-1/2 -translate-x-1/2 top-full pt-4 transition-all duration-300 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0">
+            <div class="mega-menu-container fixed left-1/2 -translate-x-1/2 pt-4 transition-all duration-300 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 z-[9999]" style="top: 96px;">
               <div class="bg-card border border-border rounded-2xl shadow-2xl overflow-hidden">
                 <div class="p-6 grid grid-cols-3 gap-6 w-[600px]">
                   <div class="space-y-4">
@@ -1083,7 +804,7 @@
               </svg>
             </button>
 
-            <div class="mega-menu-container absolute left-1/2 -translate-x-1/2 top-full pt-4 transition-all duration-300 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0">
+            <div class="mega-menu-container fixed left-1/2 -translate-x-1/2 pt-4 transition-all duration-300 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 z-[9999]" style="top: 96px;">
               <div class="bg-card border border-border rounded-2xl shadow-2xl overflow-hidden">
                 <div class="p-6 grid grid-cols-2 gap-6 w-[500px]">
                   <div class="space-y-4">
@@ -1298,7 +1019,7 @@
             </svg>
           </button>
           <a
-            href="/login"
+            href="/account"
             class="hidden md:block text-sm font-medium text-foreground hover:text-primary transition-colors"
             >LOGIN</a
           >
@@ -1346,7 +1067,7 @@
   <!-- Cart Drawer -->
   <div
     id="cart-drawer"
-    class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 opacity-0 invisible transition-all duration-300"
+    class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] opacity-0 invisible transition-all duration-300"
   >
     <div class="absolute right-0 top-0 h-full w-full max-w-md bg-background transform translate-x-full transition-transform duration-300">
       <div class="flex flex-col h-full">
@@ -1413,7 +1134,7 @@
   <!-- Mobile Menu -->
   <div
     id="mobile-menu"
-    class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 opacity-0 invisible transition-all duration-300 lg:hidden"
+    class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] opacity-0 invisible transition-all duration-300 lg:hidden"
   >
     <div class="absolute right-0 top-0 h-full w-full max-w-sm bg-background transform translate-x-full transition-transform duration-300">
       <div class="flex flex-col h-full">
@@ -2207,6 +1928,133 @@
       "id": "show_line_separator",
       "default": true,
       "label": "t:sections.header.settings.show_line_separator.label"
+    },
+    {
+      "type": "header",
+      "content": "Mega Menu Settings"
+    },
+    {
+      "type": "text",
+      "id": "hotel_collection_title",
+      "label": "Hotel Collection Title",
+      "default": "Hotel Collection"
+    },
+    {
+      "type": "textarea",
+      "id": "hotel_collection_links",
+      "label": "Hotel Collection Links",
+      "info": "Format: Name|URL,Name|URL (e.g., Calm Down|/collections/calm-down,Zest & The City|/collections/zest-the-city)",
+      "default": "All Products|/collections/all-products,Calm Down|/collections/calm-down,Zest & The City|/collections/zest-the-city,Peach Tease|/collections/peach-tease,Mystic Nights|/collections/mystic-nights,Blooming Flirt|/collections/blooming-flirt,Wet Bar|/collections/wet-bar"
+    },
+    {
+      "type": "text",
+      "id": "gilded_collection_title",
+      "label": "Gilded Collection Title",
+      "default": "Gilded Exotics"
+    },
+    {
+      "type": "textarea",
+      "id": "gilded_collection_links",
+      "label": "Gilded Collection Links",
+      "info": "Format: Name|URL,Name|URL (e.g., On Par|/collections/on-par,Sweet Juliet|/collections/sweet-juliet)",
+      "default": "On Par|/collections/on-par,Sweet Juliet|/collections/sweet-juliet,Juicy Theory|/collections/juicy-theory,Portable Units|/collections/portable-diffusers"
+    },
+    {
+      "type": "text",
+      "id": "popular_collection_title",
+      "label": "Popular Collection Title",
+      "default": "Popular Collections"
+    },
+    {
+      "type": "textarea",
+      "id": "popular_collection_links",
+      "label": "Popular Collection Links",
+      "info": "Format: Name|URL,Name|URL (e.g., Best Sellers|/collections/best-sellers,New Arrivals|/collections/new-arrivals)",
+      "default": "Best Sellers|/collections/best-sellers,New Arrivals|/collections/new-arrivals,Bundle Deals|/collections/bundles-deals,Starter Kits|/collections/starter-kits"
+    },
+    {
+      "type": "header",
+      "content": "Bundles Menu Settings"
+    },
+    {
+      "type": "text",
+      "id": "bundle_types_title",
+      "label": "Bundle Types Title",
+      "default": "Bundle Types"
+    },
+    {
+      "type": "textarea",
+      "id": "bundle_types_links",
+      "label": "Bundle Types Links",
+      "info": "Format: Name|URL,Name|URL (e.g., Starter Bundles|/collections/starter-bundles,Home Bundles|/collections/home-bundles)",
+      "default": "Starter Bundles|/collections/starter-bundles,Home Bundles|/collections/home-bundles,Car Bundles|/collections/car-bundles,Gift Bundles|/collections/gift-bundles"
+    },
+    {
+      "type": "text",
+      "id": "special_offers_title",
+      "label": "Special Offers Title",
+      "default": "Special Offers"
+    },
+    {
+      "type": "textarea",
+      "id": "special_offers_links",
+      "label": "Special Offers Links",
+      "info": "Format: Name|URL,Name|URL (e.g., Flash Deals|/collections/flash-deals,Seasonal Bundles|/collections/seasonal-bundles)",
+      "default": "Flash Deals|/collections/flash-deals,Seasonal Bundles|/collections/seasonal-bundles,Bulk Deals|/collections/bulk-deals,Subscription Deals|/collections/subscription-deals"
+    },
+    {
+      "type": "header",
+      "content": "Featured Cards Settings"
+    },
+    {
+      "type": "text",
+      "id": "featured_card1_url",
+      "label": "Featured Card 1 URL",
+      "default": "/collections/best-sellers",
+      "info": "Enter the URL path (e.g., /collections/best-sellers)"
+    },
+    {
+      "type": "text",
+      "id": "featured_card1_category",
+      "label": "Featured Card 1 Category",
+      "default": "Best Sellers"
+    },
+    {
+      "type": "text",
+      "id": "featured_card1_title",
+      "label": "Featured Card 1 Title",
+      "default": "Top Scents"
+    },
+    {
+      "type": "text",
+      "id": "featured_card1_description",
+      "label": "Featured Card 1 Description",
+      "default": "Most loved fragrances"
+    },
+    {
+      "type": "text",
+      "id": "featured_card2_url",
+      "label": "Featured Card 2 URL",
+      "default": "/collections/bundles-deals",
+      "info": "Enter the URL path (e.g., /collections/bundles-deals)"
+    },
+    {
+      "type": "text",
+      "id": "featured_card2_category",
+      "label": "Featured Card 2 Category",
+      "default": "Save More"
+    },
+    {
+      "type": "text",
+      "id": "featured_card2_title",
+      "label": "Featured Card 2 Title",
+      "default": "Bundle Deals"
+    },
+    {
+      "type": "text",
+      "id": "featured_card2_description",
+      "label": "Featured Card 2 Description",
+      "default": "Complete scent packages"
     },
     {
       "type": "header",
