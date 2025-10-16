@@ -181,14 +181,14 @@
       assign localization_forms = true
     endif
   -%}
-  <header class="sticky top-0 z-[60] bg-background/95 backdrop-blur-sm border-b border-border">
+  <header class="sticky top-0 z-[60] bg-brand-black text-white backdrop-blur-sm border-b border-border">
     <div class="container mx-auto px-4 relative">
       <div class="flex items-center justify-between h-24">
         <a href="/" class="flex items-center">
-          <div class="text-2xl font-bold tracking-tight text-foreground hover:text-primary transition-colors p-2">
+          <div class="text-2xl font-bold tracking-tight text-white hover:text-brand-orange transition-colors p-2">
             <img
               elementtiming="nbf-header-logo-desktop"
-              src="//images.squarespace-cdn.com/content/v1/67da0c2c5d3b414ebdd380a0/98398d47-4a7a-44bb-a374-962a6d6df255/Whiffed+Aroma+main+transparent.png?format=1500w"
+              src="{{ 'logo.png' | asset_url }}"
               alt="Whiffed Aromas"
               style="display:block"
               fetchpriority="high"
@@ -201,9 +201,9 @@
           </div>
         </a>
         <nav class="hidden lg:flex items-center gap-8">
-          <a href="/" class="text-sm font-medium text-foreground hover:text-primary transition-colors">HOME</a>
+          <a href="/" class="text-sm font-heading font-medium text-white transition-colors">HOME</a>
           <div class="relative group">
-            <button class="text-sm font-medium text-foreground hover:text-primary transition-colors flex items-center gap-1">
+            <button class="text-sm font-heading font-medium text-white transition-colors flex items-center gap-1">
               SHOP
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -443,7 +443,7 @@
 
           <!-- BUNDLES Mega Menu -->
           <div class="relative group">
-            <button class="text-sm font-medium text-foreground hover:text-primary transition-colors flex items-center gap-1">
+            <button class="text-sm font-heading font-medium text-white transition-colors flex items-center gap-1">
               BUNDLES
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -554,7 +554,7 @@
 
           <!-- SCENTS Mega Menu -->
           <div class="relative group">
-            <button class="text-sm font-medium text-foreground hover:text-primary transition-colors flex items-center gap-1">
+            <button class="text-sm font-heading font-medium text-white transition-colors flex items-center gap-1">
               SCENTS
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -786,7 +786,7 @@
 
           <!-- MACHINES Mega Menu -->
           <div class="relative group">
-            <button class="text-sm font-medium text-foreground hover:text-primary transition-colors flex items-center gap-1">
+            <button class="text-sm font-heading font-medium text-white transition-colors flex items-center gap-1">
               MACHINES
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -990,10 +990,10 @@
             </div>
           </div>
 
-          <a href="/company" class="text-sm font-medium text-foreground hover:text-primary transition-colors"
+          <a href="/company" class="text-sm font-heading font-medium text-white transition-colors"
             >COMPANY</a
           >
-          <a href="/pages/media" class="text-sm font-medium text-foreground hover:text-primary transition-colors"
+          <a href="/pages/media" class="text-sm font-heading font-medium text-white transition-colors"
             >MEDIA</a
           >
         </nav>
@@ -1001,7 +1001,7 @@
           <button
             id="search-collapsed"
             data-slot="button"
-            class="items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent dark:hover:bg-accent/50 size-9 hidden md:flex hover:text-primary"
+            class="items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive size-9 hidden md:flex"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -1020,14 +1020,14 @@
           </button>
           <a
             href="/account"
-            class="hidden md:block text-sm font-medium text-foreground hover:text-primary transition-colors"
+            class="hidden md:block text-sm font-heading font-medium text-white transition-colors"
             >LOGIN</a
           >
           <div class="hidden md:block">
             <button
               id="cart-trigger"
               data-slot="button"
-              class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 size-9 relative"
+              class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive size-9 relative"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

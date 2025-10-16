@@ -5,7 +5,17 @@ export default {
     "./src/**/*.{js,css}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'brand-black': '#000000',
+        'brand-orange': '#FFA500',
+        'brand-purple': '#800080',
+      },
+      fontFamily: {
+        sans: ['Roboto', 'sans-serif'],
+        heading: ['Montserrat', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 }

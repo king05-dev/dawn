@@ -1,81 +1,41 @@
 @import "tailwindcss";
 
-/* Light Mode (Default) - Bright, clean, modern theme */
+/* Dark Theme - Luxury, bold, aroma-tech */
 :root {
-  --background: oklch(1 0 0);           /* Pure white background */
-  --foreground: oklch(0.05 0 0);        /* Very dark text for contrast */
-  --card: oklch(1 0 0);                 /* Pure white cards */
-  --card-foreground: oklch(0.05 0 0);   /* Very dark card text */
-  --popover: oklch(1 0 0);              /* Pure white popovers */
-  --popover-foreground: oklch(0.05 0 0); /* Very dark popover text */
-  --primary: oklch(0.05 0 0);           /* Very dark primary (black buttons) */
-  --primary-foreground: oklch(1 0 0);   /* White text on dark buttons */
-  --secondary: oklch(0.98 0 0);         /* Very light gray secondary */
-  --secondary-foreground: oklch(0.05 0 0); /* Dark text on light secondary */
-  --muted: oklch(0.97 0 0);             /* Light muted background */
-  --muted-foreground: oklch(0.4 0 0);   /* Medium gray muted text */
-  --accent: oklch(0.97 0 0);            /* Light accent background */
-  --accent-foreground: oklch(0.05 0 0); /* Dark accent text */
+  --background: oklch(0.05 0 0);        /* Deep black background */
+  --foreground: oklch(0.98 0 0);       /* Soft white text */
+  --card: oklch(0.1 0 0);              /* Dark card background */
+  --card-foreground: oklch(0.98 0 0);  /* Soft white card text */
+  --popover: oklch(0.1 0 0);           /* Dark popover background */
+  --popover-foreground: oklch(0.98 0 0);/* Soft white popover text */
+  --primary: oklch(0.76 0.18 50);      /* Brand orange */
+  --primary-foreground: oklch(0.05 0 0); /* Dark text on orange buttons */
+  --secondary: oklch(0.5 0.25 300);     /* Brand purple */
+  --secondary-foreground: oklch(0.98 0 0);/* Soft white text on purple */
+  --muted: oklch(0.15 0 0);             /* Dark muted background */
+  --muted-foreground: oklch(0.65 0 0);  /* Lighter gray muted text */
+  --accent: oklch(0.15 0 0);            /* Dark accent background */
+  --accent-foreground: oklch(0.98 0 0); /* Soft white accent text */
   --destructive: oklch(0.577 0.245 27.325); /* Red for errors */
   --destructive-foreground: oklch(1 0 0);    /* White text on red */
-  --border: oklch(0.92 0 0);            /* Light gray borders */
-  --input: oklch(0.98 0 0);             /* Very light input backgrounds */
-  --ring: oklch(0.05 0 0);              /* Dark focus rings */
+  --border: oklch(0.2 0 0);             /* Darker gray borders */
+  --input: oklch(0.15 0 0);             /* Dark input backgrounds */
+  --ring: oklch(0.76 0.18 50);          /* Orange focus rings */
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
   --radius: 0.625rem;
-  --sidebar: oklch(0.99 0 0);           /* Very light sidebar */
-  --sidebar-foreground: oklch(0.05 0 0); /* Dark sidebar text */
-  --sidebar-primary: oklch(0.05 0 0);   /* Dark sidebar primary */
-  --sidebar-primary-foreground: oklch(1 0 0); /* White sidebar primary text */
-  --sidebar-accent: oklch(0.97 0 0);    /* Light sidebar accent */
-  --sidebar-accent-foreground: oklch(0.05 0 0); /* Dark sidebar accent text */
-  --sidebar-border: oklch(0.92 0 0);    /* Light sidebar borders */
-  --sidebar-ring: oklch(0.05 0 0);      /* Dark sidebar focus rings */
+  --sidebar: oklch(0.05 0 0);           /* Dark sidebar */
+  --sidebar-foreground: oklch(0.98 0 0); /* Soft white sidebar text */
+  --sidebar-primary: oklch(0.76 0.18 50);   /* Orange sidebar primary */
+  --sidebar-primary-foreground: oklch(0.05 0 0); /* Dark sidebar primary text */
+  --sidebar-accent: oklch(0.15 0 0);    /* Dark sidebar accent */
+  --sidebar-accent-foreground: oklch(0.98 0 0); /* Soft white sidebar accent text */
+  --sidebar-border: oklch(0.2 0 0);     /* Darker sidebar borders */
+  --sidebar-ring: oklch(0.76 0.18 50);      /* Orange sidebar focus rings */
 }
-
-/* Dark Mode - Commented out to force light mode */
-/*
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: oklch(0.09 0 0);
-    --foreground: oklch(0.98 0 0);
-    --card: oklch(0.09 0 0);
-    --card-foreground: oklch(0.98 0 0);
-    --popover: oklch(0.09 0 0);
-    --popover-foreground: oklch(0.98 0 0);
-    --primary: oklch(0.98 0 0);
-    --primary-foreground: oklch(0.09 0 0);
-    --secondary: oklch(0.15 0 0);
-    --secondary-foreground: oklch(0.98 0 0);
-    --muted: oklch(0.15 0 0);
-    --muted-foreground: oklch(0.65 0 0);
-    --accent: oklch(0.15 0 0);
-    --accent-foreground: oklch(0.98 0 0);
-    --destructive: oklch(0.396 0.141 25.723);
-    --destructive-foreground: oklch(0.98 0 0);
-    --border: oklch(0.15 0 0);
-    --input: oklch(0.15 0 0);
-    --ring: oklch(0.98 0 0);
-    --chart-1: oklch(0.488 0.243 264.376);
-    --chart-2: oklch(0.696 0.17 162.48);
-    --chart-3: oklch(0.769 0.188 70.08);
-    --chart-4: oklch(0.627 0.265 303.9);
-    --chart-5: oklch(0.645 0.246 16.439);
-    --sidebar: oklch(0.05 0 0);
-    --sidebar-foreground: oklch(0.98 0 0);
-    --sidebar-primary: oklch(0.488 0.243 264.376);
-    --sidebar-primary-foreground: oklch(0.98 0 0);
-    --sidebar-accent: oklch(0.15 0 0);
-    --sidebar-accent-foreground: oklch(0.98 0 0);
-    --sidebar-border: oklch(0.15 0 0);
-    --sidebar-ring: oklch(0.98 0 0);
-  }
-}
-*/
 
 
 @theme inline {

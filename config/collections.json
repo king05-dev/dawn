@@ -1,0 +1,72 @@
+{
+  "collections": [
+    {
+      "title": "Diffusers / Machines",
+      "handle": "diffusers-machines",
+      "rules": [
+        {
+          "column": "type",
+          "relation": "contains",
+          "condition": "Diffuser"
+        },
+        {
+          "column": "type",
+          "relation": "contains",
+          "condition": "Machine"
+        }
+      ],
+      "disjunctive": true
+    },
+    {
+      "title": "Scent Oils / Fragrances",
+      "handle": "scent-oils-fragrances",
+      "rules": [
+        {
+          "column": "type",
+          "relation": "contains",
+          "condition": "Fragrance Oil"
+        },
+        {
+          "column": "type",
+          "relation": "contains",
+          "condition": "Oil"
+        }
+      ],
+      "disjunctive": true
+    },
+    {
+      "title": "Bundles / Sets",
+      "handle": "bundles-sets",
+      "rules": [
+        {
+          "column": "title",
+          "relation": "contains",
+          "condition": "Bundle"
+        },
+        {
+          "column": "tag",
+          "relation": "equals",
+          "condition": "Set"
+        }
+      ],
+      "disjunctive": true
+    },
+    {
+      "title": "Accessories",
+      "handle": "accessories",
+      "rules": [
+        {
+          "column": "type",
+          "relation": "contains",
+          "condition": "Accessory"
+        },
+        {
+          "column": "type",
+          "relation": "contains",
+          "condition": "Blotter"
+        }
+      ],
+      "disjunctive": true
+    }
+  ]
+}

@@ -592,12 +592,58 @@
             </button>
           {% endif %}
         </div>
-        <product-form class="product-form">
-          <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" class="flex gap-4">
-            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" id="product-variant-id">
-            
-            <div class="flex items-center border-2 border-border rounded-lg">
-              <button type="button" class="quantity-decrease p-4 hover:bg-primary/10 transition-colors">
+        <div class="sticky bottom-0 bg-background py-4 border-t border-border">
+          <product-form class="product-form">
+            <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" class="flex gap-4">
+              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" id="product-variant-id">
+
+              <div class="flex items-center border-2 border-border rounded-lg">
+                <button type="button" class="quantity-decrease p-4 hover:bg-primary/10 transition-colors">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-minus h-4 w-4"
+                  >
+                    <path d="M5 12h14"></path>
+                  </svg>
+                </button>
+                <input
+                  type="number"
+                  name="quantity"
+                  value="1"
+                  min="1"
+                  class="quantity-input w-16 text-center font-bold text-foreground bg-transparent border-none focus:outline-none"
+                >
+                <button type="button" class="quantity-increase p-4 hover:bg-primary/10 transition-colors">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-plus h-4 w-4"
+                  >
+                    <path d="M5 12h14"></path><path d="M12 5v14"></path>
+                  </svg>
+                </button>
+              </div>
+
+              <button
+                type="submit"
+                name="add"
+                class="add-to-cart-btn inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive px-4 has-[>svg]:px-3 flex-1 h-auto py-4 text-lg font-bold bg-primary hover:bg-primary/90 text-primary-foreground"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -608,61 +654,17 @@
                   stroke-width="2"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  class="lucide lucide-minus h-4 w-4"
+                  class="lucide lucide-shopping-cart mr-2 h-5 w-5"
                 >
-                  <path d="M5 12h14"></path>
+                  <circle cx="8" cy="21" r="1"></circle>
+                  <circle cx="19" cy="21" r="1"></circle>
+                  <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
                 </svg>
+                <span class="btn-text">ADD TO CART</span>
               </button>
-              <input 
-                type="number" 
-                name="quantity" 
-                value="1" 
-                min="1" 
-                class="quantity-input w-16 text-center font-bold text-foreground bg-transparent border-none focus:outline-none"
-              >
-              <button type="button" class="quantity-increase p-4 hover:bg-primary/10 transition-colors">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="lucide lucide-plus h-4 w-4"
-                >
-                  <path d="M5 12h14"></path><path d="M12 5v14"></path>
-                </svg>
-              </button>
-            </div>
-            
-            <button
-              type="submit"
-              name="add"
-              class="add-to-cart-btn inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive px-4 has-[>svg]:px-3 flex-1 h-auto py-4 text-lg font-bold bg-primary hover:bg-primary/90 text-primary-foreground"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-shopping-cart mr-2 h-5 w-5"
-              >
-                <circle cx="8" cy="21" r="1"></circle>
-                <circle cx="19" cy="21" r="1"></circle>
-                <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
-              </svg>
-              <span class="btn-text">ADD TO CART</span>
-            </button>
-          </form>
-        </product-form>
+            </form>
+          </product-form>
+        </div>
         <p class="text-sm text-muted-foreground text-center">
           Or 4 interest-free payments of $8.75 with <span class="font-bold text-foreground">Afterpay</span>
         </p>
@@ -692,6 +694,20 @@
           data-radix-collection-item=""
         >
           DETAILS</button
+        ><button
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="radix-_r_0_-content-scent-profile"
+          data-state="inactive"
+          id="radix-_r_0_-trigger-scent-profile"
+          data-slot="tabs-trigger"
+          class="dark:data-[state=active]:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:outline-ring dark:data-[state=active]:border-input dark:data-[state=active]:bg-input/30 text-foreground dark:text-muted-foreground inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 border text-sm whitespace-nowrap transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:shadow-sm [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 [&amp;_svg:not([class*='size-'])]:size-4 rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent px-6 py-4 font-bold"
+          tabindex="-1"
+          data-orientation="horizontal"
+          data-radix-collection-item=""
+        >
+          SCENT PROFILE</button
         ><button
           type="button"
           role="tab"
@@ -766,6 +782,27 @@
         </div>
       </div>
       <div
+            data-state="inactive"
+            data-orientation="horizontal"
+            role="tabpanel"
+            aria-labelledby="radix-_r_0_-trigger-scent-profile"
+            hidden=""
+            id="radix-_r_0_-content-scent-profile"
+            tabindex="0"
+            data-slot="tabs-content"
+            class="flex-1 outline-none py-8"
+          >
+            <div class="max-w-3xl space-y-4 text-muted-foreground leading-relaxed">
+              <p>{{ product.metafields.custom.scent_description }}</p>
+              <h3 class="text-lg font-bold text-foreground">Scent Notes</h3>
+              <ul class="list-disc list-inside">
+                <li><strong>Top:</strong> {{ product.metafields.custom.top_notes }}</li>
+                <li><strong>Middle:</strong> {{ product.metafields.custom.middle_notes }}</li>
+                <li><strong>Base:</strong> {{ product.metafields.custom.base_notes }}</li>
+              </ul>
+            </div>
+          </div>
+          <div
         data-state="inactive"
         data-orientation="horizontal"
         role="tabpanel"
@@ -921,6 +958,16 @@
             </button>
           </div>
         </div>
+      </div>
+    </section>
+    <section class="mt-16">
+      <h2 class="font-display text-4xl md:text-5xl text-foreground mb-8">Pairs Well With</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {% for related_product in product.collections.first.products limit: 4 %}
+          {% if related_product.handle != product.handle %}
+            {% render 'product-card', product: related_product %}
+          {% endif %}
+        {% endfor %}
       </div>
     </section>
   </div>
@@ -2958,6 +3005,31 @@
     }
   ],
   "settings": [
+    {
+      "type": "header",
+      "content": "Scent Profile"
+    },
+    {
+      "type": "text",
+      "id": "scent_description",
+      "label": "Scent Description",
+      "info": "This will be displayed in the 'Scent Profile' tab."
+    },
+    {
+      "type": "text",
+      "id": "top_notes",
+      "label": "Top Notes"
+    },
+    {
+      "type": "text",
+      "id": "middle_notes",
+      "label": "Middle Notes"
+    },
+    {
+      "type": "text",
+      "id": "base_notes",
+      "label": "Base Notes"
+    },
     {
       "type": "checkbox",
       "id": "enable_sticky_info",

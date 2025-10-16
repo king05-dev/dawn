@@ -1,0 +1,70 @@
+{% comment %}
+  This is a generic template for a collection page.
+  It will be populated with the collection data from Shopify.
+{% endcomment %}
+
+<div class="page-width">
+  <div class="grid">
+    <div class="grid__item medium-up--one-fifth">
+      <div class="collection-sidebar">
+        <div class="collection-sidebar__group">
+          <h3 class="collection-sidebar__title">{{ 'collections.filters.title_tags' | t }}</h3>
+          <ul class="collection-sidebar__tags">
+            {% for tag in collection.all_tags %}
+              <li>
+                <a href="{{ collection.url }}/{{ tag | handle }}" class="collection-sidebar__tag">{{ tag }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="grid__item medium-up--four-fifths">
+      <header class="section-header">
+        <h1 class="section-header__title">
+          {{ collection.title }}
+        </h1>
+        <div class="collection-sorting">
+          <label for="SortBy">{{ 'collections.sorting.title' | t }}</label>
+          <select name="SortBy" id="SortBy">
+            <option value="manual">{{ 'collections.sorting.featured' | t }}</option>
+            <option value="best-selling">{{ 'collections.sorting.best_selling' | t }}</option>
+            <option value="title-ascending">{{ 'collections.sorting.az' | t }}</option>
+            <option value="title-descending">{{ 'collections.sorting.za' | t }}</option>
+            <option value="price-ascending">{{ 'collections.sorting.price_ascending' | t }}</option>
+            <option value="price-descending">{{ 'collections.sorting.price_descending' | t }}</option>
+            <option value="created-ascending">{{ 'collections.sorting.date_ascending' | t }}</option>
+            <option value="created-descending">{{ 'collections.sorting.date_descending' | t }}</option>
+          </select>
+        </div>
+      </header>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        {% for product in collection.products %}
+          <div class="grid__item">
+            {% render 'product-card', product: product %}
+          </div>
+        {% else %}
+          <div class="grid__item">
+            <p>{{ 'collections.general.no_matches' | t }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById('SortBy').addEventListener('change', function(e) {
+    const value = e.target.value;
+    const url = new URL(window.location.href);
+    url.searchParams.set('sort_by', value);
+    window.location = url.href;
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Collection template",
+  "settings": []
+}
+{% endschema %}
