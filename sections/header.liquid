@@ -1028,6 +1028,7 @@
               id="cart-trigger"
               data-slot="button"
               class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 size-9 relative"
+              onclick="document.querySelector('cart-drawer').open()"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -1411,235 +1412,30 @@
           }
         });
       }
-
-      // Cart Drawer functionality
-      const cartTrigger = document.getElementById('cart-trigger');
-      const cartDrawer = document.getElementById('cart-drawer');
-      const cartDrawerClose = document.getElementById('cart-drawer-close');
+      // Cart count functionality for header badge
       const cartCount = document.getElementById('cart-count');
-      const cartItemsContainer = document.getElementById('cart-items');
-      const cartEmpty = document.getElementById('cart-empty');
-      const cartFooter = document.getElementById('cart-footer');
-      const cartTotal = document.getElementById('cart-total');
-      const continueShoppingBtn = document.getElementById('continue-shopping');
-      const viewCartBtn = document.getElementById('view-cart');
-      const checkoutBtn = document.getElementById('checkout-btn');
-
-      // Cart drawer open/close functions
-      function openCartDrawer() {
-        cartDrawer.classList.remove('opacity-0', 'invisible');
-        const slidePanel = cartDrawer.querySelector('div.transform');
-        if (slidePanel) {
-          setTimeout(() => {
-            slidePanel.classList.remove('translate-x-full');
-          }, 10);
-        }
-        loadCartData();
-      }
-
-      function closeCartDrawer() {
-        const slidePanel = cartDrawer.querySelector('div.transform');
-        if (slidePanel) {
-          slidePanel.classList.add('translate-x-full');
-        }
-        setTimeout(() => {
-          cartDrawer.classList.add('opacity-0', 'invisible');
-        }, 300);
-      }
-
-      // Load cart data from Shopify
-      async function loadCartData() {
-        try {
-          const response = await fetch('/cart.js');
-          const cart = await response.json();
-          updateCartDisplay(cart);
-        } catch (error) {
-          console.error('Error loading cart:', error);
-        }
-      }
-
-      // Update cart display
-      function updateCartDisplay(cart) {
-        const itemCount = cart.item_count;
-
-        // Update cart count badge
-        if (itemCount > 0) {
-          cartCount.textContent = itemCount;
-          cartCount.classList.remove('hidden');
-        } else {
-          cartCount.classList.add('hidden');
-        }
-
-        // Show/hide empty state
-        if (cart.items.length === 0) {
-          cartEmpty.classList.remove('hidden');
-          cartItemsContainer.classList.add('hidden');
-          cartFooter.classList.add('hidden');
-        } else {
-          cartEmpty.classList.add('hidden');
-          cartItemsContainer.classList.remove('hidden');
-          cartFooter.classList.remove('hidden');
-
-          // Render cart items
-          renderCartItems(cart.items);
-
-          // Update total
-          cartTotal.textContent = formatMoney(cart.total_price);
-        }
-      }
-
-      // Render cart items
-      function renderCartItems(items) {
-        const cartItemsHtml = items
-          .map(
-            (item) => `
-          <div class="flex items-center gap-4 p-4 border-b border-border" data-key="${item.key}">
-            <div class="w-16 h-16 bg-muted rounded-md overflow-hidden flex-shrink-0">
-              ${
-                item.image
-                  ? `<img src="${item.image}" alt="${item.product_title}" class="w-full h-full object-cover">`
-                  : '<div class="w-full h-full bg-muted"></div>'
+      
+      function updateCartCount() {
+        fetch('/cart.js')
+          .then(response => response.json())
+          .then(cart => {
+            if (cartCount) {
+              if (cart.item_count > 0) {
+                cartCount.textContent = cart.item_count;
+                cartCount.classList.remove('hidden');
+              } else {
+                cartCount.classList.add('hidden');
               }
-            </div>
-            <div class="flex-1 min-w-0">
-              <h4 class="font-medium text-sm truncate">${item.product_title}</h4>
-              ${item.variant_title ? `<p class="text-xs text-muted-foreground">${item.variant_title}</p>` : ''}
-              <div class="flex items-center gap-2 mt-1">
-                <span class="text-sm font-medium">${formatMoney(item.final_price)}</span>
-                ${
-                  item.original_price > item.final_price
-                    ? `<span class="text-xs text-muted-foreground line-through">${formatMoney(
-                        item.original_price
-                      )}</span>`
-                    : ''
-                }
-              </div>
-            </div>
-            <div class="flex items-center gap-2">
-              <button class="quantity-btn" data-key="${item.key}" data-action="decrease">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
-                </svg>
-              </button>
-              <span class="w-8 text-center text-sm">${item.quantity}</span>
-              <button class="quantity-btn" data-key="${item.key}" data-action="increase">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-                </svg>
-              </button>
-            </div>
-            <button class="remove-item text-muted-foreground hover:text-destructive" data-key="${item.key}">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
-            </button>
-          </div>
-        `
-          )
-          .join('');
-
-        cartItemsContainer.innerHTML = cartItemsHtml;
-
-        // Add event listeners for quantity and remove buttons
-        addCartItemEventListeners();
+            }
+          })
+          .catch(error => console.error('Error updating cart count:', error));
       }
-
-      // Add event listeners for cart item actions
-      function addCartItemEventListeners() {
-        // Quantity buttons
-        document.querySelectorAll('.quantity-btn').forEach((btn) => {
-          btn.addEventListener('click', async (e) => {
-            const key = e.currentTarget.dataset.key;
-            const action = e.currentTarget.dataset.action;
-            const currentItem = document.querySelector(`[data-key="${key}"]`);
-            const currentQty = parseInt(currentItem.querySelector('span').textContent);
-
-            let newQty = action === 'increase' ? currentQty + 1 : currentQty - 1;
-            if (newQty < 0) newQty = 0;
-
-            await updateCartItem(key, newQty);
-          });
-        });
-
-        // Remove buttons
-        document.querySelectorAll('.remove-item').forEach((btn) => {
-          btn.addEventListener('click', async (e) => {
-            const key = e.currentTarget.dataset.key;
-            await updateCartItem(key, 0);
-          });
-        });
-      }
-
-      // Update cart item quantity
-      async function updateCartItem(key, quantity) {
-        try {
-          const response = await fetch('/cart/change.js', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              id: key,
-              quantity: quantity,
-            }),
-          });
-
-          if (response.ok) {
-            const cart = await response.json();
-            updateCartDisplay(cart);
-          }
-        } catch (error) {
-          console.error('Error updating cart:', error);
-        }
-      }
-
-      // Format money helper
-      function formatMoney(cents) {
-        return (cents / 100).toLocaleString('en-US', {
-          style: 'currency',
-          currency: 'USD',
-        });
-      }
-
-      // Event listeners
-      if (cartTrigger) {
-        cartTrigger.addEventListener('click', openCartDrawer);
-      }
-
-      if (cartDrawerClose) {
-        cartDrawerClose.addEventListener('click', closeCartDrawer);
-      }
-
-      if (continueShoppingBtn) {
-        continueShoppingBtn.addEventListener('click', closeCartDrawer);
-      }
-
-      if (viewCartBtn) {
-        viewCartBtn.addEventListener('click', () => {
-          window.location.href = '/cart';
-        });
-      }
-
-      if (checkoutBtn) {
-        checkoutBtn.addEventListener('click', () => {
-          window.location.href = '/checkout';
-        });
-      }
-
-      // Close cart drawer when clicking outside
-      if (cartDrawer) {
-        cartDrawer.addEventListener('click', (e) => {
-          if (e.target === cartDrawer) {
-            closeCartDrawer();
-          }
-        });
-      }
-
-      // Load initial cart data
-      loadCartData();
-
-      // Listen for cart updates from other parts of the site
-      document.addEventListener('cart:updated', loadCartData);
+      
+      // Initialize cart count
+      updateCartCount();
+      
+      // Listen for cart updates from Shopify cart drawer
+      document.addEventListener('cart:updated', updateCartCount);
 
       // Escape key handling
       document.addEventListener('keydown', (e) => {
@@ -1650,14 +1446,6 @@
             if (slidePanel) {
               slidePanel.classList.add('translate-x-full');
             }
-            setTimeout(() => {
-              mobileMenu.classList.add('opacity-0', 'invisible');
-            }, 300);
-          }
-
-          // Close cart drawer
-          if (cartDrawer && !cartDrawer.classList.contains('invisible')) {
-            closeCartDrawer();
           }
         }
       });
