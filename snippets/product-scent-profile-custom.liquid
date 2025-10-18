@@ -1,0 +1,77 @@
+{% comment %}
+  Renders a custom scent profile card for fragrance products.
+  Accepts:
+  - product: {Object} product object.
+  - block: {Object} block object with settings.
+
+  Usage:
+  {% render 'product-scent-profile-custom', product: product, block: block %}
+{% endcomment %}
+
+<div {{ block.shopify_attributes }} class="text-card-foreground flex flex-col gap-6 rounded-xl border shadow-sm p-6 border-border bg-card">
+  <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="lucide lucide-sparkles h-5 w-5 text-primary"
+    >
+      <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path>
+      <path d="M20 3v4"></path>
+      <path d="M22 5h-4"></path>
+      <path d="M4 17v2"></path>
+      <path d="M5 18H3"></path>
+    </svg>
+    {{ block.settings.title | default: 'SCENT PROFILE' }}
+  </h3>
+  
+  <div class="space-y-4">
+    {%- if block.settings.top_notes != blank -%}
+      <div>
+        <p class="text-sm font-bold text-foreground mb-2">TOP NOTES</p>
+        <div class="flex flex-wrap gap-2">
+          {%- assign top_notes = block.settings.top_notes | split: ',' -%}
+          {%- for note in top_notes -%}
+            <span class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden [a&]:hover:bg-accent [a&]:hover:text-accent-foreground border-primary/30 text-foreground">
+              {{ note | strip }}
+            </span>
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+    
+    {%- if block.settings.middle_notes != blank -%}
+      <div>
+        <p class="text-sm font-bold text-foreground mb-2">MIDDLE NOTES</p>
+        <div class="flex flex-wrap gap-2">
+          {%- assign middle_notes = block.settings.middle_notes | split: ',' -%}
+          {%- for note in middle_notes -%}
+            <span class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden [a&]:hover:bg-accent [a&]:hover:text-accent-foreground border-primary/30 text-foreground">
+              {{ note | strip }}
+            </span>
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+    
+    {%- if block.settings.base_notes != blank -%}
+      <div>
+        <p class="text-sm font-bold text-foreground mb-2">BASE NOTES</p>
+        <div class="flex flex-wrap gap-2">
+          {%- assign base_notes = block.settings.base_notes | split: ',' -%}
+          {%- for note in base_notes -%}
+            <span class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden [a&]:hover:bg-accent [a&]:hover:text-accent-foreground border-primary/30 text-foreground">
+              {{ note | strip }}
+            </span>
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</div>

@@ -1,0 +1,49 @@
+{% comment %}
+  Renders custom purchase options (one-time vs subscription)
+  
+  Accepts:
+  - product: {Object} Product object
+  - block: {Object} Block object (optional)
+  - show_subscription: {Boolean} Whether to show subscription option
+  
+  Usage:
+  {% render 'product-purchase-options-custom', product: product, block: block, show_subscription: true %}
+{% endcomment %}
+
+<div class="space-y-4 mb-6" {{ block.shopify_attributes }}>
+  <label class="block text-sm font-bold text-foreground">PURCHASE OPTIONS</label>
+  
+  <!-- One-time purchase -->
+  <div class="purchase-option-card p-4 rounded-lg border-2 transition-all cursor-pointer border-primary bg-primary/10">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="font-bold text-foreground">One-time purchase</p>
+        <p class="text-sm text-muted-foreground" id="selected-price">
+          {{ product.selected_or_first_available_variant.price | money }}
+        </p>
+      </div>
+      <div class="h-5 w-5 rounded-full border-2 border-primary bg-primary">
+        <div class="h-full w-full rounded-full bg-background m-0.5"></div>
+      </div>
+    </div>
+  </div>
+
+  {% if show_subscription %}
+    <!-- Subscription option -->
+    <button class="w-full p-4 rounded-lg border-2 transition-all text-left relative overflow-hidden border-border hover:border-primary/50">
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="font-bold text-foreground">Subscribe & Save 10%</p>
+          <p class="text-sm text-muted-foreground" id="subscription-price">
+            {% assign subscription_price = product.selected_or_first_available_variant.price | times: 0.9 %}
+            {{ subscription_price | money }} every month
+          </p>
+        </div>
+        <div class="h-5 w-5 rounded-full border-2 border-border"></div>
+      </div>
+      <div class="absolute top-2 right-2 bg-primary text-primary-foreground px-2 py-1 text-xs font-bold rounded">
+        SAVE 10%
+      </div>
+    </button>
+  {% endif %}
+</div>

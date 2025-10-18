@@ -1412,30 +1412,119 @@
           }
         });
       }
-      // Cart count functionality for header badge
-      const cartCount = document.getElementById('cart-count');
-      
-      function updateCartCount() {
-        fetch('/cart.js')
-          .then(response => response.json())
-          .then(cart => {
-            if (cartCount) {
-              if (cart.item_count > 0) {
-                cartCount.textContent = cart.item_count;
-                cartCount.classList.remove('hidden');
-              } else {
-                cartCount.classList.add('hidden');
-              }
+      // Global cart management utility
+      window.CartManager = {
+        // Update cart count badge
+        updateCartCount: function(cartData) {
+          const cartCount = document.getElementById('cart-count');
+          if (cartCount && cartData) {
+            if (cartData.item_count > 0) {
+              cartCount.textContent = cartData.item_count;
+              cartCount.classList.remove('hidden');
+            } else {
+              cartCount.classList.add('hidden');
             }
-          })
-          .catch(error => console.error('Error updating cart count:', error));
+          }
+        },
+        
+        // Refresh cart drawer contents
+        refreshCartDrawer: async function() {
+          const cartDrawer = document.querySelector('cart-drawer');
+          if (cartDrawer && cartDrawer.classList.contains('active')) {
+            try {
+              const response = await fetch(`${window.location.pathname}?sections=cart-drawer`);
+              const data = await response.json();
+              if (data['cart-drawer'] && cartDrawer.renderContents) {
+                cartDrawer.renderContents({
+                  sections: { 'cart-drawer': data['cart-drawer'] }
+                });
+              }
+            } catch (error) {
+              console.error('Error refreshing cart drawer:', error);
+            }
+          }
+        },
+        
+        // Complete cart update process
+        updateCart: async function(triggerDrawerOpen = false) {
+          try {
+            // Fetch fresh cart data
+            const response = await fetch('/cart.js');
+            const cartData = await response.json();
+            
+            // Update cart count
+            this.updateCartCount(cartData);
+            
+            // Refresh drawer if open
+            await this.refreshCartDrawer();
+            
+            // Trigger cart updated event with data
+            document.dispatchEvent(new CustomEvent('cart:updated', { 
+              detail: { cart: cartData } 
+            }));
+            
+            // Open drawer if requested
+            if (triggerDrawerOpen) {
+              this.openCartDrawer();
+            }
+            
+            return cartData;
+          } catch (error) {
+            console.error('Error updating cart:', error);
+            // Still dispatch basic event as fallback
+            document.dispatchEvent(new CustomEvent('cart:updated'));
+            throw error;
+          }
+        },
+        
+        // Open cart drawer with fallbacks
+        openCartDrawer: function() {
+          // Method 1: Use Dawn theme's cart drawer
+          const cartDrawer = document.querySelector('cart-drawer');
+          if (cartDrawer && cartDrawer.open) {
+            cartDrawer.open();
+            return;
+          }
+          
+          // Method 2: Click cart icon
+          const cartIcon = document.querySelector('#cart-icon-bubble') || 
+                          document.querySelector('[data-cart-drawer]') ||
+                          document.querySelector('.header__icon--cart');
+          if (cartIcon) {
+            cartIcon.click();
+            return;
+          }
+          
+          // Method 3: Custom drawer function
+          if (typeof window.openCartDrawer === 'function') {
+            window.openCartDrawer();
+            return;
+          }
+          
+          console.warn('No cart drawer opening method found');
+        }
+      };
+      
+      // Legacy function for backward compatibility
+      function updateCartCount(event) {
+        if (event && event.detail && event.detail.cart) {
+          window.CartManager.updateCartCount(event.detail.cart);
+        } else {
+          // Fetch and update
+          fetch('/cart.js')
+            .then(response => response.json())
+            .then(cart => window.CartManager.updateCartCount(cart))
+            .catch(error => console.error('Error updating cart count:', error));
+        }
       }
       
       // Initialize cart count
       updateCartCount();
       
-      // Listen for cart updates from Shopify cart drawer
+      // Listen for cart updates from all sources
       document.addEventListener('cart:updated', updateCartCount);
+      document.addEventListener('cart:refresh', updateCartCount);
+      document.addEventListener('cart:change', updateCartCount);
 
       // Escape key handling
       document.addEventListener('keydown', (e) => {

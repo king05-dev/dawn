@@ -15,9 +15,9 @@
   {{ 'component-slider.css' | asset_url | stylesheet_tag }}
   {{ 'component-rating.css' | asset_url | stylesheet_tag }}
   {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
-  
+
   {% comment %} Swiper CSS {% endcomment %}
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
   {% unless product.has_only_default_variant %}
     {{ 'component-product-variant-picker.css' | asset_url | stylesheet_tag }}
@@ -93,7 +93,7 @@
       {% endif %}
       <span class="text-foreground">{{ product.title }}</span>
     </div>
-    
+
     <div class="grid lg:grid-cols-2 gap-12 mb-16">
       <div class="space-y-4">
         {% comment %} Main Product Image Swiper {% endcomment %}
@@ -131,7 +131,7 @@
                 </div>
               {% endif %}
             </div>
-            
+
             {% comment %} Navigation buttons {% endcomment %}
             <div class="swiper-button-prev !left-4 !w-12 !h-12 !mt-0 !top-1/2 !-translate-y-1/2 !rounded-full !bg-background/80 backdrop-blur-sm !border !border-border !opacity-0 group-hover:!opacity-100 !transition-opacity hover:!bg-primary hover:!border-primary hover:!text-primary-foreground !text-foreground after:!hidden">
               <svg
@@ -165,7 +165,7 @@
                 <path d="m9 18 6-6-6-6"></path>
               </svg>
             </div>
-            
+
             {% comment %} Product badges {% endcomment %}
             <div class="absolute top-4 left-4 flex flex-col gap-2">
               {% if product.compare_at_price > product.price %}
@@ -290,266 +290,59 @@
         </div>
       </div>
       <div class="space-y-6">
-        <div>
-          <div class="flex items-start justify-between mb-2">
-            <div>
-              {% if product.vendor != blank %}
-                <p class="text-sm text-muted-foreground mb-1 uppercase tracking-wide">{{ product.vendor }}</p>
-              {% endif %}
-              <h1 class="font-display text-5xl md:text-6xl text-foreground mb-3">{{ product.title }}</h1>
-            </div>
-            <div class="flex gap-2">
-              <button
-                data-slot="button"
-                class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 size-9 h-12 w-12 rounded-full border-border"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="lucide lucide-heart h-5 w-5"
-                >
-                  <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
-                </svg></button
-              ><button
-                data-slot="button"
-                class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 size-9 h-12 w-12 rounded-full border-border bg-transparent"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="lucide lucide-share2 h-5 w-5"
-                >
-                  <circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line>
-                </svg>
-              </button>
-            </div>
-          </div>
-          <div class="flex items-center gap-2 mb-4">
-            <div class="flex">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-star h-4 w-4 fill-primary text-primary"
-              >
-                <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-star h-4 w-4 fill-primary text-primary"
-              >
-                <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-star h-4 w-4 fill-primary text-primary"
-              >
-                <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-star h-4 w-4 fill-primary text-primary"
-              >
-                <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-star h-4 w-4 fill-primary text-primary"
-              >
-                <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
-              </svg>
-            </div>
-            <span class="text-sm font-bold text-foreground">5.0</span
-            ><span class="text-sm text-muted-foreground">(61 reviews)</span>
-          </div>
-          <div class="flex items-baseline gap-3 mb-4">
-            {% if product.compare_at_price > product.price %}
-              <span class="text-4xl font-bold text-primary">{{ product.price | money }}</span>
-              <span class="text-2xl text-muted-foreground line-through">{{ product.compare_at_price | money }}</span>
-            {% else %}
-              <span class="text-4xl font-bold text-primary">{{ product.price | money }}</span>
-            {% endif %}
-          </div>
-          <div class="flex items-center gap-4 mb-6">
-            <span
-              data-slot="badge"
-              class="inline-flex items-center justify-center rounded-md border text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden [a&amp;]:hover:bg-accent [a&amp;]:hover:text-accent-foreground border-primary text-primary px-3 py-1"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-flame h-3 w-3 mr-1 inline"
-              >
-                <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path>
-              </svg>
-              SELLING FAST</span
-            ><span class="text-sm text-muted-foreground">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-clock h-4 w-4 inline mr-1"
-              >
-                <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
-              </svg>
-              Only 12 left in stock</span
-            >
-          </div>
-          {% if product.description != blank %}
-            <div class="text-muted-foreground leading-relaxed mb-6 prose prose-sm max-w-none">
-              {{ product.description }}
-            </div>
-          {% endif %}
-        </div>
-        <div
-          data-slot="card"
-          class="text-card-foreground flex flex-col gap-6 rounded-xl border shadow-sm p-6 border-border bg-card"
-        >
-          <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-sparkles h-5 w-5 text-primary"
-            >
-              <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path><path d="M20 3v4"></path><path d="M22 5h-4"></path><path d="M4 17v2"></path><path d="M5 18H3"></path>
-            </svg>
-            SCENT PROFILE
-          </h3>
-          <div class="space-y-4">
-            <div>
-              <p class="text-sm font-bold text-foreground mb-2">TOP NOTES</p>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  data-slot="badge"
-                  class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden [a&amp;]:hover:bg-accent [a&amp;]:hover:text-accent-foreground border-primary/30 text-foreground"
-                  >Bergamot</span
-                ><span
-                  data-slot="badge"
-                  class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden [a&amp;]:hover:bg-accent [a&amp;]:hover:text-accent-foreground border-primary/30 text-foreground"
-                  >Pink Pepper</span
-                ><span
-                  data-slot="badge"
-                  class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden [a&amp;]:hover:bg-accent [a&amp;]:hover:text-accent-foreground border-primary/30 text-foreground"
-                  >Cardamom</span
-                >
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when '@app' -%}
+              {% render block %}
+            {%- when 'custom_title' -%}
+              {% render 'product-header-custom',
+                product: product,
+                block: block,
+                show_vendor: block.settings.show_vendor,
+                show_rating: block.settings.show_rating,
+                show_actions: block.settings.show_actions
+              %}
+            {%- when 'custom_price' -%}
+              <div class="flex items-baseline gap-3 mb-4" {{ block.shopify_attributes }}>
+                {% if product.compare_at_price > product.price %}
+                  <span class="text-4xl font-bold text-primary">{{ product.price | money }}</span>
+                  <span class="text-2xl text-muted-foreground line-through">
+                    {{- product.compare_at_price | money -}}
+                  </span>
+                {% else %}
+                  <span class="text-4xl font-bold text-primary">{{ product.price | money }}</span>
+                {% endif %}
               </div>
-            </div>
-            <div>
-              <p class="text-sm font-bold text-foreground mb-2">MIDDLE NOTES</p>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  data-slot="badge"
-                  class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden [a&amp;]:hover:bg-accent [a&amp;]:hover:text-accent-foreground border-primary/30 text-foreground"
-                  >Iris</span
-                ><span
-                  data-slot="badge"
-                  class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden [a&amp;]:hover:bg-accent [a&amp;]:hover:text-accent-foreground border-primary/30 text-foreground"
-                  >Violet</span
-                ><span
-                  data-slot="badge"
-                  class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden [a&amp;]:hover:bg-accent [a&amp;]:hover:text-accent-foreground border-primary/30 text-foreground"
-                  >Incense</span
-                >
-              </div>
-            </div>
-            <div>
-              <p class="text-sm font-bold text-foreground mb-2">BASE NOTES</p>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  data-slot="badge"
-                  class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden [a&amp;]:hover:bg-accent [a&amp;]:hover:text-accent-foreground border-primary/30 text-foreground"
-                  >Vanilla</span
-                ><span
-                  data-slot="badge"
-                  class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden [a&amp;]:hover:bg-accent [a&amp;]:hover:text-accent-foreground border-primary/30 text-foreground"
-                  >Tonka Bean</span
-                ><span
-                  data-slot="badge"
-                  class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden [a&amp;]:hover:bg-accent [a&amp;]:hover:text-accent-foreground border-primary/30 text-foreground"
-                  >Patchouli</span
-                >
-              </div>
-            </div>
-          </div>
-        </div>
+            {%- when 'custom_desc' -%}
+              {% render 'product-description-custom',
+                product: product,
+                block: block,
+                show_full_description: block.settings.show_full_description
+              %}
+            {%- when 'custom_variant_picker' -%}
+              {% render 'product-variant-selector-custom', product: product, block: block %}
+            {%- when 'custom_purchase_options' -%}
+              {% render 'product-purchase-options-custom',
+                product: product,
+                block: block,
+                show_subscription: block.settings.show_subscription
+              %}
+            {%- when 'custom_buy_buttons' -%}
+              {% render 'product-form-custom', product: product, block: block, section: section %}
+            {%- when 'custom_scent_profile' -%}
+              {% render 'product-scent-profile-custom', product: product, block: block %}
+            {%- else -%}
+              {%- render block -%}
+          {%- endcase -%}
+        {%- endfor -%}
+
+        {% comment %} Scent profile moved to custom block - add 'custom_scent_profile' block in theme customizer {% endcomment %}
         {% if product.variants.size > 1 %}
           <div>
             <label class="block text-sm font-bold text-foreground mb-3">SELECT VARIANT</label>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
               {% for variant in product.variants %}
-                <button 
+                <button
                   class="variant-option p-4 rounded-lg border-2 transition-all text-center border-border hover:border-primary/50 {% if variant == product.selected_or_first_available_variant %}border-primary bg-primary/10{% endif %}"
                   data-variant-id="{{ variant.id }}"
                   data-variant-price="{{ variant.price | money }}"
@@ -566,14 +359,16 @@
             <div class="flex items-center justify-between">
               <div>
                 <p class="font-bold text-foreground">One-time purchase</p>
-                <p class="text-sm text-muted-foreground" id="selected-price">{{ product.selected_or_first_available_variant.price | money }}</p>
+                <p class="text-sm text-muted-foreground" id="selected-price">
+                  {{ product.selected_or_first_available_variant.price | money }}
+                </p>
               </div>
               <div class="h-5 w-5 rounded-full border-2 border-primary bg-primary">
                 <div class="h-full w-full rounded-full bg-background m-0.5"></div>
               </div>
             </div>
           </div>
-          
+
           {% comment %} Subscription option - can be enabled via settings {% endcomment %}
           {% if section.settings.show_subscription_option %}
             <button class="w-full p-4 rounded-lg border-2 transition-all text-left relative overflow-hidden border-border hover:border-primary/50">
@@ -592,83 +387,13 @@
             </button>
           {% endif %}
         </div>
-        <div class="product-form">
-          <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" class="flex gap-4 cart-form">
-            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" id="product-variant-id">
-            
-            <div class="flex items-center border-2 border-border rounded-lg">
-              <button type="button" class="quantity-decrease p-4 hover:bg-primary/10 transition-colors">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="lucide lucide-minus h-4 w-4"
-                >
-                  <path d="M5 12h14"></path>
-                </svg>
-              </button>
-              <input 
-                type="number" 
-                name="quantity" 
-                value="1" 
-                min="1" 
-                class="quantity-input w-16 text-center font-bold text-foreground bg-transparent border-none focus:outline-none"
-              >
-              <button type="button" class="quantity-increase p-4 hover:bg-primary/10 transition-colors">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="lucide lucide-plus h-4 w-4"
-                >
-                  <path d="M5 12h14"></path><path d="M12 5v14"></path>
-                </svg>
-              </button>
-            </div>
-            
-            <button
-              type="submit"
-              name="add"
-              class="add-to-cart-btn inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive px-4 has-[>svg]:px-3 flex-1 h-auto py-4 text-lg font-bold bg-primary hover:bg-primary/90 text-primary-foreground"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-shopping-cart mr-2 h-5 w-5"
-              >
-                <circle cx="8" cy="21" r="1"></circle>
-                <circle cx="19" cy="21" r="1"></circle>
-                <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
-              </svg>
-              <div class="loading__spinner hidden">
-                <svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-              </div>
-              <span class="btn-text">ADD TO CART</span>
-            </button>
-          </form>
-        </div>
+        {%- render 'buy-buttons',
+          block: block,
+          product: product,
+          product_form_id: product_form_id,
+          section_id: section.id,
+          show_pickup_availability: true
+        -%}
         <p class="text-sm text-muted-foreground text-center">
           Or 4 interest-free payments of $8.75 with <span class="font-bold text-foreground">Afterpay</span>
         </p>
@@ -805,161 +530,52 @@
         class="flex-1 outline-none py-8"
       ></div>
     </div>
-    <section>
-      <h2 class="font-display text-4xl md:text-5xl text-foreground mb-8">YOU MIGHT ALSO LIKE</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div
-          data-slot="card"
-          class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group overflow-hidden border-border bg-card hover:border-primary transition-all"
-        >
-          <div class="relative h-[300px] overflow-hidden">
-            <img
-              alt="VELVET"
-              loading="lazy"
-              decoding="async"
-              data-nimg="fill"
-              class="object-cover group-hover:scale-110 transition-transform duration-500"
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/luxury-perfume-bottle-with-velvet-texture-and-herb-fNcl5c8936Y84qtNEv7fjbkDuNeLzw.jpg"
-              style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
 
-            ><span
-              data-slot="badge"
-              class="inline-flex items-center justify-center rounded-md border w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent [a&amp;]:hover:bg-primary/90 absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 text-xs font-bold"
-              >NEW</span
-            >
-          </div>
-          <div class="p-4">
-            <h3 class="font-bold text-foreground mb-2">VELVET</h3>
-            <p class="text-xl font-bold text-primary mb-3">$34.99</p>
-            <button
-              data-slot="button"
-              class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border shadow-xs dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-8 rounded-md gap-1.5 px-3 has-[&gt;svg]:px-2.5 w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
-            >
-              QUICK ADD
-            </button>
-          </div>
-        </div>
-        <div
-          data-slot="card"
-          class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group overflow-hidden border-border bg-card hover:border-primary transition-all"
-        >
-          <div class="relative h-[300px] overflow-hidden">
-            <img
-              alt="CITRUS BLOOM"
-              loading="lazy"
-              decoding="async"
-              data-nimg="fill"
-              class="object-cover group-hover:scale-110 transition-transform duration-500"
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/perfume-bottle-with-fresh-citrus-and-florals-dark--bup255WioMxwEGvei2gaX6Q4an5oCV.jpg"
-              style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
-
-            ><span
-              data-slot="badge"
-              class="inline-flex items-center justify-center rounded-md border w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent [a&amp;]:hover:bg-primary/90 absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 text-xs font-bold"
-              >BESTSELLER</span
-            >
-          </div>
-          <div class="p-4">
-            <h3 class="font-bold text-foreground mb-2">CITRUS BLOOM</h3>
-            <p class="text-xl font-bold text-primary mb-3">$29.99</p>
-            <button
-              data-slot="button"
-              class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border shadow-xs dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-8 rounded-md gap-1.5 px-3 has-[&gt;svg]:px-2.5 w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
-            >
-              QUICK ADD
-            </button>
-          </div>
-        </div>
-        <div
-          data-slot="card"
-          class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group overflow-hidden border-border bg-card hover:border-primary transition-all"
-        >
-          <div class="relative h-[300px] overflow-hidden">
-            <img
-              alt="ROSE NOIR"
-              loading="lazy"
-              decoding="async"
-              data-nimg="fill"
-              class="object-cover group-hover:scale-110 transition-transform duration-500"
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/minimalist-perfume-bottle-with-rose-and-citrus-dar-giDX0bwld6sXlbvNdrRj5hg0btH1tn.jpg"
-              style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
-            >
-          </div>
-          <div class="p-4">
-            <h3 class="font-bold text-foreground mb-2">ROSE NOIR</h3>
-            <p class="text-xl font-bold text-primary mb-3">$39.99</p>
-            <button
-              data-slot="button"
-              class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border shadow-xs dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-8 rounded-md gap-1.5 px-3 has-[&gt;svg]:px-2.5 w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
-            >
-              QUICK ADD
-            </button>
-          </div>
-        </div>
-        <div
-          data-slot="card"
-          class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group overflow-hidden border-border bg-card hover:border-primary transition-all"
-        >
-          <div class="relative h-[300px] overflow-hidden">
-            <img
-              alt="WILD HERBS"
-              loading="lazy"
-              decoding="async"
-              data-nimg="fill"
-              class="object-cover group-hover:scale-110 transition-transform duration-500"
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/bold-perfume-bottle-with-herbs-and-botanicals-dark-5RewjtUWllozbMWomn8e1jrwgiZFJj.jpg"
-              style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
-
-            ><span
-              data-slot="badge"
-              class="inline-flex items-center justify-center rounded-md border w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent [a&amp;]:hover:bg-primary/90 absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 text-xs font-bold"
-              >ON SALE</span
-            >
-          </div>
-          <div class="p-4">
-            <h3 class="font-bold text-foreground mb-2">WILD HERBS</h3>
-            <p class="text-xl font-bold text-primary mb-3">$34.99</p>
-            <button
-              data-slot="button"
-              class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border shadow-xs dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-8 rounded-md gap-1.5 px-3 has-[&gt;svg]:px-2.5 w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
-            >
-              QUICK ADD
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-    
     {% comment %} App Blocks and Reviews Section {% endcomment %}
     <div class="mt-16">
-      {% for block in section.blocks %}
-        {% case block.type %}
-          {% when '@app' %}
-            <div class="mb-8" {{ block.shopify_attributes }}>
-              {% render block %}
-            </div>
-          {% when 'reviews' %}
-            <div class="mb-8" {{ block.shopify_attributes }}>
-              <div class="bg-card border border-border rounded-lg p-6">
-                <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star h-5 w-5 text-primary">
-                    <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
-                  </svg>
-                  Customer Reviews
-                </h3>
-                <div class="reviews-placeholder text-center py-8 text-muted-foreground">
-                  <p>{{ block.settings.content | default: 'Reviews will appear here when a review app is installed.' }}</p>
+      {% comment %}
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when '@app' %}
+              <div class="mb-8" {{ block.shopify_attributes }}>
+                {% render block %}
+              </div>
+            {% when 'reviews' %}
+              <div class="mb-8" {{ block.shopify_attributes }}>
+                <div class="bg-card border border-border rounded-lg p-6">
+                  <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-star h-5 w-5 text-primary"
+                    >
+                      <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+                    </svg>
+                    Customer Reviews
+                  </h3>
+                  <div class="reviews-placeholder text-center py-8 text-muted-foreground">
+                    <p>
+                      {{ block.settings.content | default: 'Reviews will appear here when a review app is installed.' }}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-        {% endcase %}
-      {% endfor %}
+          {% endcase %}
+        {% endfor %}
+      {% endcomment %}
     </div>
   </div>
 
   {% comment %} end block  {% endcomment %}
   <div class="container mx-auto px-4 max-w-7xl">
-    <div class="product-layout grid grid-cols-1 {% if product.media.size > 0 %}lg:grid-cols-2{% endif %} gap-8 lg:gap-12 product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }}{% unless product.media.size > 0 %} product--no-media{% endunless %}">
+    <div class="bg-white product-layout grid grid-cols-1 {% if product.media.size > 0 %}lg:grid-cols-2{% endif %} gap-8 lg:gap-12 product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }}{% unless product.media.size > 0 %} product--no-media{% endunless %}">
       <div class="product-media-wrapper order-1 lg:order-1">
         {% render 'product-media-gallery', variant_images: variant_images %}
       </div>
@@ -970,613 +586,6 @@
         >
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
-          {%- for block in section.blocks -%}
-            {%- case block.type -%}
-              {%- when '@app' -%}
-                {% render block %}
-              {%- when 'text' -%}
-                <div
-                  class="product-text prose prose-sm max-w-none{% if block.settings.text_style == 'uppercase' %} uppercase tracking-wider text-xs font-medium{% elsif block.settings.text_style == 'subtitle' %} text-lg font-medium text-gray-700{% endif %}"
-                  {{ block.shopify_attributes }}
-                >
-                  {{- block.settings.text -}}
-                </div>
-              {%- when 'title' -%}
-                <div class="product-title" {{ block.shopify_attributes }}>
-                  <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight mb-2">
-                    {{ product.title | escape }}
-                  </h1>
-                  <a href="{{ product.url }}" class="product-title-link hover:text-primary transition-colors">
-                    <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
-                      {{ product.title | escape }}
-                    </h2>
-                  </a>
-                </div>
-              {%- when 'price' -%}
-                <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
-                  {%- render 'price',
-                    product: product,
-                    use_variant: true,
-                    show_badges: true,
-                    price_class: 'price--large'
-                  -%}
-                </div>
-                {%- if product.quantity_price_breaks_configured? -%}
-                  <div
-                    class="volume-pricing-note bg-blue-50 border border-blue-200 rounded-lg p-3 text-sm text-blue-800"
-                    id="Volume-Note-{{ section.id }}"
-                  >
-                    <span>{{ 'products.product.volume_pricing.note' | t }}</span>
-                  </div>
-                {%- endif -%}
-                {%- if cart.taxes_included or cart.duties_included or shop.shipping_policy.body != blank -%}
-                  <div class="product-tax text-sm text-gray-600 prose prose-sm max-w-none">
-                    {%- if cart.duties_included and cart.taxes_included -%}
-                      {{ 'products.product.duties_and_taxes_included' | t }}
-                    {%- elsif cart.taxes_included -%}
-                      {{ 'products.product.taxes_included' | t }}
-                    {%- elsif cart.duties_included -%}
-                      {{ 'products.product.duties_included' | t }}
-                    {%- endif -%}
-                    {%- if shop.shipping_policy.body != blank -%}
-                      {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
-                    {%- endif -%}
-                  </div>
-                {%- endif -%}
-                <div {{ block.shopify_attributes }}>
-                  {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
-                  {%- form 'product', product, id: product_form_installment_id, class: 'installment caption-large' -%}
-                    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-                    {{ form | payment_terms }}
-                  {%- endform -%}
-                </div>
-              {%- when 'inventory' -%}
-                <div
-                  class="product-inventory flex items-center gap-2 text-sm font-medium{% if block.settings.text_style == 'uppercase' %} uppercase tracking-wider{% elsif block.settings.text_style == 'subtitle' %} text-lg{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} hidden{% endif %}"
-                  {{ block.shopify_attributes }}
-                  id="Inventory-{{ section.id }}"
-                  role="status"
-                >
-                  {%- if product.selected_or_first_available_variant.inventory_management == 'shopify' -%}
-                    {%- if product.selected_or_first_available_variant.inventory_quantity > 0 -%}
-                      {%- if product.selected_or_first_available_variant.inventory_quantity
-                          <= block.settings.inventory_threshold
-                      -%}
-                        <span class="w-4 h-4 text-orange-500 flex-shrink-0">
-                          {{- 'icon-inventory-status.svg' | inline_asset_content -}}
-                        </span>
-                        {%- if block.settings.show_inventory_quantity -%}
-                          {{-
-                            'products.product.inventory_low_stock_show_count'
-                            | t: quantity: product.selected_or_first_available_variant.inventory_quantity
-                          -}}
-                        {%- else -%}
-                          {{- 'products.product.inventory_low_stock' | t -}}
-                        {%- endif -%}
-                      {%- else -%}
-                        <span class="w-4 h-4 text-green-500 flex-shrink-0">
-                          {{- 'icon-inventory-status.svg' | inline_asset_content -}}
-                        </span>
-                        {%- if block.settings.show_inventory_quantity -%}
-                          {{-
-                            'products.product.inventory_in_stock_show_count'
-                            | t: quantity: product.selected_or_first_available_variant.inventory_quantity
-                          -}}
-                        {%- else -%}
-                          {{- 'products.product.inventory_in_stock' | t -}}
-                        {%- endif -%}
-                      {%- endif -%}
-                    {%- else -%}
-                      {%- if product.selected_or_first_available_variant.inventory_policy == 'continue' -%}
-                        <span class="w-4 h-4 text-green-500 flex-shrink-0">
-                          {{- 'icon-inventory-status.svg' | inline_asset_content -}}
-                        </span>
-                        {{- 'products.product.inventory_out_of_stock_continue_selling' | t -}}
-                      {%- else -%}
-                        <span class="w-4 h-4 text-gray-400 flex-shrink-0">
-                          {{- 'icon-inventory-status.svg' | inline_asset_content -}}
-                        </span>
-                        {{- 'products.product.inventory_out_of_stock' | t -}}
-                      {%- endif -%}
-                    {%- endif -%}
-                  {%- endif -%}
-                </div>
-              {%- when 'description' -%}
-                {%- if product.description != blank -%}
-                  <div
-                    class="product-description prose prose-gray max-w-none text-gray-700 leading-relaxed"
-                    {{ block.shopify_attributes }}
-                  >
-                    {{ product.description }}
-                  </div>
-                {%- endif -%}
-              {%- when 'sku' -%}
-                <div
-                  class="product-sku text-sm text-gray-600{% if block.settings.text_style == 'uppercase' %} uppercase tracking-wider font-medium{% elsif block.settings.text_style == 'subtitle' %} text-lg font-medium{% endif %}{% if product.selected_or_first_available_variant.sku.size == 0 %} hidden{% endif %}"
-                  id="Sku-{{ section.id }}"
-                  role="status"
-                  {{ block.shopify_attributes }}
-                >
-                  <span class="sr-only">{{ 'products.product.sku' | t }}:</span>
-                  <span class="font-mono">{{- product.selected_or_first_available_variant.sku -}}</span>
-                </div>
-              {%- when 'custom_liquid' -%}
-                {{ block.settings.custom_liquid }}
-              {%- when 'collapsible_tab' -%}
-                <div
-                  class="product-accordion border border-gray-200 rounded-lg overflow-hidden"
-                  {{ block.shopify_attributes }}
-                >
-                  <details id="Details-{{ block.id }}-{{ section.id }}" class="group">
-                    <summary class="flex items-center justify-between p-4 cursor-pointer hover:bg-gray-50 transition-colors">
-                      <div class="flex items-center gap-3">
-                        {% render 'icon-accordion', icon: block.settings.icon %}
-                        <h3 class="text-lg font-medium text-gray-900">
-                          {{ block.settings.heading | default: block.settings.page.title | escape }}
-                        </h3>
-                      </div>
-                      <span class="w-5 h-5 text-gray-400 transform transition-transform group-open:rotate-180">
-                        {{- 'icon-caret.svg' | inline_asset_content -}}
-                      </span>
-                    </summary>
-                    <div
-                      class="accordion-content p-4 pt-0 prose prose-sm max-w-none text-gray-700"
-                      id="ProductAccordion-{{ block.id }}-{{ section.id }}"
-                    >
-                      {{ block.settings.content }}
-                      {{ block.settings.page.content }}
-                    </div>
-                  </details>
-                </div>
-              {%- when 'quantity_selector' -%}
-                <div
-                  id="Quantity-Form-{{ section.id }}"
-                  class="product-form__input product-form__quantity{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}"
-                  {{ block.shopify_attributes }}
-                >
-                  {% comment %} TODO: enable theme-check once `item_count_for_variant` is accepted as valid filter {% endcomment %}
-                  {% # theme-check-disable %}
-                  {%- assign cart_qty = cart
-                    | item_count_for_variant: product.selected_or_first_available_variant.id
-                  -%}
-                  {% # theme-check-enable %}
-                  <span class="visually-hidden" id="quantity-label-{{ section.id }}">
-                    {%- if cart_qty > 0 -%}
-                      {{- 'products.product.quantity.in_cart_aria_label' | t: quantity: cart_qty -}}
-                    {%- else -%}
-                      {{- 'products.product.quantity.label' | t -}}
-                    {%- endif -%}
-                  </span>
-                  <label
-                    class="quantity__label form__label"
-                    for="Quantity-{{ section.id }}"
-                    aria-labelledby="quantity-label-{{ section.id }}"
-                  >
-                    <span aria-hidden="true">{{ 'products.product.quantity.label' | t }}</span>
-                    <span class="quantity__rules-cart{% if cart_qty == 0 %} hidden{% endif %}" aria-hidden="true">
-                      {%- render 'loading-spinner' -%}
-                      <span
-                        >(
-                        {{- 'products.product.quantity.in_cart_html' | t: quantity: cart_qty -}}
-                        )</span
-                      >
-                    </span>
-                  </label>
-                  <div class="price-per-item__container">
-                    <quantity-input class="quantity" data-url="{{ product.url }}" data-section="{{ section.id }}">
-                      <button class="quantity__button" name="minus" type="button">
-                        <span class="visually-hidden">
-                          {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
-                        </span>
-                        <span class="svg-wrapper">
-                          {{- 'icon-minus.svg' | inline_asset_content -}}
-                        </span>
-                      </button>
-                      <input
-                        class="quantity__input"
-                        type="number"
-                        name="quantity"
-                        id="Quantity-{{ section.id }}"
-                        data-cart-quantity="{{ cart_qty }}"
-                        data-min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
-                        min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
-                        {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
-                          data-max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
-                          max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
-                        {% endif %}
-                        step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}"
-                        value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
-                        form="{{ product_form_id }}"
-                      >
-                      <button class="quantity__button" name="plus" type="button">
-                        <span class="visually-hidden">
-                          {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
-                        </span>
-                        <span class="svg-wrapper">
-                          {{- 'icon-plus.svg' | inline_asset_content -}}
-                        </span>
-                      </button>
-                    </quantity-input>
-                    {%- liquid
-                      assign volume_pricing_array = product.selected_or_first_available_variant.quantity_price_breaks | sort: 'quantity' | reverse
-                      assign current_qty_for_volume_pricing = cart_qty | plus: product.selected_or_first_available_variant.quantity_rule.min
-                      if cart_qty > 0
-                        assign current_qty_for_volume_pricing = cart_qty | plus: product.selected_or_first_available_variant.quantity_rule.increment
-                      endif
-                    -%}
-                    {%- if product.quantity_price_breaks_configured? -%}
-                      <price-per-item
-                        id="Price-Per-Item-{{ section.id }}"
-                        data-section-id="{{ section.id }}"
-                        data-variant-id="{{ product.selected_or_first_available_variant.id }}"
-                      >
-                        {%- if product.selected_or_first_available_variant.quantity_price_breaks.size > 0 -%}
-                          {%- assign variant_price_compare = product.selected_or_first_available_variant.compare_at_price -%}
-                          <div class="price-per-item">
-                            {%- if variant_price_compare -%}
-                              <dl class="price-per-item--current">
-                                <dt class="visually-hidden">
-                                  {{ 'products.product.price.regular_price' | t }}
-                                </dt>
-                                <dd>
-                                  <s class="variant-item__old-price">
-                                    {{ variant_price_compare | money_with_currency }}
-                                  </s>
-                                </dd>
-                              </dl>
-                            {%- endif -%}
-                            {%- if current_qty_for_volume_pricing < volume_pricing_array.last.minimum_quantity -%}
-                              {%- assign variant_price = product.selected_or_first_available_variant.price
-                                | money_with_currency
-                              -%}
-                              <span class="price-per-item--current">
-                                {{- 'products.product.volume_pricing.price_at_each_html' | t: price: variant_price -}}
-                              </span>
-                            {%- else -%}
-                              {%- for price_break in volume_pricing_array -%}
-                                {%- if current_qty_for_volume_pricing >= price_break.minimum_quantity -%}
-                                  {%- assign price_break_price = price_break.price | money_with_currency -%}
-                                  <span class="price-per-item--current">
-                                    {{-
-                                      'products.product.volume_pricing.price_at_each_html'
-                                      | t: price: price_break_price
-                                    -}}
-                                  </span>
-                                  {%- break -%}
-                                {%- endif -%}
-                              {%- endfor -%}
-                            {%- endif -%}
-                          </div>
-                        {%- else -%}
-                          {%- assign variant_price = product.selected_or_first_available_variant.price
-                            | money_with_currency
-                          -%}
-                          {%- assign variant_price_compare = product.selected_or_first_available_variant.compare_at_price -%}
-                          <div class="price-per-item">
-                            {%- if variant_price_compare -%}
-                              <dl class="price-per-item--current">
-                                <dt class="visually-hidden">
-                                  {{ 'products.product.price.regular_price' | t }}
-                                </dt>
-                                <dd>
-                                  <s class="variant-item__old-price">
-                                    {{ variant_price_compare | money_with_currency }}
-                                  </s>
-                                </dd>
-                                <dt class="visually-hidden">
-                                  {{ 'products.product.price.sale_price' | t }}
-                                </dt>
-                                <dd>
-                                  <span class="price-per-item--current">
-                                    {{-
-                                      'products.product.volume_pricing.price_at_each_html'
-                                      | t: price: variant_price
-                                    -}}
-                                  </span>
-                                </dd>
-                              </dl>
-                            {%- else -%}
-                              <span class="price-per-item--current">
-                                {{- 'products.product.volume_pricing.price_at_each_html' | t: price: variant_price -}}
-                              </span>
-                            {%- endif -%}
-                          </div>
-                        {%- endif -%}
-                      </price-per-item>
-                    {%- endif -%}
-                  </div>
-                  <div class="quantity__rules caption" id="Quantity-Rules-{{ section.id }}">
-                    {%- if product.selected_or_first_available_variant.quantity_rule.increment > 1 -%}
-                      <span class="divider">
-                        {{-
-                          'products.product.quantity.multiples_of'
-                          | t: quantity: product.selected_or_first_available_variant.quantity_rule.increment
-                        -}}
-                      </span>
-                    {%- endif -%}
-                    {%- if product.selected_or_first_available_variant.quantity_rule.min > 1 -%}
-                      <span class="divider">
-                        {{-
-                          'products.product.quantity.minimum_of'
-                          | t: quantity: product.selected_or_first_available_variant.quantity_rule.min
-                        -}}
-                      </span>
-                    {%- endif -%}
-                    {%- if product.selected_or_first_available_variant.quantity_rule.max != null -%}
-                      <span class="divider">
-                        {{-
-                          'products.product.quantity.maximum_of'
-                          | t: quantity: product.selected_or_first_available_variant.quantity_rule.max
-                        -}}
-                      </span>
-                    {%- endif -%}
-                  </div>
-                  {%- if product.quantity_price_breaks_configured? -%}
-                    <volume-pricing class="parent-display" id="Volume-{{ section.id }}">
-                      {%- if product.selected_or_first_available_variant.quantity_price_breaks.size > 0 -%}
-                        <span class="caption-large">{{ 'products.product.volume_pricing.title' | t }}</span>
-                        <ul class="list-unstyled">
-                          <li>
-                            <span>{{ product.selected_or_first_available_variant.quantity_rule.min }}+</span>
-                            {%- assign price = product.selected_or_first_available_variant.price
-                              | money_with_currency
-                            -%}
-                            <span data-text="{{ 'products.product.volume_pricing.price_at_each_html' | t: price: variant_price }}">
-                              {{- 'sections.quick_order_list.each' | t: money: price -}}
-                            </span>
-                          </li>
-                          {%- for price_break in product.selected_or_first_available_variant.quantity_price_breaks -%}
-                            {%- assign price_break_price = price_break.price | money_with_currency -%}
-                            <li class="{%- if forloop.index >= 3 -%}show-more-item hidden{%- endif -%}">
-                              <span>
-                                {{- price_break.minimum_quantity -}}
-                                <span aria-hidden="true">+</span></span
-                              >
-                              <span data-text="{{ 'products.product.volume_pricing.price_at_each_html' | t: price: price_break_price }}">
-                                {{- 'sections.quick_order_list.each' | t: money: price_break_price -}}
-                              </span>
-                            </li>
-                          {%- endfor -%}
-                        </ul>
-                        {%- if product.selected_or_first_available_variant.quantity_price_breaks.size >= 3 -%}
-                          <show-more-button>
-                            <button
-                              class="button-show-more link underlined-link"
-                              id="Show-More-{{ section.id }}"
-                              type="button"
-                            >
-                              <span class="label-show-more label-text"
-                                ><span aria-hidden="true">+ </span>{{ 'products.facets.show_more' | t }}
-                              </span>
-                            </button>
-                          </show-more-button>
-                        {%- endif -%}
-                      {%- endif -%}
-                    </volume-pricing>
-                  {%- endif -%}
-                </div>
-              {%- when 'popup' -%}
-                <modal-opener
-                  class="product-popup-modal__opener quick-add-hidden"
-                  data-modal="#PopupModal-{{ block.id }}"
-                  {{ block.shopify_attributes }}
-                >
-                  <button
-                    id="ProductPopup-{{ block.id }}"
-                    class="product-popup-modal__button link"
-                    type="button"
-                    aria-haspopup="dialog"
-                  >
-                    {{ block.settings.text | default: block.settings.page.title | escape }}
-                  </button>
-                </modal-opener>
-              {%- when 'share' -%}
-                {% liquid
-                  assign share_url = product.selected_variant.url | default: product.url | prepend: request.origin
-                  render 'share-button', block: block, share_link: share_url
-                %}
-
-              {%- when 'variant_picker' -%}
-                {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
-              {%- when 'buy_buttons' -%}
-                {%- render 'buy-buttons',
-                  block: block,
-                  product: product,
-                  product_form_id: product_form_id,
-                  section_id: section.id,
-                  show_pickup_availability: true
-                -%}
-              {%- when 'rating' -%}
-                {%- if product.metafields.reviews.rating.value != blank -%}
-                  <div class="rating-wrapper">
-                    {% liquid
-                      assign rating_decimal = 0
-                      assign decimal = product.metafields.reviews.rating.value.rating | modulo: 1
-                      if decimal >= 0.3 and decimal <= 0.7
-                        assign rating_decimal = 0.5
-                      elsif decimal > 0.7
-                        assign rating_decimal = 1
-                      endif
-                    %}
-                    <div
-                      class="rating"
-                      role="img"
-                      aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}"
-                    >
-                      <span
-                        aria-hidden="true"
-                        class="rating-star"
-                        style="--rating: {{ product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"
-                      ></span>
-                    </div>
-                    <p class="rating-text caption">
-                      <span aria-hidden="true">
-                        {{- product.metafields.reviews.rating.value }} /
-                        {{ product.metafields.reviews.rating.value.scale_max -}}
-                      </span>
-                    </p>
-                    <p class="rating-count caption">
-                      <span aria-hidden="true">({{ product.metafields.reviews.rating_count }})</span>
-                      <span class="visually-hidden">
-                        {{- product.metafields.reviews.rating_count }}
-                        {{ 'accessibility.total_reviews' | t -}}
-                      </span>
-                    </p>
-                  </div>
-                {%- endif -%}
-              {%- when 'complementary' -%}
-                <product-recommendations
-                  class="complementary-products quick-add-hidden{% if block.settings.make_collapsible_row %} is-accordion{% endif %}{% if block.settings.enable_quick_add %} complementary-products-contains-quick-add{% endif %}"
-                  data-url="{{ routes.product_recommendations_url }}?limit={{ block.settings.product_list_limit }}&intent=complementary"
-                  data-section-id="{{ section.id }}"
-                  data-product-id="{{ product.id }}"
-                >
-                  {%- if recommendations.performed and recommendations.products_count > 0 -%}
-                    <aside
-                      aria-label="{{ 'accessibility.complementary_products' | t }}"
-                      {{ block.shopify_attributes -}}
-                      {% if block.settings.make_collapsible_row %}
-                        class="product__accordion accordion"
-                      {% endif %}
-                    >
-                      <div class="complementary-products__container">
-                        {%- if block.settings.make_collapsible_row -%}
-                          <details id="Details-{{ block.id }}-{{ section.id }}" open>
-                            <summary>
-                        {%- endif %}
-                        <div class="summary__title">
-                          {%- if block.settings.make_collapsible_row -%}
-                            {% render 'icon-accordion', icon: block.settings.icon %}
-                            <h2 class="h4 accordion__title">{{ block.settings.block_heading }}</h2>
-                          {%- else -%}
-                            <h2 class="h3 accordion__title">{{ block.settings.block_heading }}</h2>
-                          {%- endif -%}
-                        </div>
-                        {%- if block.settings.make_collapsible_row -%}
-                          {{- 'icon-caret.svg' | inline_asset_content -}}
-                          </summary>
-                        {%- endif -%}
-                        <slideshow-component class="slider-mobile-gutter">
-                          {%- assign number_of_slides = recommendations.products_count
-                            | plus: 0.0
-                            | divided_by: block.settings.products_per_page
-                            | ceil
-                          -%}
-                          <div
-                            id="Slider-{{ block.id }}"
-                            class="contains-card contains-card--product complementary-slider grid grid--1-col slider slider--everywhere"
-                            role="list"
-                            {% if number_of_slides > 1 %}
-                              aria-label="{{ 'general.slider.name' | t }}"
-                            {% endif %}
-                          >
-                            {% assign skip_card_product_styles = false %}
-                            {%- for i in (1..number_of_slides) -%}
-                              <div
-                                id="Slide-{{ block.id }}-{{ forloop.index }}"
-                                class="complementary-slide complementary-slide--{{ settings.card_style }} grid__item slider__slide slideshow__slide"
-                                tabindex="-1"
-                                role="group"
-                                {% if number_of_slides > 1 %}
-                                  aria-roledescription="{{ 'sections.slideshow.slide' | t }}"
-                                  aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
-                                {% endif %}
-                              >
-                                <ul class="list-unstyled" role="list">
-                                  {%- for product in recommendations.products
-                                    limit: block.settings.products_per_page
-                                    offset: continue
-                                  -%}
-                                    <li>
-                                      {%- if block.settings.enable_quick_add -%}
-                                        {% assign quick_add = 'standard' %}
-                                      {%- else -%}
-                                        {% assign quick_add = 'none' %}
-                                      {%- endif -%}
-                                      {% render 'card-product',
-                                        card_product: product,
-                                        media_aspect_ratio: block.settings.image_ratio,
-                                        show_secondary_image: false,
-                                        lazy_load: false,
-                                        skip_styles: skip_card_product_styles,
-                                        quick_add: quick_add,
-                                        section_id: section.id,
-                                        horizontal_class: true,
-                                        horizontal_quick_add: true
-                                      %}
-                                    </li>
-                                    {%- assign skip_card_product_styles = true -%}
-                                  {%- endfor -%}
-                                </ul>
-                              </div>
-                            {%- endfor -%}
-                          </div>
-                          {%- if number_of_slides > 1 -%}
-                            <div class="slider-buttons">
-                              <button
-                                type="button"
-                                class="slider-button slider-button--prev"
-                                name="previous"
-                                aria-label="{{ 'general.slider.previous_slide' | t }}"
-                              >
-                                <span class="svg-wrapper">
-                                  {{- 'icon-caret.svg' | inline_asset_content -}}
-                                </span>
-                              </button>
-                              <div class="slider-counter slider-counter--{{ block.settings.pagination_style }}{% if block.settings.pagination_style == 'counter' or block.settings.pagination_style == 'numbers' %} caption{% endif %}">
-                                {%- if block.settings.pagination_style == 'counter' -%}
-                                  <span class="slider-counter--current">1</span>
-                                  <span aria-hidden="true"> / </span>
-                                  <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
-                                  <span class="slider-counter--total">{{ number_of_slides }}</span>
-                                {%- else -%}
-                                  <div class="slideshow__control-wrapper">
-                                    {%- for i in (1..number_of_slides) -%}
-                                      <button
-                                        class="slider-counter__link slider-counter__link--{{ block.settings.pagination_style }} link"
-                                        aria-label="{{ 'sections.slideshow.load_slide' | t }} {{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
-                                        aria-controls="Slider-{{ block.id }}"
-                                      >
-                                        {%- if block.settings.pagination_style == 'numbers' -%}
-                                          {{ forloop.index -}}
-                                        {%- else -%}
-                                          <span class="dot"></span>
-                                        {%- endif -%}
-                                      </button>
-                                    {%- endfor -%}
-                                  </div>
-                                {%- endif -%}
-                              </div>
-                              <button
-                                type="button"
-                                class="slider-button slider-button--next"
-                                name="next"
-                                aria-label="{{ 'general.slider.next_slide' | t }}"
-                              >
-                                <span class="svg-wrapper">
-                                  {{- 'icon-caret.svg' | inline_asset_content -}}
-                                </span>
-                              </button>
-                            </div>
-                          {%- endif -%}
-                        </slideshow-component>
-                        {%- if block.settings.make_collapsible_row -%}
-                          </details>
-                        {%- endif -%}
-                      </div>
-                    </aside>
-                  {%- endif -%}
-                  {{ 'component-card.css' | asset_url | stylesheet_tag }}
-                  {{ 'component-complementary-products.css' | asset_url | stylesheet_tag }}
-                  {%- if block.settings.enable_quick_add -%}
-                    {{ 'quick-add.css' | asset_url | stylesheet_tag }}
-                    <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
-                  {%- endif -%}
-                </product-recommendations>
-              {%- when 'icon-with-text' -%}
-                {% render 'icon-with-text', block: block %}
-            {%- endcase -%}
-          {%- endfor -%}
           <a href="{{ product.url }}" class="link product__view-details animate-arrow">
             {{ 'products.product.view_full_details' | t }}
             {{- 'icon-arrow.svg' | inline_asset_content -}}
@@ -1645,6 +654,103 @@
   "tag": "section",
   "class": "section",
   "blocks": [
+    {
+      "type": "custom_title",
+      "name": "Product Title",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_vendor",
+          "default": true,
+          "label": "Show vendor"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_rating",
+          "default": true,
+          "label": "Show rating"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_actions",
+          "default": true,
+          "label": "Show action buttons (wishlist/share)"
+        }
+      ]
+    },
+    {
+      "type": "custom_price",
+      "name": "Product Price",
+      "limit": 1
+    },
+    {
+      "type": "custom_desc",
+      "name": "Product Description",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_full_description",
+          "default": false,
+          "label": "Show full description"
+        }
+      ]
+    },
+    {
+      "type": "custom_variant_picker",
+      "name": "Variant Picker",
+      "limit": 1
+    },
+    {
+      "type": "custom_purchase_options",
+      "name": "Purchase Options",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_subscription",
+          "default": true,
+          "label": "Show subscription option"
+        }
+      ]
+    },
+    {
+      "type": "custom_buy_buttons",
+      "name": "Buy Buttons",
+      "limit": 1
+    },
+    {
+      "type": "custom_scent_profile",
+      "name": "Scent Profile",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "default": "SCENT PROFILE",
+          "label": "Section Title"
+        },
+        {
+          "type": "text",
+          "id": "top_notes",
+          "default": "Bergamot, Pink Pepper, Cardamom",
+          "label": "Top Notes (comma separated)"
+        },
+        {
+          "type": "text",
+          "id": "middle_notes",
+          "default": "Iris, Violet, Incense",
+          "label": "Middle Notes (comma separated)"
+        },
+        {
+          "type": "text",
+          "id": "base_notes",
+          "default": "Vanilla, Tonka Bean, Patchouli",
+          "label": "Base Notes (comma separated)"
+        }
+      ]
+    },
     {
       "type": "@app"
     },
@@ -3184,6 +2290,31 @@
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
     }
+  ],
+  "presets": [
+    {
+      "name": "Product information",
+      "blocks": [
+        {
+          "type": "custom_title"
+        },
+        {
+          "type": "custom_price"
+        },
+        {
+          "type": "custom_desc"
+        },
+        {
+          "type": "custom_variant_picker"
+        },
+        {
+          "type": "custom_purchase_options"
+        },
+        {
+          "type": "custom_buy_buttons"
+        }
+      ]
+    }
   ]
 }
 {% endschema %}
@@ -3192,211 +2323,102 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Initialize thumbnails swiper first
-  const thumbsSwiper = new Swiper('.product-thumbs-swiper', {
-    spaceBetween: 16,
-    slidesPerView: 3,
-    freeMode: true,
-    watchSlidesProgress: true,
-    breakpoints: {
-      640: {
-        slidesPerView: 3,
-        spaceBetween: 16,
+  document.addEventListener('DOMContentLoaded', function () {
+    // Initialize thumbnails swiper first
+    const thumbsSwiper = new Swiper('.product-thumbs-swiper', {
+      spaceBetween: 16,
+      slidesPerView: 3,
+      freeMode: true,
+      watchSlidesProgress: true,
+      breakpoints: {
+        640: {
+          slidesPerView: 3,
+          spaceBetween: 16,
+        },
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 16,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 16,
+        },
       },
-      768: {
-        slidesPerView: 3,
-        spaceBetween: 16,
-      },
-      1024: {
-        slidesPerView: 3,
-        spaceBetween: 16,
-      },
-    },
-  });
-
-  // Initialize main swiper
-  const mainSwiper = new Swiper('.product-main-swiper', {
-    spaceBetween: 10,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    thumbs: {
-      swiper: thumbsSwiper,
-    },
-    keyboard: {
-      enabled: true,
-    },
-    mousewheel: {
-      forceToAxis: true,
-    },
-    loop: false,
-    effect: 'slide',
-    speed: 300,
-  });
-
-  // Handle variant selection and price updates
-  const variantOptions = document.querySelectorAll('.variant-option');
-  const selectedPrice = document.getElementById('selected-price');
-  const subscriptionPrice = document.getElementById('subscription-price');
-  const productVariantId = document.getElementById('product-variant-id');
-
-  variantOptions.forEach(option => {
-    option.addEventListener('click', function() {
-      // Remove active class from all options
-      variantOptions.forEach(opt => {
-        opt.classList.remove('border-primary', 'bg-primary/10');
-        opt.classList.add('border-border');
-      });
-      
-      // Add active class to clicked option
-      this.classList.remove('border-border');
-      this.classList.add('border-primary', 'bg-primary/10');
-      
-      // Update prices and variant ID
-      const variantId = this.dataset.variantId;
-      const variantPrice = this.dataset.variantPrice;
-      
-      if (selectedPrice) selectedPrice.textContent = variantPrice;
-      if (subscriptionPrice) {
-        // Calculate 10% discount for subscription
-        const price = parseFloat(variantPrice.replace(/[^0-9.]/g, ''));
-        const discountedPrice = (price * 0.9).toFixed(2);
-        subscriptionPrice.textContent = `$${discountedPrice} every month`;
-      }
-      if (productVariantId) productVariantId.value = variantId;
-    });
-  });
-
-  // Handle quantity controls
-  const quantityInput = document.querySelector('.quantity-input');
-  const quantityDecrease = document.querySelector('.quantity-decrease');
-  const quantityIncrease = document.querySelector('.quantity-increase');
-
-  if (quantityDecrease && quantityIncrease && quantityInput) {
-    quantityDecrease.addEventListener('click', function() {
-      const currentValue = parseInt(quantityInput.value);
-      if (currentValue > 1) {
-        quantityInput.value = currentValue - 1;
-      }
     });
 
-    quantityIncrease.addEventListener('click', function() {
-      const currentValue = parseInt(quantityInput.value);
-      quantityInput.value = currentValue + 1;
+    // Initialize main swiper
+    const mainSwiper = new Swiper('.product-main-swiper', {
+      spaceBetween: 10,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      thumbs: {
+        swiper: thumbsSwiper,
+      },
+      keyboard: {
+        enabled: true,
+      },
+      mousewheel: {
+        forceToAxis: true,
+      },
+      loop: false,
+      effect: 'slide',
+      speed: 300,
     });
-  }
-});
-</script>
 
-<!-- Cart Form JavaScript -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Handle cart form submissions using the working flash sale implementation
-  console.log('Product page cart script loading...');
-  const cartForms = document.querySelectorAll('.cart-form');
-  console.log('Found cart forms:', cartForms.length);
-  
-  cartForms.forEach((form, index) => {
-    console.log('Setting up cart form', index, form);
-    form.addEventListener('submit', async function(e) {
-      console.log('Form submit event triggered!');
-      e.preventDefault();
-      console.log('Default form submission prevented');
-      
-      const formData = new FormData(form);
-      const button = form.querySelector('button[type="submit"]');
-      const originalText = button.textContent;
-      const btnTextSpan = button.querySelector('.btn-text');
-      const spinner = button.querySelector('.loading__spinner');
-      
-      console.log('Form elements found:', { button, btnTextSpan, spinner });
-      
-      // Show loading state
-      if (btnTextSpan) btnTextSpan.textContent = 'ADDING...';
-      if (spinner) spinner.classList.remove('hidden');
-      button.disabled = true;
-      
-      try {
-        const response = await fetch('/cart/add.js', {
-          method: 'POST',
-          body: formData
+    // Handle variant selection and price updates
+    const variantOptions = document.querySelectorAll('.variant-option');
+    const selectedPrice = document.getElementById('selected-price');
+    const subscriptionPrice = document.getElementById('subscription-price');
+    const productVariantId = document.getElementById('product-variant-id');
+
+    variantOptions.forEach((option) => {
+      option.addEventListener('click', function () {
+        // Remove active class from all options
+        variantOptions.forEach((opt) => {
+          opt.classList.remove('border-primary', 'bg-primary/10');
+          opt.classList.add('border-border');
         });
-        
-        if (response.ok) {
-          const item = await response.json();
-          
-          // Show success state briefly
-          if (btnTextSpan) btnTextSpan.textContent = 'ADDED!';
-          if (spinner) spinner.classList.add('hidden');
-          
-          // Trigger Shopify cart drawer opening
-          setTimeout(() => {
-            console.log('Attempting to open cart drawer...');
-            
-            // Method 1: Use Shopify's cart drawer system
-            const cartDrawer = document.querySelector('cart-drawer');
-            console.log('Shopify cart drawer element:', cartDrawer);
-            
-            if (cartDrawer) {
-              console.log('Opening Shopify cart drawer via .open()');
-              if (typeof cartDrawer.open === 'function') {
-                cartDrawer.open();
-              } else {
-                console.log('cartDrawer.open is not a function, trying alternative');
-                // Try triggering click on cart trigger
-                const cartTrigger = document.getElementById('cart-trigger');
-                if (cartTrigger) {
-                  console.log('Clicking cart trigger button');
-                  cartTrigger.click();
-                }
-              }
-            }
-            // Method 2: Trigger via cart icon click
-            else {
-              console.log('No cart-drawer element found, trying cart trigger');
-              const cartTrigger = document.getElementById('cart-trigger');
-              if (cartTrigger) {
-                console.log('Opening cart drawer via cart-trigger click');
-                cartTrigger.click();
-              }
-              // Method 3: Fallback to custom header drawer (if still exists)
-              else if (typeof window.openCartDrawer === 'function') {
-                console.log('Fallback to custom cart drawer');
-                window.openCartDrawer();
-              } else {
-                console.log('No cart opening method found!');
-              }
-            }
-            
-            // Always dispatch the cart updated event
-            document.dispatchEvent(new CustomEvent('cart:updated'));
-            
-            // Reset button
-            setTimeout(() => {
-              if (btnTextSpan) btnTextSpan.textContent = 'ADD TO CART';
-              if (spinner) spinner.classList.add('hidden');
-              button.disabled = false;
-            }, 1000);
-          }, 500);
-          
-        } else {
-          throw new Error('Failed to add to cart');
+
+        // Add active class to clicked option
+        this.classList.remove('border-border');
+        this.classList.add('border-primary', 'bg-primary/10');
+
+        // Update prices and variant ID
+        const variantId = this.dataset.variantId;
+        const variantPrice = this.dataset.variantPrice;
+
+        if (selectedPrice) selectedPrice.textContent = variantPrice;
+        if (subscriptionPrice) {
+          // Calculate 10% discount for subscription
+          const price = parseFloat(variantPrice.replace(/[^0-9.]/g, ''));
+          const discountedPrice = (price * 0.9).toFixed(2);
+          subscriptionPrice.textContent = `$${discountedPrice} every month`;
         }
-      } catch (error) {
-        console.error('Error adding to cart:', error);
-        if (btnTextSpan) btnTextSpan.textContent = 'ERROR';
-        if (spinner) spinner.classList.add('hidden');
-        
-        setTimeout(() => {
-          if (btnTextSpan) btnTextSpan.textContent = 'ADD TO CART';
-          button.disabled = false;
-        }, 2000);
-      }
+        if (productVariantId) productVariantId.value = variantId;
+      });
     });
+
+    // Handle quantity controls
+    const quantityInput = document.querySelector('.quantity-input');
+    const quantityDecrease = document.querySelector('.quantity-decrease');
+    const quantityIncrease = document.querySelector('.quantity-increase');
+
+    if (quantityDecrease && quantityIncrease && quantityInput) {
+      quantityDecrease.addEventListener('click', function () {
+        const currentValue = parseInt(quantityInput.value);
+        if (currentValue > 1) {
+          quantityInput.value = currentValue - 1;
+        }
+      });
+
+      quantityIncrease.addEventListener('click', function () {
+        const currentValue = parseInt(quantityInput.value);
+        quantityInput.value = currentValue + 1;
+      });
+    }
   });
-});
 </script>
 
 <style>
@@ -3404,16 +2426,16 @@ document.addEventListener('DOMContentLoaded', function() {
     --swiper-navigation-color: currentColor;
     --swiper-navigation-size: 24px;
   }
-  
+
   .product-thumbs-swiper .swiper-slide-thumb-active button {
     border-color: rgb(var(--color-primary)) !important;
   }
-  
+
   .swiper-button-prev,
   .swiper-button-next {
     color: currentColor;
   }
-  
+
   .swiper-button-prev:after,
   .swiper-button-next:after {
     display: none;

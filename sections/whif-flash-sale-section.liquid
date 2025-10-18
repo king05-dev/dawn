@@ -277,30 +277,21 @@
             // Show success state briefly
             button.textContent = 'ADDED!';
             
-            // Trigger Shopify cart drawer opening
+            // Trigger cart drawer opening
             setTimeout(() => {
-              // Method 1: Use Shopify's cart drawer system
-              const cartDrawer = document.querySelector('cart-drawer');
-              if (cartDrawer) {
-                console.log('Opening Shopify cart drawer');
-                cartDrawer.open();
-              }
-              // Method 2: Trigger via cart icon click
-              else {
-                const cartIcon = document.querySelector('[data-cart-drawer]');
-                if (cartIcon) {
-                  console.log('Opening cart drawer via cart icon click');
-                  cartIcon.click();
-                }
-                // Method 3: Fallback to custom header drawer (if still exists)
-                else if (typeof window.openCartDrawer === 'function') {
-                  console.log('Fallback to custom cart drawer');
-                  window.openCartDrawer();
-                }
-              }
-              
-              // Always dispatch the cart updated event
+              // Dispatch custom event to open cart drawer
               document.dispatchEvent(new CustomEvent('cart:updated'));
+              
+              // Open cart drawer if function exists
+              if (typeof window.openCartDrawer === 'function') {
+                window.openCartDrawer();
+              } else {
+                // Fallback: trigger cart drawer via event
+                const cartTrigger = document.getElementById('cart-trigger');
+                if (cartTrigger) {
+                  cartTrigger.click();
+                }
+              }
               
               // Reset button
               setTimeout(() => {

@@ -18,23 +18,58 @@ document.addEventListener('DOMContentLoaded', function() {
   const cartDrawer = document.querySelector('cart-drawer');
   
   if (cartDrawer) {
-    // Listen for cart updates and keep drawer open
-    document.addEventListener('cart:updated', function() {
-      // Update cart count in header
-      fetch('/cart.js')
-        .then(response => response.json())
-        .then(cart => {
-          const cartCount = document.getElementById('cart-count');
-          if (cartCount) {
-            if (cart.item_count > 0) {
-              cartCount.textContent = cart.item_count;
-              cartCount.classList.remove('hidden');
-            } else {
-              cartCount.classList.add('hidden');
-            }
+    // Listen for cart updates and use CartManager if available
+    document.addEventListener('cart:updated', async function(event) {
+      // Use CartManager if available for consistent updates
+      if (window.CartManager) {
+        // If cart data is provided in event, update count directly
+        if (event.detail && event.detail.cart) {
+          window.CartManager.updateCartCount(event.detail.cart);
+        }
+        
+        // Refresh drawer contents if open
+        await window.CartManager.refreshCartDrawer();
+      } else {
+        // Fallback to legacy implementation
+        let cart;
+        if (event.detail && event.detail.cart) {
+          cart = event.detail.cart;
+        } else {
+          try {
+            const response = await fetch('/cart.js');
+            cart = await response.json();
+          } catch (error) {
+            console.error('Error fetching cart:', error);
+            return;
           }
-        })
-        .catch(error => console.error('Error updating cart count:', error));
+        }
+        
+        // Update cart count
+        const cartCount = document.getElementById('cart-count');
+        if (cartCount) {
+          if (cart.item_count > 0) {
+            cartCount.textContent = cart.item_count;
+            cartCount.classList.remove('hidden');
+          } else {
+            cartCount.classList.add('hidden');
+          }
+        }
+        
+        // Refresh the cart drawer contents if it's open
+        if (cartDrawer && cartDrawer.classList.contains('active')) {
+          try {
+            const cartDrawerResponse = await fetch(`${window.location.pathname}?sections=cart-drawer`);
+            const cartDrawerData = await cartDrawerResponse.json();
+            if (cartDrawerData['cart-drawer'] && cartDrawer.renderContents) {
+              cartDrawer.renderContents({
+                sections: { 'cart-drawer': cartDrawerData['cart-drawer'] }
+              });
+            }
+          } catch (error) {
+            console.error('Error updating cart drawer:', error);
+          }
+        }
+      }
     });
     
     // Prevent drawer from closing when quantity changes
