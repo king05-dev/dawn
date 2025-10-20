@@ -354,6 +354,60 @@
             </div>
           </div>
         {% endif %}
+        
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            const variantButtons = document.querySelectorAll('.variant-option');
+            const selectedPrice = document.getElementById('selected-price');
+            const subscriptionPrice = document.getElementById('subscription-price');
+            const productForm = document.querySelector('[data-product-form]');
+            const variantIdInput = document.querySelector('input[name="id"]');
+            
+            variantButtons.forEach(button => {
+              button.addEventListener('click', function() {
+                // Remove active state from all buttons
+                variantButtons.forEach(btn => {
+                  btn.classList.remove('border-primary', 'bg-primary/10');
+                  btn.classList.add('border-border');
+                });
+                
+                // Add active state to clicked button
+                this.classList.remove('border-border');
+                this.classList.add('border-primary', 'bg-primary/10');
+                
+                // Get variant data
+                const variantId = this.dataset.variantId;
+                const variantPrice = this.dataset.variantPrice;
+                
+                // Update price displays
+                if (selectedPrice) {
+                  selectedPrice.textContent = variantPrice;
+                }
+                
+                if (subscriptionPrice) {
+                  // Calculate 10% discount for subscription
+                  const priceNumber = parseFloat(variantPrice.replace(/[^0-9.]/g, ''));
+                  const discountedPrice = (priceNumber * 0.9).toFixed(2);
+                  const currency = variantPrice.replace(/[0-9.]/g, '');
+                  subscriptionPrice.textContent = currency + discountedPrice + ' every month';
+                }
+                
+                // Update form variant ID
+                if (variantIdInput) {
+                  variantIdInput.value = variantId;
+                }
+                
+                // Trigger change event for any other listeners
+                if (productForm) {
+                  productForm.dispatchEvent(new CustomEvent('variant:change', {
+                    detail: { variant: { id: variantId, price: variantPrice } }
+                  }));
+                }
+              });
+            });
+          });
+        </script>
+        
         <div class="space-y-3">
           <div class="w-full p-4 rounded-lg border-2 border-primary bg-primary/10">
             <div class="flex items-center justify-between">

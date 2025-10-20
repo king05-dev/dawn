@@ -120,7 +120,7 @@
                     Premium fragrance collection
                   {%- endif -%}
                 </p>
-                <div class="flex items-center gap-2 mb-4">
+                <div class="flex items-center gap-2">
                   <span class="text-2xl font-bold text-primary">{{ product.price | money }}</span>
                   {%- if product.compare_at_price > product.price -%}
                     <span class="text-sm text-muted-foreground line-through">
@@ -128,23 +128,25 @@
                     </span>
                   {%- endif -%}
                 </div>
-                <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" class="cart-form">
-                  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-                  <button
-                    type="submit"
-                    data-slot="button"
-                    class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive shadow-xs h-9 px-4 py-2 has-[&gt;svg]:px-3 w-full bg-primary hover:bg-primary/90 text-primary-foreground"
-                    {%- unless product.available -%}
-                      disabled
-                    {%- endunless -%}
-                  >
-                    {%- if product.available -%}
-                      ADD TO CART
-                    {%- else -%}
-                      SOLD OUT
-                    {%- endif -%}
-                  </button>
-                </form>
+                {% comment %}
+                  <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" class="cart-form">
+                    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                    <button
+                      type="submit"
+                      data-slot="button"
+                      class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive shadow-xs h-9 px-4 py-2 has-[&gt;svg]:px-3 w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+                      {%- unless product.available -%}
+                        disabled
+                      {%- endunless -%}
+                    >
+                      {%- if product.available -%}
+                        ADD TO CART
+                      {%- else -%}
+                        SOLD OUT
+                      {%- endif -%}
+                    </button>
+                  </form>
+                {% endcomment %}
               </div>
             </div>
           </div>
@@ -244,44 +246,48 @@
 
 <style>
   .flash-sale-section {
-    background: linear-gradient(135deg, var(--gradient-base-background-1, #fafafa) 0%, var(--gradient-base-background-2, #f4f4f5) 100%);
+    background: linear-gradient(
+      135deg,
+      var(--gradient-base-background-1, #fafafa) 0%,
+      var(--gradient-base-background-2, #f4f4f5) 100%
+    );
   }
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
     // Handle cart form submissions
     const cartForms = document.querySelectorAll('.cart-form');
-    
-    cartForms.forEach(form => {
-      form.addEventListener('submit', async function(e) {
+
+    cartForms.forEach((form) => {
+      form.addEventListener('submit', async function (e) {
         e.preventDefault();
-        
+
         const formData = new FormData(form);
         const button = form.querySelector('button[type="submit"]');
         const originalText = button.textContent;
-        
+
         // Show loading state
         button.textContent = 'ADDING...';
         button.disabled = true;
-        
+
         try {
           const response = await fetch('/cart/add.js', {
             method: 'POST',
-            body: formData
+            body: formData,
           });
-          
+
           if (response.ok) {
             const item = await response.json();
-            
+
             // Show success state briefly
             button.textContent = 'ADDED!';
-            
+
             // Trigger cart drawer opening
             setTimeout(() => {
               // Dispatch custom event to open cart drawer
               document.dispatchEvent(new CustomEvent('cart:updated'));
-              
+
               // Open cart drawer if function exists
               if (typeof window.openCartDrawer === 'function') {
                 window.openCartDrawer();
@@ -292,21 +298,20 @@
                   cartTrigger.click();
                 }
               }
-              
+
               // Reset button
               setTimeout(() => {
                 button.textContent = originalText;
                 button.disabled = false;
               }, 1000);
             }, 500);
-            
           } else {
             throw new Error('Failed to add to cart');
           }
         } catch (error) {
           console.error('Error adding to cart:', error);
           button.textContent = 'ERROR';
-          
+
           setTimeout(() => {
             button.textContent = originalText;
             button.disabled = false;
