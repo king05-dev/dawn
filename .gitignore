@@ -11,3 +11,9 @@ Thumbs.db
 
 # Node
 node_modules/
+
+# Project Handover Package Files
+project-handover/theme.zip
+project-handover/github-export.zip
+project-handover/exports/*.csv
+project-handover/exports/*.html

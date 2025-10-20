@@ -1,0 +1,4 @@
+# This folder will contain data exports
+# - products.csv (from Shopify admin export)
+# - customers.csv (if needed)
+# - pages_and_blog_export.html (from Shopify admin)

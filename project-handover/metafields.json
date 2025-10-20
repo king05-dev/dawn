@@ -1,0 +1,19 @@
+{
+  "metafields": {
+    "note": "This project uses standard Shopify metafields. No custom metafields were implemented in the current theme customizations.",
+    "standard_fields": [
+      "product.description",
+      "product.vendor", 
+      "product.tags",
+      "product.price",
+      "product.compare_at_price",
+      "product.available"
+    ],
+    "future_considerations": [
+      "Product ingredients/materials",
+      "Scent intensity ratings",
+      "Room size recommendations",
+      "Burn time specifications"
+    ]
+  }
+}
