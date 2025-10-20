@@ -1,0 +1,237 @@
+/* Custom Product Card Styling - Tailwind-inspired */
+
+/* Main card container */
+.card-wrapper.product-card-wrapper {
+  @apply text-card-foreground;
+}
+
+.card.card--standard,
+.card.card--card {
+  @apply flex flex-col gap-6 rounded-xl border py-6 shadow-sm group overflow-hidden border-border bg-card hover:border-primary transition-all;
+  background: rgb(255 255 255) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: 0.75rem !important;
+  padding: 1.5rem 0 !important;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05) !important;
+  transition: all 0.3s ease !important;
+}
+
+.card.card--standard:hover,
+.card.card--card:hover {
+  border-color: hsl(var(--primary)) !important;
+}
+
+/* Image container */
+.card__media {
+  @apply relative h-[300px] overflow-hidden;
+  height: 300px !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.card__media .media {
+  @apply relative h-full w-full;
+  height: 100% !important;
+  width: 100% !important;
+  position: relative !important;
+}
+
+.card__media img {
+  @apply object-cover group-hover:scale-110 transition-transform duration-500;
+  position: absolute !important;
+  height: 100% !important;
+  width: 100% !important;
+  inset: 0px !important;
+  object-fit: cover !important;
+  transition: transform 0.5s ease !important;
+}
+
+.card:hover .card__media img {
+  transform: scale(1.1) !important;
+}
+
+/* Card content */
+.card__content {
+  @apply p-4;
+  padding: 1rem !important;
+}
+
+.card__information {
+  @apply space-y-3;
+}
+
+/* Product title */
+.card__heading,
+.card__heading a {
+  @apply font-bold text-foreground mb-2 text-base;
+  font-weight: 700 !important;
+  color: hsl(var(--foreground)) !important;
+  margin-bottom: 0.5rem !important;
+  font-size: 1rem !important;
+  line-height: 1.5 !important;
+  text-decoration: none !important;
+}
+
+.card__heading a:hover {
+  color: hsl(var(--foreground)) !important;
+}
+
+/* Price styling */
+.price {
+  @apply text-xl font-bold text-primary mb-3;
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  color: hsl(var(--primary)) !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.price__sale .price-item--sale {
+  @apply text-xl font-bold text-red-500;
+  color: rgb(239 68 68) !important;
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+}
+
+.price__sale .price-item--regular {
+  @apply text-sm text-muted-foreground line-through ml-2;
+  color: hsl(var(--muted-foreground)) !important;
+  text-decoration: line-through !important;
+  margin-left: 0.5rem !important;
+  font-size: 0.875rem !important;
+}
+
+/* Quick add button */
+.quick-add__btn,
+.button--secondary {
+  @apply inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 outline-none border shadow-xs h-8 rounded-md gap-1.5 px-3 w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  white-space: nowrap !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+  outline: none !important;
+  border: 1px solid hsl(var(--primary)) !important;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05) !important;
+  height: 2rem !important;
+  border-radius: 0.375rem !important;
+  gap: 0.375rem !important;
+  padding: 0 0.75rem !important;
+  width: 100% !important;
+  color: hsl(var(--primary)) !important;
+  background: transparent !important;
+}
+
+.quick-add__btn:hover,
+.button--secondary:hover {
+  background: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+}
+
+.quick-add__btn:disabled,
+.button--secondary:disabled {
+  background: rgb(229 231 235) !important;
+  color: rgb(107 114 128) !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  opacity: 0.5 !important;
+}
+
+/* Product badges */
+.card__badge {
+  @apply absolute top-4 right-4 px-3 py-1 text-xs font-bold rounded-md;
+  position: absolute !important;
+  top: 1rem !important;
+  right: 1rem !important;
+  padding: 0.25rem 0.75rem !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  border-radius: 0.375rem !important;
+  z-index: 10 !important;
+}
+
+.card__badge.badge--sale {
+  @apply bg-red-500 text-white;
+  background: rgb(239 68 68) !important;
+  color: white !important;
+}
+
+.card__badge.badge--sold-out {
+  @apply bg-gray-500 text-white;
+  background: rgb(107 114 128) !important;
+  color: white !important;
+}
+
+.card__badge.badge--new {
+  @apply bg-primary text-primary-foreground;
+  background: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+}
+
+/* Vendor styling */
+.caption-with-letter-spacing {
+  @apply text-sm text-muted-foreground mb-1;
+  font-size: 0.875rem !important;
+  color: hsl(var(--muted-foreground)) !important;
+  margin-bottom: 0.25rem !important;
+}
+
+/* Rating styling */
+.rating {
+  @apply mb-2;
+  margin-bottom: 0.5rem !important;
+}
+
+/* Remove default Dawn styling that conflicts */
+.card__inner {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.card--standard .card__inner,
+.card--card .card__inner {
+  background: none !important;
+  border: none !important;
+}
+
+/* Grid layout adjustments */
+.grid.product-grid {
+  @apply gap-6;
+  gap: 1.5rem !important;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .grid.product-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid--4-col-desktop {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+  
+  .grid--3-col-desktop {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  
+  .grid--2-col-desktop {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Loading state */
+.loading__spinner {
+  @apply hidden;
+  display: none !important;
+}
+
+/* Focus states */
+.card:focus-within {
+  outline: 2px solid hsl(var(--ring)) !important;
+  outline-offset: 2px !important;
+}

@@ -1,0 +1,25 @@
+{% comment %}
+  Renders custom product description with styling
+  
+  Accepts:
+  - product: {Object} Product object
+  - block: {Object} Block object (optional)
+  - show_full_description: {Boolean} Whether to show full description or truncated
+  
+  Usage:
+  {% render 'product-description-custom', product: product, block: block %}
+{% endcomment %}
+
+<div class="mb-6" {{ block.shopify_attributes }}>
+  {% if product.description != blank %}
+    <div class="prose prose-gray max-w-none text-muted-foreground">
+      {% if show_full_description %}
+        {{ product.description }}
+      {% else %}
+        <p>{{ product.description | strip_html | truncate: 200 }}</p>
+      {% endif %}
+    </div>
+  {% else %}
+    <p class="text-muted-foreground">{{ 'products.product.no_description' | t }}</p>
+  {% endif %}
+</div>
